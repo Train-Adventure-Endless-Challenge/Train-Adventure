@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class State<T> : MonoBehaviour where T : State<T>
+public abstract class State<T>
 {
-    
+    protected StateMachine<T> _stateMacine;
     protected T _context;           // 작업되는 controller
 
     /// <summary>
