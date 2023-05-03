@@ -10,7 +10,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     {
         player = GetComponent<Player>();
         playerMove = GetComponent<PlayerController>();
-
+        playerRolling = GetComponent<PlayerRolling>();
     }
 
     private void Update()

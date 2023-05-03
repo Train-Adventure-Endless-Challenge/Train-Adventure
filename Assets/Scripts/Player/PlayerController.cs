@@ -1,17 +1,14 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerController : SceneSingleton<PlayerController>
 {
     #region Variable
 
-    #region SerializeField
+    #region Move
+
     [Header("Key")]
     [SerializeField] private KeyCode _runningKey;
-    #endregion
-
-    #region Private
-
-
 
     private Player _player;
     private Animator _animator;
@@ -25,6 +22,17 @@ public class PlayerController : SceneSingleton<PlayerController>
     private float _speedScale = 0.5f;
     private float _runSpeedScale = 1;
     private float _gravity = -9.81f;
+
+    #endregion
+
+    #region SmoothMove
+
+    [SerializeField] AnimationCurve _animationCurve;
+
+    private float _lerpTime = 1f;
+    private float _currentTime = 0;
+
+    private IEnumerator _smoothMoveCor;
 
     #endregion
 
@@ -70,11 +78,8 @@ public class PlayerController : SceneSingleton<PlayerController>
         float z = Input.GetAxis("Vertical");
         if (x != 0 || z != 0)
         {
-            if (Input.GetKey(_runningKey))
-            {
-                _moveSpeedScale = _runSpeedScale;
-            }
-            else _moveSpeedScale = _speedScale;
+            if (Input.GetKey(_runningKey)) { if (_smoothMoveCor != null) StopCoroutine(_smoothMoveCor); StartCoroutine(SmoothMove(_moveSpeedScale, _runSpeedScale)); }
+            else { if (_smoothMoveCor != null) StopCoroutine(_smoothMoveCor); StartCoroutine(SmoothMove(_moveSpeedScale, _speedScale)); }
             _moveDirection = new Vector3(x, 0, z);
             _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _moveDirection);
             transform.forward = _moveDirection;
@@ -86,8 +91,8 @@ public class PlayerController : SceneSingleton<PlayerController>
         }
         else
         {
-            _moveSpeedScale = 0;
-            if (_player.playerState != PlayerState.Idle)
+            if (_smoothMoveCor != null) StopCoroutine(_smoothMoveCor); StartCoroutine(SmoothMove(_moveSpeedScale, 0));
+            if (_moveSpeedScale == 0 && _player.playerState != PlayerState.Idle)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Idle;
@@ -108,5 +113,32 @@ public class PlayerController : SceneSingleton<PlayerController>
         }
         _controller.Move(Time.deltaTime * _velocity);
     }
+
+    private IEnumerator SmoothMove(float startValue, float endValue)
+    {
+        _currentTime = 0.5f;
+        _lerpTime = 1f;
+        _smoothMoveCor = SmoothMove(startValue, endValue);
+        while (_moveSpeedScale != endValue)
+        {
+            _currentTime += Time.deltaTime;
+
+            if (_currentTime >= _lerpTime)
+            {
+                _currentTime = _lerpTime;
+            }
+
+            float curveValue = _animationCurve.Evaluate(_currentTime / _lerpTime);
+
+            //if (startValue < endValue) 
+            _moveSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);
+            //else _moveSpeedScale = Mathf.Lerp(endValue, startValue, curveValue);
+
+            yield return new WaitForEndOfFrame();
+        }
+        _smoothMoveCor = null;
+        StopCoroutine(SmoothMove(startValue, endValue));
+    }
+
     #endregion
 }
