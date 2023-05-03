@@ -19,7 +19,6 @@ public class TrainManager : MonoBehaviour
     {
         trainObjects[currentTrain].transform.position += (trainPositionOffset * 2);   
         currentTrain ^= 1;
-        Debug.Log(currentTrain);
     }
 
 }
