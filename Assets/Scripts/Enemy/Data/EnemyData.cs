@@ -8,6 +8,7 @@ public enum EnemyType
     melee       // ±Ù°Å¸®
 }
 
+[CreateAssetMenu(fileName = "Enemy Data", menuName = "Scriptable Object/Enemy Data", order = int.MaxValue - 9)]
 public class EnemyData : ScriptableObject
 {
     private string _name;
