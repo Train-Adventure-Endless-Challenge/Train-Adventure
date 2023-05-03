@@ -3,11 +3,15 @@ using UnityEngine;
 public class PlayerController : SceneSingleton<PlayerController>
 {
     #region Variable
-    [Header("Attribute")]
-    public float speed;
 
+    #region SerializeField
     [Header("Key")]
     [SerializeField] private KeyCode _runningKey;
+    #endregion
+
+    #region Private
+
+
 
     private Player _player;
     private Animator _animator;
@@ -16,13 +20,20 @@ public class PlayerController : SceneSingleton<PlayerController>
     private Vector3 _velocity;
     private Vector3 _moveDirection;
 
+    private float _speed;
     private float _moveSpeedScale;
     private float _speedScale = 0.5f;
     private float _runSpeedScale = 1;
     private float _gravity = -9.81f;
+
+    #endregion
+
     #endregion
 
     #region Function
+
+    #region LifeCycle
+
     void Awake()
     {
         Init();
@@ -39,6 +50,8 @@ public class PlayerController : SceneSingleton<PlayerController>
         DataInit();
     }
 
+    #endregion
+
     private void Init()
     {
         _player = GetComponent<Player>();
@@ -48,7 +61,7 @@ public class PlayerController : SceneSingleton<PlayerController>
 
     private void DataInit()
     {
-        speed = _player.Speed;
+        _speed = _player.Speed;
     }
 
     public void Move()
@@ -57,10 +70,13 @@ public class PlayerController : SceneSingleton<PlayerController>
         float z = Input.GetAxis("Vertical");
         if (x != 0 || z != 0)
         {
-            if (Input.GetKeyDown(_runningKey)) _moveSpeedScale = _runSpeedScale;
+            if (Input.GetKey(_runningKey))
+            {
+                _moveSpeedScale = _runSpeedScale;
+            }
             else _moveSpeedScale = _speedScale;
             _moveDirection = new Vector3(x, 0, z);
-            _controller.Move(speed * _moveSpeedScale * Time.deltaTime * _moveDirection);
+            _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _moveDirection);
             transform.forward = _moveDirection;
             if (_player.playerState != PlayerState.Move)
             {
