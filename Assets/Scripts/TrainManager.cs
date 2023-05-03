@@ -1,24 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 public class TrainManager : MonoBehaviour
 {
-    [SerializeField] private GameObject[] trainObjects;
+    [SerializeField] private GameObject[] _trainObjects;
+    [SerializeField] private Transform _backgroundGroup;
 
-    private Vector3 trainPositionOffset;
-    private int currentTrain;
+    private Vector3 _trainPositionOffset;
+    private int _currentTrain;
 
     private void Start()
     {
-        trainPositionOffset = trainObjects[1].transform.position - trainObjects[0].transform.position;
-        currentTrain = 0;
+        _trainPositionOffset = _trainObjects[1].transform.position - _trainObjects[0].transform.position;
+        _currentTrain = 0;
     }
 
-    [ContextMenu("!")]
+    [ContextMenu("!")] // 테스트 용
     public void StartNextStage()
     {
-        trainObjects[currentTrain].transform.position += (trainPositionOffset * 2);   
-        currentTrain ^= 1;
+        _trainObjects[_currentTrain].transform.position += (_trainPositionOffset * 2);
+        _backgroundGroup.position += _trainPositionOffset;
+        _currentTrain ^= 1;
+         
     }
 
 }

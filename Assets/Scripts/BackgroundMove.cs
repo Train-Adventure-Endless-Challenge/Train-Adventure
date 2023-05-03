@@ -4,34 +4,34 @@ using UnityEngine;
 
 public class BackgroundMove : MonoBehaviour
 {
-    [SerializeField] private Transform[] backgrounds;
+    [SerializeField] private Transform[] _backgrounds;
+    [SerializeField] private float backgroundWidth;
+    [SerializeField] private float _speed;
 
-    [SerializeField] private Vector3 firstBackgroundPosition;
-    [SerializeField] private float speed;
-
-    private int backgroundIndex;
+    private Vector3 _firstBackgroundPosition;
+    private int _backgroundIndex;
 
     private void Start()
     {
-        firstBackgroundPosition = backgrounds[0].transform.localPosition;
+        _firstBackgroundPosition = _backgrounds[0].transform.localPosition;
 
-        backgroundIndex = 0;
+        _backgroundIndex = 0;
     }
 
     private void Update()
     {
-        if (backgrounds[backgroundIndex].localPosition.z <= firstBackgroundPosition.z)
+        if (_backgrounds[_backgroundIndex].localPosition.z <= _firstBackgroundPosition.z)
         {
-            Vector3 nextPosition = backgrounds[backgroundIndex].localPosition;
-            nextPosition = new Vector3(nextPosition.x, nextPosition.y, nextPosition.z + backgrounds[0].transform.localScale.z * backgrounds.Length);
-            backgrounds[backgroundIndex].localPosition = nextPosition;
-            backgroundIndex++;
-            backgroundIndex %= backgrounds.Length;
+            Vector3 nextPosition = _backgrounds[_backgroundIndex].localPosition;
+            nextPosition = new Vector3(nextPosition.x, nextPosition.y, nextPosition.z + backgroundWidth * _backgrounds.Length);
+            _backgrounds[_backgroundIndex].localPosition = nextPosition;
+            _backgroundIndex++;
+            _backgroundIndex %= _backgrounds.Length;
         }
 
-        for (int i = 0; i < backgrounds.Length; i++)
+        for (int i = 0; i < _backgrounds.Length; i++)
         {
-            backgrounds[i].Translate(-Vector3.forward * speed * Time.deltaTime);
+            _backgrounds[i].Translate(-Vector3.forward * _speed * Time.deltaTime);
         }
     }
 }
