@@ -9,15 +9,21 @@ public class Item : MonoBehaviour
 {
     [SerializeField] private ItemData itemData;
 
-    private string _name;
+
+    // ------------------------------------------------ 스탯 ----------------------------------------------------------
+    private string _name;                               
     private string _description;
-    private int _damage; // 무기에만 사용할 것 같음 (무기의 기본 공격력)
+    private int _damage;
+    private float _range;
     private float _additionalHp;
     private int _additionalStemina;
     private float _additionalStrength;
     private int _additionalDefense;
     private float _additionalAttackSpeed;
     private float _additionalSpeed;
+
+    // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
+    private int _level = 0;                                                     // 아이템 레벨 (0 ~ 4)
 
 
     private void Awake()
@@ -30,6 +36,7 @@ public class Item : MonoBehaviour
         _name = itemData.Name;
         _description = itemData.Description;
         _damage = itemData.Damage;
+        _range = itemData.Range;
         _additionalHp = itemData.AdditionalHp;
         _additionalStemina = itemData.AdditionalStemina;
         _additionalStrength = itemData.AdditionalStrength;
@@ -39,12 +46,33 @@ public class Item : MonoBehaviour
     }
 
 
+    /// <summary>
+    /// 아이템을 얻었을 때 실행하는 함수
+    /// </summary>
     public virtual void EarnItem()
     {
-        PassiveSkill();
     }
 
-    public virtual void PassiveSkill()
+    /// <summary>
+    /// 아이템을 장착했을 때 실행하는 함수
+    /// </summary>
+    public virtual void OnItem()
+    {
+        UsePassiveSkill();
+    }
+
+    /// <summary>
+    /// 아이템을 장착 해제했을 때 실행하는 함수
+    /// </summary>
+    public virtual void OffItem()
+    {
+
+    }
+
+    /// <summary>
+    /// 패시브스킬을 발동할 때 사용 하는 함수
+    /// </summary>
+    public virtual void UsePassiveSkill()
     {
 
     }
