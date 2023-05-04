@@ -18,16 +18,12 @@ public enum ArmorType
 
 public class Item : MonoBehaviour
 {
-    [SerializeField] private ItemData itemData;
+    [SerializeField] protected ItemData itemData;
 
 
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
     protected string _name;                               
     protected string _description;
-    protected int _damage;
-    protected float _range;
-    protected float _attackSpeed;
-
     protected float _additionalHp;
     protected int _additionalStemina;
     protected float _additionalStrength;
@@ -38,7 +34,7 @@ public class Item : MonoBehaviour
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Init();
     }
@@ -50,9 +46,6 @@ public class Item : MonoBehaviour
     {
         _name = itemData.Name;
         _description = itemData.Description;
-        _damage = itemData.Damage;
-        _range = itemData.Range;
-        _attackSpeed = itemData.AttackSpeed;
         _additionalHp = itemData.AdditionalHp;
         _additionalStemina = itemData.AdditionalStemina;
         _additionalStrength = itemData.AdditionalStrength;
