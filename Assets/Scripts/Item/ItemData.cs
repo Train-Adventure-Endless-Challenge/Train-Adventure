@@ -9,6 +9,7 @@ public class ItemData : ScriptableObject
     [SerializeField] private string _description;                                       // 아이템의 설명
     [SerializeField] private int _damage;                                               // 무기에만 사용할 것 같음 (무기의 기본 공격력)
     [SerializeField] private float _range;                                              // 무기에만 사용할 것 같음 (무기의 사거리)
+    [SerializeField] private float _attackSpeed;                                        // 무기에만 사용할 것 같음 (무기의 기본 공격속도)
 
     [SerializeField] private float _additionalHp;                                       // 아이템이 추가 해주는 체력
     [SerializeField] private int _additionalStemina;                                    // 아이템이 추가 해주는 스테미나
@@ -22,6 +23,7 @@ public class ItemData : ScriptableObject
     public string Description { get { return _description; } }
     public int Damage { get { return _damage; } }
     public float Range { get { return _range; } }
+    public float AttackSpeed { get { return _attackSpeed; } }
 
     public float AdditionalHp { get { return _additionalHp; } }
     public int AdditionalStemina { get { return _additionalStemina; } }

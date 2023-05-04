@@ -26,6 +26,8 @@ public class Item : MonoBehaviour
     protected string _description;
     protected int _damage;
     protected float _range;
+    protected float _attackSpeed;
+
     protected float _additionalHp;
     protected int _additionalStemina;
     protected float _additionalStrength;
@@ -50,6 +52,7 @@ public class Item : MonoBehaviour
         _description = itemData.Description;
         _damage = itemData.Damage;
         _range = itemData.Range;
+        _attackSpeed = itemData.AttackSpeed;
         _additionalHp = itemData.AdditionalHp;
         _additionalStemina = itemData.AdditionalStemina;
         _additionalStrength = itemData.AdditionalStrength;
@@ -88,5 +91,15 @@ public class Item : MonoBehaviour
     public virtual void UsePassiveSkill()
     {
 
+    }
+
+    /// <summary>
+    /// 아이템을 강화할 때 호출 되는 함수
+    /// </summary>
+    public virtual void Levelup()
+    {
+        if (_level >= 4) return;
+        
+        _level++;
     }
 }
