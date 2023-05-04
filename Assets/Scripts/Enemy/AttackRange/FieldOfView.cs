@@ -18,6 +18,7 @@ public class FieldOfView : MonoBehaviour
     private void Start()
     {
         _playerRef = GameObject.FindGameObjectWithTag("Player"); // 추후 싱글톤 등 다른 방법으로 호출할 수 있음
+        StartCoroutine(FOVCor());
     }
 
     private IEnumerator FOVCor()
@@ -45,6 +46,7 @@ public class FieldOfView : MonoBehaviour
 
             if (Vector3.Angle(transform.forward, directionToTarget) < _angle / 2)
             {
+
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructMask))
