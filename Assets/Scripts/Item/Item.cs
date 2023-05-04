@@ -10,7 +10,10 @@ public enum ArmorType
     hat,
     top,
     bottom,
-    shoes
+    shoes,
+    gloves,
+    mask,
+    cloak
 }
 
 public class Item : MonoBehaviour
