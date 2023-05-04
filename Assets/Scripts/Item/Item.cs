@@ -22,27 +22,29 @@ public class Item : MonoBehaviour
 
 
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
-    private string _name;                               
-    private string _description;
-    private int _damage;
-    private float _range;
-    private float _additionalHp;
-    private int _additionalStemina;
-    private float _additionalStrength;
-    private int _additionalDefense;
-    private float _additionalAttackSpeed;
-    private float _additionalSpeed;
-
+    protected string _name;                               
+    protected string _description;
+    protected int _damage;
+    protected float _range;
+    protected float _additionalHp;
+    protected int _additionalStemina;
+    protected float _additionalStrength;
+    protected int _additionalDefense;
+    protected float _additionalAttackSpeed;
+    protected float _additionalSpeed;
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
-    private int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
+    protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
 
     private void Awake()
     {
-
+        Init();
     }
 
-    void Init()
+    /// <summary>
+    /// 초기화 하는 함수
+    /// </summary>
+    protected virtual void Init()
     {
         _name = itemData.Name;
         _description = itemData.Description;
