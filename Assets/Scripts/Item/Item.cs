@@ -5,6 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
+public enum ArmorType
+{
+    hat,
+    top,
+    bottom,
+    shoes
+}
+
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemData itemData;
@@ -23,7 +31,7 @@ public class Item : MonoBehaviour
     private float _additionalSpeed;
 
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
-    private int _level = 0;                                                     // 아이템 레벨 (0 ~ 4)
+    private int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
 
     private void Awake()
