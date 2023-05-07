@@ -22,7 +22,6 @@ public class TrainManager : MonoBehaviour
         _trainObjects[_currentTrain].transform.position += (_trainPositionOffset * 2);
         _backgroundGroup.position += _trainPositionOffset;
         _currentTrain ^= 1;
-         
     }
 
 }
