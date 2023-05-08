@@ -40,7 +40,7 @@ public class EnemyFieldOfView : MonoBehaviour
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius,_targetMask);
 
-        if(rangeChecks.Length != 0 )
+        if (rangeChecks.Length != 0 )
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
@@ -50,7 +50,7 @@ public class EnemyFieldOfView : MonoBehaviour
 
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
-                if(!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructMask))
+                if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructMask))
                     _isCanSeePlayer = true;
                 else 
                     _isCanSeePlayer = false;
@@ -58,7 +58,7 @@ public class EnemyFieldOfView : MonoBehaviour
             else
                 _isCanSeePlayer = false;
         }
-        else if(_isCanSeePlayer)
+        else if (_isCanSeePlayer)
             _isCanSeePlayer= false;
     }
 }
