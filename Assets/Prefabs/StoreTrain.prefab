@@ -203,9 +203,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2364587615945282271}
-  - component: {fileID: 4769476225191601016}
+  - component: {fileID: 524520871696825546}
   m_Layer: 0
-  m_Name: Train_Store
+  m_Name: StoreTrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -234,7 +234,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4769476225191601016
+--- !u!114 &524520871696825546
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -243,7 +243,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2364587615945282256}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f5f35cad13517a409e4073e0aee42d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 388e1fb3a5016e64488902c19159cdd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _floor: {fileID: 2364587615659738685}
