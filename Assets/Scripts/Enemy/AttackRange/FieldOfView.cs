@@ -7,6 +7,7 @@ public class FieldOfView : MonoBehaviour
     public float _radius;               // 탐색범위
     [Range(0,360)]
     public float _angle;                // 시야각
+    public float _viewCheckDelay = 0.2f;// 적 탐색 딜레이
 
     public GameObject _playerRef;       // 플레이어     
 
@@ -23,7 +24,7 @@ public class FieldOfView : MonoBehaviour
 
     private IEnumerator FOVCor()
     { 
-        WaitForSeconds wait = new WaitForSeconds(0.2f);
+        WaitForSeconds wait = new WaitForSeconds(_viewCheckDelay);
 
         while (true)
         {
