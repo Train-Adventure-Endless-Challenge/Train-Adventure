@@ -28,6 +28,12 @@ public class FieldOfViewEditor : Editor
         }
     }
 
+    /// <summary>
+    /// 축에서 시작되어 정해진 각도까지의 vector를 반환
+    /// </summary>
+    /// <param name="eulerY">y 축 각도</param>
+    /// <param name="angleInDegrees">각도</param>
+    /// <returns></returns>
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
     {
         angleInDegrees += eulerY;

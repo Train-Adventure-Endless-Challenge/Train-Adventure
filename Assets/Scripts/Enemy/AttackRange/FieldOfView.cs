@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class FieldOfView : MonoBehaviour
 {
-    public float _radius;
+    public float _radius;               // 탐색범위
     [Range(0,360)]
-    public float _angle;
+    public float _angle;                // 시야각
 
-    public GameObject _playerRef;       
+    public GameObject _playerRef;       // 플레이어     
 
     public LayerMask _targetMask;       // 목표 layer (ex. player)
     public LayerMask _obstructMask;     // 방해물 layer
 
-    public bool _canSeePlayer;
+    public bool _canSeePlayer;          //목표 (플레이어)가 범위 내에 있는가
 
     private void Start()
     {
@@ -33,7 +33,7 @@ public class FieldOfView : MonoBehaviour
     }
 
     /// <summary>
-    /// target check
+    /// 타겟(플레이어)가 범위 안에 있는지 확인
     /// </summary>
     private void FieldOfViewCheck()
     {
