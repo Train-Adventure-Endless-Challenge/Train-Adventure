@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(FieldOfView))]
+[CustomEditor(typeof(EnemyFieldOfView))]
 public class FieldOfViewEditor : Editor
 {
     private void OnSceneGUI()
     {
-        FieldOfView fov = (FieldOfView)target;      // 캐스팅
+        EnemyFieldOfView fov = (EnemyFieldOfView)target;      // 캐스팅
 
         //radius draw
         Handles.color = Color.white;
