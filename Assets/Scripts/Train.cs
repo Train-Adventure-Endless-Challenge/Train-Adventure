@@ -6,17 +6,12 @@ public class Train : MonoBehaviour
 {
     public GameObject _floor;
 
-    public virtual void Start()
-    {
-        Init();
-    }
-
     public virtual void Init()
     {
         
     }
 
-    public void DestroyTrain()
+    public void DestroyGameObejct()
     {
         Destroy(gameObject);
     }
