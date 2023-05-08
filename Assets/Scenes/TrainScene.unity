@@ -860,9 +860,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _trainObjects:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2364587615945282256, guid: eb8ee573abcc32345abba1a0932a97c8, type: 3}
+  - {fileID: 2364587615945282256, guid: a05f7ce42885b614bae5f981d44f1774, type: 3}
+  - {fileID: 2364587615945282256, guid: 91c99b544f66aa940ac4c477c033a8ee, type: 3}
   _backgroundGroup: {fileID: 2112562335}
+  _currentTrain: {fileID: 0}
+  _nextTrain: {fileID: 0}
 --- !u!4 &1164495512
 Transform:
   m_ObjectHideFlags: 0

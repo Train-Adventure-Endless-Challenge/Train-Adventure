@@ -23,9 +23,9 @@ public class TrainManager : MonoBehaviour
         _nextTrain = Instantiate(_trainObjects[0], _startPosition, Quaternion.identity)
             .GetComponent<Train>();
 
-        _nextTrain.transform.position = new Vector3(_currentTrain.transform.position.x,
-            _currentTrain.transform.position.x,
-            _currentTrain.transform.position.z + _nextTrain._floor.transform.localScale.z) + _traininterval;
+        _nextTrain.transform.position += new Vector3(0,0,
+            (_nextTrain._floor.transform.localScale.z / 2)
+            + (_currentTrain._floor.transform.localScale.z / 2)) + _traininterval;
     }
 
 
