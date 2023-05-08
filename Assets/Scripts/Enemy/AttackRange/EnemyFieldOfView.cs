@@ -29,14 +29,14 @@ public class EnemyFieldOfView : MonoBehaviour
         while (true)
         {
             yield return wait;
-            FieldOfViewCheck();
+            CheckFieldOfView();
         }
     }
 
     /// <summary>
     /// 타겟(플레이어)가 범위 안에 있는지 확인
     /// </summary>
-    private void FieldOfViewCheck()
+    private void CheckFieldOfView()
     {
         Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius,_targetMask);
 
