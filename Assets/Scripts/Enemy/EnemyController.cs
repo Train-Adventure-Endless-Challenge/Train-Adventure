@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
     private StateMachine<EnemyController> _stateMachine;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        _stateMachine = new StateMachine<EnemyController>(this, new IdleState());
     }
 
     // Update is called once per frame
@@ -17,4 +18,5 @@ public class EnemyController : MonoBehaviour
     {
         
     }
+
 }
