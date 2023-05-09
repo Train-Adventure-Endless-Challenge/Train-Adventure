@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class StateMachine<T> 
+public class StateMachine<T>
 {
     private T _context;                 // 상태관리를 할 컨트롤러
 
@@ -16,7 +16,7 @@ public class StateMachine<T>
     public State<T> PreviousState { get; }
     public float ElapsedTimeInState { get; }
 
-    public StateMachine(T context,State<T> initialState)
+    public StateMachine(T context, State<T> initialState)
     {
         this._context = context;
         AddState(initialState);
@@ -30,13 +30,13 @@ public class StateMachine<T>
     /// <param name="state"></param>
     public void AddState(State<T> state)
     {
-        state.SetMachineAndContext(this,_context);
+        state.SetMachineAndContext(this, _context);
         _states[state.GetType()] = state;
     }
 
     public void Update(float deltaTime)
     {
-         _elapsedTimeInState += deltaTime;
+        _elapsedTimeInState += deltaTime;
         _currentState.Update(deltaTime);
     }
 
@@ -49,11 +49,11 @@ public class StateMachine<T>
         var newType = typeof(R);
 
 
-        if(CurrentState.GetType() == newType)
+        if (CurrentState.GetType() == newType)
         {
             return _currentState as R;
         }
-        if (_currentState!= null)
+        if (_currentState != null)
         {
             _currentState.OnExit();
         }

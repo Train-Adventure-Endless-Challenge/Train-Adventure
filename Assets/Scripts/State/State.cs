@@ -10,9 +10,9 @@ public abstract class State<T>
     /// <summary>
     /// ป๓ลย set
     /// </summary>
-    public void SetMachineAndContext(StateMachine<T> stateMachine,T context)
-    {   
-        this._stateMacine = stateMachine;   
+    public void SetMachineAndContext(StateMachine<T> stateMachine, T context)
+    {
+        this._stateMacine = stateMachine;
         this._context = context;
     }
 
