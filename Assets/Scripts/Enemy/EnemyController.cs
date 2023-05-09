@@ -15,7 +15,7 @@ public abstract class EnemyController : MonoBehaviour
 
     void Start()
     {
-        _stateMachine = new StateMachine<EnemyController>(this, new IdleState());
+        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
     }
 
     // Update is called once per frame
