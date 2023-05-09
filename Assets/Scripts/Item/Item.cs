@@ -33,11 +33,16 @@ public class Item : MonoBehaviour
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
+    /// <summary>
+    /// 아이템 정보를 String으로 전환하는 함수
+    /// </summary>
+    /// <returns>전환된 string을 반환한다.</returns>
     public override string ToString()
     {
         return "Level: " + _level + "   name: " + _name + " hp: " + _additionalHp + "   stemina: " + _additionalStemina + "     str: " + _additionalStrength
             + "     def: " + _additionalDefense + "   AK: " + _additionalAttackSpeed + "      speed: " + _additionalSpeed; 
     }
+
     protected virtual void Awake()
     {
         Init();
@@ -107,8 +112,8 @@ public class Item : MonoBehaviour
 
         if(_level == 4)
         {
-            // TODO: 추가 옵션 뽑기 및 적용 
+            // TODO: 추가 옵션 뽑기 및 적용  
         }
-        // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요
+        // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
     }
 }
