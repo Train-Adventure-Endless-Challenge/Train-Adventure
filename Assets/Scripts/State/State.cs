@@ -8,6 +8,15 @@ public abstract class State<T>
     protected T _context;           // 작업되는 controller
 
     /// <summary>
+    /// 상태 set
+    /// </summary>
+    public void SetMachineAndContext(StateMachine<T> stateMachine, T context)
+    {
+        this._stateMacine = stateMachine;
+        this._context = context;
+    }
+
+    /// <summary>
     /// 초기화 할 때 
     /// </summary>
     public virtual void OnInitialzed()

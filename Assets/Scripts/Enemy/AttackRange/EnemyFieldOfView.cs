@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyFieldOfView : MonoBehaviour
 {
     public float _radius;               // Å½»ö¹üÀ§
-    [Range(0,360)]
+    [Range(0, 360)]
     public float _angle;                // ½Ã¾ß°¢
     public float _viewCheckDelay = 0.2f;// Àû Å½»ö µô·¹ÀÌ
 
@@ -23,7 +23,7 @@ public class EnemyFieldOfView : MonoBehaviour
     }
 
     private IEnumerator FOVCor()
-    { 
+    {
         WaitForSeconds wait = new WaitForSeconds(_viewCheckDelay);
 
         while (true)
@@ -38,9 +38,9 @@ public class EnemyFieldOfView : MonoBehaviour
     /// </summary>
     private void CheckFieldOfView()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius,_targetMask);
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, _radius, _targetMask);
 
-        if (rangeChecks.Length != 0 )
+        if (rangeChecks.Length != 0)
         {
             Transform target = rangeChecks[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
@@ -52,13 +52,13 @@ public class EnemyFieldOfView : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructMask))
                     _isCanSeePlayer = true;
-                else 
+                else
                     _isCanSeePlayer = false;
             }
             else
                 _isCanSeePlayer = false;
         }
         else if (_isCanSeePlayer)
-            _isCanSeePlayer= false;
+            _isCanSeePlayer = false;
     }
 }

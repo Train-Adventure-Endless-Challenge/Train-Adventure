@@ -1,20 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
     private StateMachine<EnemyController> _stateMachine;
+    private EnemyFieldOfView _enemyFieldOfView;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
+    }
+
     void Start()
     {
-        
+        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
+
 }
