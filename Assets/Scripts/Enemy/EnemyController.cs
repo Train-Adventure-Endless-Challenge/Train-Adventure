@@ -3,10 +3,15 @@ using System.Collections.Generic;
 using System.Data.Common;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public abstract class EnemyController : MonoBehaviour
 {
     private StateMachine<EnemyController> _stateMachine;
+    private EnemyFieldOfView _enemyFieldOfView;
 
+    private void Awake()
+    {
+        _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
+    }
 
     void Start()
     {
@@ -16,7 +21,7 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
 }
