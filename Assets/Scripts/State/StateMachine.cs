@@ -30,6 +30,7 @@ public class StateMachine<T>
     /// <param name="state"></param>
     public void AddState(State<T> state)
     {
+        state.SetMachineAndContext(this,_context);
         _states[state.GetType()] = state;
     }
 
