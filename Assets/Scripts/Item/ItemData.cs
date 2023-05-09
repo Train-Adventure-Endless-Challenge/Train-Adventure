@@ -14,13 +14,17 @@ public class ItemData : ScriptableObject
 
     [SerializeField] private float _additionalHp;                                       // 아이템이 추가 해주는 체력
     [SerializeField] private int _additionalStemina;                                    // 아이템이 추가 해주는 스테미나
-
-    [SerializeField] private float _additionalStrength;                                 // 아이템이 추가해주는 힘
+    [SerializeField] private float _additionalStrength;                                 // 아이템이 추가해주는 공격력
     [SerializeField] private int _additionalDefense;                                    // 아이템이 추가해주는 방어력
-
     [SerializeField] private float _additionalAttackSpeed;                              // 아이템이 추가해주는 공격속도
     [SerializeField] private float _additionalSpeed;                                    // 아이템이 추가해주는 이동속도
-    
+
+    [SerializeField] private float _upgradeValueHp;                                     // 아이템 강화 시 늘어나는 체력
+    [SerializeField] private int _upgradeValueStemina;                                  // 아이템 강화 시 늘어나는 스테미나
+    [SerializeField] private float _upgradeValueStrength;                               // 아이템 강화 시 늘어나는 공격력
+    [SerializeField] private int _upgradeValueDefense;                                  // 아이템 강화 시 늘어나는 방어력
+    [SerializeField] private float _upgradeValueAttackSpeed;                            // 아이템 강화 시 늘어나는 공격속도
+    [SerializeField] private float _upgradeValueSpeed;                                  // 아이템 강화 시 늘어나는 이동속도
     public int Id { get { return _id; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }
@@ -36,4 +40,11 @@ public class ItemData : ScriptableObject
 
     public float AdditionalAttackSpeed { get { return _additionalAttackSpeed; } }
     public float AdditionalSpeed { get { return _additionalSpeed; } }
+
+    public float UpgradeValueHp { get { return _upgradeValueHp; } }
+    public int UpgradeValueStemina { get { return _upgradeValueStemina; } }
+    public float UpgradeValueStrength { get { return _upgradeValueStrength; } }
+    public int UpgradeValueDefense { get { return _upgradeValueDefense; } }
+    public float UpgradeValueAttackSpeed { get { return _upgradeValueAttackSpeed; } }
+    public float UpgradeValueSpeed { get { return _upgradeValueSpeed; } }
 }
