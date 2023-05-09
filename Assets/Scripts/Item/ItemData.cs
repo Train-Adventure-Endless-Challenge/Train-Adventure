@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Item Data", menuName = "Scriptable Object/Item Data",order =int.MaxValue - 8)]
 public class ItemData : ScriptableObject
 {
+    [SerializeField] private int _id;                                                   // 아이템 id  
     [SerializeField] private string _name;                                              // 아이템의 이름
     [SerializeField] private string _description;                                       // 아이템의 설명
     [SerializeField] private int _damage;                                               // 무기에만 사용할 것 같음 (무기의 기본 공격력)
@@ -19,6 +20,8 @@ public class ItemData : ScriptableObject
 
     [SerializeField] private float _additionalAttackSpeed;                              // 아이템이 추가해주는 공격속도
     [SerializeField] private float _additionalSpeed;                                    // 아이템이 추가해주는 이동속도
+    
+    public int Id { get { return _id; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }
     public int Damage { get { return _damage; } }
