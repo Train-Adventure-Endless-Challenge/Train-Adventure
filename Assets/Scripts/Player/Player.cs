@@ -76,10 +76,10 @@ public class Player : MonoBehaviour
     }
     public void RecoverHp(float value)
     {
-
+        _hp += value;
     }
-    public void RecoverMp(float value)
+    public void RecoverMp(int value)
     {
-
+        _mp += value;
     }
 }
