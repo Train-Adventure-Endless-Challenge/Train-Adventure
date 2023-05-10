@@ -1,6 +1,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어의 구르기를 담당하는 클래스
+/// </summary>
 public class PlayerRolling : MonoBehaviour
 {
     #region Variable
@@ -26,6 +29,7 @@ public class PlayerRolling : MonoBehaviour
 
     #endregion
 
+    #region Function
 
     // Start is called before the first frame update
     void Awake()
@@ -35,9 +39,15 @@ public class PlayerRolling : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_rollingKey) && _smoothMoveCor == null) StartCoroutine(RollCor(transform.position));
+        if (Input.GetKeyDown(_rollingKey) && _smoothMoveCor == null)
+        {
+            StartCoroutine(RollCor(transform.position));
+        }
     }
 
+    /// <summary>
+    /// 초기화 함수
+    /// </summary>
     private void Init()
     {
         _player = GetComponent<Player>();
@@ -45,6 +55,9 @@ public class PlayerRolling : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
     }
 
+    /// <summary>
+    /// 구르기 함수
+    /// </summary>
     public void Roll()
     {
         if (Input.GetKeyDown(_rollingKey) && _smoothMoveCor == null)
@@ -55,6 +68,11 @@ public class PlayerRolling : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 구르기 코루틴 함수
+    /// </summary>
+    /// <param name="startPosition">초기 값</param>
+    /// <returns></returns>
     public IEnumerator RollCor(Vector3 startPosition)
     {
         _currentTime = 0f;
@@ -88,4 +106,6 @@ public class PlayerRolling : MonoBehaviour
         _smoothMoveCor = null;
         _player.playerState = PlayerState.Idle;
     }
+
+    #endregion
 }

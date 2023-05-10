@@ -1,10 +1,19 @@
 using UnityEngine;
 
+/// <summary>
+/// 플레이어를 관리하는 클래스
+/// </summary>
 public class PlayerManager : SceneSingleton<PlayerManager>
 {
+    #region Variable
+
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
+
+    #endregion
+
+    #region Function
 
     private void Awake()
     {
@@ -21,4 +30,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerController.Move();
         }
     }
+
+    #endregion
+
 }

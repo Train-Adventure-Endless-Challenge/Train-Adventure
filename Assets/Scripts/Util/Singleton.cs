@@ -90,8 +90,8 @@ public class SceneSingleton<T> : MonoBehaviour, Singleton<T> where T : Component
 
 
 /// <summary>
-/// Generic singleton that all global manager components inherit from.
-/// i.e. SeasonDatabase, etc.
+    /// Generic singleton that all global manager components inherit from.
+    /// i.e. SeasonDatabase, etc.
 /// <br/>
 /// 게임 전체와 관련된 싱글톤들이 inherit하는 class.
 /// </summary>

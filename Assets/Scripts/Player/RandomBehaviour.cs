@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Idle의 상태를 수시로 바꿔주는 클래스 
+/// </summary>
 public class RandomBehaviour : StateMachineBehaviour
 {
     [SerializeField] private int _range;
