@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Train : MonoBehaviour
 {
-    public GameObject _floor;
+    public GameObject _floor;   // ¹Ù´Ú
 
     public virtual void Init()
     {
