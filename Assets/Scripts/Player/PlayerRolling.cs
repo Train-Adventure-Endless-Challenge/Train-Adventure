@@ -37,14 +37,6 @@ public class PlayerRolling : MonoBehaviour
         Init();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(_rollingKey) && _rollCor == null)
-        {
-            StartCoroutine(RollCor(transform.position));
-        }
-    }
-
     /// <summary>
     /// 초기화 함수
     /// </summary>
