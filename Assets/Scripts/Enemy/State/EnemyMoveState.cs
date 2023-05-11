@@ -33,31 +33,32 @@ public class EnemyMoveState : State<EnemyController>
     {
         if (_fov._isCanSeePlayer)
         {
-            
+
         }
         else
         {
-           _agent.SetDestination(_targetPos.position);
+            _agent.SetDestination(_targetPos.position);
 
-            if(_agent.remainingDistance <= _agent.stoppingDistance)
+            if (_agent.remainingDistance <= _agent.stoppingDistance)
             {
-                if(RandomPoint(_targetPos.position,_range,out _point)){
+                if (RandomPoint(_targetPos.position, _range, out _point))
+                {
                     _targetPos.position = _point;
                 }
             }
         }
     }
 
-    
+
 
     private bool RandomPoint(Vector3 center, float range, out Vector3 result)
     {
         // 네비메이션 메시가 생성 안된 지역의 위치 값을 가져온 경우를 대비하여 최소 30 번 반복 (임시 수)
-        for (int i = 0; i < 30; i++)    
+        for (int i = 0; i < 30; i++)
         {
             Vector3 randomPoint = center + Random.insideUnitSphere * range;
             NavMeshHit hit;
-            if(NavMesh.SamplePosition(randomPoint,out hit, 1.0f , NavMesh.AllAreas))
+            if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
             {
                 result = hit.position;
                 return true;

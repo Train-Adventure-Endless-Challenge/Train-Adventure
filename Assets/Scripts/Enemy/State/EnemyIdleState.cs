@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyIdleState : State<EnemyController>
 {
     EnemyController _enemyController;
-        
+
 
     public override void OnEnter()
     {
