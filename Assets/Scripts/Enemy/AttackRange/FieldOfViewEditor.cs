@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
@@ -8,7 +8,7 @@ public class FieldOfViewEditor : Editor
 {
     private void OnSceneGUI()
     {
-        EnemyFieldOfView fov = (EnemyFieldOfView)target;      // Ä³½ºÆÃ
+        EnemyFieldOfView fov = (EnemyFieldOfView)target;      // ìºìŠ¤íŒ…
 
         //radius draw
         Handles.color = Color.white;
@@ -29,10 +29,10 @@ public class FieldOfViewEditor : Editor
     }
 
     /// <summary>
-    /// Ãà¿¡¼­ ½ÃÀÛµÇ¾î Á¤ÇØÁø °¢µµ±îÁöÀÇ vector¸¦ ¹İÈ¯
+    /// ì¶•ì—ì„œ ì‹œì‘ë˜ì–´ ì •í•´ì§„ ê°ë„ê¹Œì§€ì˜ vectorë¥¼ ë°˜í™˜
     /// </summary>
-    /// <param name="eulerY">y Ãà °¢µµ</param>
-    /// <param name="angleInDegrees">°¢µµ</param>
+    /// <param name="eulerY">y ì¶• ê°ë„</param>
+    /// <param name="angleInDegrees">ê°ë„</param>
     /// <returns></returns>
     private Vector3 DirectionFromAngle(float eulerY, float angleInDegrees)
     {

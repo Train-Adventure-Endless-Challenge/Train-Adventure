@@ -1,24 +1,24 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyFieldOfView : MonoBehaviour
 {
-    public float _radius;               // Å½»ö¹üÀ§
+    public float _radius;               // íƒìƒ‰ë²”ìœ„
     [Range(0, 360)]
-    public float _angle;                // ½Ã¾ß°¢
-    public float _viewCheckDelay = 0.2f;// Àû Å½»ö µô·¹ÀÌ
+    public float _angle;                // ì‹œì•¼ê°
+    public float _viewCheckDelay = 0.2f;// ì  íƒìƒ‰ ë”œë ˆì´
 
-    public GameObject _playerRef;       // ÇÃ·¹ÀÌ¾î     
+    public GameObject _playerRef;       // í”Œë ˆì´ì–´     
 
-    public LayerMask _targetMask;       // ¸ñÇ¥ layer (ex. player)
-    public LayerMask _obstructMask;     // ¹æÇØ¹° layer
+    public LayerMask _targetMask;       // ëª©í‘œ layer (ex. player)
+    public LayerMask _obstructMask;     // ë°©í•´ë¬¼ layer
 
-    public bool _isCanSeePlayer;          //¸ñÇ¥ (ÇÃ·¹ÀÌ¾î)°¡ ¹üÀ§ ³»¿¡ ÀÖ´Â°¡
+    public bool _isCanSeePlayer;          //ëª©í‘œ (í”Œë ˆì´ì–´)ê°€ ë²”ìœ„ ë‚´ì— ìˆëŠ”ê°€
 
     private void Start()
     {
-        _playerRef = GameObject.FindGameObjectWithTag("Player"); // ÃßÈÄ ½Ì±ÛÅæ µî ´Ù¸¥ ¹æ¹ıÀ¸·Î È£ÃâÇÒ ¼ö ÀÖÀ½
+        _playerRef = GameObject.FindGameObjectWithTag("Player"); // ì¶”í›„ ì‹±ê¸€í†¤ ë“± ë‹¤ë¥¸ ë°©ë²•ìœ¼ë¡œ í˜¸ì¶œí•  ìˆ˜ ìˆìŒ
         StartCoroutine(FOVCor());
     }
 
@@ -34,7 +34,7 @@ public class EnemyFieldOfView : MonoBehaviour
     }
 
     /// <summary>
-    /// Å¸°Ù(ÇÃ·¹ÀÌ¾î)°¡ ¹üÀ§ ¾È¿¡ ÀÖ´ÂÁö È®ÀÎ
+    /// íƒ€ê²Ÿ(í”Œë ˆì´ì–´)ê°€ ë²”ìœ„ ì•ˆì— ìˆëŠ”ì§€ í™•ì¸
     /// </summary>
     private void CheckFieldOfView()
     {
