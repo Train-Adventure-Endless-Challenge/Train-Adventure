@@ -14,7 +14,7 @@ public class EnemyFieldOfView : MonoBehaviour
     public LayerMask _targetMask;       // 목표 layer (ex. player)
     public LayerMask _obstructMask;     // 방해물 layer
 
-    public bool _isCanSeePlayer;          //목표 (플레이어)가 범위 내에 있는가
+    public bool isVisiblePlayer;          //목표 (플레이어)가 범위 내에 있는가
 
     private void Start()
     {
@@ -51,14 +51,14 @@ public class EnemyFieldOfView : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructMask))
-                    _isCanSeePlayer = true;
+                    isVisiblePlayer = true;
                 else
-                    _isCanSeePlayer = false;
+                    isVisiblePlayer = false;
             }
             else
-                _isCanSeePlayer = false;
+                isVisiblePlayer = false;
         }
-        else if (_isCanSeePlayer)
-            _isCanSeePlayer = false;
+        else if (isVisiblePlayer)
+            isVisiblePlayer = false;
     }
 }

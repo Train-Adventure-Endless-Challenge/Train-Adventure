@@ -31,7 +31,7 @@ public class EnemyMoveState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
-        if (_fov._isCanSeePlayer)
+        if (_fov.isVisiblePlayer)
         {
 
         }
