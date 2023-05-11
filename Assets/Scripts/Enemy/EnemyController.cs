@@ -16,8 +16,6 @@ public abstract class EnemyController : MonoBehaviour
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
         _agent = GetComponent<NavMeshAgent>();
-
-        Invoke("TempChangeState", 1f);      //temp
     }
 
     protected virtual void Start()
@@ -30,14 +28,6 @@ public abstract class EnemyController : MonoBehaviour
     protected virtual void Update()
     {
         _stateMachine.Update(Time.deltaTime);
-    }
-
-    /// <summary>
-    /// temp
-    /// </summary>
-    void TempChangeState()
-    {
-        _stateMachine.ChangeState<EnemyDeadState>();
     }
 
     public R ChangeState<R>() where R : State<EnemyController>
