@@ -38,7 +38,7 @@ public class ItemUpgradeSystem : MonoBehaviour
         } 
     }
 
-    public void ItemLevelUp()
+    public void LevelUpItem()
     {
         _equipedItem.Levelup();
     }
