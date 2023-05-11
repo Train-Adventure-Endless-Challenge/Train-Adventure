@@ -11,9 +11,9 @@ public class EnemyMoveState : State<EnemyController>
     private float _range = 3;               // 이동 범위 (추후 enemy Data 에서 받아올 수 있음)
     private Vector3 _point;
 
-    EnemyController _enemyController;
-    NavMeshAgent _agent;
-    EnemyFieldOfView _fov;
+    private EnemyController _enemyController;
+    private NavMeshAgent _agent;
+    private EnemyFieldOfView _fov;
 
     public override void OnEnter()
     {
