@@ -8,9 +8,11 @@ using UnityEngine.AI;
 public abstract class EnemyController : MonoBehaviour
 {
     protected StateMachine<EnemyController> _stateMachine;
-    protected EnemyFieldOfView _enemyFieldOfView;
 
-    protected NavMeshAgent _agent;
+    public EnemyFieldOfView _enemyFieldOfView;
+
+    public NavMeshAgent _agent;
+    public Transform _target;
 
     protected virtual void Awake()
     {

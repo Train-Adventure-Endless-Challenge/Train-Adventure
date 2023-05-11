@@ -9,5 +9,11 @@ public class EnemyController_Normal : EnemyController
         base.Start();
 
         _stateMachine.AddState(new EnemyDeadState());
+        _stateMachine.AddState(new EnemyMoveState());
+    }
+
+    protected override void Update()
+    {
+        base.Update();
     }
 }
