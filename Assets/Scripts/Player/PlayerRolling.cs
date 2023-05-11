@@ -22,7 +22,7 @@ public class PlayerRolling : MonoBehaviour
     private float _lerpTime = 1f;
     private float _currentTime = 0f;
 
-    private IEnumerator _smoothMoveCor;
+    private IEnumerator _rollCor;
 
     private Vector3 _endPosition;
     private Vector3 _moveDirection;
@@ -39,7 +39,7 @@ public class PlayerRolling : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_rollingKey) && _smoothMoveCor == null)
+        if (Input.GetKeyDown(_rollingKey) && _rollCor == null)
         {
             StartCoroutine(RollCor(transform.position));
         }
@@ -60,10 +60,10 @@ public class PlayerRolling : MonoBehaviour
     /// </summary>
     public void Roll()
     {
-        if (Input.GetKeyDown(_rollingKey) && _smoothMoveCor == null)
+        if (Input.GetKeyDown(_rollingKey) && _rollCor == null)
         {
             _player.playerState = PlayerState.Rolling;
-            _smoothMoveCor = RollCor(transform.position);
+            _rollCor = RollCor(transform.position);
             StartCoroutine(RollCor(transform.position));
         }
     }
@@ -103,7 +103,7 @@ public class PlayerRolling : MonoBehaviour
         _characterController.detectCollisions = true;
         _animator.SetBool("IsRoll", false);
         _animator.SetTrigger("OnState");
-        _smoothMoveCor = null;
+        _rollCor = null;
         _player.playerState = PlayerState.Idle;
     }
 
