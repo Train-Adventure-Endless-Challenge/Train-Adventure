@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾îÀÇ ¿òÁ÷ÀÓÀ» ´ã´çÇÏ´Â Å¬·¡½º
+/// í”Œë ˆì´ì–´ì˜ ì›€ì§ì„ì„ ë‹´ë‹¹í•˜ëŠ” í´ë˜ìŠ¤
 /// </summary>
 public class PlayerController : SceneSingleton<PlayerController>
 {
@@ -17,25 +17,25 @@ public class PlayerController : SceneSingleton<PlayerController>
     private Animator _animator;
     private CharacterController _controller;
 
-    private Vector3 _velocity;         // Áß·Â
-    private Vector3 _moveDirection;    // ¿òÁ÷ÀÏ ¹æÇâ
+    private Vector3 _velocity;         // ì¤‘ë ¥
+    private Vector3 _moveDirection;    // ì›€ì§ì¼ ë°©í–¥
 
-    private float _speed;              // ±âº» ¼Óµµ
-    private float _moveSpeedScale;     // ÇöÀç ¿òÁ÷ÀÓ ¼Óµµ ºñÀ²
-    private float _speedScale = 0.5f;  // °È±â ¼Óµµ ºñÀ²
-    private float _runSpeedScale = 1f; // ´Ş¸®±â ¼Óµµ ºñÀ²
-    private float _gravity = -9.81f;   // Áß·Â °¡¼Óµµ
+    private float _speed;              // ê¸°ë³¸ ì†ë„
+    private float _moveSpeedScale;     // í˜„ì¬ ì›€ì§ì„ ì†ë„ ë¹„ìœ¨
+    private float _speedScale = 0.5f;  // ê±·ê¸° ì†ë„ ë¹„ìœ¨
+    private float _runSpeedScale = 1f; // ë‹¬ë¦¬ê¸° ì†ë„ ë¹„ìœ¨
+    private float _gravity = -9.81f;   // ì¤‘ë ¥ ê°€ì†ë„
 
     #endregion
 
     #region SmoothMove
 
-    [SerializeField] AnimationCurve _animationCurve; // ½Ã°£¿¡ µû¸¥ º¯È­·®
+    [SerializeField] AnimationCurve _animationCurve; // ì‹œê°„ì— ë”°ë¥¸ ë³€í™”ëŸ‰
 
-    private float _lerpTime = 1f;                    // ÃÖÁ¾ ·¯ÇÁ ½Ã°£
-    private float _currentTime = 0f;                 // ÇöÀç ½Ã°£
+    private float _lerpTime = 1f;                    // ìµœì¢… ëŸ¬í”„ ì‹œê°„
+    private float _currentTime = 0f;                 // í˜„ì¬ ì‹œê°„
 
-    private IEnumerator _smoothMoveCor;              // ÄÚ·çÆ¾ º¯¼ö      
+    private IEnumerator _smoothMoveCor;              // ì½”ë£¨í‹´ ë³€ìˆ˜      
 
     #endregion
 
@@ -66,7 +66,7 @@ public class PlayerController : SceneSingleton<PlayerController>
     #region Move
 
     /// <summary>
-    /// ÃÊ±âÈ­ ÇÔ¼ö
+    /// ì´ˆê¸°í™” í•¨ìˆ˜
     /// </summary>
     private void Init()
     {
@@ -76,7 +76,7 @@ public class PlayerController : SceneSingleton<PlayerController>
     }
 
     /// <summary>
-    /// µ¥ÀÌÅÍ ÃÊ±âÈ­ ÇÔ¼ö
+    /// ë°ì´í„° ì´ˆê¸°í™” í•¨ìˆ˜
     /// </summary>
     private void DataInit()
     {
@@ -84,10 +84,10 @@ public class PlayerController : SceneSingleton<PlayerController>
     }
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ ¿òÁ÷ÀÓ ÇÔ¼ö
+    /// í”Œë ˆì´ì–´ì˜ ì›€ì§ì„ í•¨ìˆ˜
     /// <br/>
-    /// Horizontal, Vertical °ªÀ¸·Î ¹æÇâ ¼³Á¤
-    /// ÀÔ·Â °ª¿¡ µû¸¥ ¾Ö´Ï¸ŞÀÌ¼Ç º¯°æ
+    /// Horizontal, Vertical ê°’ìœ¼ë¡œ ë°©í–¥ ì„¤ì •
+    /// ì…ë ¥ ê°’ì— ë”°ë¥¸ ì• ë‹ˆë©”ì´ì…˜ ë³€ê²½
     /// </summary>
     public void Move()
     {
@@ -134,13 +134,13 @@ public class PlayerController : SceneSingleton<PlayerController>
                 _player.playerState = PlayerState.Idle;
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // ºÎµ¿ ¼Ò¼öÁ¡ ¿ÀÂ÷ ÇØ°á
+        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // ë¶€ë™ ì†Œìˆ˜ì  ì˜¤ì°¨ í•´ê²°
     }
 
     /// <summary>
-    /// Áß·Â ÇÔ¼ö
+    /// ì¤‘ë ¥ í•¨ìˆ˜
     /// <br/>
-    /// Áß·Â°¡¼Óµµ = 9.81 m / s * s
+    /// ì¤‘ë ¥ê°€ì†ë„ = 9.81 m / s * s
     /// </summary>
     private void UseGravity()
     {
@@ -160,12 +160,12 @@ public class PlayerController : SceneSingleton<PlayerController>
     #region SmoothMove
 
     /// <summary>
-    /// ºÎµå·¯¿î ¿òÁ÷ÀÓÀ» À§ÇÑ ÄÚ·çÆ¾ ÇÔ¼ö
+    /// ë¶€ë“œëŸ¬ìš´ ì›€ì§ì„ì„ ìœ„í•œ ì½”ë£¨í‹´ í•¨ìˆ˜
     /// <br/>
-    /// _moveSpeedScale °ªÀ» ¹Ù²Ş
+    /// _moveSpeedScale ê°’ì„ ë°”ê¿ˆ
     /// </summary>
-    /// <param name="startValue">ÃÊ±â °ª</param>
-    /// <param name="endValue">´Ş¼º °ª</param>
+    /// <param name="startValue">ì´ˆê¸° ê°’</param>
+    /// <param name="endValue">ë‹¬ì„± ê°’</param>
     /// <returns></returns>
     private IEnumerator SmoothMoveCor(float startValue, float endValue)
     {

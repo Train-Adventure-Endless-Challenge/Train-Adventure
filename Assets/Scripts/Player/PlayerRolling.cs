@@ -1,8 +1,8 @@
-using System.Collections;
+ï»¿using System.Collections;
 using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾îÀÇ ±¸¸£±â¸¦ ´ã´çÇÏ´Â Å¬·¡½º
+/// í”Œë ˆì´ì–´ì˜ êµ¬ë¥´ê¸°ë¥¼ ë‹´ë‹¹í•˜ëŠ” í´ë˜ìŠ¤
 /// </summary>
 public class PlayerRolling : MonoBehaviour
 {
@@ -46,7 +46,7 @@ public class PlayerRolling : MonoBehaviour
     }
 
     /// <summary>
-    /// ÃÊ±âÈ­ ÇÔ¼ö
+    /// ì´ˆê¸°í™” í•¨ìˆ˜
     /// </summary>
     private void Init()
     {
@@ -56,7 +56,7 @@ public class PlayerRolling : MonoBehaviour
     }
 
     /// <summary>
-    /// ±¸¸£±â ÇÔ¼ö
+    /// êµ¬ë¥´ê¸° í•¨ìˆ˜
     /// </summary>
     public void Roll()
     {
@@ -69,9 +69,9 @@ public class PlayerRolling : MonoBehaviour
     }
 
     /// <summary>
-    /// ±¸¸£±â ÄÚ·çÆ¾ ÇÔ¼ö
+    /// êµ¬ë¥´ê¸° ì½”ë£¨í‹´ í•¨ìˆ˜
     /// </summary>
-    /// <param name="startPosition">ÃÊ±â °ª</param>
+    /// <param name="startPosition">ì´ˆê¸° ê°’</param>
     /// <returns></returns>
     public IEnumerator RollCor(Vector3 startPosition)
     {

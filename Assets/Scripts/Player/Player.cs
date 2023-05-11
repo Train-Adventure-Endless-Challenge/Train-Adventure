@@ -1,20 +1,20 @@
-// ÀÛ¼ºÀÚ : ¹ÚÀç¸¸
-// ÀÛ¼ºÀÏ : 2023-05-03
+ï»¿// ìž‘ì„±ìž : ë°•ìž¬ë§Œ
+// ìž‘ì„±ì¼ : 2023-05-03
 
 using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾îÀÇ µ¥ÀÌÅÍ¸¦ ´ã°í ÀÖ´Â Å¬·¡½º
+/// í”Œë ˆì´ì–´ì˜ ë°ì´í„°ë¥¼ ë‹´ê³  ìžˆëŠ” í´ëž˜ìŠ¤
 /// </summary>
 public class Player : MonoBehaviour
 {
     /// <summary>
-    /// ½ºÅ©¸³ÅÍºí ¿ÀºêÁ§Æ®·Î ÀúÀå µÇ¾î ÀÖ´Â ÇÃ·¹ÀÌ¾î µ¥ÀÌÅÍ ¿øº» °ª
+    /// ìŠ¤í¬ë¦½í„°ë¸” ì˜¤ë¸Œì íŠ¸ë¡œ ì €ìž¥ ë˜ì–´ ìžˆëŠ” í”Œë ˆì´ì–´ ë°ì´í„° ì›ë³¸ ê°’
     /// </summary>
     [SerializeField] private PlayerData playerData;
 
     /// <summary>
-    /// ÇÃ·¹ÀÌ¾îÀÇ »óÅÂ¸¦ ÀúÀåÇÏ´Â Enum °ª
+    /// í”Œë ˆì´ì–´ì˜ ìƒíƒœë¥¼ ì €ìž¥í•˜ëŠ” Enum ê°’
     /// </summary>
     public PlayerState playerState;
 
@@ -40,9 +40,9 @@ public class Player : MonoBehaviour
     }
 
     /// <summary>
-    /// µ¥ÀÌÅÍ¸¦ ÃÊ±âÈ­ ÇÏ´Â ÇÔ¼ö
+    /// ë°ì´í„°ë¥¼ ì´ˆê¸°í™” í•˜ëŠ” í•¨ìˆ˜
     /// <br/>
-    /// °¢°¢ÀÇ µ¥ÀÌÅÍ´Â ÇÁ·ÎÆÛÆ¼¸¦ ÅëÇØ Á¢±Ù °¡´É
+    /// ê°ê°ì˜ ë°ì´í„°ëŠ” í”„ë¡œí¼í‹°ë¥¼ í†µí•´ ì ‘ê·¼ ê°€ëŠ¥
     /// </summary>
     private void Init()
     {

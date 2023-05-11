@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 /// <summary>
-/// IdleÀÇ »óÅÂ¸¦ ¼ö½Ã·Î ¹Ù²ãÁÖ´Â Å¬·¡½º 
+/// Idleì˜ ìƒíƒœë¥¼ ìˆ˜ì‹œë¡œ ë°”ê¿”ì£¼ëŠ” í´ë˜ìŠ¤ 
 /// </summary>
 public class RandomBehaviour : StateMachineBehaviour
 {

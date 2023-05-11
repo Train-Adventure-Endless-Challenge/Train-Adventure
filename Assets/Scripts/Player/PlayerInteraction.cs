@@ -1,9 +1,9 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// ÇâÈÄ Ãß°¡ ¿¹Á¤
+/// í–¥í›„ ì¶”ê°€ ì˜ˆì •
 /// </summary>
 public class PlayerInteraction : MonoBehaviour
 {

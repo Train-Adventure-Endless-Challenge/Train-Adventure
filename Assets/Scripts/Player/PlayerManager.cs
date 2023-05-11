@@ -1,7 +1,7 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 /// <summary>
-/// ÇÃ·¹ÀÌ¾î¸¦ °ü¸®ÇÏ´Â Å¬·¡½º
+/// í”Œë ˆì´ì–´ë¥¼ ê´€ë¦¬í•˜ëŠ” í´ë˜ìŠ¤
 /// </summary>
 public class PlayerManager : SceneSingleton<PlayerManager>
 {
