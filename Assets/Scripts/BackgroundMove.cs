@@ -1,4 +1,4 @@
-using System.Collections;
+Ôªøusing System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -29,7 +29,7 @@ public class BackgroundMove : MonoBehaviour
             _backgroundIndex %= _backgrounds.Length;
         }
 
-        // πË∞Ê ¿Ãµø
+        // Î∞∞Í≤Ω Ïù¥Îèô
         for (int i = 0; i < _backgrounds.Length; i++)
         {
             _backgrounds[i].Translate(-Vector3.forward * _speed * Time.deltaTime);

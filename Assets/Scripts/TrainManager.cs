@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,10 +7,10 @@ public class TrainManager : MonoBehaviour
     [SerializeField] private GameObject[] _trainObjects;
     [SerializeField] private Transform _backgroundGroup;
 
-    [SerializeField] private Train _currentTrain;               // ÇöÀç ±âÂ÷       
-    [SerializeField] private Train _nextTrain;                  // ´ÙÀ½ ±âÂ÷
+    [SerializeField] private Train _currentTrain;               // í˜„ì¬ ê¸°ì°¨       
+    [SerializeField] private Train _nextTrain;                  // ë‹¤ìŒ ê¸°ì°¨
 
-    private Vector3 _trainInterval = new Vector3(0, 0, 1.5f);   // ±âÂ÷ °£°İ
+    private Vector3 _trainInterval = new Vector3(0, 0, 1.5f);   // ê¸°ì°¨ ê°„ê²©
     private Vector3 _startPosition = Vector3.zero;           
     
     private void Start()
@@ -25,13 +25,13 @@ public class TrainManager : MonoBehaviour
             + (_currentTrain._floor.transform.localScale.z / 2)) + _trainInterval;
     }
 
-    [ContextMenu("!")] // Å×½ºÆ® ¿ë
+    [ContextMenu("!")] // í…ŒìŠ¤íŠ¸ ìš©
     public void RandomNextStage()
     {
         StartNextTrain(Random.Range(0, 3));
     }
 
-    // ´ÙÀ½ ±âÂ÷·Î ÀÌµ¿ÇßÀ» ¶§ ÇÔ¼ö
+    // ë‹¤ìŒ ê¸°ì°¨ë¡œ ì´ë™í–ˆì„ ë•Œ í•¨ìˆ˜
     public void StartNextTrain(int trainIndex)
     {
         _currentTrain.DestroyGameObejct();
@@ -40,7 +40,7 @@ public class TrainManager : MonoBehaviour
 
         _nextTrain = CreateTrain(trainIndex, _currentTrain.transform.position);
 
-        // µÎ °³ÀÇ ±âÂ÷ Ä­ÀÇ ¹Ù´Ú Àı¹İÀÇ Å©±â¿Í trainInterval ´õÇØ nextPositionÀ» ±¸ÇÔ
+        // ë‘ ê°œì˜ ê¸°ì°¨ ì¹¸ì˜ ë°”ë‹¥ ì ˆë°˜ì˜ í¬ê¸°ì™€ trainInterval ë”í•´ nextPositionì„ êµ¬í•¨
         Vector3 nextPosition = new Vector3(0, 0, (_nextTrain._floor.transform.localScale.z / 2)
             + (_currentTrain._floor.transform.localScale.z / 2)) + _trainInterval;
         
@@ -49,7 +49,7 @@ public class TrainManager : MonoBehaviour
         _backgroundGroup.position += new Vector3(0, 0, nextPosition.z);
     }
 
-    // ±âÂ÷ »ı¼º ÇÔ¼ö
+    // ê¸°ì°¨ ìƒì„± í•¨ìˆ˜
     private Train CreateTrain(int trainIndex, Vector3 position)
     {
         return Instantiate(_trainObjects[trainIndex], position, Quaternion.identity).GetComponent<Train>();
