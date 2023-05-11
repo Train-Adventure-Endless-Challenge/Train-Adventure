@@ -12,7 +12,7 @@ public class ItemUpgradeSlot : MonoBehaviour,IDropHandler
         ItemUpgradeSystem.Instance.EquipedItem = ItemUpgradeSystem.Instance.CurrentDragSlot.GetComponent<Item>();
         ItemUpgradeSystem.Instance.CurrentDragSlot.transform.position = transform.position;
 
-        // Å×½ºÆ® ÄÚµå, ³ªÁß¿¡ Ãß°¡µÈ ÀÎº¥Åä¸® ÄÚµå¿¡ ¸ÂÃç ·ÎÁ÷ ¼öÁ¤ ÇÊ¿ä
+        // í…ŒìŠ¤íŠ¸ ì½”ë“œ, ë‚˜ì¤‘ì— ì¶”ê°€ëœ ì¸ë²¤í† ë¦¬ ì½”ë“œì— ë§ì¶° ë¡œì§ ìˆ˜ì • í•„ìš”
     }
 
     void Start()

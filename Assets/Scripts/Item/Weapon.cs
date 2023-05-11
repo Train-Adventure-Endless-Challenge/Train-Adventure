@@ -28,7 +28,7 @@ public class Weapon : Item
     }
 
     /// <summary>
-    /// °ø°İ ·ÎÁ÷ÀÌ µé¾îÀÖ´Â ÇÔ¼ö
+    /// ê³µê²© ë¡œì§ì´ ë“¤ì–´ìˆëŠ” í•¨ìˆ˜
     /// </summary>
     public virtual void Attack()
     {
@@ -36,7 +36,7 @@ public class Weapon : Item
     }
 
     /// <summary>
-    /// ¾×Æ¼ºê ½ºÅ³ ·ÎÁ÷ÀÌ µé¾îÀÖ´Â ÇÔ¼ö
+    /// ì•¡í‹°ë¸Œ ìŠ¤í‚¬ ë¡œì§ì´ ë“¤ì–´ìˆëŠ” í•¨ìˆ˜
     /// </summary>
     public virtual void UseActiveSkill()
     {

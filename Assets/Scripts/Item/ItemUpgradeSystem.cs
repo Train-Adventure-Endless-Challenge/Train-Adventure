@@ -6,12 +6,12 @@ using UnityEngine;
 public class ItemUpgradeSystem : MonoBehaviour
 {
 
-    #region ÀÓ½Ã ½Ì±ÛÅæ
+    #region ìž„ì‹œ ì‹±ê¸€í†¤
     static ItemUpgradeSystem _instance;
     public static ItemUpgradeSystem Instance { get { return _instance; } }
     #endregion
 
-    //--------------------------------------- Test ¿ë -------------------------------------------------------------------------------------------------------
+    //--------------------------------------- Test ìš© -------------------------------------------------------------------------------------------------------
     public TestItemSlot CurrentDragSlot { get; set; }
 
     public TMP_Text _debugText;
