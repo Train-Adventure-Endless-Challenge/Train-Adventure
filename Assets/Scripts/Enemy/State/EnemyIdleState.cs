@@ -6,5 +6,6 @@ public class EnemyIdleState : State<EnemyController>
 {
     public override void Update(float deltaTime)
     {
+        Debug.Log("Idle");
     }
 }

@@ -6,5 +6,6 @@ public class EnemyDeadState : State<EnemyController>
 {
     public override void Update(float deltaTime)
     {
+        Debug.Log("DeadState");
     }
 }

@@ -169,10 +169,10 @@ GameObject:
   - component: {fileID: 436062774}
   - component: {fileID: 436062773}
   - component: {fileID: 436062777}
-  - component: {fileID: 436062778}
   - component: {fileID: 436062779}
+  - component: {fileID: 436062780}
   m_Layer: 0
-  m_Name: TempEnemy
+  m_Name: TempEnemy_normal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -278,18 +278,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &436062778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 436062772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0d256b827d39e646ac701fff38feeec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &436062779
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -304,6 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _radius: 7
   _angle: 56
+  _viewCheckDelay: 0.2
   _playerRef: {fileID: 0}
   _targetMask:
     serializedVersion: 2
@@ -311,7 +300,19 @@ MonoBehaviour:
   _obstructMask:
     serializedVersion: 2
     m_Bits: 128
-  _canSeePlayer: 0
+  _isCanSeePlayer: 0
+--- !u!114 &436062780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436062772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c074423c1c537924fba6447364a62eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &452331057
 GameObject:
   m_ObjectHideFlags: 0
