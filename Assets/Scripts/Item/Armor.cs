@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Armor : Item
 {
-    [SerializeField] protected ArmorType _armorType;            // ¹æ¾î±¸ Á¾·ù
+    [SerializeField] protected ArmorType _armorType;            // ë°©ì–´êµ¬ ì¢…ë¥˜
     void Start()
     {
         

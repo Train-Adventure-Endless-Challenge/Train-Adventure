@@ -5,20 +5,27 @@ using UnityEngine;
 [CreateAssetMenu(fileName ="Item Data", menuName = "Scriptable Object/Item Data",order =int.MaxValue - 8)]
 public class ItemData : ScriptableObject
 {
-    [SerializeField] private string _name;                                              // ¾ÆÀÌÅÛÀÇ ÀÌ¸§
-    [SerializeField] private string _description;                                       // ¾ÆÀÌÅÛÀÇ ¼³¸í
-    [SerializeField] private int _damage;                                               // ¹«±â¿¡¸¸ »ç¿ëÇÒ °Í °°À½ (¹«±âÀÇ ±âº» °ø°İ·Â)
-    [SerializeField] private float _range;                                              // ¹«±â¿¡¸¸ »ç¿ëÇÒ °Í °°À½ (¹«±âÀÇ »ç°Å¸®)
-    [SerializeField] private float _attackSpeed;                                        // ¹«±â¿¡¸¸ »ç¿ëÇÒ °Í °°À½ (¹«±âÀÇ ±âº» °ø°İ¼Óµµ)
+    [SerializeField] private int _id;                                                   // ì•„ì´í…œ id  
+    [SerializeField] private string _name;                                              // ì•„ì´í…œì˜ ì´ë¦„
+    [SerializeField] private string _description;                                       // ì•„ì´í…œì˜ ì„¤ëª…
+    [SerializeField] private int _damage;                                               // ë¬´ê¸°ì—ë§Œ ì‚¬ìš©í•  ê²ƒ ê°™ìŒ (ë¬´ê¸°ì˜ ê¸°ë³¸ ê³µê²©ë ¥)
+    [SerializeField] private float _range;                                              // ë¬´ê¸°ì—ë§Œ ì‚¬ìš©í•  ê²ƒ ê°™ìŒ (ë¬´ê¸°ì˜ ì‚¬ê±°ë¦¬)
+    [SerializeField] private float _attackSpeed;                                        // ë¬´ê¸°ì—ë§Œ ì‚¬ìš©í•  ê²ƒ ê°™ìŒ (ë¬´ê¸°ì˜ ê¸°ë³¸ ê³µê²©ì†ë„)
 
-    [SerializeField] private float _additionalHp;                                       // ¾ÆÀÌÅÛÀÌ Ãß°¡ ÇØÁÖ´Â Ã¼·Â
-    [SerializeField] private int _additionalStemina;                                    // ¾ÆÀÌÅÛÀÌ Ãß°¡ ÇØÁÖ´Â ½ºÅ×¹Ì³ª
+    [SerializeField] private float _additionalHp;                                       // ì•„ì´í…œì´ ì¶”ê°€ í•´ì£¼ëŠ” ì²´ë ¥
+    [SerializeField] private int _additionalStemina;                                    // ì•„ì´í…œì´ ì¶”ê°€ í•´ì£¼ëŠ” ìŠ¤í…Œë¯¸ë‚˜
+    [SerializeField] private float _additionalStrength;                                 // ì•„ì´í…œì´ ì¶”ê°€í•´ì£¼ëŠ” ê³µê²©ë ¥
+    [SerializeField] private int _additionalDefense;                                    // ì•„ì´í…œì´ ì¶”ê°€í•´ì£¼ëŠ” ë°©ì–´ë ¥
+    [SerializeField] private float _additionalAttackSpeed;                              // ì•„ì´í…œì´ ì¶”ê°€í•´ì£¼ëŠ” ê³µê²©ì†ë„
+    [SerializeField] private float _additionalSpeed;                                    // ì•„ì´í…œì´ ì¶”ê°€í•´ì£¼ëŠ” ì´ë™ì†ë„
 
-    [SerializeField] private float _additionalStrength;                                 // ¾ÆÀÌÅÛÀÌ Ãß°¡ÇØÁÖ´Â Èû
-    [SerializeField] private int _additionalDefense;                                    // ¾ÆÀÌÅÛÀÌ Ãß°¡ÇØÁÖ´Â ¹æ¾î·Â
-
-    [SerializeField] private float _additionalAttackSpeed;                              // ¾ÆÀÌÅÛÀÌ Ãß°¡ÇØÁÖ´Â °ø°İ¼Óµµ
-    [SerializeField] private float _additionalSpeed;                                    // ¾ÆÀÌÅÛÀÌ Ãß°¡ÇØÁÖ´Â ÀÌµ¿¼Óµµ
+    [SerializeField] private float _upgradeValueHp;                                     // ì•„ì´í…œ ê°•í™” ì‹œ ëŠ˜ì–´ë‚˜ëŠ” ì²´ë ¥
+    [SerializeField] private int _upgradeValueStemina;                                  // ì•„ì´í…œ ê°•í™” ì‹œ ëŠ˜ì–´ë‚˜ëŠ” ìŠ¤í…Œë¯¸ë‚˜
+    [SerializeField] private float _upgradeValueStrength;                               // ì•„ì´í…œ ê°•í™” ì‹œ ëŠ˜ì–´ë‚˜ëŠ” ê³µê²©ë ¥
+    [SerializeField] private int _upgradeValueDefense;                                  // ì•„ì´í…œ ê°•í™” ì‹œ ëŠ˜ì–´ë‚˜ëŠ” ë°©ì–´ë ¥
+    [SerializeField] private float _upgradeValueAttackSpeed;                            // ì•„ì´í…œ ê°•í™” ì‹œ ëŠ˜ì–´ë‚˜ëŠ” ê³µê²©ì†ë„
+    [SerializeField] private float _upgradeValueSpeed;                                  // ì•„ì´í…œ ê°•í™” ì‹œ ëŠ˜ì–´ë‚˜ëŠ” ì´ë™ì†ë„ 
+    public int Id { get { return _id; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }
     public int Damage { get { return _damage; } }
@@ -33,4 +40,11 @@ public class ItemData : ScriptableObject
 
     public float AdditionalAttackSpeed { get { return _additionalAttackSpeed; } }
     public float AdditionalSpeed { get { return _additionalSpeed; } }
+
+    public float UpgradeValueHp { get { return _upgradeValueHp; } }
+    public int UpgradeValueStemina { get { return _upgradeValueStemina; } }
+    public float UpgradeValueStrength { get { return _upgradeValueStrength; } }
+    public int UpgradeValueDefense { get { return _upgradeValueDefense; } }
+    public float UpgradeValueAttackSpeed { get { return _upgradeValueAttackSpeed; } }
+    public float UpgradeValueSpeed { get { return _upgradeValueSpeed; } }
 }
