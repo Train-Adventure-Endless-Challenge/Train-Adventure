@@ -8,20 +8,17 @@ public class ItemCombinationSystem : MonoBehaviour
     /// <summary>
     /// 조합법 변수
     /// </summary>
-    public static List<HashSet<int>> _itemCombinationMethod = new List<HashSet<int>>();                 
-    private Item[] _ingredientItem = new Item[2];
+    public static Dictionary<HashSet<int>,int> _itemCombinationMethod = new Dictionary<HashSet<int>,int>();                 
+    private List<Item> _ingredientItem = new List<Item>();
 
     
 
     void Start()
     {
-        _itemCombinationMethod.Add(new HashSet<int>() { 1,2});
-        /*HashSet<int> a = new HashSet<int>(_itemCombinationMethod[0]);
-        List<int> b = new List<int>() { 1, 2 };
-        a.ExceptWith(b);
-        
-        Debug.Log(a.Count);
-        Debug.Log(_itemCombinationMethod[0].Count);*/
+
+        ////////////////////////////////////// 테스트 ///////////////////////////////////////
+        _itemCombinationMethod.Add(new HashSet<int>() { 1,2},4);
+        Combination();
     }
 
     void Update()
@@ -31,7 +28,31 @@ public class ItemCombinationSystem : MonoBehaviour
 
     void Combination()
     {
-        List<int> ingredientId = new List<int>();
-        ingredientId.Add(_ingredientItem[0].Id);
+        List<int> ingredientId = new List<int>() { 1,2,3};
+        foreach (Item item in _ingredientItem)
+            ingredientId.Add(item.Id);
+
+
+        foreach (HashSet<int> combination in _itemCombinationMethod.Keys)
+        {
+           HashSet<int> com = new HashSet<int>(combination);
+           com.ExceptWith(ingredientId);
+
+           if(com.Count <= 0) // 조합법 충족
+            {
+                Item combinationItem = new Item();
+                // TODO: itemData적용, itemCombinationMethod의 키값-> 조합아이템 id
+                // TODO: UI상에 띄우기 -> 인벤토리에 옮기면 그곳에 옮기고 그냥 끄면 맨뒤에 추가
+                return;
+            }
+            else
+            {
+                Item combinationItem = new Item();
+                // TODO: 랜덤한 아이템 데이터 적용
+                // TODO: UI상에 띄우기 -> 인벤토리에 옮기면 그곳에 옮기고 그냥 끄면 맨뒤에 추가
+                return;
+            }
+        }
+
     }
 }
