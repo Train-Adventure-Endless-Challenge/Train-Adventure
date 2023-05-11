@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +22,7 @@ public class Item : MonoBehaviour
 
 
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
+    protected int _id;
     protected string _name;                               
     protected string _description;
     protected float _additionalHp;
@@ -33,6 +34,7 @@ public class Item : MonoBehaviour
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
+    public int Id { get { return _id; } }
     /// <summary>
     /// 아이템 정보를 String으로 전환하는 함수
     /// </summary>
@@ -53,6 +55,7 @@ public class Item : MonoBehaviour
     /// </summary>
     protected virtual void Init()
     {
+        _id = itemData.Id;
         _name = itemData.Name;
         _description = itemData.Description;
         _additionalHp = itemData.AdditionalHp;
