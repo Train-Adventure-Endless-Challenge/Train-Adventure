@@ -9,7 +9,7 @@ public class TestItemSlot : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        
+        // IF 
         //ItemUpgradeSystem.Instance.CurrentDragSlot = this;
     }
 
@@ -25,6 +25,7 @@ public class TestItemSlot : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDra
 
     void Start()
     {
+        GetComponent<SpriteRenderer>().sprite = item.ItemData.ItemImage;
     }
 
     void Update()

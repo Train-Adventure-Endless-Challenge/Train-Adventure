@@ -7,6 +7,7 @@ public class ItemData : ScriptableObject
 {
     [SerializeField] private int _id;                                                   // 아이템 id  
     [SerializeField] private string _name;                                              // 아이템의 이름
+    [SerializeField] private Sprite _itemImage;                                         // 아이템의 이미지
     [SerializeField] private string _description;                                       // 아이템의 설명
     [SerializeField] private int _damage;                                               // 무기에만 사용할 것 같음 (무기의 기본 공격력)
     [SerializeField] private float _range;                                              // 무기에만 사용할 것 같음 (무기의 사거리)
