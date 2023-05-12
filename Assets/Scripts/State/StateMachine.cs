@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class StateMachine<T>
+public class StateMachine<T> 
 {
     private T _context;                 // 상태관리를 할 컨트롤러
 
@@ -12,9 +13,9 @@ public class StateMachine<T>
     private float _elapsedTimeInState;  // State 유효 시간 
 
     private Dictionary<System.Type, State<T>> _states = new Dictionary<System.Type, State<T>>();    //상태 모음
-    public State<T> CurrentState { get; }
-    public State<T> PreviousState { get; }
-    public float ElapsedTimeInState { get; }
+    public State<T> CurrentState { get { return _currentState; } }
+    public State<T> PreviousState { get { return _previousState; } }
+    public float ElapsedTimeInState { get { return _elapsedTimeInState;  }}
 
     public StateMachine(T context, State<T> initialState)
     {
@@ -30,6 +31,7 @@ public class StateMachine<T>
     /// <param name="state"></param>
     public void AddState(State<T> state)
     {
+
         state.SetMachineAndContext(this, _context);
         _states[state.GetType()] = state;
     }
@@ -44,7 +46,7 @@ public class StateMachine<T>
     /// <summary>
     /// 상태 변경 
     /// </summary>
-    public R ChangeState<R>() where R : State<R>
+    public R ChangeState<R>() where R : State<T>
     {
         var newType = typeof(R);
 
