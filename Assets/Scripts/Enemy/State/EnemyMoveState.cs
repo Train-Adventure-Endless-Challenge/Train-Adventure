@@ -33,7 +33,12 @@ public class EnemyMoveState : State<EnemyController>
     {
         if (_fov.isVisiblePlayer)
         {
+             
 
+            if(_agent.remainingDistance <= _agent.stoppingDistance)
+            {
+                _enemyController.ChangeState<EnemyAttackState>();
+            }
         }
         else
         {
