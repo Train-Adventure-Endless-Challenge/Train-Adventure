@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c38765b4716462b4e8fccbaa3a1fa34f, type: 3}
+  m_Name: TempEnemyData
+  m_EditorClassIdentifier: 
+  _name: Temp
+  _hp: 100
+  _damage: 10
+  _moveSpeed: 5
+  _attackSpeed: 3
+  _attackRange: 5
+  _enemyType: 1
