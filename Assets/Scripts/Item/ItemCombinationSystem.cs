@@ -8,16 +8,14 @@ public class ItemCombinationSystem : MonoBehaviour
     /// <summary>
     /// 조합법 변수
     /// </summary>
-    public static Dictionary<HashSet<int>,int> _itemCombinationMethod = new Dictionary<HashSet<int>,int>();                 
+    public Dictionary<HashSet<int>,int> _itemCombinationMethod = ItemDataManager.Instance.ItemCombinationMethod;
     private List<Item> _ingredientItem = new List<Item>();
-
     
 
     void Start()
     {
 
         ////////////////////////////////////// 테스트 ///////////////////////////////////////
-        _itemCombinationMethod.Add(new HashSet<int>() { 1,2},4);
         Combination();
     }
 

@@ -19,7 +19,7 @@ public enum ArmorType
 public class Item : MonoBehaviour
 {
     [SerializeField] protected ItemData itemData;
-
+    public ItemData ItemData { get { return itemData; } }
 
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
     protected int _id;

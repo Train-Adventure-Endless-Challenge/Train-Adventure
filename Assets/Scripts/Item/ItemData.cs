@@ -27,6 +27,7 @@ public class ItemData : ScriptableObject
     [SerializeField] private float _upgradeValueSpeed;                                  // 아이템 강화 시 늘어나는 이동속도 
     public int Id { get { return _id; } }
     public string Name { get { return _name; } }
+    public Sprite ItemImage { get { return _itemImage; } }
     public string Description { get { return _description; } }
     public int Damage { get { return _damage; } }
     public float Range { get { return _range; } }
