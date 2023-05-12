@@ -45,7 +45,7 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     /// <summary>
-    /// enemy 초기화
+    /// enemy �ʱ�ȭ
     /// </summary>
     protected virtual void Init()
     {
