@@ -9,13 +9,13 @@ public abstract class EnemyController : MonoBehaviour
 {
     protected StateMachine<EnemyController> _stateMachine;
 
-    private EnemyData _enemyData;
+    [SerializeField] private EnemyData _enemyData;
     public EnemyData EnenmyData { get { return _enemyData; } }
 
-    public EnemyFieldOfView _enemyFieldOfView;
+    [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
 
-    public NavMeshAgent _agent;
-    public Transform _target;
+    [HideInInspector] public NavMeshAgent _agent;
+    [HideInInspector] public Transform _target;
 
     protected virtual void Awake()
     {
