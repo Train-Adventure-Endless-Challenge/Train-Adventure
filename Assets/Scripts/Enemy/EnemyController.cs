@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using Unity.VisualScripting;
@@ -8,6 +8,9 @@ using UnityEngine.AI;
 public abstract class EnemyController : MonoBehaviour
 {
     protected StateMachine<EnemyController> _stateMachine;
+
+    private EnemyData _enemyData;
+    public EnemyData EnenmyData { get { return _enemyData; } }
 
     public EnemyFieldOfView _enemyFieldOfView;
 
