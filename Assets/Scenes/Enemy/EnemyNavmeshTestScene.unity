@@ -331,7 +331,7 @@ MonoBehaviour:
   _obstructMask:
     serializedVersion: 2
     m_Bits: 128
-  _isCanSeePlayer: 0
+  isVisiblePlayer: 0
 --- !u!114 &436062780
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c074423c1c537924fba6447364a62eb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _enemyData: {fileID: 11400000, guid: d595775b117f14447bee985e01c67465, type: 2}
   _enemyFieldOfView: {fileID: 0}
   _agent: {fileID: 0}
   _target: {fileID: 423186764}
