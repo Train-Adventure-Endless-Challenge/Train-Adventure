@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController_Normal : EnemyController
+public class EnemyController_Range : EnemyController
 {
     protected override void Start()
     {

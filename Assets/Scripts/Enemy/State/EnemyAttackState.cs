@@ -32,8 +32,6 @@ public class EnemyAttackState : State<EnemyController>
         _agent.SetDestination(_player.transform.position);
 
         CheckAttack();
-
-        Debug.Log("공격");
     }
 
     private void CheckAttack()
@@ -61,6 +59,9 @@ public class EnemyAttackState : State<EnemyController>
     IEnumerator AttackRangeCor()
     {
         Debug.Log("원거리 공격");
+
+
+
         yield return null;
     }
 
