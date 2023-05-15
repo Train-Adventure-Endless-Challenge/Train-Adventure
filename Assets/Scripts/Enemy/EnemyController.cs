@@ -30,12 +30,13 @@ public abstract class EnemyController : MonoBehaviour
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
 
     [HideInInspector] public NavMeshAgent _agent;
-    [HideInInspector] public Transform _target;
+    public Transform _target;
 
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
         _agent = GetComponent<NavMeshAgent>();
+
     }
 
     protected virtual void Start()
@@ -45,7 +46,7 @@ public abstract class EnemyController : MonoBehaviour
     }
 
     /// <summary>
-    /// enemy �ʱ�ȭ
+    /// enemy 초기화
     /// </summary>
     protected virtual void Init()
     {

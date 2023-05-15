@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -31,6 +31,7 @@ public class EnemyMoveState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
+
         if (_fov.isVisiblePlayer)
         {
             _enemyController.ChangeState<EnemyAttackState>();
