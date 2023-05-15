@@ -7,6 +7,9 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 {
     #region Variable
 
+    public bool isPC = true; // 테스트용
+    public Vector3 inputDirection;
+
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
@@ -24,22 +27,41 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private void Update()
     {
-#if UNITY_EDITOR
+        //#if UNITY_EDITOR
 
-        _playerRolling.Roll();
+        if (isPC)
+        {
+            _playerRolling.Roll(true);
+        }
         if (_player.playerState != PlayerState.Rolling)
         {
-            _playerController.Move();
+            if (isPC)
+            {
+                _playerController.Move();
+            }
+            else
+            {
+                _playerController.Move(inputDirection);
+            }
         }
 
-#endif
+        //#endif
+
+        //#if UNITY_ANDROID        
+
+        //#endif
     }
 
-    public void Move(Vector2 inputDirection)
+    public void OnSwitchButton()
     {
-        _playerController.Move(inputDirection);
+        isPC = !isPC;
     }
 
+    public void OnRollButton()
+    {
+        if (isPC == false)
+            _playerRolling.Roll(false);
+    }
 
-#endregion
+    #endregion
 }

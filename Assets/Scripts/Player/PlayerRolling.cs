@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -50,13 +50,16 @@ public class PlayerRolling : MonoBehaviour
     /// <summary>
     /// 구르기 함수
     /// </summary>
-    public void Roll()
+    public void Roll(bool isPC)
     {
-        if (Input.GetKeyDown(_rollingKey) && _rollCor == null)
+        if (_rollCor == null)
         {
-            _player.playerState = PlayerState.Rolling;
-            _rollCor = RollCor(transform.position);
-            StartCoroutine(RollCor(transform.position));
+            if (isPC && Input.GetKeyDown(_rollingKey) || !isPC)
+            {
+                _player.playerState = PlayerState.Rolling;
+                _rollCor = RollCor(transform.position);
+                StartCoroutine(RollCor(transform.position));
+            }
         }
     }
 

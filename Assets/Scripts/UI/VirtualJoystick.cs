@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems; // 키보드, 마우스, 터치를 이벤트로 오브젝트에 보낼 수 있는 기능을 지원
+using UnityEngine.EventSystems;
 
 public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -53,7 +53,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         while (true)
         {
-            _playerManager.Move(_inputDirection);
+            _playerManager.inputDirection = _inputDirection;
             yield return new WaitForEndOfFrame();
         }
     }
