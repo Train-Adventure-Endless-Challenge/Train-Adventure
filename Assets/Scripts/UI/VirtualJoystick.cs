@@ -4,6 +4,8 @@ using UnityEngine.EventSystems;
 
 public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    #region Variable
+
     [SerializeField] private RectTransform _lever;
     [SerializeField] private float _leverRange;
 
@@ -11,7 +13,11 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     private RectTransform _rectTransform;
 
     private Vector2 _inputDirection;
-   
+
+    #endregion
+
+    #region Function
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -22,14 +28,11 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _playerManager = PlayerManager.Instance;
         StartCoroutine(InputCor());
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         ControlJoystickLever(eventData);
     }
 
-    // 오브젝트를 클릭해서 드래그 하는 도중에 들어오는 이벤트
-    // 하지만 클릭을 유지한 상태로 마우스를 멈추면 이벤트가 들어오지 않음
     public void OnDrag(PointerEventData eventData)
     {
         ControlJoystickLever(eventData);
@@ -41,6 +44,10 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _inputDirection = Vector2.zero;
     }
 
+    /// <summary>
+    /// 레버의 움직임을 조종하는 함수
+    /// </summary>
+    /// <param name="eventData"></param>
     private void ControlJoystickLever(PointerEventData eventData)
     {
         var inputPos = eventData.position - _rectTransform.anchoredPosition;
@@ -49,6 +56,10 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _inputDirection = inputVector / _leverRange;
     }
 
+    /// <summary>
+    /// 입력값에 대한 업데이트 코루틴
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator InputCor()
     {
         while (true)
@@ -57,4 +68,6 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
             yield return new WaitForEndOfFrame();
         }
     }
+
+    #endregion
 }

@@ -1013,6 +1013,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1542191193, guid: 077d91c075ecae6488ebb17678101cd0, type: 3}
+      propertyPath: _rollingCurve.m_Curve.Array.data[0].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542191193, guid: 077d91c075ecae6488ebb17678101cd0, type: 3}
+      propertyPath: _rollingCurve.m_Curve.Array.data[1].inSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542191193, guid: 077d91c075ecae6488ebb17678101cd0, type: 3}
+      propertyPath: _rollingCurve.m_Curve.Array.data[0].outSlope
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542191193, guid: 077d91c075ecae6488ebb17678101cd0, type: 3}
+      propertyPath: _rollingCurve.m_Curve.Array.data[1].outSlope
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6023065493405160645, guid: 077d91c075ecae6488ebb17678101cd0,
         type: 3}
       propertyPath: m_RootOrder

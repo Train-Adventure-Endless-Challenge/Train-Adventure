@@ -50,6 +50,7 @@ public class PlayerRolling : MonoBehaviour
     /// <summary>
     /// 구르기 함수
     /// </summary>
+    /// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
     public void Roll(bool isPC)
     {
         if (_rollCor == null)
@@ -71,7 +72,7 @@ public class PlayerRolling : MonoBehaviour
     public IEnumerator RollCor(Vector3 startPosition)
     {
         _currentTime = 0f;
-        _lerpTime = 1f;
+        _lerpTime = 0.65f;
         _characterController.detectCollisions = false;
         _animator.SetBool("IsRoll", true);
         _animator.SetTrigger("OnState");

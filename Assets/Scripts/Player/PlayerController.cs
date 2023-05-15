@@ -130,9 +130,9 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// <summary>
     /// 플레이어의 움직임 함수
     /// <br/>
-    /// Horizontal, Vertical 값으로 방향 설정
-    /// 입력 값에 따른 애니메이션 변경
+    /// 조이스틱의 입력 값에 따른 애니메이션 변경
     /// </summary>
+    /// <param name="inputDirection">조이스틱 입력 값</param>
     public void Move(Vector2 inputDirection)
     {
         Vector3 _inputDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
@@ -183,6 +183,9 @@ public class PlayerController : SceneSingleton<PlayerController>
         _controller.Move(Time.deltaTime * _velocity);
     }
 
+    /// <summary>
+    /// 실행되고 있는 움직임 코루틴을 종료하는 함수
+    /// </summary>
     private void StopMove()
     {
         if (_smoothMoveCor != null)
