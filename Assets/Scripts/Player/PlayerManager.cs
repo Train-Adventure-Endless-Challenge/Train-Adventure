@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// 플레이어를 관리하는 클래스
@@ -24,13 +24,22 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private void Update()
     {
+#if UNITY_EDITOR
+
         _playerRolling.Roll();
         if (_player.playerState != PlayerState.Rolling)
         {
             _playerController.Move();
         }
+
+#endif
     }
 
-    #endregion
+    public void Move(Vector2 inputDirection)
+    {
+        _playerController.Move(inputDirection);
+    }
 
+
+#endregion
 }

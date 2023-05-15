@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -97,18 +97,12 @@ public class PlayerController : SceneSingleton<PlayerController>
         {
             if (Input.GetKey(_runningKey))
             {
-                if (_smoothMoveCor != null)
-                {
-                    StopCoroutine(_smoothMoveCor);
-                }
+                StopMove();
                 StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));
             }
             else
             {
-                if (_smoothMoveCor != null)
-                {
-                    StopCoroutine(_smoothMoveCor);
-                }
+                StopMove();
                 StartCoroutine(SmoothMoveCor(_moveSpeedScale, _speedScale));
             }
             _moveDirection = new Vector3(x, 0f, z);
@@ -122,11 +116,45 @@ public class PlayerController : SceneSingleton<PlayerController>
         }
         else
         {
+            StopMove();
+            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
+            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle)
+            {
+                _animator.SetTrigger("OnState");
+                _player.playerState = PlayerState.Idle;
+            }
+        }
+        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
+    }
+
+    /// <summary>
+    /// 플레이어의 움직임 함수
+    /// <br/>
+    /// Horizontal, Vertical 값으로 방향 설정
+    /// 입력 값에 따른 애니메이션 변경
+    /// </summary>
+    public void Move(Vector2 inputDirection)
+    {
+        Vector3 _inputDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
+        if (_inputDirection != Vector3.zero)
+        {
             if (_smoothMoveCor != null)
             {
                 StopCoroutine(_smoothMoveCor);
                 _smoothMoveCor = null;
             }
+            StartCoroutine(SmoothMoveCor(_moveSpeedScale, _inputDirection.magnitude));
+            _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _inputDirection);
+            transform.forward = _inputDirection;
+            if (_player.playerState != PlayerState.Move)
+            {
+                _animator.SetTrigger("OnState");
+                _player.playerState = PlayerState.Move;
+            }
+        }
+        else
+        {
+            StopMove();
             StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
             if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle)
             {
@@ -153,6 +181,15 @@ public class PlayerController : SceneSingleton<PlayerController>
             _velocity.y = 0f;
         }
         _controller.Move(Time.deltaTime * _velocity);
+    }
+
+    private void StopMove()
+    {
+        if (_smoothMoveCor != null)
+        {
+            StopCoroutine(_smoothMoveCor);
+            _smoothMoveCor = null;
+        }
     }
 
     #endregion
