@@ -21,7 +21,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
           targetPlatform: Android
-          projectPath: Train-Adventure-Mobile
+          projectPath: ./
 
       - uses: actions/upload-artifact@v2
         with:
