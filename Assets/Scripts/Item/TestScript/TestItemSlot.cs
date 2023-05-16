@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class TestItemSlot : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 {
+    public Item item { get; set; }
 
 
     public void OnBeginDrag(PointerEventData eventData)
