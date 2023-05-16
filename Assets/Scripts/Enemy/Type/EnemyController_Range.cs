@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController_Normal : EnemyController
+public class EnemyController_Range : EnemyController
 {
     protected override void Start()
     {
@@ -10,6 +10,7 @@ public class EnemyController_Normal : EnemyController
 
         _stateMachine.AddState(new EnemyDeadState());
         _stateMachine.AddState(new EnemyMoveState());
+        _stateMachine.AddState(new EnemyAttackState());
     }
 
     protected override void Update()
