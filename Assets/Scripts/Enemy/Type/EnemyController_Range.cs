@@ -21,10 +21,8 @@ public class EnemyController_Range : EnemyController
         base.Update();
     }
 
-    public GameObject CloneDangerLinePrefab(Transform transform)
+    public GameObject CloneDangerLinePrefab()
     {
-        Vector3 vec = new Vector3(transform.position.x, transform.position.y + 0.1f, transform.position.z);
-
-        return Instantiate(_dangerLinePrefab,vec,transform.rotation);
+        return Instantiate(_dangerLinePrefab,Vector3.zero, Quaternion.identity);
     }
 }

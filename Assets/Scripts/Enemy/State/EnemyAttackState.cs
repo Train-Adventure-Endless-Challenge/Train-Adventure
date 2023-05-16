@@ -63,12 +63,6 @@ public class EnemyAttackState : State<EnemyController>
     {
         Debug.Log("원거리 공격");
 
-        EnemyController_Range _enemy = _context.GetComponent<EnemyController_Range>();
-
-        var line = _enemy.CloneDangerLinePrefab(_enemy.transform);
-
-
-
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
 
         _currentAttackCor = null;
