@@ -34,6 +34,9 @@ public class EnemyAttackState : State<EnemyController>
         CheckAttack();
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     private void CheckAttack()
     {
         if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
@@ -62,11 +65,14 @@ public class EnemyAttackState : State<EnemyController>
 
         EnemyController_Range _enemy = _context.GetComponent<EnemyController_Range>();
 
-        EnemyDangerLine line = _enemy.CloneDangerLinePrefab(_enemy.transform).GetComponent<EnemyDangerLine>();
-        line.Init(_enemyController);
+        var line = _enemy.CloneDangerLinePrefab(_enemy.transform);
 
 
-        yield return null;
+
+        yield return new WaitForSeconds(_enemyController.AttackSpeed);
+
+        _currentAttackCor = null;
+
     }
 
     /// <summary>
