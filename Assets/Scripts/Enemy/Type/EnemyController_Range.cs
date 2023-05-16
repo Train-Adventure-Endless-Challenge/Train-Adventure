@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyController_Range : EnemyController
 {
+    public GameObject _laserObj;
+
     protected override void Start()
     {
         base.Start();
@@ -11,6 +13,8 @@ public class EnemyController_Range : EnemyController
         _stateMachine.AddState(new EnemyDeadState());
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
+
+        _laserObj.SetActive(false);
     }
 
     protected override void Update()

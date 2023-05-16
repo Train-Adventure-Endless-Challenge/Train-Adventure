@@ -61,9 +61,20 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackRangeCor()
     {
-        Debug.Log("원거리 공격");
+        EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
+        enemy._laserObj.SetActive(true);
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(enemy._laserObj.transform.position, enemy._laserObj.transform.forward, out hit, LayerMask.GetMask("Player")))
+        {
+            Player player =  hit.transform.gameObject.GetComponent<Player>();
+            player.Hp -= _enemyController.Damage;
+        }
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
+
+        enemy._laserObj.SetActive(false);
 
         _currentAttackCor = null;
 
