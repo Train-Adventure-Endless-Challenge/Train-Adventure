@@ -4,18 +4,52 @@ using UnityEngine;
 
 public class DayAndNight : MonoBehaviour
 {
-    [SerializeField] private float secondPerRealTimeSecond; // 게임 세계에서의 100초 = 현실 세계의 1초
+    [SerializeField] private Material[] sky;
+
+    private float degree;
 
     void Start()
     {
+        StartCoroutine(ChangeSkyboxCor(0));
 
+        degree = 0;
     }
 
     void Update()
     {
-        // 계속 태양을 X 축 중심으로 회전. 현실시간 1초에  0.1f * secondPerRealTimeSecond 각도만큼 회전
-        transform.Rotate(Vector3.right, 0.1f * secondPerRealTimeSecond * Time.deltaTime);
+        degree += Time.deltaTime * 1.5f;
+        if (degree >= 360)
+            degree = 0;
 
+        RenderSettings.skybox.SetFloat("_Rotation", degree);
+    }
+
+    public IEnumerator ChangeSkyboxCor(int index)
+    {
+        yield return StartCoroutine(FadeSkyboxCor(1, 0));
+
+        yield return RenderSettings.skybox = sky[index];
+
+        yield return StartCoroutine(FadeSkyboxCor(0, 1));
+    }
+
+    private IEnumerator FadeSkyboxCor(float start, float end)
+    {
+        float fadeTime = 1f;
+        float currentTiem = 0f;
+        float percent = 0f;
+
+        while (percent < 1)
+        {
+            currentTiem += Time.deltaTime;
+            percent = currentTiem / fadeTime;
+
+            RenderSettings.skybox.SetFloat("_Exposure", Mathf.Lerp(start, end, percent));
+
+            yield return null;
+        }
+
+        RenderSettings.skybox.SetFloat("_Exposure", end);
     }
 }
 
