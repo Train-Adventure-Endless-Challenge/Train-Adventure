@@ -41,8 +41,6 @@ public class EnemyAttackState : State<EnemyController>
     {
         if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
         {
-            Debug.Log("attack");
-
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
@@ -63,10 +61,16 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackRangeCor()
     {
-        Debug.Log("원거리 공격");
-
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
         enemy._laserObj.SetActive(true);
+
+        RaycastHit hit;
+
+        if(Physics.Raycast(enemy._laserObj.transform.position, enemy._laserObj.transform.forward, out hit, LayerMask.GetMask("Player")))
+        {
+            Player player =  hit.transform.gameObject.GetComponent<Player>();
+            player.Hp -= _enemyController.damage;
+        }
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
 
