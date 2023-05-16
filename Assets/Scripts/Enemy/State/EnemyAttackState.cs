@@ -69,7 +69,7 @@ public class EnemyAttackState : State<EnemyController>
         if(Physics.Raycast(enemy._laserObj.transform.position, enemy._laserObj.transform.forward, out hit, LayerMask.GetMask("Player")))
         {
             Player player =  hit.transform.gameObject.GetComponent<Player>();
-            player.Hp -= _enemyController.damage;
+            player.Hp -= _enemyController.Damage;
         }
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);

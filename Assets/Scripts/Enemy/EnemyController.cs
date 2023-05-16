@@ -21,7 +21,7 @@ public abstract class EnemyController : MonoBehaviour
 
     public string Name { get { return _name; }  }
     public float HP { get { return _hp; }  set { _hp = value; } }
-    public float damage { get { return _damage; } }
+    public float Damage { get { return _damage; } }
     public float MoveSpeed { get { return _moveSpeed; } }
     public float AttackSpeed { get { return _attackSpeed; } }
     public float AttackRange { get { return _attackRange; } }
