@@ -1,5 +1,7 @@
 name: Get Activation file
 on:
+  push:
+    branches: [ "Develop" ]
   workflow_dispatch: {}
 jobs:
   activation:
