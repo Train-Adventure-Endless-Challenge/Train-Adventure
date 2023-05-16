@@ -45,11 +45,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: tpose
-      takeName: tpose
+      name: human_male_roll_01
+      takeName: human_male_roll_01
       internalID: 0
-      firstFrame: 0
-      lastFrame: 1
+      firstFrame: 5
+      lastFrame: 45
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -72,7 +72,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 2
     - serializedVersion: 16
       name: RollForward
       takeName: human_male_roll_01

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using UnityEngine;
 
 /// <summary>
@@ -50,13 +50,17 @@ public class PlayerRolling : MonoBehaviour
     /// <summary>
     /// 구르기 함수
     /// </summary>
-    public void Roll()
+    /// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
+    public void Roll(bool isPC)
     {
-        if (Input.GetKeyDown(_rollingKey) && _rollCor == null)
+        if (_rollCor == null)
         {
-            _player.playerState = PlayerState.Rolling;
-            _rollCor = RollCor(transform.position);
-            StartCoroutine(RollCor(transform.position));
+            if ((isPC && Input.GetKeyDown(_rollingKey)) || !isPC)
+            {
+                _player.playerState = PlayerState.Rolling;
+                _rollCor = RollCor(transform.position);
+                StartCoroutine(RollCor(transform.position));
+            }
         }
     }
 
@@ -68,7 +72,7 @@ public class PlayerRolling : MonoBehaviour
     public IEnumerator RollCor(Vector3 startPosition)
     {
         _currentTime = 0f;
-        _lerpTime = 1f;
+        _lerpTime = 0.65f;
         _characterController.detectCollisions = false;
         _animator.SetBool("IsRoll", true);
         _animator.SetTrigger("OnState");
