@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class EnemyController_Range : EnemyController
 {
-    [Header("Attack")]
-    public GameObject _dangerLinePrefab;
-
     protected override void Start()
     {
         base.Start();
@@ -19,10 +16,5 @@ public class EnemyController_Range : EnemyController
     protected override void Update()
     {
         base.Update();
-    }
-
-    public GameObject CloneDangerLinePrefab()
-    {
-        return Instantiate(_dangerLinePrefab,Vector3.zero, Quaternion.identity);
     }
 }
