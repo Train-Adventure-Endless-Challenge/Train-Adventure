@@ -35,7 +35,7 @@ public class EnemyAttackState : State<EnemyController>
     }
 
     /// <summary>
-    /// 
+    /// 공격 체크
     /// </summary>
     private void CheckAttack()
     {
