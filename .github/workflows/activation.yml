@@ -1,5 +1,7 @@
 name: Get Activation file
 on:
+  push: 
+    branches: [ "gaseong/UnityCI" ]
   workflow_dispatch: {}
 jobs:
   activation:
