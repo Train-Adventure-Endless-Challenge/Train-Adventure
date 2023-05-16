@@ -1,10 +1,12 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DayAndNight : MonoBehaviour
 {
     [SerializeField] private Material[] _sky;
+    // 0 : 낮
+    // 1 : 밤
 
     private float _degree;
 
