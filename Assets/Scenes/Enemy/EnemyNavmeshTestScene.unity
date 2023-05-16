@@ -572,7 +572,7 @@ MonoBehaviour:
   _agent: {fileID: 0}
   _target: {fileID: 423186764}
   _enemyFieldOfView: {fileID: 0}
-  _laserObj: {fileID: 0}
+  _laserObj: {fileID: 1979559686}
 --- !u!1 &452331057
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,13 +1141,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1979559687}
+  - component: {fileID: 1979559688}
   m_Layer: 0
   m_Name: LaserObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1979559687
 Transform:
   m_ObjectHideFlags: 0
@@ -1165,6 +1166,20 @@ Transform:
   m_Father: {fileID: 436062776}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1979559688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1979559686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ef3cf924143cbe40b0c70d0ced6e723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _laserAnim: {fileID: 29528742}
+  _laserWarningLineAnim: {fileID: 287901203}
 --- !u!1 &2087138102
 GameObject:
   m_ObjectHideFlags: 0
