@@ -55,7 +55,7 @@ public class PlayerRolling : MonoBehaviour
     {
         if (_rollCor == null)
         {
-            if (isPC && Input.GetKeyDown(_rollingKey) || !isPC)
+            if ((isPC && Input.GetKeyDown(_rollingKey)) || !isPC)
             {
                 _player.playerState = PlayerState.Rolling;
                 _rollCor = RollCor(transform.position);
