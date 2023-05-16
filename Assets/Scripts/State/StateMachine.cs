@@ -6,13 +6,13 @@ using UnityEngine;
 
 public class StateMachine<T> 
 {
-    private T _context;                 // »óÅÂ°ü¸®¸¦ ÇÒ ÄÁÆ®·Ñ·¯
+    private T _context;                 // ìƒíƒœê´€ë¦¬ë¥¼ í•  ì»¨íŠ¸ë¡¤ëŸ¬
 
-    private State<T> _currentState;     // ÇöÀç State
-    private State<T> _previousState;    // ÀÌÀü State
-    private float _elapsedTimeInState;  // State À¯È¿ ½Ã°£ 
+    private State<T> _currentState;     // í˜„ì¬ State
+    private State<T> _previousState;    // ì´ì „ State
+    private float _elapsedTimeInState;  // State ìœ íš¨ ì‹œê°„ 
 
-    private Dictionary<System.Type, State<T>> _states = new Dictionary<System.Type, State<T>>();    //»óÅÂ ¸ğÀ½
+    private Dictionary<System.Type, State<T>> _states = new Dictionary<System.Type, State<T>>();    //ìƒíƒœ ëª¨ìŒ
     public State<T> CurrentState { get { return _currentState; } }
     public State<T> PreviousState { get { return _previousState; } }
     public float ElapsedTimeInState { get { return _elapsedTimeInState;  }}
@@ -26,12 +26,12 @@ public class StateMachine<T>
     }
 
     /// <summary>
-    /// State dictionary¿¡ ÃÊ±âÈ­
+    /// State dictionaryì— ì´ˆê¸°í™”
     /// </summary>
     /// <param name="state"></param>
     public void AddState(State<T> state)
     {
-
+       
         state.SetMachineAndContext(this, _context);
         _states[state.GetType()] = state;
     }
@@ -44,7 +44,7 @@ public class StateMachine<T>
 
 
     /// <summary>
-    /// »óÅÂ º¯°æ 
+    /// ìƒíƒœ ë³€ê²½ 
     /// </summary>
     public R ChangeState<R>() where R : State<T>
     {

@@ -362,9 +362,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyData: {fileID: 11400000, guid: d595775b117f14447bee985e01c67465, type: 2}
-  _enemyFieldOfView: {fileID: 0}
   _agent: {fileID: 0}
   _target: {fileID: 423186764}
+  _enemyFieldOfView: {fileID: 0}
+  _dangerLinePrefab: {fileID: 5481135872896150183, guid: 706c6734686485849a6d4f9ea501480a,
+    type: 3}
 --- !u!1 &452331057
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,16 +27,18 @@ public abstract class EnemyController : MonoBehaviour
     public float AttackRange { get { return _attackRange; } }
     public EnemyType EnemyType { get { return _enemyType; } }
 
-    [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
-
+    [Header("Move")]
     [HideInInspector] public NavMeshAgent _agent;
     public Transform _target;
+
+    [Header("AttackCheck")]
+    [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
+
 
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
         _agent = GetComponent<NavMeshAgent>();
-
     }
 
     protected virtual void Start()
@@ -68,7 +70,7 @@ public abstract class EnemyController : MonoBehaviour
 
     public R ChangeState<R>() where R : State<EnemyController>
     {
-
+       
         return _stateMachine.ChangeState<R>();
     }
 

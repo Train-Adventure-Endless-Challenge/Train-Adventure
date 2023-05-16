@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,7 @@ public class Train : MonoBehaviour
 
     public virtual void Init()
     {
-        
+  
     }
 
     public void DestroyGameObejct()

@@ -36,7 +36,7 @@ public class EnemyAttackState : State<EnemyController>
 
     private void CheckAttack()
     {
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null)
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
         {
             switch (_enemyController.EnemyType)
             {
@@ -60,6 +60,10 @@ public class EnemyAttackState : State<EnemyController>
     {
         Debug.Log("원거리 공격");
 
+        EnemyController_Range _enemy = _context.GetComponent<EnemyController_Range>();
+
+        EnemyDangerLine line = _enemy.CloneDangerLinePrefab(_enemy.transform).GetComponent<EnemyDangerLine>();
+        line.Init(_enemyController);
 
 
         yield return null;
