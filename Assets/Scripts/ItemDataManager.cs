@@ -9,11 +9,11 @@ public class ItemDataManager : GlobalSingleton<ItemDataManager>,IDataManager
 {
     private Dictionary<int, ItemData> _itemData = new Dictionary<int, ItemData>();
     private Dictionary<int, Object> _itemPrefab = new Dictionary<int, Object>();
-    private Dictionary<HashSet<int>, int> _itemCombinationMethod = new Dictionary<HashSet<int>, int>();
+    private Dictionary<List<int>, int> _itemCombinationMethod = new Dictionary<List<int>, int>();
 
     public Dictionary<int, ItemData> ItemData { get { return _itemData; } }
     public Dictionary<int,Object> ItemPrefab { get { return _itemPrefab; } }
-    public Dictionary<HashSet<int>,int> ItemCombinationMethod { get { return _itemCombinationMethod; } }
+    public Dictionary<List<int>,int> ItemCombinationMethod { get { return _itemCombinationMethod; } }
 
     protected override void Awake()
     {
@@ -34,7 +34,7 @@ public class ItemDataManager : GlobalSingleton<ItemDataManager>,IDataManager
             ItemPrefab.Add(pre.GetComponent<Item>().Id, pre);
 
         // TODO: 조합법 json 파싱 후 집어넣기
-        _itemCombinationMethod.Add(new HashSet<int>() { 1, 2 }, 3); // 테스트
+        _itemCombinationMethod.Add(new List<int>() { 1, 1 }, 3); // 테스트
 
     }
 }
