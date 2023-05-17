@@ -5,9 +5,13 @@ using UnityEngine.EventSystems;
 
 public class TestItemSlot : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDragHandler
 {
+    public Item item { get; set; }
+
+
     public void OnBeginDrag(PointerEventData eventData)
     {
-        ItemUpgradeSystem.Instance.CurrentDragSlot = this;
+        // IF 
+        //ItemUpgradeSystem.Instance.CurrentDragSlot = this;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -17,12 +21,12 @@ public class TestItemSlot : MonoBehaviour,IBeginDragHandler,IDragHandler,IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        ItemUpgradeSystem.Instance.CurrentDragSlot = null;
+        //ItemUpgradeSystem.Instance.CurrentDragSlot = null;
     }
 
     void Start()
     {
-        
+        GetComponent<SpriteRenderer>().sprite = item.ItemData.ItemImage;
     }
 
     void Update()

@@ -1,12 +1,12 @@
-// ÀÛ¼ºÀÚ : ¾ç¼¼Çö
-// ÀÛ¼ºÀÏ : 2022-10-31
-// ntr : ¹ÚÀç¸¸ ¾ß¹Ì
+// ì‘ì„±ì : ì–‘ì„¸í˜„
+// ì‘ì„±ì¼ : 2022-10-31
+// ntr : ë°•ì¬ë§Œ ì•¼ë¯¸
 using UnityEngine;
 
 /// <summary>
 /// Interface for singleton properties.
 /// <br/>
-/// ½Ì±ÛÅæ interface.
+/// ì‹±ê¸€í†¤ interface.
 /// </summary>
 /// <typeparam name="T">
 /// The type of component to singleton.
@@ -27,7 +27,7 @@ public interface Singleton<T>
 /// Generic singleton that all scene specific manager components inherit from.
 /// i.e. GameManager, EventManager, etc.
 /// <br/>
-/// Scene°ú °ü·ÃµÈ ½Ì±ÛÅæµéÀÌ inheritÇÏ´Â class.
+/// Sceneê³¼ ê´€ë ¨ëœ ì‹±ê¸€í†¤ë“¤ì´ inherití•˜ëŠ” class.
 /// </summary>
 /// <typeparam name="T">
 /// The type of component to singleton.
@@ -93,7 +93,7 @@ public class SceneSingleton<T> : MonoBehaviour, Singleton<T> where T : Component
     /// Generic singleton that all global manager components inherit from.
     /// i.e. SeasonDatabase, etc.
 /// <br/>
-/// °ÔÀÓ ÀüÃ¼¿Í °ü·ÃµÈ ½Ì±ÛÅæµéÀÌ inheritÇÏ´Â class.
+/// ê²Œì„ ì „ì²´ì™€ ê´€ë ¨ëœ ì‹±ê¸€í†¤ë“¤ì´ inherití•˜ëŠ” class.
 /// </summary>
 /// <typeparam name="T">
 /// The type of component to singleton.
