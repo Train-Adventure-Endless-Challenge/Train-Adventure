@@ -33,7 +33,7 @@ public class EnemyMoveState : State<EnemyController>
     public override void Update(float deltaTime)
     {
 
-        if (_fov.isVisiblePlayer)
+        if (_fov._isVisiblePlayer)
         {
             _enemyController.ChangeState<EnemyAttackState>();
         }

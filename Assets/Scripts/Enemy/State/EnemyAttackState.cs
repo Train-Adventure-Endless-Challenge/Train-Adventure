@@ -39,6 +39,11 @@ public class EnemyAttackState : State<EnemyController>
     /// </summary>
     private void CheckAttack()
     {
+        if(!_enemyController._enemyFieldOfView._isVisiblePlayer)
+        {
+            _enemyController.ChangeState<EnemyIdleState>();
+        }
+
         if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
         {
             switch (_enemyController.EnemyType)
