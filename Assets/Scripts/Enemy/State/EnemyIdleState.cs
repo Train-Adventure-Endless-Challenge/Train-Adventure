@@ -24,6 +24,7 @@ public class EnemyIdleState : State<EnemyController>
     }
     public override void Update(float deltaTime)
     {
+
     }
 
     public override void OnExit()

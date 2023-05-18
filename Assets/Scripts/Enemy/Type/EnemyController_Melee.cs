@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController_Melee : MonoBehaviour
+public class EnemyController_Melee : EnemyController
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        
-    }
+        base.Start();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _stateMachine.AddState(new EnemyDeadState());
+        _stateMachine.AddState(new EnemyMoveState());
+        _stateMachine.AddState(new EnemyAttackState());
+
     }
 }
