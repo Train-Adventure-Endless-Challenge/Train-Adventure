@@ -13,7 +13,8 @@ public class EnemyAttackState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
-    private Coroutine _currentAttackCor;
+     //private IEnumerator _currentAttackCor;
+    private bool _currentAttackCor;
 
     public override void OnEnter()
     {
@@ -30,6 +31,7 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
+
         CheckAttack();
 
         if(_enemyController._enemyFieldOfView._isVisiblePlayer)
@@ -51,15 +53,17 @@ public class EnemyAttackState : State<EnemyController>
             return;
         }
 
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
+        Debug.Log(_currentAttackCor == false);
+
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == false )
         {
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
-                    _currentAttackCor = _enemyController.StartCoroutine(AttackRangeCor());
+                    _enemyController.StartCoroutine(AttackRangeCor());
                     break;
                 case EnemyType.melee:
-                    _currentAttackCor = _enemyController.StartCoroutine(AttackMeleeCor());
+                     _enemyController.StartCoroutine(AttackMeleeCor());
                     break;
                 default:
                     break;
@@ -73,6 +77,8 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackRangeCor()
     {
+        _currentAttackCor = true;
+
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
         enemy._laserObj.SetActive(true);
 
@@ -88,7 +94,7 @@ public class EnemyAttackState : State<EnemyController>
 
         enemy._laserObj.SetActive(false);
 
-        _currentAttackCor = null;
+        _currentAttackCor = false;
 
     }
 
@@ -98,9 +104,19 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackMeleeCor()
     {
+        
+        _currentAttackCor = true;
 
+        _enemyController._agent.speed = 0;
 
-        yield return null;
+        _enemyController._anim.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(_enemyController.AttackSpeed);
+
+        _enemyController._agent.speed = _enemyController.MoveSpeed;
+
+        _currentAttackCor = false;
+
     }
 
     public override void OnExit()
