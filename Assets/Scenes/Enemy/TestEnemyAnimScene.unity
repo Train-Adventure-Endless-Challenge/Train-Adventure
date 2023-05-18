@@ -106,15 +106,15 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 1
-    agentHeight: 4
+    agentRadius: 2.47
+    agentHeight: 8.47
     agentSlope: 45
     agentClimb: 2
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.33333334
+    cellSize: 0.8233333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -550,7 +550,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 3
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -609,7 +609,7 @@ MonoBehaviour:
   _obstructMask:
     serializedVersion: 2
     m_Bits: 128
-  isVisiblePlayer: 0
+  _isVisiblePlayer: 0
 --- !u!114 &522183028
 MonoBehaviour:
   m_ObjectHideFlags: 0
