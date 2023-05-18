@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName ="Item Data", menuName = "Scriptable Object/Item Data",order =int.MaxValue - 8)]
+[CreateAssetMenu(fileName = "Item Data", menuName = "Scriptable Object/Item Data", order = int.MaxValue - 8)]
 public class ItemData : ScriptableObject
 {
     [SerializeField] private int _id;                                                   // 아이템 id  
@@ -26,6 +26,8 @@ public class ItemData : ScriptableObject
     [SerializeField] private int _upgradeValueDefense;                                  // 아이템 강화 시 늘어나는 방어력
     [SerializeField] private float _upgradeValueAttackSpeed;                            // 아이템 강화 시 늘어나는 공격속도
     [SerializeField] private float _upgradeValueSpeed;                                  // 아이템 강화 시 늘어나는 이동속도 
+
+    [SerializeField] private bool _stackable = false;
     public int Id { get { return _id; } }
     public string Name { get { return _name; } }
     public Sprite ItemImage { get { return _itemImage; } }
@@ -49,4 +51,6 @@ public class ItemData : ScriptableObject
     public int UpgradeValueDefense { get { return _upgradeValueDefense; } }
     public float UpgradeValueAttackSpeed { get { return _upgradeValueAttackSpeed; } }
     public float UpgradeValueSpeed { get { return _upgradeValueSpeed; } }
+
+    public bool Stackable { get { return _stackable; } }
 }
