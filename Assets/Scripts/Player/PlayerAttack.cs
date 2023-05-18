@@ -8,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
 {
     #region Variable
 
-    [SerializeField] private float slowSpeedScale;
-    [SerializeField] private float originSpeedScale;
+    [SerializeField] private float _slowSpeedScale;
+    [SerializeField] private float _originSpeedScale;
 
     [SerializeField] private Transform _weaponTr;
 
@@ -75,13 +75,13 @@ public class PlayerAttack : MonoBehaviour
         _animator.SetTrigger("OnState");
         _trailRenderer.enabled = true;
         _weaponBoxCollider.enabled = true;
-        _playerController.ChangeSlowSpeed(slowSpeedScale, _animTime);
+        _playerController.ChangeSlowSpeed(_slowSpeedScale, _animTime);
         yield return new WaitForSeconds(_animTime);
-        _playerController.ChangeSlowSpeed(originSpeedScale, _animTime);
+        _playerController.ChangeSlowSpeed(_originSpeedScale, _animTime);
         _trailRenderer.enabled = false;
         _weaponBoxCollider.enabled = false;
         _animator.SetBool("IsAttack", false);
-        if (_playerController.moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
+        if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
         _animator.SetTrigger("OnState");
         _attackCor = null;

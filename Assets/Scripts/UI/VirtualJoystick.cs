@@ -72,7 +72,7 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
     {
         while (true)
         {
-            _playerManager.inputDirection = _inputDirection;
+            _playerManager._inputDirection = _inputDirection;
             yield return new WaitForEndOfFrame();
         }
     }

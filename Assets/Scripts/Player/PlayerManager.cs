@@ -7,8 +7,8 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 {
     #region Variable
 
-    public bool isPC = true;       // 테스트용
-    public Vector3 inputDirection; // 입력 값
+    public bool _isPC = true;       // 테스트용
+    public Vector3 _inputDirection; // 입력 값
 
     private Player _player;
     private PlayerController _playerController;
@@ -32,20 +32,20 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //#if UNITY_EDITOR
 
         // 플랫폼 전환을 실험하기 위한 테스트 코드 ※추후 삭제※
-        if (isPC)
+        if (_isPC)
         {
             _playerRolling.Roll(true);
         }
         if (_player.playerState != PlayerState.Rolling)
         {
-            if (isPC)
+            if (_isPC)
             {
                 _playerAttack.Attack(true);
                 _playerController.Move();
             }
             else
             {
-                _playerController.Move(inputDirection);
+                _playerController.Move(_inputDirection);
             }
         }
 
@@ -74,7 +74,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     /// </summary>
     public void OnSwitchButton()
     {
-        isPC = !isPC;
+        _isPC = !_isPC;
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     /// </summary>
     public void OnRollButton()
     {
-        if (isPC == false) // ※추후 삭제※
+        if (_isPC == false) // ※추후 삭제※
         {
             _playerRolling.Roll(false);
         }
@@ -93,7 +93,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     /// </summary>
     public void OnAttackButton()
     {
-        if (isPC == false)
+        if (_isPC == false)
         {
             _playerAttack.Attack(false);
         }
