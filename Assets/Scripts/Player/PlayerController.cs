@@ -148,7 +148,7 @@ public class PlayerController : SceneSingleton<PlayerController>
                 _smoothMoveCor = null;
             }
             StartCoroutine(SmoothMoveCor(moveSpeedScale, _inputDirection.magnitude));
-            _controller.Move(_speed * moveSpeedScale * Time.deltaTime * _inputDirection);
+            _controller.Move(_speed * _slowSpeedScale * moveSpeedScale * Time.deltaTime * _inputDirection);
             transform.forward = _inputDirection;
             if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
             {

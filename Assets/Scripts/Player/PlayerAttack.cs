@@ -34,18 +34,21 @@ public class PlayerAttack : MonoBehaviour
         //_weapon = _weaponTr.GetComponent<Weapon>();
     }
 
-    public void Attack()
+    public void Attack(bool isPC)
     {
-        if (Input.GetMouseButtonDown(0) && _attackCor == null)
+        if (_attackCor == null)
         {
-            StartCoroutine(AttackCor());
+            if ((isPC && Input.GetMouseButtonDown(0)) || !isPC)
+            {
+                _player.playerState = PlayerState.Attack;
+                _attackCor = AttackCor();
+                StartCoroutine(AttackCor());
+            }
         }
     }
 
     private IEnumerator AttackCor()
     {
-        _attackCor = AttackCor();
-        _player.playerState = PlayerState.Attack;
         _animator.SetBool("IsAttack", true);
         _animator.SetTrigger("OnState");
         _trailRenderer.enabled = true;

@@ -40,7 +40,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             if (isPC)
             {
-                _playerAttack.Attack();
+                _playerAttack.Attack(true);
                 _playerController.Move();
             }
             else
@@ -85,6 +85,14 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         if (isPC == false) // ※추후 삭제※
         {
             _playerRolling.Roll(false);
+        }
+    }
+
+    public void OnAttackButton()
+    {
+        if (isPC == false)
+        {
+            _playerAttack.Attack(false);
         }
     }
 
