@@ -28,6 +28,7 @@ public class EnemyFieldOfView : MonoBehaviour
 
         while (true)
         {
+
             yield return wait;
             CheckFieldOfView();
         }

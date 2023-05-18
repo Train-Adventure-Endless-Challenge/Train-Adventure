@@ -30,9 +30,13 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
-        _agent.SetDestination(_player.transform.position);
-
         CheckAttack();
+
+        if(_enemyController._enemyFieldOfView._isVisiblePlayer)
+        {
+            _agent.SetDestination(_player.transform.position);  
+        }
+
     }
 
     /// <summary>
@@ -42,8 +46,9 @@ public class EnemyAttackState : State<EnemyController>
     {
         if(!_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
-            Debug.Log("fdf");
+            _enemyController._anim.SetBool("WalkToPlayer", false);
             _enemyController.ChangeState<EnemyIdleState>();
+            return;
         }
 
         if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
@@ -100,7 +105,6 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void OnExit()
     {
-        _enemyController._anim.SetBool("WalkToPlayer", false);
         base.OnExit();
     }
 }
