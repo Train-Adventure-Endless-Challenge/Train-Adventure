@@ -13,6 +13,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
+    private PlayerAttack _playerAttack;
 
     #endregion
 
@@ -23,6 +24,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _player = GetComponent<Player>();
         _playerController = GetComponent<PlayerController>();
         _playerRolling = GetComponent<PlayerRolling>();
+        _playerAttack = GetComponent<PlayerAttack>();
     }
 
     private void Update()
@@ -38,6 +40,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             if (isPC)
             {
+                _playerAttack.Attack();
                 _playerController.Move();
             }
             else

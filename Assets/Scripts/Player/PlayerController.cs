@@ -21,10 +21,10 @@ public class PlayerController : SceneSingleton<PlayerController>
     private Vector3 _moveDirection;    // 움직일 방향
 
     private float _speed;              // 기본 속도
-    private float _moveSpeedScale;     // 현재 움직임 속도 비율
+    public float _moveSpeedScale;      // 현재 움직임 속도 비율
+    private float _gravity = -9.81f;   // 중력 가속도
     private float _speedScale = 0.5f;  // 걷기 속도 비율
     private float _runSpeedScale = 1f; // 달리기 속도 비율
-    private float _gravity = -9.81f;   // 중력 가속도
 
     #endregion
 
@@ -108,7 +108,7 @@ public class PlayerController : SceneSingleton<PlayerController>
             _moveDirection = new Vector3(x, 0f, z);
             _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _moveDirection);
             transform.forward = _moveDirection;
-            if (_player.playerState != PlayerState.Move)
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Move;
@@ -118,7 +118,7 @@ public class PlayerController : SceneSingleton<PlayerController>
         {
             StopMove();
             StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle)
+            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Idle;
@@ -146,7 +146,7 @@ public class PlayerController : SceneSingleton<PlayerController>
             StartCoroutine(SmoothMoveCor(_moveSpeedScale, _inputDirection.magnitude));
             _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _inputDirection);
             transform.forward = _inputDirection;
-            if (_player.playerState != PlayerState.Move)
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Move;
@@ -156,7 +156,7 @@ public class PlayerController : SceneSingleton<PlayerController>
         {
             StopMove();
             StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle)
+            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Idle;
