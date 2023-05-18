@@ -2,6 +2,9 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+/// <summary>
+/// 모바일 버전의 조이스틱을 담당하는 클래스
+/// </summary>
 public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     #region Variable
@@ -18,6 +21,8 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
 
     #region Function
 
+    #region LifeCycle
+
     private void Awake()
     {
         _rectTransform = GetComponent<RectTransform>();
@@ -28,6 +33,9 @@ public class VirtualJoystick : MonoBehaviour, IBeginDragHandler, IDragHandler, I
         _playerManager = PlayerManager.Instance;
         StartCoroutine(InputCor());
     }
+
+    #endregion
+
     public void OnBeginDrag(PointerEventData eventData)
     {
         ControlJoystickLever(eventData);

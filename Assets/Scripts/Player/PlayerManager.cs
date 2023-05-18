@@ -54,7 +54,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //if (_player.playerState != PlayerState.Rolling)
         //{
         //    _playerController.Move();
-        //}
+        //} 
 
         //#endif
 
@@ -70,7 +70,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     }
 
     /// <summary>
-    /// 플랫폼 Switch 버튼을 눌렀을 때 ※추후 삭제※
+    /// 플랫폼 Switch 버튼을 눌렀을 때ㅇ
     /// </summary>
     public void OnSwitchButton()
     {
@@ -87,7 +87,10 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerRolling.Roll(false);
         }
     }
-
+    
+    /// <summary>
+    /// 공격 버튼을 눌렀을 때
+    /// </summary>
     public void OnAttackButton()
     {
         if (isPC == false)

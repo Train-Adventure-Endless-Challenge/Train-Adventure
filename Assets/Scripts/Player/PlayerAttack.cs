@@ -1,8 +1,13 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// 플레이어의 공격을 담당하는 클래스
+/// </summary>
 public class PlayerAttack : MonoBehaviour
 {
+    #region Variable
+
     [SerializeField] private float slowSpeedScale;
     [SerializeField] private float originSpeedScale;
 
@@ -19,10 +24,18 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator _attackCor;
 
+    #endregion
+
+    #region Function
+
+    #region LifeCycle
+
     private void Awake()
     {
         Init();
     }
+
+    #endregion
 
     private void Init()
     {
@@ -34,6 +47,10 @@ public class PlayerAttack : MonoBehaviour
         //_weapon = _weaponTr.GetComponent<Weapon>();
     }
 
+    /// <summary>
+    /// 공격 함수
+    /// </summary>
+    /// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
     public void Attack(bool isPC)
     {
         if (_attackCor == null)
@@ -47,6 +64,11 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 공격 코루틴 함수
+    /// <br/> 애니메이션, trail, State 관리
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator AttackCor()
     {
         _animator.SetBool("IsAttack", true);
@@ -64,4 +86,6 @@ public class PlayerAttack : MonoBehaviour
         _animator.SetTrigger("OnState");
         _attackCor = null;
     }
+
+    #endregion
 }

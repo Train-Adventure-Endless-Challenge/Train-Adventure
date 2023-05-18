@@ -1,5 +1,4 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -39,7 +38,7 @@ public class PlayerController : SceneSingleton<PlayerController>
     private float _currentTime = 0f;                 // 현재 시간
 
     private IEnumerator _smoothMoveCor;              // 부드러운 움직임 코루틴 변수      
-    private IEnumerator _changeSlowSpeedCor;
+    private IEnumerator _changeSlowSpeedCor;         // 속도 변화 코루틴 변수
 
     #endregion
 
@@ -199,6 +198,11 @@ public class PlayerController : SceneSingleton<PlayerController>
         }
     }
 
+    /// <summary>
+    /// 공격시 속도 변화를 위한 함수
+    /// </summary>
+    /// <param name="endValue">달성 값</param>
+    /// <param name="lerpTime">러프 시간</param>
     public void ChangeSlowSpeed(float endValue, float lerpTime)
     {
         if (_changeSlowSpeedCor != null)
@@ -243,6 +247,13 @@ public class PlayerController : SceneSingleton<PlayerController>
         _smoothMoveCor = null;
     }
 
+    /// <summary>
+    /// 공격시 속도 변화를 위한 코루틴 함수
+    /// <br/> _slowSpeedScale 값을 바꿈
+    /// </summary>
+    /// <param name="endValue">달성 값</param>
+    /// <param name="lerpTime">러프 시간</param>
+    /// <returns></returns>
     private IEnumerator ChangeSlowSpeedCor(float endValue, float lerpTime)
     {
         if (_slowSpeedScale == endValue) yield break;
