@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Diagnostics;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -51,11 +50,13 @@ public class PlayerAttack : MonoBehaviour
         _animator.SetTrigger("OnState");
         _trailRenderer.enabled = true;
         _weaponBoxCollider.enabled = true;
+        _playerController.ChangeSlowSpeed(slowSpeedScale, _animTime);
         yield return new WaitForSeconds(_animTime);
+        _playerController.ChangeSlowSpeed(originSpeedScale, _animTime);
         _trailRenderer.enabled = false;
         _weaponBoxCollider.enabled = false;
         _animator.SetBool("IsAttack", false);
-        if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
+        if (_playerController.moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
         _animator.SetTrigger("OnState");
         _attackCor = null;

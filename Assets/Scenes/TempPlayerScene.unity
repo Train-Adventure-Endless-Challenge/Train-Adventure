@@ -1406,8 +1406,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a8158a5aded1e344ab537b72b8bc219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowSpeedScale: 0
-  originSpeedScale: 0
+  slowSpeedScale: 0.3
+  originSpeedScale: 1
   _weaponTr: {fileID: 307373964}
 --- !u!1001 &5447336631932868899
 PrefabInstance:

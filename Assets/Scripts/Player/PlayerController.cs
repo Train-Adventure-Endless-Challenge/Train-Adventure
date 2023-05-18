@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -20,11 +21,13 @@ public class PlayerController : SceneSingleton<PlayerController>
     private Vector3 _velocity;         // 중력
     private Vector3 _moveDirection;    // 움직일 방향
 
+    public float moveSpeedScale;       // 현재 움직임 속도 비율
+
     private float _speed;              // 기본 속도
-    public float _moveSpeedScale;      // 현재 움직임 속도 비율
     private float _gravity = -9.81f;   // 중력 가속도
     private float _speedScale = 0.5f;  // 걷기 속도 비율
     private float _runSpeedScale = 1f; // 달리기 속도 비율
+    private float _slowSpeedScale = 1f;// 감속 비율 
 
     #endregion
 
@@ -35,7 +38,8 @@ public class PlayerController : SceneSingleton<PlayerController>
     private float _lerpTime = 1f;                    // 최종 러프 시간
     private float _currentTime = 0f;                 // 현재 시간
 
-    private IEnumerator _smoothMoveCor;              // 코루틴 변수      
+    private IEnumerator _smoothMoveCor;              // 부드러운 움직임 코루틴 변수      
+    private IEnumerator _changeSlowSpeedCor;
 
     #endregion
 
@@ -98,15 +102,15 @@ public class PlayerController : SceneSingleton<PlayerController>
             if (Input.GetKey(_runningKey))
             {
                 StopMove();
-                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));
+                StartCoroutine(SmoothMoveCor(moveSpeedScale, _runSpeedScale));
             }
             else
             {
                 StopMove();
-                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _speedScale));
+                StartCoroutine(SmoothMoveCor(moveSpeedScale, _speedScale));
             }
             _moveDirection = new Vector3(x, 0f, z);
-            _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _moveDirection);
+            _controller.Move(_speed * _slowSpeedScale * moveSpeedScale * Time.deltaTime * _moveDirection);
             transform.forward = _moveDirection;
             if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
             {
@@ -117,14 +121,14 @@ public class PlayerController : SceneSingleton<PlayerController>
         else
         {
             StopMove();
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
+            StartCoroutine(SmoothMoveCor(moveSpeedScale, 0f));
+            if (moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Idle;
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
+        _animator.SetFloat("MoveSpeed", Mathf.Round(moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
     }
 
     /// <summary>
@@ -143,8 +147,8 @@ public class PlayerController : SceneSingleton<PlayerController>
                 StopCoroutine(_smoothMoveCor);
                 _smoothMoveCor = null;
             }
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, _inputDirection.magnitude));
-            _controller.Move(_speed * _moveSpeedScale * Time.deltaTime * _inputDirection);
+            StartCoroutine(SmoothMoveCor(moveSpeedScale, _inputDirection.magnitude));
+            _controller.Move(_speed * moveSpeedScale * Time.deltaTime * _inputDirection);
             transform.forward = _inputDirection;
             if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
             {
@@ -155,14 +159,14 @@ public class PlayerController : SceneSingleton<PlayerController>
         else
         {
             StopMove();
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
+            StartCoroutine(SmoothMoveCor(moveSpeedScale, 0f));
+            if (moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
             {
                 _animator.SetTrigger("OnState");
                 _player.playerState = PlayerState.Idle;
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
+        _animator.SetFloat("MoveSpeed", Mathf.Round(moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
     }
 
     /// <summary>
@@ -195,6 +199,15 @@ public class PlayerController : SceneSingleton<PlayerController>
         }
     }
 
+    public void ChangeSlowSpeed(float endValue, float lerpTime)
+    {
+        if (_changeSlowSpeedCor != null)
+        {
+            StopCoroutine(_changeSlowSpeedCor);
+        }
+        StartCoroutine(ChangeSlowSpeedCor(endValue, lerpTime));
+    }
+
     #endregion
 
     #region SmoothMove
@@ -209,11 +222,11 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// <returns></returns>
     private IEnumerator SmoothMoveCor(float startValue, float endValue)
     {
-        if (_moveSpeedScale == endValue) yield break;
-        _currentTime = 0f;
         _lerpTime = 1f;
+        _currentTime = 0f;
+        if (moveSpeedScale == endValue) yield break;
         _smoothMoveCor = SmoothMoveCor(startValue, endValue);
-        while (_moveSpeedScale != endValue)
+        while (moveSpeedScale != endValue)
         {
             _currentTime += Time.deltaTime;
 
@@ -223,11 +236,34 @@ public class PlayerController : SceneSingleton<PlayerController>
             }
             float curveValue = _animationCurve.Evaluate(_currentTime / _lerpTime);
 
-            _moveSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);
+            moveSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);
 
             yield return new WaitForEndOfFrame();
         }
         _smoothMoveCor = null;
+    }
+
+    private IEnumerator ChangeSlowSpeedCor(float endValue, float lerpTime)
+    {
+        if (_slowSpeedScale == endValue) yield break;
+        _changeSlowSpeedCor = ChangeSlowSpeedCor(endValue, lerpTime);
+        float currentTime = 0f;
+        float startValue = _slowSpeedScale;
+        while (_slowSpeedScale != endValue)
+        {
+            currentTime += Time.deltaTime;
+
+            if (currentTime >= lerpTime)
+            {
+                currentTime = lerpTime;
+            }
+            float curveValue = _animationCurve.Evaluate(currentTime / lerpTime);
+
+            _slowSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);
+
+            yield return new WaitForEndOfFrame();
+        }
+        _changeSlowSpeedCor = null;
     }
 
     #endregion
