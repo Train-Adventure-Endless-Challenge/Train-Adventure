@@ -10,8 +10,6 @@ public class EnemyIdleState : State<EnemyController>
     public override void OnEnter()
     {
         base.OnEnter();
-        Debug.Log("fdf");
-
         _enemyController = _context.GetComponent<EnemyController>();
         _enemyController.StartCoroutine(DelayToMoveCor());
     }
