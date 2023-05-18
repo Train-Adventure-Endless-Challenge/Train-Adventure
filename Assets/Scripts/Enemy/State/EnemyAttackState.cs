@@ -23,8 +23,9 @@ public class EnemyAttackState : State<EnemyController>
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
-        _agent.stoppingDistance += _enemyController.AttackRange;        
-       
+        _agent.stoppingDistance += _enemyController.AttackRange;
+
+        _enemyController._anim.SetBool("WalkToPlayer", true);
     }
 
     public override void Update(float deltaTime)
@@ -91,6 +92,15 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackMeleeCor()
     {
+
+
         yield return null;
+    }
+
+    public override void OnExit()
+    {
+        _enemyController._anim.SetBool("WalkToPlayer", false);
+
+        base.OnExit();
     }
 }
