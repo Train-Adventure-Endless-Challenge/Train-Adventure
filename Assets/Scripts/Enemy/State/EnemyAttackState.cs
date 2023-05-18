@@ -42,6 +42,7 @@ public class EnemyAttackState : State<EnemyController>
     {
         if(!_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
+            Debug.Log("fdf");
             _enemyController.ChangeState<EnemyIdleState>();
         }
 
@@ -100,7 +101,6 @@ public class EnemyAttackState : State<EnemyController>
     public override void OnExit()
     {
         _enemyController._anim.SetBool("WalkToPlayer", false);
-
         base.OnExit();
     }
 }
