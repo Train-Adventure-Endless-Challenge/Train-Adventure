@@ -27,12 +27,13 @@ public class EnemyMoveState : State<EnemyController>
             _targetPos.position = _point;
         }
 
+        _enemyController._anim.SetBool("Walk", true);
     }
 
     public override void Update(float deltaTime)
     {
 
-        if (_fov.isVisiblePlayer)
+        if (_fov._isVisiblePlayer)
         {
             _enemyController.ChangeState<EnemyAttackState>();
         }
@@ -68,5 +69,12 @@ public class EnemyMoveState : State<EnemyController>
 
         result = Vector3.zero;
         return false;
+    }
+
+    public override void OnExit()
+    {
+        _enemyController._anim.SetBool("Walk", false);
+
+        base.OnExit();
     }
 }

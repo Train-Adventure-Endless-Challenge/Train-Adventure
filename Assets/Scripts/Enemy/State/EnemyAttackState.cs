@@ -4,6 +4,7 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class EnemyAttackState : State<EnemyController>
 {
@@ -13,7 +14,7 @@ public class EnemyAttackState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
-    private Coroutine _currentAttackCor;
+    private bool _isCurrentAttackCor;
 
     public override void OnEnter()
     {
@@ -23,15 +24,21 @@ public class EnemyAttackState : State<EnemyController>
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
-        _agent.stoppingDistance += _enemyController.AttackRange;        
-       
+        _agent.stoppingDistance += _enemyController.AttackRange;
+
+        _enemyController._anim.SetBool("WalkToPlayer", true);
     }
 
     public override void Update(float deltaTime)
     {
-        _agent.SetDestination(_player.transform.position);
 
         CheckAttack();
+
+        if(_enemyController._enemyFieldOfView._isVisiblePlayer)
+        {
+            _agent.SetDestination(_player.transform.position);  
+        }
+
     }
 
     /// <summary>
@@ -39,15 +46,23 @@ public class EnemyAttackState : State<EnemyController>
     /// </summary>
     private void CheckAttack()
     {
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == null )
+        if(!_enemyController._enemyFieldOfView._isVisiblePlayer && _isCurrentAttackCor == false)
+        {
+            _enemyController._anim.SetBool("WalkToPlayer", false);
+            _enemyController.ChangeState<EnemyIdleState>();
+            return;
+        }
+
+
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _isCurrentAttackCor == false )
         {
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
-                    _currentAttackCor = _enemyController.StartCoroutine(AttackRangeCor());
+                    _enemyController.StartCoroutine(AttackRangeCor());
                     break;
                 case EnemyType.melee:
-                    _currentAttackCor = _enemyController.StartCoroutine(AttackMeleeCor());
+                     _enemyController.StartCoroutine(AttackMeleeCor());
                     break;
                 default:
                     break;
@@ -61,6 +76,8 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackRangeCor()
     {
+        _isCurrentAttackCor = true;
+
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
         enemy._laserObj.SetActive(true);
 
@@ -76,7 +93,7 @@ public class EnemyAttackState : State<EnemyController>
 
         enemy._laserObj.SetActive(false);
 
-        _currentAttackCor = null;
+        _isCurrentAttackCor = false;
 
     }
 
@@ -86,6 +103,23 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackMeleeCor()
     {
-        yield return null;
+        
+        _isCurrentAttackCor = true;
+
+        _enemyController._agent.isStopped = true;
+
+        _enemyController._anim.SetTrigger("Attack");
+
+        yield return new WaitForSeconds(_enemyController.AttackSpeed);
+
+        _enemyController._agent.isStopped = false;
+
+        _isCurrentAttackCor = false;
+
+    }
+
+    public override void OnExit()
+    {
+        base.OnExit();
     }
 }

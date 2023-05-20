@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public abstract class EnemyController : MonoBehaviour
 {
     protected StateMachine<EnemyController> _stateMachine;
+    public Animator _anim;
 
     [Header("EnemyData")]
     [SerializeField] private EnemyData _enemyData;
@@ -38,13 +39,14 @@ public abstract class EnemyController : MonoBehaviour
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
-        _agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponentInChildren<NavMeshAgent>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Start()
     {
-        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
         Init();
+        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
     }
 
     /// <summary>
