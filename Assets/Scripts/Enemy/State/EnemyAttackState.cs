@@ -122,6 +122,14 @@ public class EnemyAttackState : State<EnemyController>
 
         _enemyController._anim.SetTrigger("Attack");
 
+        // 실제 공격 체크
+        if (_enemyController._enemyFieldOfView._isVisiblePlayer && Vector3.Distance(_enemyController.transform.position, _player.transform.position) < _enemyController.AttackRange + _agent.stoppingDistance)
+        {
+            Player player = _player.GetComponent<Player>();     //  추후 싱글톤으로 찾는다면 로직 수정
+            player.Hp -= _enemyController.Damage;
+        }
+
+
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
 
         _enemyController._agent.isStopped = false;
