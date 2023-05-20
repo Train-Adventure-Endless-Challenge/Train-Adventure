@@ -16,7 +16,7 @@ public class EnemyIdleState : State<EnemyController>
 
     IEnumerator DelayToMoveCor()
     {
-        _enemyController._agent.speed = 0;
+        _enemyController._agent.isStopped= true;
         yield return new WaitForSeconds(1f);        // 변수로도 설정 가능 추후 기획으로 정해질 시 변수 선언 
 
         _enemyController.ChangeState<EnemyMoveState>();
@@ -28,8 +28,9 @@ public class EnemyIdleState : State<EnemyController>
 
     public override void OnExit()
     {
+        _enemyController._agent.isStopped = false;
         _enemyController.StopAllCoroutines();
-        _enemyController._agent.speed = _enemyController.AttackSpeed;
+
         base.OnExit();
     }
 }

@@ -4,6 +4,7 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class EnemyAttackState : State<EnemyController>
 {
@@ -13,8 +14,7 @@ public class EnemyAttackState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
-     //private IEnumerator _currentAttackCor;
-    private bool _currentAttackCor;
+    private bool _isCurrentAttackCor;
 
     public override void OnEnter()
     {
@@ -53,9 +53,8 @@ public class EnemyAttackState : State<EnemyController>
             return;
         }
 
-        Debug.Log(_currentAttackCor == false);
 
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _currentAttackCor == false )
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _isCurrentAttackCor == false )
         {
             switch (_enemyController.EnemyType)
             {
@@ -77,7 +76,7 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackRangeCor()
     {
-        _currentAttackCor = true;
+        _isCurrentAttackCor = true;
 
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
         enemy._laserObj.SetActive(true);
@@ -94,7 +93,7 @@ public class EnemyAttackState : State<EnemyController>
 
         enemy._laserObj.SetActive(false);
 
-        _currentAttackCor = false;
+        _isCurrentAttackCor = false;
 
     }
 
@@ -105,17 +104,17 @@ public class EnemyAttackState : State<EnemyController>
     IEnumerator AttackMeleeCor()
     {
         
-        _currentAttackCor = true;
+        _isCurrentAttackCor = true;
 
-        _enemyController._agent.speed = 0;
+        _enemyController._agent.isStopped = true;
 
         _enemyController._anim.SetTrigger("Attack");
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
 
-        _enemyController._agent.speed = _enemyController.MoveSpeed;
+        _enemyController._agent.isStopped = false;
 
-        _currentAttackCor = false;
+        _isCurrentAttackCor = false;
 
     }
 
