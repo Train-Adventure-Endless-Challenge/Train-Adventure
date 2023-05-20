@@ -46,7 +46,7 @@ public class EnemyAttackState : State<EnemyController>
     /// </summary>
     private void CheckAttack()
     {
-        if(!_enemyController._enemyFieldOfView._isVisiblePlayer)
+        if(!_enemyController._enemyFieldOfView._isVisiblePlayer && _isCurrentAttackCor == false)
         {
             _enemyController._anim.SetBool("WalkToPlayer", false);
             _enemyController.ChangeState<EnemyIdleState>();
