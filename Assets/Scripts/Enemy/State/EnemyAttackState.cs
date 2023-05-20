@@ -16,14 +16,20 @@ public class EnemyAttackState : State<EnemyController>
 
     private bool _isCurrentAttackCor;
 
+    private float _agentStopDistance;
+
     public override void OnEnter()
     {
         base.OnEnter();
+
 
         _player = GameObject.FindGameObjectWithTag("Player");
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
+
+
+        _agentStopDistance = _agent.stoppingDistance;
         _agent.stoppingDistance += _enemyController.AttackRange;
 
         _enemyController._anim.SetBool("WalkToPlayer", true);
@@ -103,8 +109,14 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackMeleeCor()
     {
-        
         _isCurrentAttackCor = true;
+
+        // 잘못 인식된 경우 나가기
+        if(Vector3.Distance(_enemyController.transform.position, _player.transform.position) > _enemyController.AttackRange + _agent.stoppingDistance)
+        {
+            _isCurrentAttackCor = false;
+            yield break;
+        }
 
         _enemyController._agent.isStopped = true;
 
@@ -120,6 +132,7 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void OnExit()
     {
+        _enemyController._agent.stoppingDistance = _agentStopDistance;
         base.OnExit();
     }
 }
