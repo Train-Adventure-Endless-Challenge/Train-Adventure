@@ -21,10 +21,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private void Awake()
     {
-        _player = GetComponent<Player>();
-        _playerController = GetComponent<PlayerController>();
-        _playerRolling = GetComponent<PlayerRolling>();
-        _playerAttack = GetComponent<PlayerAttack>();
+        Init();
     }
 
     private void Update()
@@ -69,12 +66,20 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //#endif
     }
 
+    private void Init()
+    {
+        _player = GetComponent<Player>();
+        _playerController = GetComponent<PlayerController>();
+        _playerRolling = GetComponent<PlayerRolling>();
+        _playerAttack = GetComponent<PlayerAttack>();
+    }
+
     /// <summary>
-    /// 플랫폼 Switch 버튼을 눌렀을 때ㅇ
+    /// 플랫폼 Switch 버튼을 눌렀을 때
     /// </summary>
     public void OnSwitchButton()
     {
-        _isPC = !_isPC;
+        _isPC = !_isPC; // 플랫폼 변경
     }
 
     /// <summary>
@@ -82,9 +87,9 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     /// </summary>
     public void OnRollButton()
     {
-        if (_isPC == false) // ※추후 삭제※
+        if (_isPC == false)             // ※추후 삭제※
         {
-            _playerRolling.Roll(false);
+            _playerRolling.Roll(false); // 구르기 실행
         }
     }
     

@@ -13,20 +13,21 @@ public class PlayerController : SceneSingleton<PlayerController>
     [Header("Key")]
     [SerializeField] private KeyCode _runningKey;
 
+    [Header("Variable")]
+    public float _moveSpeedScale;                    // 현재 움직임 속도 비율
+
     private Player _player;
     private Animator _animator;
     private CharacterController _controller;
 
-    private Vector3 _velocity;         // 중력
-    private Vector3 _moveDirection;    // 움직일 방향
+    private Vector3 _velocity;                      // 중력 방향
+    private Vector3 _moveDirection;                 // 움직일 방향
 
-    public float _moveSpeedScale;       // 현재 움직임 속도 비율
-
-    private float _speed;              // 기본 속도
-    private float _gravity = -9.81f;   // 중력 가속도
-    private float _speedScale = 0.5f;  // 걷기 속도 비율
-    private float _runSpeedScale = 1f; // 달리기 속도 비율
-    private float _slowSpeedScale = 1f;// 감속 비율 
+    private float _speed;                           // 기본 속도
+    private float _gravity = -9.81f;                // 중력 가속도
+    private float _speedScale = 0.5f;               // 걷기 속도 비율
+    private float _runSpeedScale = 1f;              // 달리기 속도 비율
+    private float _slowSpeedScale = 1f;             // 감속 비율 
 
     #endregion
 
@@ -50,18 +51,18 @@ public class PlayerController : SceneSingleton<PlayerController>
 
     void Awake()
     {
-        Init();
+        Init(); // 초기화 진행
     }
 
     // Update is called once per frame
     void Update()
     {
-        UseGravity();
+        UseGravity(); // 중력
     }
 
     private void Start()
     {
-        DataInit();
+        DataInit(); // 데이터 초기화
     }
 
     #endregion
@@ -70,9 +71,12 @@ public class PlayerController : SceneSingleton<PlayerController>
 
     /// <summary>
     /// 초기화 함수
+    /// <br/>
+    /// 플레이어, 애니메이션 등 초기화
     /// </summary>
     private void Init()
     {
+        // 플레이어, 애니메이션 등 초기화
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
@@ -80,6 +84,8 @@ public class PlayerController : SceneSingleton<PlayerController>
 
     /// <summary>
     /// 데이터 초기화 함수
+    /// <br/>
+    /// 데이터 값에서 플레이어의 속도를 초기화
     /// </summary>
     private void DataInit()
     {
@@ -94,40 +100,41 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// </summary>
     public void Move()
     {
+        // 입력값 받기
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        if (x != 0 || z != 0)
+        if (x != 0 || z != 0)                                                                                                  // 움직이고 있다면
         {
-            if (Input.GetKey(_runningKey))
+            if (Input.GetKey(_runningKey))                                                                                     // 달리는 키를 눌렀을 때
             {
-                StopMove();
-                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));
+                StopMove();                                                                                                    // 코루틴 종료
+                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));                                                // 달리기 코루틴 실행
             }
             else
             {
-                StopMove();
-                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _speedScale));
+                StopMove();                                                                                                    // 코루틴 종료
+                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _speedScale));                                                   // 걷기 코루틴 실행
             }
-            _moveDirection = new Vector3(x, 0f, z);
-            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection);
-            transform.forward = _moveDirection;
-            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
+            _moveDirection = new Vector3(x, 0f, z);                                                                            // 움직임 방향
+            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection);                    // 움직이기
+            transform.forward = _moveDirection;                                                                                // 움직이는 방향으로 플레이어 시점 초기화
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)                          // 상태를 초기화 해아할 때
             {
-                _animator.SetTrigger("OnState");
-                _player.playerState = PlayerState.Move;
+                _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+                _player.playerState = PlayerState.Move;                                                                        // 상태 초기화
             }
         }
         else
         {
-            StopMove();
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
+            StopMove();                                                                                                        // 코루틴 종료
+            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
+            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
             {
-                _animator.SetTrigger("OnState");
-                _player.playerState = PlayerState.Idle;
+                _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+                _player.playerState = PlayerState.Idle;                                                                        // 상태 변경
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
+        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
     }
 
     /// <summary>
@@ -138,34 +145,34 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// <param name="inputDirection">조이스틱 입력 값</param>
     public void Move(Vector2 inputDirection)
     {
-        Vector3 _inputDirection = new Vector3(inputDirection.x, 0, inputDirection.y);
-        if (_inputDirection != Vector3.zero)
+        Vector3 _inputDirection = new Vector3(inputDirection.x, 0, inputDirection.y);                                          // 입력값 받기
+        if (_inputDirection != Vector3.zero)                                                                                   // 움직이고 있다면
         {
-            if (_smoothMoveCor != null)
+            if (_smoothMoveCor != null)                                                                                        // 코루틴이 실행되고 있다면
             {
-                StopCoroutine(_smoothMoveCor);
-                _smoothMoveCor = null;
+                StopCoroutine(_smoothMoveCor);                                                                                 // 코루틴 종료
+                _smoothMoveCor = null;                                                                                         // 코루틴 초기화
             }
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, _inputDirection.magnitude));
-            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _inputDirection);
-            transform.forward = _inputDirection;
-            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)
+            StartCoroutine(SmoothMoveCor(_moveSpeedScale, _inputDirection.magnitude));                                         // 움직임 코루틴 실행
+            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _inputDirection);                   // 움직이기
+            transform.forward = _inputDirection;                                                                               // 움직이는 방향으로 플레이어 시점 초기화
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)                          // 상태를 초기화 해야할 때
             {
-                _animator.SetTrigger("OnState");
-                _player.playerState = PlayerState.Move;
+                _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+                _player.playerState = PlayerState.Move;                                                                        // 상태 변경
             }
         }
         else
         {
-            StopMove();
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack)
+            StopMove();                                                                                                        // 코루틴 종료
+            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
+            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
             {
-                _animator.SetTrigger("OnState");
-                _player.playerState = PlayerState.Idle;
+                _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+                _player.playerState = PlayerState.Idle;                                                                        // 상태 변경
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
+        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
     }
 
     /// <summary>
@@ -175,15 +182,16 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// </summary>
     private void UseGravity()
     {
-        if (_controller.isGrounded == false)
+        if (_controller.isGrounded == false)          // 땅에 닿아 있지 않다면
         {
-            _velocity.y += _gravity * Time.deltaTime;
+            _velocity.y += _gravity * Time.deltaTime; // 중력 방향 할당
         }
         else
         {
-            _velocity.y = 0f;
+            _velocity.y = 0f;                         // 방향 초기화
+            return;
         }
-        _controller.Move(Time.deltaTime * _velocity);
+        _controller.Move(Time.deltaTime * _velocity); // 중력 적용
     }
 
     /// <summary>
@@ -191,10 +199,10 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// </summary>
     private void StopMove()
     {
-        if (_smoothMoveCor != null)
+        if (_smoothMoveCor != null)        // 코루틴이 실행 중이라면
         {
-            StopCoroutine(_smoothMoveCor);
-            _smoothMoveCor = null;
+            StopCoroutine(_smoothMoveCor); // 코루틴 종료
+            _smoothMoveCor = null;         // 코루틴 초기화
         }
     }
 
@@ -205,11 +213,12 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// <param name="lerpTime">러프 시간</param>
     public void ChangeSlowSpeed(float endValue, float lerpTime)
     {
-        if (_changeSlowSpeedCor != null)
+        if (_changeSlowSpeedCor != null)                        // 코루틴이 실행 중이라면
         {
-            StopCoroutine(_changeSlowSpeedCor);
+            StopCoroutine(_changeSlowSpeedCor);                 // 코루틴 종료
+            _changeSlowSpeedCor = null;                         // 코루틴 초기화
         }
-        StartCoroutine(ChangeSlowSpeedCor(endValue, lerpTime));
+        StartCoroutine(ChangeSlowSpeedCor(endValue, lerpTime)); // 감속 코루틴 실행
     }
 
     #endregion
@@ -226,25 +235,28 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// <returns></returns>
     private IEnumerator SmoothMoveCor(float startValue, float endValue)
     {
-        _lerpTime = 1f;
-        _currentTime = 0f;
-        if (_moveSpeedScale == endValue) yield break;
-        _smoothMoveCor = SmoothMoveCor(startValue, endValue);
-        while (_moveSpeedScale != endValue)
+        if (_moveSpeedScale == endValue)                                           // 이미 달성 값에 도달 했다면
         {
-            _currentTime += Time.deltaTime;
+            yield break;                                                           // 코루틴 종료
+        }
+        _lerpTime = 1f;                                                            // 러프 시간 
+        _currentTime = 0f;                                                         // 현재 시간
+        _smoothMoveCor = SmoothMoveCor(startValue, endValue);                      // 현재 코루틴을 할당
+        while (_moveSpeedScale != endValue)                                        // 달성값과 일치 할 때까지 진행
+        {
+            _currentTime += Time.deltaTime;                                        // 현재 시간 더하기
 
-            if (_currentTime >= _lerpTime)
+            if (_currentTime >= _lerpTime)                                         // 러프 시간 보다 크다면
             {
-                _currentTime = _lerpTime;
+                _currentTime = _lerpTime;                                          // 값 일치 시키기
             }
-            float curveValue = _animationCurve.Evaluate(_currentTime / _lerpTime);
+            float curveValue = _animationCurve.Evaluate(_currentTime / _lerpTime); // 애니메이션 커브 x값을 시간과 일치 시켜줌
 
-            _moveSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);
+            _moveSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);        // 움직임의 값을 시간 만큼 Lerp 시킴
 
             yield return new WaitForEndOfFrame();
         }
-        _smoothMoveCor = null;
+        _smoothMoveCor = null;                                                     // 코루틴 초기화
     }
 
     /// <summary>
@@ -256,25 +268,28 @@ public class PlayerController : SceneSingleton<PlayerController>
     /// <returns></returns>
     private IEnumerator ChangeSlowSpeedCor(float endValue, float lerpTime)
     {
-        if (_slowSpeedScale == endValue) yield break;
-        _changeSlowSpeedCor = ChangeSlowSpeedCor(endValue, lerpTime);
-        float currentTime = 0f;
-        float startValue = _slowSpeedScale;
-        while (_slowSpeedScale != endValue)
+        if (_slowSpeedScale == endValue)                                         // 이미 최종 값에 도달 했다면
         {
-            currentTime += Time.deltaTime;
+            yield break;                                                         // 코루틴 종료
+        }
+        _changeSlowSpeedCor = ChangeSlowSpeedCor(endValue, lerpTime);            // 현재 코루틴 할당
+        float currentTime = 0f;                                                  // 현재 시간
+        float startValue = _slowSpeedScale;                                      // 시작 값
+        while (_slowSpeedScale != endValue)                                      // 달성값과 일치 할 때 까지 진행
+        {
+            currentTime += Time.deltaTime;                                       // 현재 시간 더하기
 
-            if (currentTime >= lerpTime)
+            if (currentTime >= lerpTime)                                         // 러프 시간 보다 크다면
             {
-                currentTime = lerpTime;
+                currentTime = lerpTime;                                          // 값 일치 시키기
             }
-            float curveValue = _animationCurve.Evaluate(currentTime / lerpTime);
+            float curveValue = _animationCurve.Evaluate(currentTime / lerpTime); // 애니메이션의 커브 x값을 시간과 일치 시켜줌
 
-            _slowSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);
+            _slowSpeedScale = Mathf.Lerp(startValue, endValue, curveValue);      // 감속의 값을 시간 만큼 Lerp 시킴
 
             yield return new WaitForEndOfFrame();
         }
-        _changeSlowSpeedCor = null;
+        _changeSlowSpeedCor = null;                                              // 코루틴 초기화
     }
 
     #endregion

@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 /// <summary>
 /// Idle의 상태를 수시로 바꿔주는 클래스 
