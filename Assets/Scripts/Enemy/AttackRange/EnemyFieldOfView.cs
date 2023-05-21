@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ public class EnemyFieldOfView : MonoBehaviour
     public LayerMask _targetMask;       // 목표 layer (ex. player)
     public LayerMask _obstructMask;     // 방해물 layer
 
-    public bool isVisiblePlayer;          //목표 (플레이어)가 범위 내에 있는가
+    public bool _isVisiblePlayer;          //목표 (플레이어)가 범위 내에 있는가
 
     private void Start()
     {
@@ -28,6 +28,7 @@ public class EnemyFieldOfView : MonoBehaviour
 
         while (true)
         {
+
             yield return wait;
             CheckFieldOfView();
         }
@@ -51,14 +52,14 @@ public class EnemyFieldOfView : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, _obstructMask))
-                    isVisiblePlayer = true;
+                    _isVisiblePlayer = true;
                 else
-                    isVisiblePlayer = false;
+                    _isVisiblePlayer = false;
             }
             else
-                isVisiblePlayer = false;
+                _isVisiblePlayer = false;
         }
-        else if (isVisiblePlayer)
-            isVisiblePlayer = false;
+        else if (_isVisiblePlayer)
+            _isVisiblePlayer = false;
     }
 }

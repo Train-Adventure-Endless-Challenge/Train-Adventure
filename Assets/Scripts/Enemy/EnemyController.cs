@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
 using Unity.VisualScripting;
@@ -8,25 +8,63 @@ using UnityEngine.AI;
 public abstract class EnemyController : MonoBehaviour
 {
     protected StateMachine<EnemyController> _stateMachine;
+    public Animator _anim;
 
-    public EnemyFieldOfView _enemyFieldOfView;
+    [Header("EnemyData")]
+    [SerializeField] private EnemyData _enemyData;
+    private string _name;
+    private float _hp;
+    private float _damage;
+    private float _moveSpeed;
+    private float _attackSpeed;
+    private float _attackRange;
+    private EnemyType _enemyType;
 
-    public NavMeshAgent _agent;
+    public string Name { get { return _name; }  }
+    public float HP { get { return _hp; }  set { _hp = value; } }
+    public float Damage { get { return _damage; } }
+    public float MoveSpeed { get { return _moveSpeed; } }
+    public float AttackSpeed { get { return _attackSpeed; } }
+    public float AttackRange { get { return _attackRange; } }
+    public EnemyType EnemyType { get { return _enemyType; } }
+
+    [Header("Move")]
+    [HideInInspector] public NavMeshAgent _agent;
     public Transform _target;
+
+    [Header("AttackCheck")]
+    [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
+
 
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
-        _agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponentInChildren<NavMeshAgent>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Start()
     {
+        Init();
         _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
+    }
+
+    /// <summary>
+    /// enemy 초기화
+    /// </summary>
+    protected virtual void Init()
+    {
+        _name = _enemyData._name;
+        _hp = _enemyData._hp;
+        _damage = _enemyData._damage;
+        _moveSpeed = _enemyData._moveSpeed;
+        _attackSpeed = _enemyData._attackSpeed;
+        _attackRange= _enemyData._attackRange;
+        _enemyType = _enemyData._enemyType;
 
     }
 
-    // Update is called once per frame
+
     protected virtual void Update()
     {
         _stateMachine.Update(Time.deltaTime);
@@ -34,7 +72,7 @@ public abstract class EnemyController : MonoBehaviour
 
     public R ChangeState<R>() where R : State<EnemyController>
     {
-
+       
         return _stateMachine.ChangeState<R>();
     }
 
