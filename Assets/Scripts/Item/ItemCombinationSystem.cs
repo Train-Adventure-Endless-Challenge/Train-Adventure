@@ -9,33 +9,31 @@ public class ItemCombinationSystem : MonoBehaviour
     /// <summary>
     /// 조합법 변수
     /// </summary>
-    public Dictionary<List<int>, int> _itemCombinationMethod;
-    private List<Item> _ingredientItem = new List<Item>();
+    public Dictionary<List<int>, int> _itemCombinationMethods;
+    private List<Item> _ingredientItems = new List<Item>();
+
 
 
     void Start()
     {
-        _itemCombinationMethod = ItemDataManager.Instance.ItemCombinationMethod;
+        _itemCombinationMethods = ItemDataManager.Instance.ItemCombinationMethod;
+
         ////////////////////////////////////// 테스트 ///////////////////////////////////////
         Combination();
     }
 
-    void Update()
-    {
-
-    }
-
     void Combination()
     {
-        List<int> ingredientId = new List<int>();
-        foreach (Item item in _ingredientItem)
-            ingredientId.Add(item.Id);
+        List<int> ingredientIds = new List<int>();
+        foreach (Item item in _ingredientItems)
+            ingredientIds.Add(item.Id);
 
 
-        foreach (List<int> combination in _itemCombinationMethod.Keys)
+        foreach (List<int> combination in _itemCombinationMethods.Keys)
         {
             List<int> com = new List<int>(combination);
-            com = com.Except(ingredientId).ToList();
+            com = com.Except(ingredientIds).ToList();
+
 
             if (com.Count <= 0) // 조합법 충족
             {

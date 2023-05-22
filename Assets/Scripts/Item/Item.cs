@@ -1,8 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public enum ArmorType
@@ -35,6 +32,40 @@ public class Item : MonoBehaviour
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
     public int Id { get { return _id; } }
+    public string Name { get { return _name; } }
+    public string Description { get { return _description; } }  
+    public float AdditionalHp { get { return _additionalHp; } }
+    public int AdditionalStemina { get { return _additionalStemina; } }
+    public float AdditionalStrength { get { return _additionalStrength; } }
+    public int AdditionalDefense { get { return _additionalDefense; } }
+    public float AdditionalAttackSpeed { get { return _additionalAttackSpeed; } }
+    public float AdditionalSpeed { get { return _additionalSpeed; } }
+
+    public int Level { get { return _level; } }
+
+
+    public Item(Item item)
+    {
+        itemData = item.ItemData;
+
+        _id = item.Id;
+        _name = item.Name;
+        _description = item.Description;
+        _additionalHp = item.AdditionalHp;
+        _additionalStemina = item.AdditionalStemina;
+        _additionalStrength = item.AdditionalStrength;
+        _additionalDefense = item.AdditionalDefense;
+        _additionalAttackSpeed  = item.AdditionalAttackSpeed;
+        _additionalSpeed = item.AdditionalSpeed;
+
+        _level = item.Level;
+    }
+
+    public Item()
+    {
+
+    }
+
     /// <summary>
     /// 아이템 정보를 String으로 전환하는 함수
     /// </summary>

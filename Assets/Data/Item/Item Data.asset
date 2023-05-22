@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53d9fcb6770f6854e8504cf01252d36d, type: 3}
+  m_Name: Item Data
+  m_EditorClassIdentifier: 
+  _id: 0
+  _name: 
+  _itemImage: {fileID: 0}
+  _description: 
+  _damage: 0
+  _range: 0
+  _attackSpeed: 0
+  _additionalHp: 0
+  _additionalStemina: 0
+  _additionalStrength: 0
+  _additionalDefense: 0
+  _additionalAttackSpeed: 0
+  _additionalSpeed: 0
+  _upgradeValueHp: 0
+  _upgradeValueStemina: 0
+  _upgradeValueStrength: 0
+  _upgradeValueDefense: 0
+  _upgradeValueAttackSpeed: 0
+  _upgradeValueSpeed: 0
+  _stackable: 0
