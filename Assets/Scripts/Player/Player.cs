@@ -1,7 +1,8 @@
-﻿// 작성자 : 박재만
+// 작성자 : 박재만
 // 작성일 : 2023-05-03
 
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// 플레이어의 데이터를 담고 있는 클래스
@@ -17,6 +18,8 @@ public class Player : MonoBehaviour
     /// 플레이어의 상태를 저장하는 Enum 값
     /// </summary>
     public PlayerState playerState;
+
+    public UnityEvent _OnHit;
 
     private float _hp;
     private float _speed;
@@ -53,5 +56,21 @@ public class Player : MonoBehaviour
         _attackSpeed = playerData.AttackSpeed;
         _mp = playerData.Mp;
         _defense = playerData.Defense;
+    }
+
+    public void Hit(float damage)
+    {
+        _hp -= damage;
+        if (_hp <= 0)
+        {
+            Die();
+            return;
+        }
+        _OnHit.Invoke();
+    }
+
+    public void Die()
+    {
+
     }
 }
