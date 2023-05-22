@@ -7,12 +7,13 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 {
     #region Variable
 
-    public bool isPC = true;       // 테스트용
-    public Vector3 inputDirection; // 입력 값
+    public bool _isPC = true;       // 테스트용
+    public Vector3 _inputDirection; // 입력 값
 
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
+    private PlayerAttack _playerAttack;
 
     #endregion
 
@@ -20,9 +21,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private void Awake()
     {
-        _player = GetComponent<Player>();
-        _playerController = GetComponent<PlayerController>();
-        _playerRolling = GetComponent<PlayerRolling>();
+        Init();
     }
 
     private void Update()
@@ -30,19 +29,20 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //#if UNITY_EDITOR
 
         // 플랫폼 전환을 실험하기 위한 테스트 코드 ※추후 삭제※
-        if (isPC)
+        if (_isPC)
         {
             _playerRolling.Roll(true);
         }
         if (_player.playerState != PlayerState.Rolling)
         {
-            if (isPC)
+            if (_isPC)
             {
+                _playerAttack.Attack(true);
                 _playerController.Move();
             }
             else
             {
-                _playerController.Move(inputDirection);
+                _playerController.Move(_inputDirection);
             }
         }
 
@@ -51,7 +51,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //if (_player.playerState != PlayerState.Rolling)
         //{
         //    _playerController.Move();
-        //}
+        //} 
 
         //#endif
 
@@ -66,12 +66,20 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //#endif
     }
 
+    private void Init()
+    {
+        _player = GetComponent<Player>();
+        _playerController = GetComponent<PlayerController>();
+        _playerRolling = GetComponent<PlayerRolling>();
+        _playerAttack = GetComponent<PlayerAttack>();
+    }
+
     /// <summary>
-    /// 플랫폼 Switch 버튼을 눌렀을 때 ※추후 삭제※
+    /// 플랫폼 Switch 버튼을 눌렀을 때
     /// </summary>
     public void OnSwitchButton()
     {
-        isPC = !isPC;
+        _isPC = !_isPC; // 플랫폼 변경
     }
 
     /// <summary>
@@ -79,9 +87,20 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     /// </summary>
     public void OnRollButton()
     {
-        if (isPC == false) // ※추후 삭제※
+        if (_isPC == false)             // ※추후 삭제※
         {
-            _playerRolling.Roll(false);
+            _playerRolling.Roll(false); // 구르기 실행
+        }
+    }
+    
+    /// <summary>
+    /// 공격 버튼을 눌렀을 때
+    /// </summary>
+    public void OnAttackButton()
+    {
+        if (_isPC == false)
+        {
+            _playerAttack.Attack(false);
         }
     }
 

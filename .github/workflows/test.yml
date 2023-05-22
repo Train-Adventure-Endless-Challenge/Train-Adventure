@@ -1,9 +1,5 @@
 name: Build project
 
-permissions:
-  id-token: write
-  contents: read 
-  
 on:
   push:
     branches: [ "Develop" ]
@@ -13,6 +9,8 @@ on:
 jobs:
   testAllModes:
     name: Test in ${{ matrix.testMode }}
+    permissions: write-all
+    environment: dev
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false

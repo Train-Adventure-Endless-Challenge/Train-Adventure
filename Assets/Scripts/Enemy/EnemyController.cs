@@ -8,6 +8,7 @@ using UnityEngine.AI;
 public abstract class EnemyController : MonoBehaviour
 {
     protected StateMachine<EnemyController> _stateMachine;
+    public Animator _anim;
 
     [Header("EnemyData")]
     [SerializeField] private EnemyData _enemyData;
@@ -21,7 +22,7 @@ public abstract class EnemyController : MonoBehaviour
 
     public string Name { get { return _name; }  }
     public float HP { get { return _hp; }  set { _hp = value; } }
-    public float damage { get { return _damage; } }
+    public float Damage { get { return _damage; } }
     public float MoveSpeed { get { return _moveSpeed; } }
     public float AttackSpeed { get { return _attackSpeed; } }
     public float AttackRange { get { return _attackRange; } }
@@ -38,13 +39,14 @@ public abstract class EnemyController : MonoBehaviour
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
-        _agent = GetComponent<NavMeshAgent>();
+        _agent = GetComponentInChildren<NavMeshAgent>();
+        _anim = GetComponentInChildren<Animator>();
     }
 
     protected virtual void Start()
     {
-        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
         Init();
+        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
     }
 
     /// <summary>

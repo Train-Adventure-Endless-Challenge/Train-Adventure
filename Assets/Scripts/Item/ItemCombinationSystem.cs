@@ -13,9 +13,11 @@ public class ItemCombinationSystem : MonoBehaviour
     private List<Item> _ingredientItems = new List<Item>();
 
 
+
     void Start()
     {
         _itemCombinationMethods = ItemDataManager.Instance.ItemCombinationMethod;
+
         ////////////////////////////////////// 테스트 ///////////////////////////////////////
         Combination();
     }
@@ -31,6 +33,7 @@ public class ItemCombinationSystem : MonoBehaviour
         {
             List<int> com = new List<int>(combination);
             com = com.Except(ingredientIds).ToList();
+
 
             if (com.Count <= 0) // 조합법 충족
             {
