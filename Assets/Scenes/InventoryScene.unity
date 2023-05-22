@@ -2111,8 +2111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09b7196f95763bb42b55fa58fddb4892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 1746565907}
-  itemToPickup:
+  _inventoryManager: {fileID: 1746565907}
+  _itemToPickup:
   - {fileID: 1217227786}
   - {fileID: 1536739920}
   - {fileID: 1685305207}
@@ -4081,8 +4081,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7354a6029836314086aea0cd7cfdd39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxStackedItems: 10
-  inventorySlots:
+  _maxStackedItems: 10
+  _inventorySlots:
   - {fileID: 1756567547}
   - {fileID: 1214542627}
   - {fileID: 692696302}
@@ -4099,7 +4099,7 @@ MonoBehaviour:
   - {fileID: 1433851686}
   - {fileID: 322645690}
   - {fileID: 795090625}
-  inventoryItemPrefab: {fileID: 3289840113707868639, guid: 1c57e5228a85a1e4cabb4d6948abcbec,
+  _inventoryItemPrefab: {fileID: 3289840113707868639, guid: 1c57e5228a85a1e4cabb4d6948abcbec,
     type: 3}
 --- !u!224 &1756567546 stripped
 RectTransform:

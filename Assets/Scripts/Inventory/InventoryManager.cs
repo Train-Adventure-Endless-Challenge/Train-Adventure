@@ -5,29 +5,29 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    public int maxStackedItems = 10;
-    public InventorySlot[] inventorySlots;
-    public GameObject inventoryItemPrefab;
+    public int _maxStackedItems = 10;
+    public InventorySlot[] _inventorySlots;
+    public GameObject _inventoryItemPrefab;
 
-    public bool AddItem(ItemData item)
+    public bool AddItem(Item item)
     {
-        for (int i = 0; i < inventorySlots.Length; i++)
+        for (int i = 0; i < _inventorySlots.Length; i++)
         {
-            InventorySlot slot = inventorySlots[i];
+            InventorySlot slot = _inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-            if (itemInSlot != null && itemInSlot.item == item 
-                && itemInSlot.count < maxStackedItems && itemInSlot.item.Stackable == true)
+            if (itemInSlot != null && itemInSlot._item.Id == item.Id 
+                && itemInSlot._count < _maxStackedItems && itemInSlot._item.ItemData.Stackable == true)
             {
-                itemInSlot.count++;
+                itemInSlot._count++;
                 itemInSlot.RefreshCount();
                 return true;
             }
         }
 
 
-        for (int i = 0; i < inventorySlots.Length; i++)
+        for (int i = 0; i < _inventorySlots.Length; i++)
         {
-            InventorySlot slot = inventorySlots[i];
+            InventorySlot slot = _inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot == null)
             {
@@ -39,9 +39,9 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    void SpawnNewItem(ItemData item, InventorySlot slot)
+    void SpawnNewItem(Item item, InventorySlot slot)
     {
-        GameObject newItemGo = Instantiate(inventoryItemPrefab, slot.transform);
+        GameObject newItemGo = Instantiate(_inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
     }

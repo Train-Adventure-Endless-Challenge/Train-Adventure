@@ -90,11 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 304aa86cd837d0f4ebbe12c8b2e14b87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 3289840113707868633}
+  _image: {fileID: 3289840113707868633}
   countText: {fileID: 6178889561654376212}
-  itemData: {fileID: 0}
-  count: 1
-  parentAfterDrag: {fileID: 0}
+  _item: {fileID: 0}
+  _count: 1
+  _parentAfterDrag: {fileID: 0}
 --- !u!1 &3956692619212916813
 GameObject:
   m_ObjectHideFlags: 0
