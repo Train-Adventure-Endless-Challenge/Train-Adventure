@@ -6,12 +6,12 @@ using UnityEngine;
 public class DemoScript : MonoBehaviour
 {
     public InventoryManager _inventoryManager;
-    public Item[] _itemToPickup;
+    public Item[] _items;
 
     public void PickupItem(int id)
     {   
-        bool result = _inventoryManager.AddItem(new Item(_itemToPickup[id]));
-        if (result == true)
+        bool isResult = _inventoryManager.AddItem(new Item(_items[id]));
+        if (isResult == true)
         {
             Debug.Log("ITEM ADDED");
         }
