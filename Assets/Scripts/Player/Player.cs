@@ -2,6 +2,7 @@
 // 작성일 : 2023-05-03
 
 using UnityEngine;
+using System.Collections;
 using UnityEngine.Events;
 
 /// <summary>
@@ -20,6 +21,9 @@ public class Player : MonoBehaviour
     public PlayerState playerState;
 
     public UnityEvent _OnHit;
+    public UnityEvent _OnStopHit;
+
+    [SerializeField] private float _waitTime = 0.5f;
 
     private float _hp;
     private float _speed;
@@ -66,7 +70,14 @@ public class Player : MonoBehaviour
             Die();
             return;
         }
+        StartCoroutine(HitCor());
+    }
+
+    private IEnumerator HitCor()
+    {
         _OnHit.Invoke();
+        yield return new WaitForSeconds(_waitTime);
+        _OnStopHit.Invoke();
     }
 
     public void Die()
