@@ -42,7 +42,8 @@ public class EnemyAttackState : State<EnemyController>
 
         if(_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
-            _agent.SetDestination(_player.transform.position);  
+            _agent.SetDestination(_player.transform.position);
+
         }
 
     }
@@ -119,6 +120,18 @@ public class EnemyAttackState : State<EnemyController>
         }
 
         _enemyController._agent.isStopped = true;
+
+        float timer = 0;
+        while (timer <= 0.2f)       // 약간의 delay. temp 값.
+        {
+            timer += Time.deltaTime;
+
+            Vector3 dir = _player.transform.position - _enemyController.transform.position;
+            _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
+
+            yield return new WaitForEndOfFrame();
+        
+        }
 
         _enemyController._anim.SetTrigger("Attack");
 
