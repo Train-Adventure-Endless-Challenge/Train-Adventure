@@ -10,7 +10,7 @@ public class EnemyController_Range : EnemyController
     {
         base.Start();
 
-        _stateMachine.AddState(new EnemyDeadState());
+        _stateMachine.AddState(new EnemyDieState());
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
 

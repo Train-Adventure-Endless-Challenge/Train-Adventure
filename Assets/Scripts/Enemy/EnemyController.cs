@@ -76,5 +76,9 @@ public abstract class EnemyController : MonoBehaviour
         return _stateMachine.ChangeState<R>();
     }
 
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
+    }
 }
 
