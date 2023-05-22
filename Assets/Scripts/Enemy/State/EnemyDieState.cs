@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,6 +15,7 @@ public class EnemyDieState : State<EnemyController>
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
 
+        _agent.isStopped = true;
         _enemyController.StartCoroutine(DieCor());
         
     }
@@ -21,8 +23,9 @@ public class EnemyDieState : State<EnemyController>
     IEnumerator DieCor()
     {
         _enemyController._anim.SetTrigger("Die");
-        yield return new WaitForSeconds(1f);
-        _enemyController.DestroyGameObject();
+        yield return new WaitForSeconds(5f);
+
+        _enemyController.DestroyGameObject();       // 추후 이쁘게? 사라지는 모션 추가 가능
 
     }
 

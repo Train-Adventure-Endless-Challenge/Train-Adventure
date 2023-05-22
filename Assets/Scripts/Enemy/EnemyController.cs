@@ -20,8 +20,19 @@ public abstract class EnemyController : MonoBehaviour
     private float _attackRange;
     private EnemyType _enemyType;
 
-    public string Name { get { return _name; }  }
-    public float HP { get { return _hp; }  set { _hp = value; } }
+    public string Name { get { return _name; } }
+    public float HP
+    {
+        get { return _hp; }
+        set
+        {
+            _hp = value;
+            if (_hp <= 0)
+            {
+                _stateMachine.ChangeState<EnemyDieState>();
+            }
+        }
+    }
     public float Damage { get { return _damage; } }
     public float MoveSpeed { get { return _moveSpeed; } }
     public float AttackSpeed { get { return _attackSpeed; } }
@@ -47,6 +58,7 @@ public abstract class EnemyController : MonoBehaviour
     {
         Init();
         _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
+        _stateMachine.AddState(new EnemyDieState());
     }
 
     /// <summary>
@@ -59,7 +71,7 @@ public abstract class EnemyController : MonoBehaviour
         _damage = _enemyData._damage;
         _moveSpeed = _enemyData._moveSpeed;
         _attackSpeed = _enemyData._attackSpeed;
-        _attackRange= _enemyData._attackRange;
+        _attackRange = _enemyData._attackRange;
         _enemyType = _enemyData._enemyType;
 
     }
@@ -68,11 +80,13 @@ public abstract class EnemyController : MonoBehaviour
     protected virtual void Update()
     {
         _stateMachine.Update(Time.deltaTime);
+
+
     }
 
     public R ChangeState<R>() where R : State<EnemyController>
     {
-       
+
         return _stateMachine.ChangeState<R>();
     }
 
