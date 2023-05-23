@@ -34,7 +34,7 @@ public class ItemDataManager : GlobalSingleton<ItemDataManager>,IDataManager
             ItemPrefab.Add(pre.GetComponent<Item>().Id, pre);
 
         // TODO: 조합법 json 파싱 후 집어넣기
-        _itemCombinationMethod.Add(new List<int>() { 1, 1 }, 3); // 테스트
+        _itemCombinationMethod.Add(new List<int>() { 1, 2 }, 3); // 테스트
 
     }
 }

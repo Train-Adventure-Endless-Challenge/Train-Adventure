@@ -24,6 +24,11 @@ public class ItemCombinationSystem : MonoBehaviour
         //Combination();
     }
 
+    public void OnCombinationButtonClick()
+    {
+        Combination();
+    }
+
     void Combination()
     {
         List<int> ingredientIds = new List<int>();
@@ -31,6 +36,7 @@ public class ItemCombinationSystem : MonoBehaviour
         foreach(InventorySlot slot in ingredientSlot)
             ingredientIds.Add(slot.GetComponentInChildren<InventoryItem>()._item.Id);
 
+        
 
         foreach (List<int> combination in _itemCombinationMethods.Keys)
         {
@@ -40,15 +46,21 @@ public class ItemCombinationSystem : MonoBehaviour
 
             if (com.Count <= 0) // 조합법 충족
             {
-                Item combinationItem = new Item(ItemDataManager.Instance.ItemData[_itemCombinationMethods[com]]);
-                // TODO: itemData적용, itemCombinationMethod의 키값-> 조합아이템 id
-                // TODO: UI상에 띄우기 -> 인벤토리에 옮기면 그곳에 옮기고 그냥 끄면 맨뒤에 추가
+                Item combinationItem = new Item(ItemDataManager.Instance.ItemData[_itemCombinationMethods[combination]]);
+                InventoryManager.Instance.SpawnNewItem(combinationItem, resultSlot);
+                
+                // 재료 아이템 삭제
+                for (int i = 0; i < ingredientSlot.Length; i++)
+                    Destroy(ingredientSlot[i].GetComponentInChildren<InventoryItem>().gameObject);
+                //InventoryManager.Instance.AddItem(combinationItem);
 
+                // TODO: UI상에 띄우기 -> 인벤토리에 옮기면 그곳에 옮기고 그냥 끄면 맨뒤에 추가
                 return;
             }
             else
             {
                 Item combinationItem = new Item();
+
                 // TODO: 랜덤한 아이템 데이터 적용
                 // TODO: UI상에 띄우기 -> 인벤토리에 옮기면 그곳에 옮기고 그냥 끄면 맨뒤에 추가
                 return;
