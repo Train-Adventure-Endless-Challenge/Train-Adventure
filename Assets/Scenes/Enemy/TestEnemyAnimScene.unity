@@ -744,7 +744,23 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: a392f14b574c9ea4f997d49e51fbc8a8,
         type: 3}
       propertyPath: m_Name
-      value: Enemy_Melee@Idle 1
+      value: Enemy_Melee@Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: a392f14b574c9ea4f997d49e51fbc8a8,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a0ec4dd6f45510d44b64815e2f920710, type: 2}
+    - target: {fileID: 5866666021909216657, guid: a392f14b574c9ea4f997d49e51fbc8a8,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: "\nBinding warning: Some generic clip(s) animate transforms that are
+        already bound by a Humanoid avatar. These transforms can only be changed
+        by Humanoid clips.\n\tTransform 'mixamorig:Hips'\n\tTransform 'mixamorig:LeftFoot'\n\tTransform
+        'mixamorig:LeftHandIndex1'\n\tTransform 'mixamorig:Spine1'\n\tTransform 'mixamorig:LeftToeBase'\n\tTransform
+        'mixamorig:RightArm'\n\tTransform 'mixamorig:LeftLeg'\n\tTransform 'mixamorig:LeftShoulder'\n\tTransform
+        'mixamorig:LeftHandMiddle1'\n\tTransform 'mixamorig:RightFoot'\n\tand more
+        ...\n\tFrom animation clip 'Walking'\n\tFrom animation clip 'Walking'"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a392f14b574c9ea4f997d49e51fbc8a8, type: 3}
@@ -822,24 +838,3 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!95 &2143545654
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2143545650}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: a392f14b574c9ea4f997d49e51fbc8a8, type: 3}
-  m_Controller: {fileID: 9100000, guid: a0ec4dd6f45510d44b64815e2f920710, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
