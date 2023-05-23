@@ -15,6 +15,8 @@ public class PlayerRolling : MonoBehaviour
     [SerializeField] private float _rollingRange;
     [SerializeField] private AnimationCurve _rollingCurve;
 
+    public bool _isGodMode;
+
     private Player _player;
     private Animator _animator;
     private CharacterController _characterController;
@@ -73,7 +75,7 @@ public class PlayerRolling : MonoBehaviour
     {
         _currentTime = 0f;
         _lerpTime = 0.65f;
-        _characterController.detectCollisions = false;
+        _isGodMode = true;
         _animator.SetBool("IsRoll", true);
         _animator.SetTrigger("OnState");
         _endPosition = transform.forward * _rollingRange;
@@ -96,7 +98,7 @@ public class PlayerRolling : MonoBehaviour
 
             yield return new WaitForEndOfFrame();
         }
-        _characterController.detectCollisions = true;
+        _isGodMode = false;
         _animator.SetBool("IsRoll", false);
         _animator.SetTrigger("OnState");
         _rollCor = null;

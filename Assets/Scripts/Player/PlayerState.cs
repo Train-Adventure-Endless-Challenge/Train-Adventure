@@ -4,5 +4,6 @@ public enum PlayerState
     Move,
     Attack,
     Rolling,
+    Hit,
     Interaction,
 }
