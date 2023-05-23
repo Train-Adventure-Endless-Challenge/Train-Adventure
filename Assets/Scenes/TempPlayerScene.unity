@@ -316,6 +316,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &568595364 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6403532127977311871, guid: 077d91c075ecae6488ebb17678101cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4638853789677956769}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &628488795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 628488795, guid: 077d91c075ecae6488ebb17678101cd0,
@@ -1791,7 +1797,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4638853789677956769}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 568595364}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e12fe68ac87035243b7cdd6ca62e6a2f, type: 3}
@@ -1803,12 +1809,97 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 4638853789677956769}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 568595364}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb827490b24bb484088542ec8815d7c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &4638853789677956793 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9179082375334509984, guid: 077d91c075ecae6488ebb17678101cd0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4638853789677956769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4638853789677956798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 568595364}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5aec3737deb6247ad87c7f57c7a80d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 0.5
+  _OnHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4638853789677956793}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnState
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1853259465}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1146063363}
+        m_TargetAssemblyTypeName: TestEnemy, Assembly-CSharp
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _OnStopHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4638853789677956793}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnState
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1853259465}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &6285320423289609202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1823,9 +1914,24 @@ PrefabInstance:
       objectReference: {fileID: 4638853789677956773}
     - target: {fileID: 6285320423437388299, guid: 0dce2be5b084cf54f92f3d5b497cf3fe,
         type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285320423437388299, guid: 0dce2be5b084cf54f92f3d5b497cf3fe,
+        type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4638853789677956770}
+      objectReference: {fileID: 4638853789677956798}
+    - target: {fileID: 6285320423437388299, guid: 0dce2be5b084cf54f92f3d5b497cf3fe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Hit
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285320423437388299, guid: 0dce2be5b084cf54f92f3d5b497cf3fe,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerHit, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 6285320424251762347, guid: 0dce2be5b084cf54f92f3d5b497cf3fe,
         type: 3}
       propertyPath: m_Name

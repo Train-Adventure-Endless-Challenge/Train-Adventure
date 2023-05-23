@@ -2,8 +2,6 @@
 // 작성일 : 2023-05-03
 
 using UnityEngine;
-using System.Collections;
-using UnityEngine.Events;
 
 /// <summary>
 /// 플레이어의 데이터를 담고 있는 클래스
@@ -19,11 +17,6 @@ public class Player : MonoBehaviour
     /// 플레이어의 상태를 저장하는 Enum 값
     /// </summary>
     public PlayerState playerState;
-
-    public UnityEvent _OnHit;
-    public UnityEvent _OnStopHit;
-
-    [SerializeField] private float _waitTime = 0.5f;
 
     private float _hp;
     private float _speed;
@@ -60,28 +53,5 @@ public class Player : MonoBehaviour
         _attackSpeed = playerData.AttackSpeed;
         _mp = playerData.Mp;
         _defense = playerData.Defense;
-    }
-
-    public void Hit(float damage)
-    {
-        _hp -= damage;
-        if (_hp <= 0)
-        {
-            Die();
-            return;
-        }
-        StartCoroutine(HitCor());
-    }
-
-    private IEnumerator HitCor()
-    {
-        _OnHit.Invoke();
-        yield return new WaitForSeconds(_waitTime);
-        _OnStopHit.Invoke();
-    }
-
-    public void Die()
-    {
-
     }
 }

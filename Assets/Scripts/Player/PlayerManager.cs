@@ -29,11 +29,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         //#if UNITY_EDITOR
 
         // 플랫폼 전환을 실험하기 위한 테스트 코드 ※추후 삭제※
-        if (_isPC)
+        if (_isPC && _player.playerState != PlayerState.Hit)
         {
             _playerRolling.Roll(true);
         }
-        if (_player.playerState != PlayerState.Rolling)
+        if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit)
         {
             if (_isPC)
             {
