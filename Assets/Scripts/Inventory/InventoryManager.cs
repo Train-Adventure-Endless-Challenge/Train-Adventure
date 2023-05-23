@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : SceneSingleton<InventoryManager>
 {
     [SerializeField] private InventorySlot[] _inventorySlots;
     [SerializeField] private GameObject _inventoryItemPrefab;
