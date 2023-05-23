@@ -61,6 +61,12 @@ public class Item : MonoBehaviour
         _level = item.Level;
     }
 
+    public Item(ItemData data)
+    {
+        this.itemData = data;
+        Init();
+    }
+
     public Item()
     {
 

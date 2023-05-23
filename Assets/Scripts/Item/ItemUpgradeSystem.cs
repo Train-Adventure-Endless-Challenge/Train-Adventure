@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemUpgradeSystem : MonoBehaviour
@@ -16,11 +17,16 @@ public class ItemUpgradeSystem : MonoBehaviour
 
     public TMP_Text _debugText;
     // -------------------------------------------------------------------------------------------------------------------------------------------------
-    private ItemUpgradeSlot _upgradeSlot;
-    public ItemUpgradeSlot UpgradeSlot { get { return _upgradeSlot; } set { _upgradeSlot = value; } }
+    [SerializeField] private InventorySlot _upgradeSlot;
+    public InventorySlot UpgradeSlot { get { return _upgradeSlot; } set { _upgradeSlot = value; } }
 
-    private Item _equipedItem;
-    public Item EquipedItem { get { return _equipedItem; } set { _equipedItem = value; } }
+    public Item EquipedItem { get { 
+            if (UpgradeSlot.GetComponentInChildren<InventoryItem>() != null)
+                return UpgradeSlot.GetComponentInChildren<InventoryItem>()._item;
+
+            return null;
+        }
+    }
 
     private void Awake()
     {
@@ -32,14 +38,26 @@ public class ItemUpgradeSystem : MonoBehaviour
 
     private void Update()
     {
-        if(_equipedItem != null)
+        // Test => 나중에 삭제
+        try
         {
             _debugText.text = EquipedItem.ToString();
-        } 
+        }
+        catch
+        {
+        }
     }
 
     public void LevelUpItem()
     {
-        _equipedItem.Levelup();
+        try
+        {
+            EquipedItem.Levelup();
+        }
+        catch
+        {
+            Debug.LogError("아이템 없음");
+
+        }
     }
 }
