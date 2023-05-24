@@ -97,7 +97,7 @@ public abstract class EnemyController : MonoBehaviour
 
     public void Hit(int damage)
     {
-        HP-= damage;
+        HP -= damage;
     }
 }
 
