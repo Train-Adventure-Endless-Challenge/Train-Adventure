@@ -85,6 +85,20 @@ public class EnemyAttackState : State<EnemyController>
     {
         _isCurrentAttackCor = true;
 
+        _enemyController._agent.isStopped = true;
+
+        float timer = 0;
+        while (timer <= 0.2f)       // 약간의 delay. temp 값.
+        {
+            timer += Time.deltaTime;
+
+            Vector3 dir = _player.transform.position - _enemyController.transform.position;
+            _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
+
+            yield return new WaitForEndOfFrame();
+
+        }
+
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
         enemy._laserObj.SetActive(true);
 
@@ -92,13 +106,15 @@ public class EnemyAttackState : State<EnemyController>
 
         if(Physics.Raycast(enemy._laserObj.transform.position, enemy._laserObj.transform.forward, out hit, LayerMask.GetMask("Player")))
         {
-            Player player =  hit.transform.gameObject.GetComponent<Player>();
-            player.Hp -= _enemyController.Damage;
+            PlayerHit player =  hit.transform.gameObject.GetComponent<PlayerHit>();
+            player.Hit(_enemyController.Damage);
         }
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
 
         enemy._laserObj.SetActive(false);
+
+        _enemyController._agent.isStopped = false;
 
         _isCurrentAttackCor = false;
 
@@ -138,8 +154,8 @@ public class EnemyAttackState : State<EnemyController>
         // 실제 공격 체크
         if (_enemyController._enemyFieldOfView._isVisiblePlayer && Vector3.Distance(_enemyController.transform.position, _player.transform.position) < _enemyController.AttackRange + _agent.stoppingDistance)
         {
-            Player player = _player.GetComponent<Player>();     //  추후 싱글톤으로 찾는다면 로직 수정
-            player.Hp -= _enemyController.Damage;
+            PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
+            player.Hit(_enemyController.Damage);
         }
 
 
