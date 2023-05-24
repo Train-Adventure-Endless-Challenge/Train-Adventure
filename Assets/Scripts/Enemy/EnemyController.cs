@@ -94,5 +94,10 @@ public abstract class EnemyController : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    public void Hit(int damage)
+    {
+        HP-= damage;
+    }
 }
 
