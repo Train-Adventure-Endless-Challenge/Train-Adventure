@@ -18,6 +18,7 @@ public class PlayerHit : MonoBehaviour
 
     private Player _player;
     private Animator _animator;
+    private PlayerDie _playerDie;
 
     #endregion
 
@@ -39,6 +40,7 @@ public class PlayerHit : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
+        _playerDie = GetComponent<PlayerDie>();
     }
 
     /// <summary>
@@ -52,7 +54,7 @@ public class PlayerHit : MonoBehaviour
         _player.Hp -= damage - ((damage / 2) * (_player.Defense / 100)); // 데미지 공식 데미지 - ((데미지x(1/2))x(방어력/100)
         if (_player.Hp <= 0)
         {
-            //Die(); // ※추후 추가※
+            _playerDie.Die();
             return;
         }
         _player.playerState = PlayerState.Hit; // 플레이어의 상태 변경
