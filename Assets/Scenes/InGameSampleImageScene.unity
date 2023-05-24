@@ -469,6 +469,12 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
+--- !u!4 &208897482 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 189667527217342986, guid: e35541cb917f6994f81f53a086332123,
+    type: 3}
+  m_PrefabInstance: {fileID: 437408537}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &291395843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1076,7 +1082,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _target
       value: 
-      objectReference: {fileID: 1460644357}
+      objectReference: {fileID: 208897482}
     - target: {fileID: 189667525392540914, guid: e35541cb917f6994f81f53a086332123,
         type: 3}
       propertyPath: m_Enabled
@@ -1111,6 +1117,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TempEnemy_Melee
+      objectReference: {fileID: 0}
+    - target: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 189667525702800067, guid: e35541cb917f6994f81f53a086332123,
         type: 3}
@@ -1185,7 +1196,7 @@ PrefabInstance:
     - target: {fileID: 189667527217342987, guid: e35541cb917f6994f81f53a086332123,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6037990326087686496, guid: e35541cb917f6994f81f53a086332123,
         type: 3}
