@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 플레이어의 움직임을 담당하는 클래스
 /// </summary>
-public class PlayerController : SceneSingleton<PlayerController>
+public class PlayerController : MonoBehaviour
 {
     #region Variable
 
