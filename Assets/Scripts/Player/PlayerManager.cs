@@ -7,8 +7,12 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 {
     #region Variable
 
+    #region Mobile
+
     //public bool _isPC = true;       // 테스트용
     //public Vector3 _inputDirection; // 입력 값
+
+    #endregion
 
     private Player _player;
     private PlayerController _playerController;
@@ -26,30 +30,34 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private void Update()
     {
-        //#if UNITY_EDITOR
+        #region Mobile
 
         // 플랫폼 전환을 실험하기 위한 테스트 코드 ※추후 삭제※
         //if (_isPC && _player.playerState != PlayerState.Hit)
+        //{
+        //_playerRolling.Roll(true);
+        //if (_isPC)
+        //{
+        //_playerAttack.Attack(true);
+        //}
+        //else
+        //{
+        //    _playerController.Move(_inputDirection);
+        //}
+        //}
+        //#endif
+
+        #endregion
+
         if (_player.playerState != PlayerState.Hit)
         {
-            //_playerRolling.Roll(true);
             _playerRolling.Roll();
         }
         if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit)
         {
-            //if (_isPC)
-            //{
-            //_playerAttack.Attack(true);
             _playerAttack.Attack();
             _playerController.Move();
-            //}
-            //else
-            //{
-            //    _playerController.Move(_inputDirection);
-            //}
         }
-
-        //#endif
     }
 
     private void Init()
@@ -59,6 +67,8 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerRolling = GetComponent<PlayerRolling>();
         _playerAttack = GetComponent<PlayerAttack>();
     }
+
+    #region Mobile
 
     ///// <summary>
     ///// 플랫폼 Switch 버튼을 눌렀을 때
@@ -89,6 +99,8 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     //        _playerAttack.Attack(false);
     //    }
     //}
+
+    #endregion
 
     #endregion
 }

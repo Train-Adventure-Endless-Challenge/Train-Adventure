@@ -137,6 +137,8 @@ public class PlayerController : MonoBehaviour
         _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
     }
 
+    #region Mobile
+
     ///// <summary>
     ///// 플레이어의 움직임 함수
     ///// <br/>
@@ -174,6 +176,8 @@ public class PlayerController : MonoBehaviour
     //    }
     //    _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
     //}
+
+    #endregion
 
     /// <summary>
     /// 중력 함수

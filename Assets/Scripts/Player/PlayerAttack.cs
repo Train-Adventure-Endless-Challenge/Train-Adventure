@@ -56,13 +56,17 @@ public class PlayerAttack : MonoBehaviour
     /// <summary>
     /// 공격 함수
     /// </summary>
+    #region Mobile
     ///// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
     //public void Attack(bool isPC)
+    #endregion
     public void Attack()
     {
         if (_attackCor == null)                                 // 코루틴이 실행되고 있지 않을 때
         {
+            #region Mobile
             //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
+            #endregion
             if (Input.GetMouseButtonDown(0))
             {
                 _player.playerState = PlayerState.Attack;       // 상태 변경
