@@ -7,8 +7,12 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 {
     #region Variable
 
-    public bool _isPC = true;       // 테스트용
-    public Vector3 _inputDirection; // 입력 값
+    #region Mobile
+
+    //public bool _isPC = true;       // 테스트용
+    //public Vector3 _inputDirection; // 입력 값
+
+    #endregion
 
     private Player _player;
     private PlayerController _playerController;
@@ -26,44 +30,34 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private void Update()
     {
-        //#if UNITY_EDITOR
+        #region Mobile
 
         // 플랫폼 전환을 실험하기 위한 테스트 코드 ※추후 삭제※
-        if (_isPC && _player.playerState != PlayerState.Hit)
+        //if (_isPC && _player.playerState != PlayerState.Hit)
+        //{
+        //_playerRolling.Roll(true);
+        //if (_isPC)
+        //{
+        //_playerAttack.Attack(true);
+        //}
+        //else
+        //{
+        //    _playerController.Move(_inputDirection);
+        //}
+        //}
+        //#endif
+
+        #endregion
+
+        if (_player.playerState != PlayerState.Hit)
         {
-            _playerRolling.Roll(true);
+            _playerRolling.Roll();
         }
         if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit)
         {
-            if (_isPC)
-            {
-                _playerAttack.Attack(true);
-                _playerController.Move();
-            }
-            else
-            {
-                _playerController.Move(_inputDirection);
-            }
+            _playerAttack.Attack();
+            _playerController.Move();
         }
-
-        // PC시 실행되어야 하는 코드 ※추후 활성화※
-        //_playerRolling.Roll(true);
-        //if (_player.playerState != PlayerState.Rolling)
-        //{
-        //    _playerController.Move();
-        //} 
-
-        //#endif
-
-        //#if UNITY_ANDROID        
-
-        // 안드로이드시 실행되어야 하는 코드 ※추후 활성화※
-        //if (_player.playerState != PlayerState.Rolling)
-        //{
-        //    _playerController.Move(inputDirection);
-        //}
-
-        //#endif
     }
 
     private void Init()
@@ -74,35 +68,39 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerAttack = GetComponent<PlayerAttack>();
     }
 
-    /// <summary>
-    /// 플랫폼 Switch 버튼을 눌렀을 때
-    /// </summary>
-    public void OnSwitchButton()
-    {
-        _isPC = !_isPC; // 플랫폼 변경
-    }
+    #region Mobile
 
-    /// <summary>
-    /// 구르기 버튼을 눌렀을 때
-    /// </summary>
-    public void OnRollButton()
-    {
-        if (_isPC == false)             // ※추후 삭제※
-        {
-            _playerRolling.Roll(false); // 구르기 실행
-        }
-    }
-    
-    /// <summary>
-    /// 공격 버튼을 눌렀을 때
-    /// </summary>
-    public void OnAttackButton()
-    {
-        if (_isPC == false)
-        {
-            _playerAttack.Attack(false);
-        }
-    }
+    ///// <summary>
+    ///// 플랫폼 Switch 버튼을 눌렀을 때
+    ///// </summary>
+    //public void OnSwitchButton()
+    //{
+    //    _isPC = !_isPC; // 플랫폼 변경
+    //}
+
+    ///// <summary>
+    ///// 구르기 버튼을 눌렀을 때
+    ///// </summary>
+    //public void OnRollButton()
+    //{
+    //    if (_isPC == false)             // ※추후 삭제※
+    //    {
+    //        _playerRolling.Roll(false); // 구르기 실행
+    //    }
+    //}
+
+    ///// <summary>
+    ///// 공격 버튼을 눌렀을 때
+    ///// </summary>
+    //public void OnAttackButton()
+    //{
+    //    if (_isPC == false)
+    //    {
+    //        _playerAttack.Attack(false);
+    //    }
+    //}
+
+    #endregion
 
     #endregion
 }
