@@ -52,12 +52,14 @@ public class PlayerRolling : MonoBehaviour
     /// <summary>
     /// 구르기 함수
     /// </summary>
-    /// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
-    public void Roll(bool isPC)
+    ///// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
+    //public void Roll(bool isPC)
+    public void Roll()
     {
         if (_rollCor == null)
         {
-            if ((isPC && Input.GetKeyDown(_rollingKey)) || !isPC)
+            //if ((isPC && Input.GetKeyDown(_rollingKey)) || !isPC)
+            if (Input.GetKeyDown(_rollingKey))
             {
                 _player.playerState = PlayerState.Rolling;
                 _rollCor = RollCor(transform.position);

@@ -56,12 +56,14 @@ public class PlayerAttack : MonoBehaviour
     /// <summary>
     /// 공격 함수
     /// </summary>
-    /// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
-    public void Attack(bool isPC)
+    ///// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
+    //public void Attack(bool isPC)
+    public void Attack()
     {
         if (_attackCor == null)                                 // 코루틴이 실행되고 있지 않을 때
         {
-            if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
+            //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
+            if (Input.GetMouseButtonDown(0))
             {
                 _player.playerState = PlayerState.Attack;       // 상태 변경
                 _attackCor = AttackCor();                       // 코루틴 변수 할당
