@@ -1,8 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrainManager : MonoBehaviour
+public class TrainManager : SceneSingleton<TrainManager>
 {
     [SerializeField] private GameObject[] _trainObjects;
     [SerializeField] private Transform _backgroundGroup;
