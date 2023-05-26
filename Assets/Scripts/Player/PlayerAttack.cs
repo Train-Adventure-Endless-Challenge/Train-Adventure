@@ -13,7 +13,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _slowSpeedScale = 0.3f; // 감속 속도 배율 (0.3f)
     [SerializeField] private float _originSpeedScale = 1f; // 원래 속도      (1)
 
-    [Header("Event")]    
+    [Header("Event")]
     public UnityEvent _OnAttackEvent;                      // 플레이어 공격 이벤트
     public UnityEvent _OnStopEvent;                        // 공격 멈춤 이벤트
 
@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
             #region Mobile
             //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
             #endregion
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && _attackCor == null)
             {
                 _player.playerState = PlayerState.Attack;       // 상태 변경
                 _attackCor = AttackCor();                       // 코루틴 변수 할당
