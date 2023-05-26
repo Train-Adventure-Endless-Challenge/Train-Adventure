@@ -94,7 +94,7 @@ public class EnemyAttackState : State<EnemyController>
         _enemyController._agent.isStopped = true;
 
         float timer = 0;
-        while (timer <= 0.2f)       // 약간의 delay. temp 값.
+        while (timer <= 0.5f)       // 약간의 delay. temp 값.
         {
             timer += Time.deltaTime;
 
