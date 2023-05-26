@@ -37,15 +37,18 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
-
-        CheckAttack();
-
-        if(_enemyController._enemyFieldOfView._isVisiblePlayer)
+        if (_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
             _agent.SetDestination(_player.transform.position);
-
+        }
+        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _isCurrentAttackCor == false)
+        {
+            _enemyController._anim.SetBool("WalkToPlayer", false);
+            _enemyController.ChangeState<EnemyIdleState>();
+            return;
         }
 
+        CheckAttack();
     }
 
     /// <summary>
@@ -53,12 +56,7 @@ public class EnemyAttackState : State<EnemyController>
     /// </summary>
     private void CheckAttack()
     {
-        if(!_enemyController._enemyFieldOfView._isVisiblePlayer && _isCurrentAttackCor == false)
-        {
-            _enemyController._anim.SetBool("WalkToPlayer", false);
-            _enemyController.ChangeState<EnemyIdleState>();
-            return;
-        }
+
 
 
         if (_agent.remainingDistance <= _agent.stoppingDistance && _isCurrentAttackCor == false )
@@ -83,6 +81,14 @@ public class EnemyAttackState : State<EnemyController>
     /// <returns></returns>
     IEnumerator AttackRangeCor()
     {
+
+        // 잘못 인식된 경우 나가기
+        if (Vector3.Distance(_enemyController.transform.position, _player.transform.position) > _enemyController.AttackRange + _agent.stoppingDistance)
+        {
+            _isCurrentAttackCor = false;
+            yield break;
+        }
+
         _isCurrentAttackCor = true;
 
         _enemyController._agent.isStopped = true;
@@ -98,6 +104,8 @@ public class EnemyAttackState : State<EnemyController>
             yield return new WaitForEndOfFrame();
 
         }
+
+        _enemyController._anim.SetTrigger("Attack");
 
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
         enemy._laserObj.SetActive(true);
