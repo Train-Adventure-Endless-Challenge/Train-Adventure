@@ -8331,6 +8331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slowSpeedScale: 0.3
   _originSpeedScale: 1
+  _weaponTr: {fileID: 1167497307699225302}
   _OnAttackEvent:
     m_PersistentCalls:
       m_Calls:

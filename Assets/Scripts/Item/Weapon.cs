@@ -4,6 +4,8 @@ public class Weapon : Item
     protected float _range;
     protected float _attackSpeed;
 
+    public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
+
     void Start()
     {
 

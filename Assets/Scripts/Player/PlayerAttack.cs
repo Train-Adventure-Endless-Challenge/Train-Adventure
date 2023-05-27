@@ -13,11 +13,15 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _slowSpeedScale = 0.3f; // 감속 속도 배율 (0.3f)
     [SerializeField] private float _originSpeedScale = 1f; // 원래 속도      (1)
 
+    [Header("Transform")]
+    [SerializeField] private Transform _weaponTr;          // 무기 위치
+
     [Header("Event")]
     public UnityEvent _OnAttackEvent;                      // 플레이어 공격 이벤트
     public UnityEvent _OnStopEvent;                        // 공격 멈춤 이벤트
 
     private float _animTime = 0.5f;                        // 공격 애니메이션 속도 (원래는 0.44f 초이지만, 오류 방지를 위해 0.06초 추가 하여 사용)
+    private float _attackSpeed;                            // 공격 속도
 
     private Weapon _weapon;                                // 무기 (추후 공격, 스킬을 위해 사용)
     private Player _player;                                // 플레이어
@@ -25,6 +29,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerController _playerController;            // 플레이어 움직임
 
     private IEnumerator _attackCor;                        // 플레이어 공격 코루틴을 담을 변수
+    private IEnumerator _attackTimerCor;                   // 플레이어 공격 타이머 코루틴을 담을 변수
 
     #endregion
 
@@ -35,6 +40,11 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         Init(); // 초기화 진행
+    }
+
+    private void Start()
+    {
+        _attackSpeed = _weapon.AttackSpeed; // AttackSpeed가 Awake에서 초기화 되니, Start시 가져옴
     }
 
     #endregion
@@ -50,7 +60,7 @@ public class PlayerAttack : MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
-        //_weapon = _weaponTr.GetComponent<Weapon>(); // ※추후 활성화※
+        _weapon = _weaponTr.GetComponent<Weapon>(); // ※추후 활성화※
     }
 
     /// <summary>
@@ -62,16 +72,16 @@ public class PlayerAttack : MonoBehaviour
     #endregion
     public void Attack()
     {
-        if (_attackCor == null)                                 // 코루틴이 실행되고 있지 않을 때
+        if (_attackCor == null && _attackTimerCor == null)      // 코루틴이 실행되고 있지 않을 때
         {
             #region Mobile
             //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
             #endregion
-            if (Input.GetMouseButtonDown(0) && _attackCor == null)
+            if (Input.GetMouseButtonDown(0))
             {
-                _player.playerState = PlayerState.Attack;       // 상태 변경
-                _attackCor = AttackCor();                       // 코루틴 변수 할당
+                _player.playerState = PlayerState.Attack;       // 상태 
                 StartCoroutine(AttackCor());                    // 공격 코루틴 실행
+                StartCoroutine(AttackTimerCor());               // 공격 속도 타이머 실행
             }
         }
     }
@@ -83,6 +93,7 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackCor()
     {
+        _attackCor = AttackCor();                                       // 코루틴 변수 할당
         // 공격 실행
         _animator.SetBool("IsAttack", true);                            // 애니메이션 실행
         _OnAttackEvent.Invoke();                                        // 공격 이벤트 실행
@@ -99,6 +110,17 @@ public class PlayerAttack : MonoBehaviour
         if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
         _attackCor = null;                                               // 코루틴 초기화
+    }
+
+    /// <summary>
+    /// 공격 속도 타이머 코루틴 함수
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator AttackTimerCor()
+    {
+        _attackTimerCor = AttackTimerCor();                   // 코루틴 변수 할당
+        yield return new WaitForSeconds(_attackSpeed); // 공격 속도만큼 기다리기
+        _attackTimerCor = null;                               // 코루틴 초기화
     }
 
     #endregion
