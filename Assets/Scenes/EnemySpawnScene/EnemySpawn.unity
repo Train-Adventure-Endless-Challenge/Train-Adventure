@@ -332,13 +332,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d50f0178747e8d145b60090f243d814a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _trainObjects:
-  - {fileID: 5894373062190888247, guid: 9a42f6d83948dc34ca075a3a75d0eaba, type: 3}
-  - {fileID: 5894373062190888247, guid: 9a42f6d83948dc34ca075a3a75d0eaba, type: 3}
-  - {fileID: 5894373062190888247, guid: 9a42f6d83948dc34ca075a3a75d0eaba, type: 3}
   _backgroundGroup: {fileID: 1230834157}
-  _currentTrain: {fileID: 0}
-  _nextTrain: {fileID: 0}
+  _nomalTrainObjects:
+  - {fileID: 5894373062190888247, guid: 9a42f6d83948dc34ca075a3a75d0eaba, type: 3}
+  - {fileID: 5894373062190888247, guid: e14b6e13cc3b4c44fbc61082b6cf1d0c, type: 3}
+  - {fileID: 5894373062190888247, guid: 377f3d9e535429449970a2248ce74146, type: 3}
+  _bossTrainObject: {fileID: 2364587615945282256, guid: a05f7ce42885b614bae5f981d44f1774,
+    type: 3}
+  _storeTrainObject: {fileID: 2364587615945282256, guid: 91c99b544f66aa940ac4c477c033a8ee,
+    type: 3}
 --- !u!4 &127510528
 Transform:
   m_ObjectHideFlags: 0

@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975948368055519486}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1211001599
 MeshFilter:
@@ -129,7 +129,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975948368055519486}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1316871266
 MeshFilter:
@@ -1712,7 +1712,6 @@ Transform:
   - {fileID: 4676030650546939387}
   - {fileID: 2893555295214827597}
   - {fileID: 241224857789451653}
-  - {fileID: 1206304739237937595}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1729,26 +1728,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floor: {fileID: 5894373062679192026}
-  enemySpawnPoint:
-  - enemyTr: {fileID: 4855400039233356719}
+  _enemySpawnPoints:
+  - enemySpawmPointTr: {fileID: 4855400039233356719}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 6109144602635126234}
+  - enemySpawmPointTr: {fileID: 6109144602635126234}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 6379223505574861001}
+  - enemySpawmPointTr: {fileID: 6379223505574861001}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 2738469966403186843}
+  - enemySpawmPointTr: {fileID: 2738469966403186843}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 6034983412992860582}
+  - enemySpawmPointTr: {fileID: 6034983412992860582}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 6345009885974318043}
+  - enemySpawmPointTr: {fileID: 6345009885974318043}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 4676030650546939387}
+  - enemySpawmPointTr: {fileID: 4676030650546939387}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 2893555295214827597}
+  - enemySpawmPointTr: {fileID: 2893555295214827597}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 241224857789451653}
+  - enemySpawmPointTr: {fileID: 241224857789451653}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  doorAnimation: {fileID: 8130921513895996012}
+  _frontDoorAnimation: {fileID: 8130921513895996012}
+  _backDoorAnimation: {fileID: 6768241516260768941}
 --- !u!1 &5894373062679192026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,10 +2123,10 @@ Transform:
   - {fileID: 2328750071573260476}
   - {fileID: 2328750073330169544}
   - {fileID: 8130921515164062536}
+  - {fileID: 6768241517446514057}
   - {fileID: 1211001596}
   - {fileID: 1316871263}
   - {fileID: 6695666357534808168}
-  - {fileID: 6768241517446514057}
   - {fileID: 2068858241027552723}
   - {fileID: 6623700594970055587}
   m_Father: {fileID: 5894373062190888248}
@@ -2162,37 +2162,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5894373062190888248}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &7105252484759522761
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1206304739237937595}
-  m_Layer: 0
-  m_Name: PlayerSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1206304739237937595
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7105252484759522761}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.5, z: -12}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5894373062190888248}
-  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7488556961968404141
 GameObject:
@@ -2354,7 +2323,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 975948368055519486}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &329321390762875743
 MeshFilter:
@@ -2434,7 +2403,7 @@ PrefabInstance:
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -2445,7 +2414,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Animations.Array.data[1]
       value: 
-      objectReference: {fileID: 7400002, guid: f054e366653a7c14186595569de398f9, type: 3}
+      objectReference: {fileID: 7400004, guid: f054e366653a7c14186595569de398f9, type: 3}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.data[2]
@@ -2494,7 +2463,7 @@ PrefabInstance:
     - target: {fileID: 8130921515360841392, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Name
-      value: Door
+      value: FrontDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8130921515360841393, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -2954,7 +2923,7 @@ PrefabInstance:
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -2965,7 +2934,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Animations.Array.data[1]
       value: 
-      objectReference: {fileID: 7400002, guid: f054e366653a7c14186595569de398f9, type: 3}
+      objectReference: {fileID: 7400004, guid: f054e366653a7c14186595569de398f9, type: 3}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.data[2]
@@ -3014,7 +2983,7 @@ PrefabInstance:
     - target: {fileID: 8130921515360841392, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Name
-      value: Door (1)
+      value: BackDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8130921515360841393, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -3104,7 +3073,7 @@ PrefabInstance:
     - target: {fileID: 8130921515361137296, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 8130921515361137296, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -3188,6 +3157,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39868262e399a4c48bf3739708613d2b, type: 3}
+--- !u!111 &6768241516260768941 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3259279865838122777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6768241517446514057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8130921515361137296, guid: 39868262e399a4c48bf3739708613d2b,

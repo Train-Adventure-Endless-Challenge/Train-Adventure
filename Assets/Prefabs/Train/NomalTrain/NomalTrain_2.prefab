@@ -1758,24 +1758,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floor: {fileID: 5894373062679192026}
-  enemySpawnPoint:
-  - enemyTr: {fileID: 3788870344107607917}
+  _enemySpawnPoints:
+  - enemySpawmPointTr: {fileID: 3788870344107607917}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 8876521892686029412}
+  - enemySpawmPointTr: {fileID: 8876521892686029412}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 7712344741735447109}
+  - enemySpawmPointTr: {fileID: 7712344741735447109}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 1809244890572921}
+  - enemySpawmPointTr: {fileID: 1809244890572921}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 8979273795655839945}
+  - enemySpawmPointTr: {fileID: 8979273795655839945}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 7079339749799710838}
+  - enemySpawmPointTr: {fileID: 7079339749799710838}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 4664433053259044233}
+  - enemySpawmPointTr: {fileID: 4664433053259044233}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  - enemyTr: {fileID: 5885541893992931277}
+  - enemySpawmPointTr: {fileID: 5885541893992931277}
     enemy: {fileID: 189667525702800064, guid: e35541cb917f6994f81f53a086332123, type: 3}
-  doorAnimation: {fileID: 8130921513895996012}
+  _frontDoorAnimation: {fileID: 8130921513895996012}
+  _backDoorAnimation: {fileID: 6768241516260768941}
 --- !u!1 &5894373062679192026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2370,7 +2371,7 @@ PrefabInstance:
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -2381,7 +2382,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Animations.Array.data[1]
       value: 
-      objectReference: {fileID: 7400002, guid: f054e366653a7c14186595569de398f9, type: 3}
+      objectReference: {fileID: 7400004, guid: f054e366653a7c14186595569de398f9, type: 3}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.data[2]
@@ -2430,7 +2431,7 @@ PrefabInstance:
     - target: {fileID: 8130921515360841392, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Name
-      value: Door
+      value: FrontDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8130921515360841393, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -2960,7 +2961,7 @@ PrefabInstance:
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -2971,7 +2972,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Animations.Array.data[1]
       value: 
-      objectReference: {fileID: 7400002, guid: f054e366653a7c14186595569de398f9, type: 3}
+      objectReference: {fileID: 7400004, guid: f054e366653a7c14186595569de398f9, type: 3}
     - target: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Animations.Array.data[2]
@@ -3020,7 +3021,7 @@ PrefabInstance:
     - target: {fileID: 8130921515360841392, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
       propertyPath: m_Name
-      value: Door (1)
+      value: BackDoor
       objectReference: {fileID: 0}
     - target: {fileID: 8130921515360841393, guid: 39868262e399a4c48bf3739708613d2b,
         type: 3}
@@ -3194,6 +3195,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 39868262e399a4c48bf3739708613d2b, type: 3}
+--- !u!111 &6768241516260768941 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 8130921514093185972, guid: 39868262e399a4c48bf3739708613d2b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3259279865838122777}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6768241517446514057 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8130921515361137296, guid: 39868262e399a4c48bf3739708613d2b,
