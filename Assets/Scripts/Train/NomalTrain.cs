@@ -1,21 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class NomalTrain : Train
 {
-    [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;
-    [SerializeField] Animation _frontDoorAnimation;
-    [SerializeField] Animation _backDoorAnimation;
-    
+    [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;           // 몬스터 스폰 포인트
+        
+    private List<GameObject> _currentTrainEnemys = new List<GameObject>();  // 현재 스테이지 몬스터
 
-    private List<GameObject> _currentTrainEnemys = new List<GameObject>();
-
-    private bool _isInitialize;
-    private bool _isClear;
+    private bool _isClear;                                                     
 
     private void Start()
     {
@@ -29,8 +24,6 @@ public class NomalTrain : Train
     public override void Init()
     {
         SpawnEnemy();
-
-        _isInitialize = true;
     }
 
     private void SpawnEnemy()
@@ -44,18 +37,8 @@ public class NomalTrain : Train
         }
     }
 
-    private void Update()
-    {
-        // 임시로 테스트 하기위한 코드 
-        if (_currentTrainEnemys.All(i => i == null) && _isInitialize && !_isClear)
-        {
-            ClearStage();
-        }
-    }
-
     private void ClearStage()
     {
-        _frontDoorAnimation.Play();
         _isClear = true;
     }
 }
