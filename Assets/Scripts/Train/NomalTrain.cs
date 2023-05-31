@@ -2,12 +2,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NomalTrain : Train
 {
     [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;
     [SerializeField] Animation _frontDoorAnimation;
     [SerializeField] Animation _backDoorAnimation;
+    
 
     private List<GameObject> _currentTrainEnemys = new List<GameObject>();
 
