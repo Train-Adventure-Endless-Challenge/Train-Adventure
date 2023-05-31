@@ -1,22 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class Weapon : Item
 {
-
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
 
+    public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
+
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        
+
     }
 
     protected override void Init()
@@ -32,7 +29,7 @@ public class Weapon : Item
     /// </summary>
     public virtual void Attack()
     {
-        
+
     }
 
     /// <summary>
@@ -42,5 +39,4 @@ public class Weapon : Item
     {
 
     }
-
 }

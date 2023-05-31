@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryManager : MonoBehaviour
+public class InventoryManager : SceneSingleton<InventoryManager>
 {
     [SerializeField] private InventorySlot[] _inventorySlots;
     [SerializeField] private GameObject _inventoryItemPrefab;
@@ -42,7 +42,7 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    void SpawnNewItem(Item item, InventorySlot slot)
+    public void SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItemGo = Instantiate(_inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
