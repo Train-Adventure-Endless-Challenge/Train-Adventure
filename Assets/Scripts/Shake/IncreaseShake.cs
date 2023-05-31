@@ -9,6 +9,10 @@ public class IncreaseShake : MonoBehaviour
 {
     #region Variable
 
+    [Header("UI")]
+    [SerializeField] private ShakeSlider _shakeSlider;
+
+    [Header("Variable")]
     [SerializeField] private float _waitTime = 3.0f;  // 대기 시간
     [SerializeField] private float _maxValue = 10.0f; // 흔들림 최대값
 
@@ -34,7 +38,7 @@ public class IncreaseShake : MonoBehaviour
     /// </summary>
     private void Init()
     {
-        _impulseDefinition = GetComponent<Shake>()._impulseDefinition; // Shake에 존재하는 시네머신 임펄스 가지고 오기
+        _impulseDefinition = GetComponent<Shake>()._impulseDefinition; // Shake에 존재하는 시네머신 임펄스 강도
     }
 
     /// <summary>
@@ -70,6 +74,7 @@ public class IncreaseShake : MonoBehaviour
             if (_impulseDefinition.m_AmplitudeGain < _maxValue) // 최대값이 아니라면
             {
                 _impulseDefinition.m_AmplitudeGain++; // 1 증가
+                _shakeSlider.ChangeUI(_impulseDefinition.m_AmplitudeGain);
             }
         }
     }

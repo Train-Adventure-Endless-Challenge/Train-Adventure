@@ -9,6 +9,7 @@ public class Shake : MonoBehaviour
 {
     #region Variable
 
+    [Header("Cinemachine")]
     [CinemachineImpulseDefinitionProperty]
     public CinemachineImpulseDefinition _impulseDefinition = new CinemachineImpulseDefinition(); // 시네머신 임펄스 변수
     
@@ -51,7 +52,7 @@ public class Shake : MonoBehaviour
         {
             // 전 흔들림 이벤트 시간의 종료 시간에 맞춰 실행
             var now = Time.time;
-            float eventLength = _impulseDefinition.m_TimeEnvelope.m_AttackTime + _impulseDefinition.m_TimeEnvelope.m_SustainTime;
+            float eventLength = _impulseDefinition.m_TimeEnvelope.m_AttackTime + _impulseDefinition.m_TimeEnvelope.m_SustainTime; // 이벤트 시간
             if (now - _lastEventTime > eventLength) // 전 흔들림이 끝났다면
             {
                 _impulseDefinition.CreateEvent(transform.position, Vector3.down); // 흔들림 이벤트 생성
