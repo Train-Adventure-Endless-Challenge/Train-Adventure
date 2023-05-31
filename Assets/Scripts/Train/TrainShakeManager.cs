@@ -7,13 +7,18 @@ public class TrainShakeManager : SceneSingleton<TrainManager>
     [CinemachineImpulseDefinitionProperty]
     public CinemachineImpulseDefinition ImpulseDefinition = new CinemachineImpulseDefinition();
 
+    [SerializeField] private float _waitTime = 3.0f;
+    [SerializeField] private float _maxValue = 10.0f;
+
     IEnumerator _shakeCor;
+    IEnumerator _IncreaseShakeCor;
 
     float LastEventTime = 0;
 
     private void Start()
     {
-        StartCoroutine(ShakeCor());
+        StartShake();
+        StartIncreaseShake();
     }
 
     public void StartShake()
@@ -24,11 +29,19 @@ public class TrainShakeManager : SceneSingleton<TrainManager>
         }
     }
 
+    public void StartIncreaseShake()
+    {
+        if (_IncreaseShakeCor == null)
+        {
+            StartCoroutine(IncreaseShakeCor());
+        }
+    }
+
     public void StartShake(float value)
     {
         ImpulseDefinition.m_AmplitudeGain = value;
         if (_shakeCor == null)
-        StartCoroutine(ShakeCor());
+            StartCoroutine(ShakeCor());
     }
 
     public void ChangeAmplitude(float value)
@@ -39,6 +52,19 @@ public class TrainShakeManager : SceneSingleton<TrainManager>
     public void StopShake()
     {
         StopCoroutine(_shakeCor);
+    }
+
+    private IEnumerator IncreaseShakeCor()
+    {
+        _IncreaseShakeCor = IncreaseShakeCor();
+        while (true)
+        {
+            yield return new WaitForSeconds(_waitTime);
+            if (ImpulseDefinition.m_AmplitudeGain < _maxValue)
+            {
+                ImpulseDefinition.m_AmplitudeGain++;
+            }
+        }
     }
 
     private IEnumerator ShakeCor()
