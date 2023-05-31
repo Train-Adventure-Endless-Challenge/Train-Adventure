@@ -12,8 +12,8 @@ public class ItemCombinationSystem : MonoBehaviour
     public Dictionary<List<int>, int> _itemCombinationMethods;
     private List<Item> _ingredientItems = new List<Item>();
 
-    public InventorySlot[] ingredientSlot;
-    public InventorySlot resultSlot;
+    public InventorySlot[] _ingredientSlot;
+    public InventorySlot _resultSlot;
 
 
     void Start()
@@ -33,7 +33,7 @@ public class ItemCombinationSystem : MonoBehaviour
     {
         List<int> ingredientIds = new List<int>();
 
-        foreach(InventorySlot slot in ingredientSlot)
+        foreach(InventorySlot slot in _ingredientSlot)
             ingredientIds.Add(slot.GetComponentInChildren<InventoryItem>()._item.Id);
 
         
@@ -47,11 +47,11 @@ public class ItemCombinationSystem : MonoBehaviour
             if (com.Count <= 0) // 조합법 충족
             {
                 Item combinationItem = new Item(ItemDataManager.Instance.ItemData[_itemCombinationMethods[combination]]);
-                InventoryManager.Instance.SpawnNewItem(combinationItem, resultSlot);
+                InventoryManager.Instance.SpawnNewItem(combinationItem, _resultSlot);
                 
                 // 재료 아이템 삭제
-                for (int i = 0; i < ingredientSlot.Length; i++)
-                    Destroy(ingredientSlot[i].GetComponentInChildren<InventoryItem>().gameObject);
+                for (int i = 0; i < _ingredientSlot.Length; i++)
+                    Destroy(_ingredientSlot[i].GetComponentInChildren<InventoryItem>().gameObject);
                 //InventoryManager.Instance.AddItem(combinationItem);
 
                 // TODO: UI상에 띄우기 -> 인벤토리에 옮기면 그곳에 옮기고 그냥 끄면 맨뒤에 추가
