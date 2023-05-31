@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public enum ArmorType
 {
@@ -43,6 +44,7 @@ public class Item : MonoBehaviour
 
     public int Level { get { return _level; } }
 
+    public UnityEvent _levelupEvent;
 
     public Item(Item item)
     {
@@ -101,6 +103,7 @@ public class Item : MonoBehaviour
         _additionalDefense = itemData.AdditionalDefense;
         _additionalAttackSpeed = itemData.AdditionalAttackSpeed;
         _additionalSpeed = itemData.AdditionalSpeed;
+        _levelupEvent.AddListener(Levelup);
     }
 
 
@@ -138,9 +141,9 @@ public class Item : MonoBehaviour
     /// <summary>
     /// 아이템을 강화할 때 호출 되는 함수
     /// </summary>
-    public virtual void Levelup()
+    protected virtual void Levelup()
     {
-        if (_level >= 4) return;
+        if (_level >= 1) return;
         
         _level++;
         _additionalHp += itemData.UpgradeValueHp;
@@ -150,10 +153,6 @@ public class Item : MonoBehaviour
         _additionalAttackSpeed += itemData.UpgradeValueAttackSpeed;
         _additionalSpeed += itemData.UpgradeValueSpeed;
 
-        if(_level == 4)
-        {
-            // TODO: 추가 옵션 뽑기 및 적용  
-        }
         // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
     }
 }
