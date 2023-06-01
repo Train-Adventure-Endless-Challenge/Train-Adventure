@@ -11,6 +11,7 @@ public abstract class ObjectInTrain : Entity
     /// 오브젝트가 흔들림에 따른 효과를 실행 시킬 흔들림 수치
     /// </summary>
     private int _activateShakingCondition;
+    private bool _isActivate;
 
     public override void Die()
     {
@@ -30,8 +31,11 @@ public abstract class ObjectInTrain : Entity
     /// </summary>
     public void ShakingCheck()
     {
-        //if(흔들림 체크)
-        ActivateByShaking();
+        if(isActivate == false /*&& 흔들림 수치 검사*/)
+        {
+            ActivateByShaking();
+            isActivate = true;
+        }
     }
 
 
