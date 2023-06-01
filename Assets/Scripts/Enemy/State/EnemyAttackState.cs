@@ -112,8 +112,11 @@ public class EnemyAttackState : State<EnemyController>
         //공격
         GameObject bullet = enemy.InsBullet();
         bullet.transform.position = enemy._attackTransform.position;
-
         bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
+
+        // damage 할당
+        EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
+        eb._damage = (int)_enemyController.Damage;
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
         _enemyController._agent.isStopped = false;
