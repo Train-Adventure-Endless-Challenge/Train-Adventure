@@ -108,19 +108,10 @@ public class EnemyAttackState : State<EnemyController>
         _enemyController._anim.SetTrigger("Attack");
 
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
-        enemy._laserObj.SetActive(true);
 
-        RaycastHit hit;
-
-        if(Physics.Raycast(enemy._laserObj.transform.position, enemy._laserObj.transform.forward, out hit, LayerMask.GetMask("Player")))
-        {
-            PlayerHit player =  hit.transform.gameObject.GetComponent<PlayerHit>();
-            player.Hit(_enemyController.Damage);
-        }
+        //공격
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
-
-        enemy._laserObj.SetActive(false);
 
         _enemyController._agent.isStopped = false;
 
