@@ -93,12 +93,12 @@ public class EnemyAttackState : State<EnemyController>
 
         _enemyController._agent.isStopped = true;
 
+        Vector3 dir = _player.transform.position - _enemyController.transform.position;
         float timer = 0;
         while (timer <= 0.5f)       // 약간의 delay. temp 값.
         {
             timer += Time.deltaTime;
 
-            Vector3 dir = _player.transform.position - _enemyController.transform.position;
             _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
 
             yield return new WaitForEndOfFrame();
@@ -108,22 +108,18 @@ public class EnemyAttackState : State<EnemyController>
         _enemyController._anim.SetTrigger("Attack");
 
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
-        enemy._laserObj.SetActive(true);
 
-        RaycastHit hit;
+        //공격
+        GameObject bullet = enemy.InsBullet();
+        bullet.transform.position = enemy._attackTransform.position;
+        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
 
-        if(Physics.Raycast(enemy._laserObj.transform.position, enemy._laserObj.transform.forward, out hit, LayerMask.GetMask("Player")))
-        {
-            PlayerHit player =  hit.transform.gameObject.GetComponent<PlayerHit>();
-            player.Hit(_enemyController.Damage);
-        }
+        // damage 할당
+        EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
+        eb._damage = (int)_enemyController.Damage;
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
-
-        enemy._laserObj.SetActive(false);
-
         _enemyController._agent.isStopped = false;
-
         _isCurrentAttackCor = false;
 
     }
