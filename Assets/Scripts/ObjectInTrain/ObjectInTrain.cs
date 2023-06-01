@@ -16,7 +16,6 @@ public abstract class ObjectInTrain : Entity
     public override void Die()
     {
     }
-    /// <param name="attacker"></param>
     public override void Hit(float damage, GameObject attacker)
     {
     }
@@ -31,10 +30,10 @@ public abstract class ObjectInTrain : Entity
     /// </summary>
     public void ShakingCheck()
     {
-        if(isActivate == false /*&& 흔들림 수치 검사*/)
+        if(_isActivate == false /*&& 흔들림 수치 검사*/)
         {
             ActivateByShaking();
-            isActivate = true;
+            _isActivate = true;
         }
     }
 
