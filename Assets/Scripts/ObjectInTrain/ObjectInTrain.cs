@@ -40,7 +40,7 @@ public abstract class ObjectInTrain : Entity
 
     protected virtual void Update()
     {
-        ActivateByShaking();
+        ShakingCheck();
     }
     
 }
