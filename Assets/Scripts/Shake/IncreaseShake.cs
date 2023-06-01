@@ -12,10 +12,6 @@ public class IncreaseShake : MonoBehaviour
     [Header("UI")]
     [SerializeField] private ShakeSlider _shakeSlider;
 
-    [Header("Variable")]
-    [SerializeField] private float _waitTime = 3.0f;  // 대기 시간
-    [SerializeField] private float _maxValue = 10.0f; // 흔들림 최대값
-
     IEnumerator _IncreaseShakeCor;
 
     CinemachineImpulseDefinition _impulseDefinition;  // 시네머신 임펄스 변수
@@ -45,11 +41,13 @@ public class IncreaseShake : MonoBehaviour
     /// 흔들림 증가 시작 함수
     /// <br/> 중복 검사 후 실행
     /// </summary>
-    public void StartIncreaseShake()
+    /// <param name="waitTime">대기 시간</param>
+    /// <param name="maxValue">최대값</param>
+    public void StartIncreaseShake(float waitTime, float maxValue)
     {
         if (_IncreaseShakeCor == null) // 중복 검사
         {
-            StartCoroutine(IncreaseShakeCor());
+            StartCoroutine(IncreaseShakeCor(waitTime, maxValue));
         }
     }
 
@@ -58,20 +56,22 @@ public class IncreaseShake : MonoBehaviour
     /// </summary>
     public void StopIncreaseShake()
     {
-        StopCoroutine(IncreaseShakeCor());
+        StopCoroutine(_IncreaseShakeCor);
     }
 
     /// <summary>
     /// 흔들림 증가 코루틴 함수
     /// </summary>
+    /// <param name="waitTime">대기 시간</param>
+    /// <param name="maxValue">최대값</param>
     /// <returns></returns>
-    private IEnumerator IncreaseShakeCor()
+    private IEnumerator IncreaseShakeCor(float waitTime, float maxValue)
     {
-        _IncreaseShakeCor = IncreaseShakeCor(); // 코루틴 할당
+        _IncreaseShakeCor = IncreaseShakeCor(waitTime, maxValue); // 코루틴 할당
         while (true)
         {
-            yield return new WaitForSeconds(_waitTime); // 대기 시간 만큼 대기
-            if (_impulseDefinition.m_AmplitudeGain < _maxValue) // 최대값이 아니라면
+            yield return new WaitForSeconds(waitTime); // 대기 시간 만큼 대기
+            if (_impulseDefinition.m_AmplitudeGain < maxValue) // 최대값이 아니라면
             {
                 _impulseDefinition.m_AmplitudeGain++; // 1 증가
                 _shakeSlider.ChangeUI(_impulseDefinition.m_AmplitudeGain);
