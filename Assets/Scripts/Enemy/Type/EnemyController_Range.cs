@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyController_Range : EnemyController
 {
     [Header("Attack")]
-    [SerializeField] Transform _attackTransform;
+    public Transform _attackTransform;
     [SerializeField] GameObject _bulletPrefab;
 
     protected override void Start()
@@ -27,6 +27,6 @@ public class EnemyController_Range : EnemyController
     /// </summary>
     public GameObject InsBullet()
     {
-        return Instantiate(_bulletPrefab,_attackTransform.position, Quaternion.identity);
+        return Instantiate(_bulletPrefab);
     }
 }

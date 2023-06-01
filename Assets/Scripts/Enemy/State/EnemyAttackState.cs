@@ -93,12 +93,12 @@ public class EnemyAttackState : State<EnemyController>
 
         _enemyController._agent.isStopped = true;
 
+        Vector3 dir = _player.transform.position - _enemyController.transform.position;
         float timer = 0;
         while (timer <= 0.5f)       // 약간의 delay. temp 값.
         {
             timer += Time.deltaTime;
 
-            Vector3 dir = _player.transform.position - _enemyController.transform.position;
             _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
 
             yield return new WaitForEndOfFrame();
@@ -111,7 +111,9 @@ public class EnemyAttackState : State<EnemyController>
 
         //공격
         GameObject bullet = enemy.InsBullet();
-        bullet.transform.LookAt(_player.transform.position); 
+        bullet.transform.position = enemy._attackTransform.position;
+
+        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
         _enemyController._agent.isStopped = false;
