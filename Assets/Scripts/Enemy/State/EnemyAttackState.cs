@@ -110,11 +110,11 @@ public class EnemyAttackState : State<EnemyController>
         EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
 
         //공격
+        GameObject bullet = enemy.InsBullet();
+        bullet.transform.LookAt(_player.transform.position); 
 
         yield return new WaitForSeconds(_enemyController.AttackSpeed);
-
         _enemyController._agent.isStopped = false;
-
         _isCurrentAttackCor = false;
 
     }
