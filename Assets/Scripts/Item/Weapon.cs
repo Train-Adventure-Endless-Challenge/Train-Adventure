@@ -29,7 +29,7 @@ public class Weapon : Item
         _attackSpeed = itemData.AttackSpeed;
         switch (_attackType)
         {
-            case attackType.meele:
+            case attackType.melee:
                 _consumeDurability = 2;
                 break;
             case attackType.ranged:

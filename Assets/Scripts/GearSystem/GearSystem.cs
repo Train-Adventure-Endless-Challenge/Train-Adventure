@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GearSystem : MonoBehaviour
+public class GearSystem : SceneSingleton<GearSystem>
 {
     private int _gearAmount;
     public int GearAmount { get { return _gearAmount; } }

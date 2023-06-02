@@ -167,5 +167,24 @@ public class Item : MonoBehaviour
     public void SubDurability(int value)
     {
         _durability -= value;
+        if (_durability <= 0)
+            Destruction();
+    }
+
+    public void Decomposition() 
+    {
+        //3~7개
+        int addedGear = UnityEngine.Random.Range(3, 8);
+        GearSystem.Instance.AddGear(addedGear);
+        //TODO: 아이템 포인터 null로 만들기
+    }
+
+    public void Destruction()
+    {
+        //2~5개
+        int addedGear = UnityEngine.Random.Range(2, 6);
+        GearSystem.Instance.AddGear(addedGear);
+
+        //TODO: 아이템 포인터 null로 만들기
     }
 }
