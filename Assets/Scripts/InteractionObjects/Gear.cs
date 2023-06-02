@@ -5,7 +5,13 @@ using UnityEngine;
 public class Gear : MonoBehaviour
 {
     private GearMove move;
-    private int _acquisitionsGear;
+    /// <summary>
+    /// 얻는 기어 수
+    /// </summary>
+    private int _acquisitionsGear; // 얻는 기어 수
+    /// <summary>
+    /// 기어 스피드
+    /// </summary>
     [SerializeField] private float _speed;
     public int AcquisitionGear
     {

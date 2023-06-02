@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GearMove : MonoBehaviour
 {
-    public float Speed { get; set; }
+    public float Speed { get; set; } // 기어 스피드
 
     private void OnTriggerStay(Collider other)
     {
