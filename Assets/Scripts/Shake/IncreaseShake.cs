@@ -59,6 +59,16 @@ public class IncreaseShake : MonoBehaviour
         StopCoroutine(_IncreaseShakeCor);
     }
 
+    public void ClearShake()
+    {
+        _impulseDefinition.m_AmplitudeGain = 0.0f;
+    }
+
+    public void DecreaseShake(float value)
+    {
+        _impulseDefinition.m_AmplitudeGain -= value;
+    }
+
     /// <summary>
     /// 흔들림 증가 코루틴 함수
     /// </summary>
