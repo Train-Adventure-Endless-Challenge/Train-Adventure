@@ -29,6 +29,7 @@ public class Item : MonoBehaviour
     protected int _additionalDefense;
     protected float _additionalAttackSpeed;
     protected float _additionalSpeed;
+    protected int _durability;
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
@@ -41,6 +42,7 @@ public class Item : MonoBehaviour
     public int AdditionalDefense { get { return _additionalDefense; } }
     public float AdditionalAttackSpeed { get { return _additionalAttackSpeed; } }
     public float AdditionalSpeed { get { return _additionalSpeed; } }
+
 
     public int Level { get { return _level; } }
 
@@ -59,7 +61,7 @@ public class Item : MonoBehaviour
         _additionalDefense = item.AdditionalDefense;
         _additionalAttackSpeed  = item.AdditionalAttackSpeed;
         _additionalSpeed = item.AdditionalSpeed;
-
+        _durability = item._durability;
         _level = item.Level;
     }
 
@@ -103,6 +105,7 @@ public class Item : MonoBehaviour
         _additionalDefense = itemData.AdditionalDefense;
         _additionalAttackSpeed = itemData.AdditionalAttackSpeed;
         _additionalSpeed = itemData.AdditionalSpeed;
+        _durability = itemData.MaxDurability;
         _levelupEvent.AddListener(Levelup);
     }
 

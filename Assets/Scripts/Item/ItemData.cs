@@ -27,6 +27,7 @@ public class ItemData : ScriptableObject
     [SerializeField] private float _upgradeValueAttackSpeed;                            // 아이템 강화 시 늘어나는 공격속도
     [SerializeField] private float _upgradeValueSpeed;                                  // 아이템 강화 시 늘어나는 이동속도 
 
+    [SerializeField] private int _maxDurability;
     [SerializeField] private bool _isStackable = false;
     public int Id { get { return _id; } }
     public string Name { get { return _name; } }
@@ -52,5 +53,6 @@ public class ItemData : ScriptableObject
     public float UpgradeValueAttackSpeed { get { return _upgradeValueAttackSpeed; } }
     public float UpgradeValueSpeed { get { return _upgradeValueSpeed; } }
 
+    public int MaxDurability { get { return _maxDurability; } }
     public bool IsStackable { get { return _isStackable; } }
 }
