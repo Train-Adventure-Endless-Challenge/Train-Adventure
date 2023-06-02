@@ -18,9 +18,10 @@ public class Gear : MonoBehaviour
         move = GetComponentInChildren<GearMove>();
         move.Speed = _speed;
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             GearSystem.Instance.AddGear(_acquisitionsGear);
             Destroy(gameObject);

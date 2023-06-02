@@ -6,14 +6,12 @@ public class GearMove : MonoBehaviour
 {
     public float Speed { get; set; }
 
-    private void OnTriggerStay(Collider other)
+
+    private void OnCollisionStay(Collision collision)
     {
-        Debug.Log("MOVE IN");
-        if (other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            transform.parent.transform.position = Vector3.MoveTowards(transform.position, other.transform.position,Speed * Time.deltaTime);
+            transform.parent.transform.position = Vector3.MoveTowards(transform.position, collision.transform.position, Speed * Time.deltaTime);
         }
-
-
     }
 }
