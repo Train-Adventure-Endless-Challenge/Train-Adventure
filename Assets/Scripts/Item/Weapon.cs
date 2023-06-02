@@ -1,15 +1,20 @@
+public enum attackType
+{
+    melee,
+    ranged,
+}
+
+
 public class Weapon : Item
 {
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
 
+    protected attackType _attackType;
+
+    protected int _consumeDurability;
     public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
-
-    void Start()
-    {
-
-    }
 
     void Update()
     {
@@ -22,6 +27,17 @@ public class Weapon : Item
         _damage = itemData.Damage;
         _range = itemData.Range;
         _attackSpeed = itemData.AttackSpeed;
+        switch (_attackType)
+        {
+            case attackType.meele:
+                _consumeDurability = 2;
+                break;
+            case attackType.ranged:
+                _consumeDurability = 1;
+                break;
+            default:
+                break;
+        }
     }
 
     /// <summary>
@@ -29,7 +45,7 @@ public class Weapon : Item
     /// </summary>
     public virtual void Attack()
     {
-
+        SubDurability(_consumeDurability);
     }
 
     /// <summary>
@@ -37,6 +53,6 @@ public class Weapon : Item
     /// </summary>
     public virtual void UseActiveSkill()
     {
-
+        SubDurability(_consumeDurability);
     }
 }
