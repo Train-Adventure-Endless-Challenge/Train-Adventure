@@ -8,7 +8,6 @@ public class GearMove : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        Debug.Log("CollisionStay");
         if (other.gameObject.CompareTag("Player"))
         {
             transform.parent.transform.position = Vector3.MoveTowards(transform.position, other.transform.position, Speed * Time.deltaTime);
