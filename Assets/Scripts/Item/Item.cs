@@ -29,6 +29,7 @@ public class Item : MonoBehaviour
     protected int _additionalDefense;
     protected float _additionalAttackSpeed;
     protected float _additionalSpeed;
+    protected int _durability;
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
@@ -41,6 +42,7 @@ public class Item : MonoBehaviour
     public int AdditionalDefense { get { return _additionalDefense; } }
     public float AdditionalAttackSpeed { get { return _additionalAttackSpeed; } }
     public float AdditionalSpeed { get { return _additionalSpeed; } }
+
 
     public int Level { get { return _level; } }
 
@@ -59,7 +61,7 @@ public class Item : MonoBehaviour
         _additionalDefense = item.AdditionalDefense;
         _additionalAttackSpeed  = item.AdditionalAttackSpeed;
         _additionalSpeed = item.AdditionalSpeed;
-
+        _durability = item._durability;
         _level = item.Level;
     }
 
@@ -103,6 +105,7 @@ public class Item : MonoBehaviour
         _additionalDefense = itemData.AdditionalDefense;
         _additionalAttackSpeed = itemData.AdditionalAttackSpeed;
         _additionalSpeed = itemData.AdditionalSpeed;
+        _durability = itemData.MaxDurability;
         _levelupEvent.AddListener(Levelup);
     }
 
@@ -154,5 +157,34 @@ public class Item : MonoBehaviour
         _additionalSpeed += itemData.UpgradeValueSpeed;
 
         // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
+    }
+
+    public void SetDurabilityMax()
+    {
+        _durability = itemData.MaxDurability;
+    }
+
+    public void SubDurability(int value)
+    {
+        _durability -= value;
+        if (_durability <= 0)
+            Destruction();
+    }
+
+    public void Decomposition() 
+    {
+        //3~7개
+        int addedGear = UnityEngine.Random.Range(3, 8);
+        GearSystem.Instance.AddGear(addedGear);
+        //TODO: 아이템 포인터 null로 만들기
+    }
+
+    public void Destruction()
+    {
+        //2~5개
+        int addedGear = UnityEngine.Random.Range(2, 6);
+        GearSystem.Instance.AddGear(addedGear);
+
+        //TODO: 아이템 포인터 null로 만들기
     }
 }

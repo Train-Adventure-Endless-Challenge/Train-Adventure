@@ -1,16 +1,23 @@
+using UnityEngine;
+
+public enum attackType
+{
+    melee,
+    ranged,
+}
+
+
 public class Weapon : Item
 {
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
 
+    protected attackType _attackType;
+
     public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
 
-    void Start()
-    {
-
-    }
-
+    public float currentCoolTime;
     void Update()
     {
 
@@ -29,7 +36,7 @@ public class Weapon : Item
     /// </summary>
     public virtual void Attack()
     {
-
+        SubDurability(itemData.AttackConsumeDurability);
     }
 
     /// <summary>
@@ -37,6 +44,7 @@ public class Weapon : Item
     /// </summary>
     public virtual void UseActiveSkill()
     {
-
+        SubDurability(itemData.SkillConsumeDurability);
+        currentCoolTime = Time.time + itemData.SkillCooltime;
     }
 }
