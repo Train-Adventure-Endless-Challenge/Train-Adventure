@@ -2,7 +2,7 @@ using UnityEngine;
 /// <summary>
 /// 흔들림을 관리하는 클래스
 /// </summary>
-public class ShakeManager : SceneSingleton<TrainManager>
+public class ShakeManager : SceneSingleton<ShakeManager>
 {
     #region Variable
 
