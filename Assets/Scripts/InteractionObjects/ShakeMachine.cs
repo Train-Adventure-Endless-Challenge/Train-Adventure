@@ -12,7 +12,7 @@ public class ShakeMachine : InteractionObject
     {
         if(GearSystem.Instance.GearAmount >= _necessaryGear)
         {
-            // TODO: 흔들림 초기화 함수 실행
+            ShakeManager.Instance.ClearShake();
             GearSystem.Instance.SubGear(_necessaryGear);
         }
     }
