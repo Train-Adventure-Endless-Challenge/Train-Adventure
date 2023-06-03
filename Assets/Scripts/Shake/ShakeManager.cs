@@ -13,6 +13,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     private Shake _shake;
     private IncreaseShake _increaseShake;
 
+    
     #endregion
 
     #region Function
@@ -31,6 +32,10 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         _increaseShake.StartIncreaseShake(_waitTime, _maxValue);
     }
 
+    public void ClearShake()
+    {
+        _increaseShake.ClearShake();
+    }
     #endregion
 
     #endregion
