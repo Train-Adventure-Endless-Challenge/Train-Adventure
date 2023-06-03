@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class EnemyController_Range : EnemyController
 {
-    public GameObject _laserObj;
+    [Header("Attack")]
+    public Transform _attackTransform;
+    [SerializeField] GameObject _bulletPrefab;
 
     protected override void Start()
     {
@@ -13,12 +15,18 @@ public class EnemyController_Range : EnemyController
         _stateMachine.AddState(new EnemyDieState());
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
-
-        _laserObj.SetActive(false);
     }
 
     protected override void Update()
     {
         base.Update();
+    }
+
+    /// <summary>
+    /// 총알 생성
+    /// </summary>
+    public GameObject InsBullet()
+    {
+        return Instantiate(_bulletPrefab);
     }
 }

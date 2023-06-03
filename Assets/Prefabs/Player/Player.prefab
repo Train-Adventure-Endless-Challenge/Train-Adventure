@@ -98,12 +98,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167497307699225300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58c372ae171bf1047a1d6f2c85398341, type: 3}
+  m_Script: {fileID: 11500000, guid: fa4e664a4f4d5ca49b100a22e365aa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 11400000, guid: eee7e88addee72346979ffa3d3cb6e19, type: 2}
+  itemData: {fileID: 0}
+  _levelupEvent:
+    m_PersistentCalls:
+      m_Calls: []
   _detectionAngle: 90
-  _playerTransform: {fileID: 431028770}
+  _playerTransform: {fileID: 1167497307699225306}
   _targetLayer:
     serializedVersion: 2
     m_Bits: 512
@@ -8223,35 +8226,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6401699005772241260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f45cb9f7e71a04546ae6af4b66ce056c, type: 3}
+  m_Script: {fileID: 11500000, guid: ff0646cb0cbd63c4e9945047227b49d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _runningKey: 304
-  _moveSpeedScale: 0
-  _animationCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  playerData: {fileID: 11400000, guid: 86e5a67a9b97802419b83714147fb914, type: 2}
+  playerState: 0
 --- !u!114 &6401699004113738584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8261,77 +8240,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6401699005772241260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb827490b24bb484088542ec8815d7c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6401699004113738591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6401699005772241260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e12fe68ac87035243b7cdd6ca62e6a2f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 1395859fb3d25db4e8b6d59eb293f0c9, type: 2}
-  playerState: 0
---- !u!114 &6401699004113738590
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6401699005772241260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 851d39f9d822d89458eeb2c28f32ff7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _rollingKey: 32
-  _rollingRange: 10
-  _rollingCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _isGodMode: 0
---- !u!114 &6401699004113738589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6401699005772241260}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a8158a5aded1e344ab537b72b8bc219, type: 3}
+  m_Script: {fileID: 11500000, guid: d4c9a354370032745a60851573e638bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _slowSpeedScale: 0.3
   _originSpeedScale: 1
-  _weaponTr: {fileID: 1167497307699225302}
+  _weaponTr: {fileID: 431028770}
   _OnAttackEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8360,7 +8274,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 1167497307699225301}
-        m_TargetAssemblyTypeName: Weapon, Assembly-CSharp
+        m_TargetAssemblyTypeName: Dagger, Assembly-CSharp
         m_MethodName: Attack
         m_Mode: 1
         m_Arguments:
@@ -8369,7 +8283,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
   _OnStopEvent:
     m_PersistentCalls:
@@ -8410,7 +8324,7 @@ MonoBehaviour:
           m_StringArgument: AttackCor
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6401699004113738588
+--- !u!114 &6401699004113738591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8419,10 +8333,87 @@ MonoBehaviour:
   m_GameObject: {fileID: 6401699005772241260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f5aec3737deb6247ad87c7f57c7a80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 039a845c14ba90a4592460c6370b523f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animTime: 0.5
+  _runningKey: 304
+  _moveSpeedScale: 0
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &6401699004113738590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401699005772241260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4611bdb5da04af942aa38040e1996415, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _OnDie:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6401699004113738588}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 6401699004113738587}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: SetTrigger
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: OnState
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6401699004113738589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401699005772241260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec999a9d90697e04ab820d6881b9acff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animTime: 0.8
   _OnHit:
     m_PersistentCalls:
       m_Calls:
@@ -8477,6 +8468,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &6401699004113738588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401699005772241260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b719080cf83eeda47a0949b9803aee2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6401699004113738563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8486,36 +8489,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 6401699005772241260}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b583e99ebba07364f8483d7e83abf445, type: 3}
+  m_Script: {fileID: 11500000, guid: da766ae87ea9bdc43a69e3ec05909ca3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _OnDie:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6401699004113738584}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6401699004113738587}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: OnState
-          m_BoolArgument: 0
-        m_CallState: 2
+  _rollingKey: 32
+  _rollingRange: 10
+  _rollingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _isGodMode: 0
 --- !u!1 &6401699005788650566
 GameObject:
   m_ObjectHideFlags: 0
