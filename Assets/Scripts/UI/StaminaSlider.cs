@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>
+/// 스태미나 슬라이더를 담당하는 클래스
+/// <br/> ※추후 변경※
+/// </summary>
 public class StaminaSlider : MonoBehaviour
 {
     #region Variable

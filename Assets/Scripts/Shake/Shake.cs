@@ -38,7 +38,8 @@ public class Shake : MonoBehaviour
     /// </summary>
     public void StopShake()
     {
-        StopCoroutine(ShakeCor());
+        StopAllCoroutines();
+        _shakeCor = null;
     }
 
     /// <summary>
