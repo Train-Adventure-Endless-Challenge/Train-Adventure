@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class ShakeMachine : InteractionObject
 {
-    /// <summary>
-    /// 필요한 기어 수
-    /// </summary>
-    private int _necessaryGear;
     public override void Interact()
     {
-        if(GearSystem.Instance.GearAmount >= _necessaryGear)
+        int necessaryGear = (int)ShakeManager.Instance.ShakeAmount * 5;
+        if (GearSystem.Instance.GearAmount >= necessaryGear)
         {
-            // TODO: 흔들림 초기화 함수 실행
-            GearSystem.Instance.SubGear(_necessaryGear);
+            ShakeManager.Instance.ClearShake();
+            GearSystem.Instance.SubGear(necessaryGear);
         }
     }
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 /// <summary>
 /// 흔들림을 관리하는 클래스
 /// </summary>
-public class ShakeManager : SceneSingleton<TrainManager>
+public class ShakeManager : SceneSingleton<ShakeManager>
 {
     #region Variable
 
@@ -13,6 +13,8 @@ public class ShakeManager : SceneSingleton<TrainManager>
     private Shake _shake;
     private IncreaseShake _increaseShake;
 
+    public float ShakeAmount { get { return _increaseShake.ImpulseDefinition.m_AmplitudeGain; } }
+    
     #endregion
 
     #region Function
@@ -31,6 +33,10 @@ public class ShakeManager : SceneSingleton<TrainManager>
         _increaseShake.StartIncreaseShake(_waitTime, _maxValue);
     }
 
+    public void ClearShake()
+    {
+        _increaseShake.ClearShake();
+    }
     #endregion
 
     #endregion
