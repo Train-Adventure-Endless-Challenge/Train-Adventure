@@ -21,6 +21,8 @@ public class PlayerAttack : MonoBehaviour
     public UnityEvent _OnAttackEvent;                      // 플레이어 공격 이벤트
     public UnityEvent _OnStopEvent;                        // 공격 멈춤 이벤트
 
+    [SerializeField] private StaminaSlider _staminaSlider;
+
     private float _animTime = 0.5f;                        // 공격 애니메이션 속도 (원래는 0.44f 초이지만, 오류 방지를 위해 0.06초 추가 하여 사용)
     private float _attackSpeed;                            // 공격 속도
 
@@ -81,6 +83,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _player.Stamina -= _staminaValue;
+                _staminaSlider.ChangeUI(_player.Stamina);
                 _player.playerState = PlayerState.Attack; // 상태 
                 StartCoroutine(AttackCor());              // 공격 코루틴 실행
                 StartCoroutine(AttackTimerCor());         // 공격 속도 타이머 실행

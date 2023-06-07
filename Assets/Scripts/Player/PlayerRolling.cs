@@ -16,6 +16,8 @@ public class PlayerRolling : MonoBehaviour
     [SerializeField] private AnimationCurve _rollingCurve;
     [SerializeField] private int _staminaValue = 20;       // 필요 스태미너 값
 
+    [SerializeField] private StaminaSlider _staminaSlider;
+
     public bool _isGodMode;
 
     private Player _player;
@@ -69,6 +71,7 @@ public class PlayerRolling : MonoBehaviour
             if (Input.GetKeyDown(_rollingKey) && CanRoll())
             {
                 _player.Stamina -= _staminaValue;
+                _staminaSlider.ChangeUI(_player.Stamina);
                 _player.playerState = PlayerState.Rolling;
                 _rollCor = RollCor(transform.position);
                 StartCoroutine(RollCor(transform.position));
