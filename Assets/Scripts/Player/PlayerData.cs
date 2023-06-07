@@ -10,6 +10,7 @@ public class PlayerData : ScriptableObject
     [SerializeField] private float _attackSpeed;
     [SerializeField] private int _mp;
     [SerializeField] private int _defense;
+    [SerializeField] private int _stamina;
 
     public float Hp { get { return _hp; } }
     public float Speed { get { return _speed; } }
@@ -18,4 +19,5 @@ public class PlayerData : ScriptableObject
     public float AttackSpeed { get { return _attackSpeed; } }
     public int Mp { get { return _mp; } }
     public int Defense { get { return _defense; } }
+    public int Stamina { get { return _stamina; } }
 }

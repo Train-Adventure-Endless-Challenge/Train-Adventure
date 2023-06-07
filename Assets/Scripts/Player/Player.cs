@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
     private float _strength;
     private int _mp;
     private int _defense;
+    public int _stamina;
 
     public float Hp { get { return _hp; } set { _hp = value; } }
     public float Speed { get { return _speed; } set { _speed = value; } }
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     public float Strength { get { return _strength; } set { _strength = value; } }
     public int Mp { get { return _mp; } set { _mp = value; } }
     public int Defense { get { return _defense; } set { _defense = value; } }
+    public int Stamina { get { return _stamina; } set { _stamina = value; } }
 
     private void Awake()
     {
@@ -50,5 +52,6 @@ public class Player : MonoBehaviour
         _strength = playerData.Strength;
         _mp = playerData.Mp;
         _defense = playerData.Defense;
+        _stamina = playerData.Stamina;
     }
 }

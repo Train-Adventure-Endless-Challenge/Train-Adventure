@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Variable")]
     [SerializeField] private float _slowSpeedScale = 0.3f; // 감속 속도 배율 (0.3f)
     [SerializeField] private float _originSpeedScale = 1f; // 원래 속도      (1)
+    [SerializeField] private int _staminaValue = 7;        // ※추후 변경※ 임시 스태미너 값
 
     [Header("Transform")]
     [SerializeField] private Transform _weaponTr;          // 무기 위치
@@ -19,6 +20,8 @@ public class PlayerAttack : MonoBehaviour
     [Header("Event")]
     public UnityEvent _OnAttackEvent;                      // 플레이어 공격 이벤트
     public UnityEvent _OnStopEvent;                        // 공격 멈춤 이벤트
+
+    [SerializeField] private StaminaSlider _staminaSlider;
 
     private float _animTime = 0.5f;                        // 공격 애니메이션 속도 (원래는 0.44f 초이지만, 오류 방지를 위해 0.06초 추가 하여 사용)
     private float _attackSpeed;                            // 공격 속도
@@ -72,18 +75,29 @@ public class PlayerAttack : MonoBehaviour
     #endregion
     public void Attack()
     {
-        if (_attackCor == null && _attackTimerCor == null)      // 코루틴이 실행되고 있지 않을 때
+        if (_attackCor == null && _attackTimerCor == null && CanAttack()) // 코루틴이 실행되고 있지 않거나 스태미너가 충분하다면
         {
             #region Mobile
             //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
             #endregion
             if (Input.GetMouseButtonDown(0))
             {
-                _player.playerState = PlayerState.Attack;       // 상태 
-                StartCoroutine(AttackCor());                    // 공격 코루틴 실행
-                StartCoroutine(AttackTimerCor());               // 공격 속도 타이머 실행
+                _player.Stamina -= _staminaValue;
+                _staminaSlider.ChangeUI(_player.Stamina);
+                _player.playerState = PlayerState.Attack; // 상태 
+                StartCoroutine(AttackCor());              // 공격 코루틴 실행
+                StartCoroutine(AttackTimerCor());         // 공격 속도 타이머 실행
             }
         }
+    }
+
+    /// <summary>
+    /// 공격이 가능한지 체크하는 함수
+    /// </summary>
+    /// <returns></returns>
+    private bool CanAttack()
+    {
+        return _player.Stamina - _staminaValue >= 0; // 스태미나가 충분한지 체크
     }
 
     /// <summary>
