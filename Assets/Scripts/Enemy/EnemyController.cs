@@ -45,6 +45,7 @@ public abstract class EnemyController : MonoBehaviour
 
     [Header("AttackCheck")]
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
+    public bool _isCurrentAttackCor;
 
 
     protected virtual void Awake()
@@ -99,5 +100,7 @@ public abstract class EnemyController : MonoBehaviour
     {
         HP -= damage;
     }
+
+    protected abstract void Attack();
 }
 

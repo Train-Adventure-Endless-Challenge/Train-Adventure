@@ -14,8 +14,6 @@ public class EnemyAttackState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
-    private bool _isCurrentAttackCor;
-
     private float _agentStopDistance;
 
     public override void OnEnter()
@@ -41,7 +39,7 @@ public class EnemyAttackState : State<EnemyController>
         {
             _agent.SetDestination(_player.transform.position);
         }
-        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _isCurrentAttackCor == false)
+        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
         {
             _enemyController._anim.SetBool("WalkToPlayer", false);
             _enemyController.ChangeState<EnemyIdleState>();
@@ -59,7 +57,7 @@ public class EnemyAttackState : State<EnemyController>
 
 
 
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _isCurrentAttackCor == false )
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false )
         {
             switch (_enemyController.EnemyType)
             {
