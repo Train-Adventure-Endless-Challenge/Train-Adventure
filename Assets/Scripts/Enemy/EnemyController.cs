@@ -100,7 +100,5 @@ public abstract class EnemyController : MonoBehaviour
     {
         HP -= damage;
     }
-
-    protected abstract void Attack();
 }
 

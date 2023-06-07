@@ -62,7 +62,8 @@ public class EnemyAttackState : State<EnemyController>
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
-                    _enemyController.StartCoroutine(AttackRangeCor());
+                    EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
+                    _enemyController.StartCoroutine(enemy.AttackRangeCor());
                     break;
                 case EnemyType.melee:
                      _enemyController.StartCoroutine(AttackMeleeCor());
@@ -73,54 +74,6 @@ public class EnemyAttackState : State<EnemyController>
         }
     }
 
-    /// <summary>
-    /// 원거리 공격
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator AttackRangeCor()
-    {
-
-        // 잘못 인식된 경우 나가기
-        if (Vector3.Distance(_enemyController.transform.position, _player.transform.position) > _enemyController.AttackRange + _agent.stoppingDistance)
-        {
-            _isCurrentAttackCor = false;
-            yield break;
-        }
-
-        _isCurrentAttackCor = true;
-
-        _enemyController._agent.isStopped = true;
-
-        Vector3 dir = _player.transform.position - _enemyController.transform.position;
-        float timer = 0;
-        while (timer <= 0.5f)       // 약간의 delay. temp 값.
-        {
-            timer += Time.deltaTime;
-
-            _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
-
-            yield return new WaitForEndOfFrame();
-
-        }
-
-        _enemyController._anim.SetTrigger("Attack");
-
-        EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
-
-        //공격
-        GameObject bullet = enemy.InsBullet();
-        bullet.transform.position = enemy._attackTransform.position;
-        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
-
-        // damage 할당
-        EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
-        eb._damage = (int)_enemyController.Damage;
-
-        yield return new WaitForSeconds(_enemyController.AttackSpeed);
-        _enemyController._agent.isStopped = false;
-        _isCurrentAttackCor = false;
-
-    }
 
     /// <summary>
     /// 근거리 공격
