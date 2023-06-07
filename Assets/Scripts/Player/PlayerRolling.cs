@@ -14,6 +14,7 @@ public class PlayerRolling : MonoBehaviour
     [Header("Attribute")]
     [SerializeField] private float _rollingRange;
     [SerializeField] private AnimationCurve _rollingCurve;
+    [SerializeField] private int _staminaValue = 20;
 
     public bool _isGodMode;
 
@@ -65,13 +66,19 @@ public class PlayerRolling : MonoBehaviour
             //if ((isPC && Input.GetKeyDown(_rollingKey)) || !isPC)
 
             #endregion
-            if (Input.GetKeyDown(_rollingKey))
+            if (Input.GetKeyDown(_rollingKey) && CanRoll())
             {
+                _player.Stamina -= _staminaValue;
                 _player.playerState = PlayerState.Rolling;
                 _rollCor = RollCor(transform.position);
                 StartCoroutine(RollCor(transform.position));
             }
         }
+    }
+
+    private bool CanRoll()
+    {
+        return _player.Stamina - _staminaValue >= 0;
     }
 
     /// <summary>

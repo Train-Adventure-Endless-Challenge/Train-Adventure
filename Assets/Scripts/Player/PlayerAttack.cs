@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Variable")]
     [SerializeField] private float _slowSpeedScale = 0.3f; // 감속 속도 배율 (0.3f)
     [SerializeField] private float _originSpeedScale = 1f; // 원래 속도      (1)
+    [SerializeField] private int _staminaValue = 7;
 
     [Header("Transform")]
     [SerializeField] private Transform _weaponTr;          // 무기 위치
@@ -72,18 +73,24 @@ public class PlayerAttack : MonoBehaviour
     #endregion
     public void Attack()
     {
-        if (_attackCor == null && _attackTimerCor == null)      // 코루틴이 실행되고 있지 않을 때
+        if (_attackCor == null && _attackTimerCor == null && CanAttack()) // 코루틴이 실행되고 있지 않을 때
         {
             #region Mobile
             //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
             #endregion
             if (Input.GetMouseButtonDown(0))
             {
+                _player.Stamina -= _staminaValue;
                 _player.playerState = PlayerState.Attack;       // 상태 
                 StartCoroutine(AttackCor());                    // 공격 코루틴 실행
                 StartCoroutine(AttackTimerCor());               // 공격 속도 타이머 실행
             }
         }
+    }
+
+    private bool CanAttack()
+    {
+        return _player.Stamina - _staminaValue >= 0;
     }
 
     /// <summary>
