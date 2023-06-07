@@ -18,6 +18,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
     private PlayerAttack _playerAttack;
+    private PlayerStamina _playerStamina;
 
     #endregion
 
@@ -58,6 +59,14 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerAttack.Attack();
             _playerController.Move();
         }
+        if (_player.playerState == PlayerState.Idle)
+        {
+            _playerStamina.Recover();
+        }
+        else
+        {
+            _playerStamina.RecoverStop();
+        }
     }
 
     private void Init()
@@ -66,6 +75,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerController = GetComponent<PlayerController>();
         _playerRolling = GetComponent<PlayerRolling>();
         _playerAttack = GetComponent<PlayerAttack>();
+        _playerStamina = GetComponent<PlayerStamina>();
     }
 
     #region Mobile
