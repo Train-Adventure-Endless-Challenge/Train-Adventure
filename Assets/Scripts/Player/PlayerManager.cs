@@ -63,9 +63,9 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             _playerStamina.Recover();
         }
-        if (_player.playerState != PlayerState.Idle)
+        else
         {
-            _playerStamina.Stop();
+            _playerStamina.RecoverStop();
         }
     }
 

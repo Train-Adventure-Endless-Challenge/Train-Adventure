@@ -14,7 +14,7 @@ public class PlayerRolling : MonoBehaviour
     [Header("Attribute")]
     [SerializeField] private float _rollingRange;
     [SerializeField] private AnimationCurve _rollingCurve;
-    [SerializeField] private int _staminaValue = 20;
+    [SerializeField] private int _staminaValue = 20;       // 필요 스태미너 값
 
     public bool _isGodMode;
 
@@ -76,9 +76,13 @@ public class PlayerRolling : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 구르기가 가능한지 체크하는 함수
+    /// </summary>
+    /// <returns></returns>
     private bool CanRoll()
     {
-        return _player.Stamina - _staminaValue >= 0;
+        return _player.Stamina - _staminaValue >= 0; // 스태미나가 충분한지 체크
     }
 
     /// <summary>

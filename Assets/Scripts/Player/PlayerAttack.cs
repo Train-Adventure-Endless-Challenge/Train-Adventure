@@ -12,7 +12,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Variable")]
     [SerializeField] private float _slowSpeedScale = 0.3f; // 감속 속도 배율 (0.3f)
     [SerializeField] private float _originSpeedScale = 1f; // 원래 속도      (1)
-    [SerializeField] private int _staminaValue = 7;
+    [SerializeField] private int _staminaValue = 7;        // ※추후 변경※ 임시 스태미너 값
 
     [Header("Transform")]
     [SerializeField] private Transform _weaponTr;          // 무기 위치
@@ -73,7 +73,7 @@ public class PlayerAttack : MonoBehaviour
     #endregion
     public void Attack()
     {
-        if (_attackCor == null && _attackTimerCor == null && CanAttack()) // 코루틴이 실행되고 있지 않을 때
+        if (_attackCor == null && _attackTimerCor == null && CanAttack()) // 코루틴이 실행되고 있지 않거나 스태미너가 충분하다면
         {
             #region Mobile
             //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
@@ -81,16 +81,20 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _player.Stamina -= _staminaValue;
-                _player.playerState = PlayerState.Attack;       // 상태 
-                StartCoroutine(AttackCor());                    // 공격 코루틴 실행
-                StartCoroutine(AttackTimerCor());               // 공격 속도 타이머 실행
+                _player.playerState = PlayerState.Attack; // 상태 
+                StartCoroutine(AttackCor());              // 공격 코루틴 실행
+                StartCoroutine(AttackTimerCor());         // 공격 속도 타이머 실행
             }
         }
     }
 
+    /// <summary>
+    /// 공격이 가능한지 체크하는 함수
+    /// </summary>
+    /// <returns></returns>
     private bool CanAttack()
     {
-        return _player.Stamina - _staminaValue >= 0;
+        return _player.Stamina - _staminaValue >= 0; // 스태미나가 충분한지 체크
     }
 
     /// <summary>
