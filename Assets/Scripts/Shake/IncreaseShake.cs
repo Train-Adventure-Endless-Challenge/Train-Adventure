@@ -16,6 +16,7 @@ public class IncreaseShake : MonoBehaviour
 
     CinemachineImpulseDefinition _impulseDefinition;  // 시네머신 임펄스 변수
 
+    public CinemachineImpulseDefinition ImpulseDefinition { get { return _impulseDefinition; } }
     #endregion
 
     #region Function
