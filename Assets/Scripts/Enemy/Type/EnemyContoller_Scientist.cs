@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyContoller_Scientist : EnemyController
 {
+    [SerializeField] float _attackDelayTime = 10.0f;
+    float _timer = 0f;
+
     protected override void Start()
     {
         base.Start();
@@ -18,7 +21,32 @@ public class EnemyContoller_Scientist : EnemyController
     /// </summary>
     public void SkillCheck()
     {
-
+        _isCurrentAttackCor = true;
+        if(_timer <= _attackDelayTime)
+        {
+            StartCoroutine(AttackSkill());
+        }
+        else
+        {
+            StartCoroutine(Attack());
+        }
     }
 
+    /// <summary>
+    /// 스킬 공격
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator AttackSkill()
+    {
+        yield return null;
+    }
+
+    /// <summary>
+    /// 일반 공격
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator Attack()
+    {
+        yield return null;
+    }
 }
