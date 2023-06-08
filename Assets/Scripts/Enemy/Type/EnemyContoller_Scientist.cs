@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,9 @@ public class EnemyContoller_Scientist : EnemyController
 
     [Header("Attack")]
     public Transform _attackTransform;
-    [SerializeField] GameObject _bulletPrefab;
+    [SerializeField] GameObject _bulletPrefab;      // 일반 총알 프리팹
+    [SerializeField] GameObject _bombPrefab;        // 폭탄 프리팹
+
 
     protected override void Start()
     {
