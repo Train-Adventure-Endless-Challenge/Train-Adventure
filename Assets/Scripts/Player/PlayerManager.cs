@@ -14,11 +14,14 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     #endregion
 
+    [SerializeField] private Transform _interactionTransform;
+
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
     private PlayerAttack _playerAttack;
     private PlayerStamina _playerStamina;
+    private PlayerInteraction _playerInteraction;
 
     #endregion
 
@@ -67,6 +70,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             _playerStamina.RecoverStop();
         }
+        _playerInteraction.Interact(); // 상호작용 실행
     }
 
     private void Init()
@@ -76,6 +80,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerRolling = GetComponent<PlayerRolling>();
         _playerAttack = GetComponent<PlayerAttack>();
         _playerStamina = GetComponent<PlayerStamina>();
+        _playerInteraction = _interactionTransform.GetComponent<PlayerInteraction>();
     }
 
     #region Mobile
