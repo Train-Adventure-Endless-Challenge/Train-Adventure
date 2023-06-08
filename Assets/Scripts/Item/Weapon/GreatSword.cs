@@ -64,15 +64,18 @@ public class GreatSword : Weapon
 
     private void OnDrawGizmos()
     {
-        // Scene 뷰에서 감지 영역을 시각적으로 표시
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(PlayerManager.Instance.transform.position, _range);
+        if (_playerTransform != null)
+        {
+            // Scene 뷰에서 감지 영역을 시각적으로 표시
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(_playerTransform.position, _range);
 
-        Vector3 leftBoundary = Quaternion.Euler(0, -_detectionAngle * 0.5f, 0) * PlayerManager.Instance.transform.forward;
-        Vector3 rightBoundary = Quaternion.Euler(0, _detectionAngle * 0.5f, 0) * PlayerManager.Instance.transform.forward;
+            Vector3 leftBoundary = Quaternion.Euler(0, -_detectionAngle * 0.5f, 0) * _playerTransform.forward;
+            Vector3 rightBoundary = Quaternion.Euler(0, _detectionAngle * 0.5f, 0) * _playerTransform.forward;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(PlayerManager.Instance.transform.position, PlayerManager.Instance.transform.position + leftBoundary * _range);
-        Gizmos.DrawLine(PlayerManager.Instance.transform.position, PlayerManager.Instance.transform.position + rightBoundary * _range);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + leftBoundary * _range);
+            Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + rightBoundary * _range);
+        }
     }
 }

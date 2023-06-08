@@ -5,16 +5,16 @@ using System.Collections.Generic;
 public class Dagger : Weapon
 {
     [Header("Variable")]
-    [SerializeField] private float _detectionAngle = 90f; // 감지할 부채꼴의 각도
+    [SerializeField] private float _detectionAngle = 90f;  // 감지할 부채꼴의 각도
 
     [Header("Layer")]
-    public LayerMask _targetLayer;      // 감지할 대상의 레이어
+    public LayerMask _targetLayer;                         // 감지할 대상의 레이어
 
     [SerializeField] private TrailRenderer _trailRenderer;
 
     private List<Collider> _detectionLists = new List<Collider>();
-    
-    
+
+
     public override void Attack()
     {
         base.Attack();
@@ -31,7 +31,7 @@ public class Dagger : Weapon
         Vector3 origin = _playerTransform.position;
         Collider[] hits;
 
-        while (AttackSpeed > currentTime)
+        while (AttackSpeed > currentTime)       // 공격하는 동안   
         {
             currentTime += Time.deltaTime;
 
@@ -60,15 +60,18 @@ public class Dagger : Weapon
 
     private void OnDrawGizmos()
     {
-        // Scene 뷰에서 감지 영역을 시각적으로 표시
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(_playerTransform.position, _range);
+        if (_playerTransform != null)
+        {
+            // Scene 뷰에서 감지 영역을 시각적으로 표시
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(_playerTransform.position, _range);
 
-        Vector3 leftBoundary = Quaternion.Euler(0, -_detectionAngle * 0.5f, 0) * _playerTransform.forward;
-        Vector3 rightBoundary = Quaternion.Euler(0, _detectionAngle * 0.5f, 0) * _playerTransform.forward;
+            Vector3 leftBoundary = Quaternion.Euler(0, -_detectionAngle * 0.5f, 0) * _playerTransform.forward;
+            Vector3 rightBoundary = Quaternion.Euler(0, _detectionAngle * 0.5f, 0) * _playerTransform.forward;
 
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + leftBoundary * _range);
-        Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + rightBoundary * _range);
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + leftBoundary * _range);
+            Gizmos.DrawLine(_playerTransform.position, _playerTransform.position + rightBoundary * _range);
+        }
     }
 }

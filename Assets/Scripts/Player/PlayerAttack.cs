@@ -98,17 +98,18 @@ public class PlayerAttack : MonoBehaviour
         _animator.SetTrigger("OnState");
         _animator.SetInteger("Weapon", curWeapon.Id);
         _animator.SetFloat("AttackSpeed", curWeapon.DefalutAttackSpeed / curWeapon.AttackSpeed);
+        // 공격속도에 따라 애니메이션 속도 조정
 
         curWeapon.Attack();
 
         _playerController.ChangeSlowSpeed(_slowSpeedScale,
             curWeapon.AttackSpeed);                                     // 감속 실행
 
-        yield return new WaitForSeconds(curWeapon.AttackSpeed);          // 애니메이션 시간 대기
+        yield return new WaitForSeconds(curWeapon.AttackSpeed);         // 애니메이션 시간 대기
 
         // 공격 멈춤
         _playerController.ChangeSlowSpeed(_originSpeedScale,
-            curWeapon.AttackSpeed);                                       // 감속 해제
+            curWeapon.AttackSpeed);                                      // 감속 해제
 
         _animator.SetBool("IsAttack", false);                            // 애니메이션 중단
         _animator.SetTrigger("OnState");

@@ -11,8 +11,8 @@ public class Weapon : Item
 {
     protected int _damage;
     protected float _range;
-    [SerializeField] protected float _attackSpeed;
-    protected float _defalutAttackSpeed;
+    protected float _attackSpeed;
+    protected float _defalutAttackSpeed;   
     protected Transform _playerTransform;
     protected attackType _attackType;
 
