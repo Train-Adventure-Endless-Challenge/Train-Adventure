@@ -62,11 +62,12 @@ public class EnemyAttackState : State<EnemyController>
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
-                    EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
-                    _enemyController.StartCoroutine(enemy.AttackRangeCor());
+                    EnemyController_Range enemyR = _enemyController.GetComponent<EnemyController_Range>();
+                    _enemyController.StartCoroutine(enemyR.AttackRangeCor());
                     break;
                 case EnemyType.melee:
-                     _enemyController.StartCoroutine(AttackMeleeCor());
+                    EnemyController_Melee enemyM = _enemyController.GetComponent<EnemyController_Melee>();
+                     _enemyController.StartCoroutine(enemyM.AttackMeleeCor());
                     break;
                 default:
                     break;
@@ -75,52 +76,7 @@ public class EnemyAttackState : State<EnemyController>
     }
 
 
-    /// <summary>
-    /// 근거리 공격
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator AttackMeleeCor()
-    {
-        _isCurrentAttackCor = true;
 
-        // 잘못 인식된 경우 나가기
-        if(Vector3.Distance(_enemyController.transform.position, _player.transform.position) > _enemyController.AttackRange + _agent.stoppingDistance)
-        {
-            _isCurrentAttackCor = false;
-            yield break;
-        }
-
-        _enemyController._agent.isStopped = true;
-
-        float timer = 0;
-        while (timer <= 0.2f)       // 약간의 delay. temp 값.
-        {
-            timer += Time.deltaTime;
-
-            Vector3 dir = _player.transform.position - _enemyController.transform.position;
-            _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
-
-            yield return new WaitForEndOfFrame();
-        
-        }
-
-        _enemyController._anim.SetTrigger("Attack");
-
-        // 실제 공격 체크
-        if (_enemyController._enemyFieldOfView._isVisiblePlayer && Vector3.Distance(_enemyController.transform.position, _player.transform.position) < _enemyController.AttackRange + _agent.stoppingDistance)
-        {
-            PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
-            player.Hit(_enemyController.Damage);
-        }
-
-
-        yield return new WaitForSeconds(_enemyController.AttackSpeed);
-
-        _enemyController._agent.isStopped = false;
-
-        _isCurrentAttackCor = false;
-
-    }
 
     public override void OnExit()
     {
