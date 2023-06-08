@@ -1989,7 +1989,7 @@ PrefabInstance:
     - target: {fileID: 4749988429334230291, guid: 55aad580ffbc302449465bfade119b17,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4749988429334230291, guid: 55aad580ffbc302449465bfade119b17,
         type: 3}
@@ -2040,6 +2040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4749988429334230295, guid: 55aad580ffbc302449465bfade119b17,
+        type: 3}
+      propertyPath: _targetLayer.m_Bits
+      value: 512
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55aad580ffbc302449465bfade119b17, type: 3}
