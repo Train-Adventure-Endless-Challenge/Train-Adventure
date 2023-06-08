@@ -5,26 +5,37 @@ using UnityEngine;
 /// </summary>
 public class PlayerInteraction : MonoBehaviour
 {
+    #region Variable
+
     [Header("Variable")]
     [SerializeField] private float _detectionAngle = 90f; // 감지할 부채꼴의 각도
     [SerializeField] private float _range = 1f;
-    [SerializeField] private Color _color = Color.green;
+    [SerializeField] private Color _color = Color.green;  // 부채꼴 색상
 
     [Header("Layer")]
     [SerializeField] private LayerMask _targetLayer;      // 감지할 대상의 레이어
 
-    [SerializeField] private KeyCode _keyCode;
+    [Header("Key")]
+    [SerializeField] private KeyCode _keyCode;            // 상호작용 키
 
+    #endregion
+
+    #region Function
+
+    /// <summary>
+    /// 상호작용 함수
+    /// <br/> 상호작용 객체가 감지, 입력 처리
+    /// </summary>
     public void Interact()
     {
-        Vector3 origin = transform.position;
+        Vector3 origin = transform.position; // 위치 설정
         Collider[] hits;
 
-        hits = Physics.OverlapSphere(origin, _range, _targetLayer);
+        hits = Physics.OverlapSphere(origin, _range, _targetLayer); // 객체 감지
 
         foreach (Collider hit in hits)
         {
-            if (hit.CompareTag("Interaction Object"))
+            if (hit.CompareTag("Interaction Object")) // 상호작용 객체라면
             {
                 // 적의 위치를 가져와서 플레이어와의 각도를 계산
                 Vector3 direction = hit.transform.position - origin;
@@ -33,10 +44,9 @@ public class PlayerInteraction : MonoBehaviour
                 // 감지 범위 내에 있는지 체크
                 if (angle < _detectionAngle * 0.5f)
                 {
-                    if (Input.GetKeyDown(_keyCode))
+                    if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
                     {
-                        hit.GetComponent<InteractionObject>().Interact();
-                        print(1);
+                        hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
                     }
                 }
             }
@@ -56,4 +66,6 @@ public class PlayerInteraction : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + leftBoundary * _range);
         Gizmos.DrawLine(transform.position, transform.position + rightBoundary * _range);
     }
+
+    #endregion
 }

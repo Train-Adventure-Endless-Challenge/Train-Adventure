@@ -70,7 +70,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             _playerStamina.RecoverStop();
         }
-        _playerInteraction.Interact();
+        _playerInteraction.Interact(); // 상호작용 실행
     }
 
     private void Init()
