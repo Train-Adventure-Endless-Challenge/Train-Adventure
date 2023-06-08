@@ -44,11 +44,11 @@ public class EnemyController_Range : EnemyController
         // 잘못 인식된 경우 나가기
         if (Vector3.Distance(transform.position, _player.transform.position) > AttackRange + _agent.stoppingDistance)
         {
-            _isCurrentAttackCor = false;
+            _isCurrentAttack = false;
             yield break;
         }
 
-        _isCurrentAttackCor = true;
+        _isCurrentAttack = true;
         _agent.isStopped = true;
 
         Vector3 dir = _player.transform.position - transform.position;
@@ -76,7 +76,7 @@ public class EnemyController_Range : EnemyController
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;
-        _isCurrentAttackCor = false;
+        _isCurrentAttack = false;
 
     }
 }

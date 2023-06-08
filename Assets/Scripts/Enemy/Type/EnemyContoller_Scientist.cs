@@ -21,7 +21,7 @@ public class EnemyContoller_Scientist : EnemyController
     /// </summary>
     public void SkillCheck()
     {
-        _isCurrentAttackCor = true;
+        _isCurrentAttack = true;
         if(_timer <= _attackDelayTime)
         {
             StartCoroutine(AttackSkill());

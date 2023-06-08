@@ -39,7 +39,7 @@ public class EnemyAttackState : State<EnemyController>
         {
             _agent.SetDestination(_player.transform.position);
         }
-        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
+        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttack == false)
         {
             _enemyController._anim.SetBool("WalkToPlayer", false);
             _enemyController.ChangeState<EnemyIdleState>();
@@ -57,7 +57,7 @@ public class EnemyAttackState : State<EnemyController>
 
 
 
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false )
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttack == false )
         {
             switch (_enemyController.EnemyType)
             {

@@ -45,7 +45,7 @@ public abstract class EnemyController : MonoBehaviour
 
     [Header("AttackCheck")]
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
-    public bool _isCurrentAttackCor;
+    public bool _isCurrentAttack;
 
 
     protected virtual void Awake()
