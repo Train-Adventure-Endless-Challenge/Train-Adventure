@@ -23,8 +23,6 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private StaminaSlider _staminaSlider;
 
-    private float _animTime = 0.5f;                        // 공격 애니메이션 속도 (원래는 0.44f 초이지만, 오류 방지를 위해 0.06초 추가 하여 사용)
-
     private Player _player;                                // 플레이어
     private Animator _animator;                            // 애니메이션
     private PlayerController _playerController;            // 플레이어 움직임
@@ -62,17 +60,10 @@ public class PlayerAttack : MonoBehaviour
     /// <summary>
     /// 공격 함수
     /// </summary>
-    #region Mobile
-    ///// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
-    //public void Attack(bool isPC)
-    #endregion
     public void Attack()
     {
         if (_attackCor == null && CanAttack()) // 코루틴이 실행되고 있지 않거나 스태미너가 충분하다면
         {
-            #region Mobile
-            //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
-            #endregion
             if (Input.GetMouseButtonDown(0))
             {
                 _player.Stamina -= _staminaValue;
@@ -106,6 +97,8 @@ public class PlayerAttack : MonoBehaviour
         _animator.SetBool("IsAttack", true);                            // 애니메이션 실행
         _animator.SetTrigger("OnState");
         _animator.SetInteger("Weapon", curWeapon.Id);
+        _animator.SetFloat("AttackSpeed", curWeapon.DefalutAttackSpeed / curWeapon.AttackSpeed);
+
         curWeapon.Attack();
 
         _playerController.ChangeSlowSpeed(_slowSpeedScale,

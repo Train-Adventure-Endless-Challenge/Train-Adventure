@@ -17,7 +17,6 @@ public class GreatSword : Weapon
     protected override void Init()
     {
         base.Init();
-        _playerTransform = PlayerManager.Instance.transform;
     }
 
     public override void Attack()
