@@ -14,8 +14,6 @@ public class EnemyAttackState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
-    private bool _isCurrentAttackCor;
-
     private float _agentStopDistance;
 
     public override void OnEnter()
@@ -41,7 +39,7 @@ public class EnemyAttackState : State<EnemyController>
         {
             _agent.SetDestination(_player.transform.position);
         }
-        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _isCurrentAttackCor == false)
+        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
         {
             _enemyController._anim.SetBool("WalkToPlayer", false);
             _enemyController.ChangeState<EnemyIdleState>();
@@ -59,15 +57,17 @@ public class EnemyAttackState : State<EnemyController>
 
 
 
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _isCurrentAttackCor == false )
+        if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false )
         {
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
-                    _enemyController.StartCoroutine(AttackRangeCor());
+                    EnemyController_Range enemyR = _enemyController.GetComponent<EnemyController_Range>();
+                    _enemyController.StartCoroutine(enemyR.AttackRangeCor());
                     break;
                 case EnemyType.melee:
-                     _enemyController.StartCoroutine(AttackMeleeCor());
+                    EnemyController_Melee enemyM = _enemyController.GetComponent<EnemyController_Melee>();
+                     _enemyController.StartCoroutine(enemyM.AttackMeleeCor());
                     break;
                 default:
                     break;
@@ -75,101 +75,8 @@ public class EnemyAttackState : State<EnemyController>
         }
     }
 
-    /// <summary>
-    /// 원거리 공격
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator AttackRangeCor()
-    {
-
-        // 잘못 인식된 경우 나가기
-        if (Vector3.Distance(_enemyController.transform.position, _player.transform.position) > _enemyController.AttackRange + _agent.stoppingDistance)
-        {
-            _isCurrentAttackCor = false;
-            yield break;
-        }
-
-        _isCurrentAttackCor = true;
-
-        _enemyController._agent.isStopped = true;
-
-        Vector3 dir = _player.transform.position - _enemyController.transform.position;
-        float timer = 0;
-        while (timer <= 0.5f)       // 약간의 delay. temp 값.
-        {
-            timer += Time.deltaTime;
-
-            _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
-
-            yield return new WaitForEndOfFrame();
-
-        }
-
-        _enemyController._anim.SetTrigger("Attack");
-
-        EnemyController_Range enemy = _enemyController.GetComponent<EnemyController_Range>();
-
-        //공격
-        GameObject bullet = enemy.InsBullet();
-        bullet.transform.position = enemy._attackTransform.position;
-        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
-
-        // damage 할당
-        EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
-        eb._damage = (int)_enemyController.Damage;
-
-        yield return new WaitForSeconds(_enemyController.AttackSpeed);
-        _enemyController._agent.isStopped = false;
-        _isCurrentAttackCor = false;
-
-    }
-
-    /// <summary>
-    /// 근거리 공격
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator AttackMeleeCor()
-    {
-        _isCurrentAttackCor = true;
-
-        // 잘못 인식된 경우 나가기
-        if(Vector3.Distance(_enemyController.transform.position, _player.transform.position) > _enemyController.AttackRange + _agent.stoppingDistance)
-        {
-            _isCurrentAttackCor = false;
-            yield break;
-        }
-
-        _enemyController._agent.isStopped = true;
-
-        float timer = 0;
-        while (timer <= 0.2f)       // 약간의 delay. temp 값.
-        {
-            timer += Time.deltaTime;
-
-            Vector3 dir = _player.transform.position - _enemyController.transform.position;
-            _enemyController.transform.rotation = Quaternion.Lerp(_enemyController.transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
-
-            yield return new WaitForEndOfFrame();
-        
-        }
-
-        _enemyController._anim.SetTrigger("Attack");
-
-        // 실제 공격 체크
-        if (_enemyController._enemyFieldOfView._isVisiblePlayer && Vector3.Distance(_enemyController.transform.position, _player.transform.position) < _enemyController.AttackRange + _agent.stoppingDistance)
-        {
-            PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
-            player.Hit(_enemyController.Damage);
-        }
 
 
-        yield return new WaitForSeconds(_enemyController.AttackSpeed);
-
-        _enemyController._agent.isStopped = false;
-
-        _isCurrentAttackCor = false;
-
-    }
 
     public override void OnExit()
     {
