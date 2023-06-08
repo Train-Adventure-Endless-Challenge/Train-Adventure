@@ -101,10 +101,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa4e664a4f4d5ca49b100a22e365aa3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemData: {fileID: 0}
+  itemData: {fileID: 11400000, guid: 9df314e3477522c4a977b3f00dfeeeb0, type: 2}
   _levelupEvent:
     m_PersistentCalls:
       m_Calls: []
+  currentCoolTime: 0
   _detectionAngle: 90
   _playerTransform: {fileID: 1167497307699225306}
   _targetLayer:
@@ -8151,6 +8152,7 @@ GameObject:
   - component: {fileID: 6401699004113738589}
   - component: {fileID: 6401699004113738588}
   - component: {fileID: 6401699004113738563}
+  - component: {fileID: 1528040907}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -8175,6 +8177,7 @@ Transform:
   - {fileID: 6401699004086945041}
   - {fileID: 6401699005183975479}
   - {fileID: 431028770}
+  - {fileID: 5921775847884208506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8231,6 +8234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerData: {fileID: 11400000, guid: 86e5a67a9b97802419b83714147fb914, type: 2}
   playerState: 0
+  _stamina: 0
 --- !u!114 &6401699004113738584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8245,7 +8249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _slowSpeedScale: 0.3
   _originSpeedScale: 1
-  _weaponTr: {fileID: 431028770}
+  _staminaValue: 7
+  _weaponTr: {fileID: 1167497307699225302}
   _OnAttackEvent:
     m_PersistentCalls:
       m_Calls:
@@ -8324,6 +8329,7 @@ MonoBehaviour:
           m_StringArgument: AttackCor
           m_BoolArgument: 0
         m_CallState: 2
+  _staminaSlider: {fileID: 0}
 --- !u!114 &6401699004113738591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8480,6 +8486,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b719080cf83eeda47a0949b9803aee2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionTransform: {fileID: 5921775847884208506}
 --- !u!114 &6401699004113738563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8518,7 +8525,26 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _staminaValue: 20
+  _staminaSlider: {fileID: 0}
   _isGodMode: 0
+--- !u!114 &1528040907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401699005772241260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8dd90066d812e246a8233e4259ccd19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _waitTime: 0.5
+  _recoveryTime: 1
+  _recoveryValue: 20
+  _maxValue: 100
+  _staminaSlider: {fileID: 0}
 --- !u!1 &6401699005788650566
 GameObject:
   m_ObjectHideFlags: 0
@@ -8613,3 +8639,54 @@ Transform:
   m_Father: {fileID: 6401699003851578121}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6772776331183096875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5921775847884208506}
+  - component: {fileID: 2935029333212363320}
+  m_Layer: 8
+  m_Name: Interaction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5921775847884208506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772776331183096875}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1167497307699225306}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2935029333212363320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772776331183096875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10a316625c9fbe4b9e18de267a7d9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _detectionAngle: 90
+  _range: 1
+  _color: {r: 0, g: 1, b: 0, a: 1}
+  _targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _keyCode: 101
