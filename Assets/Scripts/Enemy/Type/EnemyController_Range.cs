@@ -9,7 +9,6 @@ public class EnemyController_Range : EnemyController
     public Transform _attackTransform;
     [SerializeField] GameObject _bulletPrefab;
 
-    PlayerManager _player => PlayerManager.Instance;
 
     protected override void Start()
     {

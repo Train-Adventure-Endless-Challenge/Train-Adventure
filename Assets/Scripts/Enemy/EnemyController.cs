@@ -47,6 +47,8 @@ public abstract class EnemyController : MonoBehaviour
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
     public bool _isCurrentAttack;
 
+    protected PlayerManager _player => PlayerManager.Instance;
+
 
     protected virtual void Awake()
     {
