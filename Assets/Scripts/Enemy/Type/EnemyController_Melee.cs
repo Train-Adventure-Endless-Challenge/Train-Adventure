@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyController_Melee : EnemyController
 {
-    PlayerManager _player = PlayerManager.Instance;
+    PlayerManager _player => PlayerManager.Instance;
 
     protected override void Start()
     {
