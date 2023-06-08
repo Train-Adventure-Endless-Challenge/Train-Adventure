@@ -5,7 +5,9 @@ using UnityEngine;
 public enum EnemyType
 {
     range,      // 원거리
-    melee       // 근거리
+    melee,      // 근거리
+
+    scientist   //미친과학자
 }
 
 [CreateAssetMenu(fileName = "Enemy Data", menuName = "Scriptable Object/Enemy Data", order = int.MaxValue - 9)]

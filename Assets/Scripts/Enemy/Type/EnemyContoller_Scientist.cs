@@ -21,5 +21,4 @@ public class EnemyContoller_Scientist : EnemyController
 
     }
 
-
 }
