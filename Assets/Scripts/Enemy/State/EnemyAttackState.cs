@@ -87,6 +87,7 @@ public class EnemyAttackState : State<EnemyController>
     public override void OnExit()
     {
         _enemyController._agent.stoppingDistance = _agentStopDistance;
+        _enemyController.StopAllCoroutines();
         base.OnExit();
     }
 }
