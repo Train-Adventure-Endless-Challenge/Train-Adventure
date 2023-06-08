@@ -12,7 +12,7 @@ public class Weapon : Item
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
-
+    protected Transform _playerTransform;
     protected attackType _attackType;
 
     public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
@@ -21,6 +21,11 @@ public class Weapon : Item
     void Update()
     {
 
+    }
+
+    private void Start()
+    {
+        _playerTransform = PlayerManager.Instance.transform;
     }
 
     protected override void Init()

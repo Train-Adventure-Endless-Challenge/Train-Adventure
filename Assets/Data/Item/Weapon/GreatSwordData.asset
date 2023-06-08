@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e1cdae07ca55f43a447337ef16ca90, type: 3}
+  m_Name: GreatSwordData
+  m_EditorClassIdentifier: 
+  _id: 1
+  _name: GreatSword
+  _itemImage: {fileID: 0}
+  _description: "\uB300\uAC80"
+  _damage: 5
+  _range: 5
+  _attackSpeed: 1.2
+  _additionalHp: 0
+  _additionalStemina: 0
+  _additionalStrength: 0
+  _additionalDefense: 0
+  _additionalAttackSpeed: 0
+  _additionalSpeed: 0
+  _upgradeValueHp: 0
+  _upgradeValueStemina: 0
+  _upgradeValueStrength: 0
+  _upgradeValueDefense: 0
+  _upgradeValueAttackSpeed: 0
+  _upgradeValueSpeed: 0
+  _maxDurability: 0
+  _attackConsumeDurability: 0
+  _skillConsumeDurability: 0
+  _skillCooltime: 0
+  _isStackable: 0

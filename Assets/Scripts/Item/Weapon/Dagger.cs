@@ -7,29 +7,34 @@ public class Dagger : Weapon
     [Header("Variable")]
     [SerializeField] private float _detectionAngle = 90f; // 감지할 부채꼴의 각도
 
-    [Header("Player")]
-    [SerializeField] private Transform _playerTransform;  // 플레이어 위치
-
     [Header("Layer")]
     public LayerMask _targetLayer;      // 감지할 대상의 레이어
 
-    private List<Collider> _detectionLists = new List<Collider>();
+    [SerializeField] private TrailRenderer _trailRenderer;
 
+    private List<Collider> _detectionLists = new List<Collider>();
+    
+    
     public override void Attack()
     {
         base.Attack();
         _detectionLists.Clear();
+        _trailRenderer.enabled = true;
         StartCoroutine(AttackCor());
     }
 
     private IEnumerator AttackCor()
     {
+        float currentTime = 0;
+
         // 플레이어의 위치를 기준으로 감지 영역을 생성
         Vector3 origin = _playerTransform.position;
         Collider[] hits;
 
-        while (true)
+        while (AttackSpeed > currentTime)
         {
+            currentTime += Time.deltaTime;
+
             hits = Physics.OverlapSphere(origin, _range, _targetLayer);
 
             foreach (Collider hit in hits)
@@ -48,6 +53,9 @@ public class Dagger : Weapon
             }
             yield return new WaitForEndOfFrame();
         }
+
+        _trailRenderer.enabled = false;
+        yield return null;
     }
 
     private void OnDrawGizmos()
