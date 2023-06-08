@@ -26,7 +26,7 @@ public class EnemyAttackState : State<EnemyController>
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
 
-
+        // 공격 실행 범위 설정 
         _agentStopDistance = _agent.stoppingDistance;
         _agent.stoppingDistance += _enemyController.AttackRange;
 
