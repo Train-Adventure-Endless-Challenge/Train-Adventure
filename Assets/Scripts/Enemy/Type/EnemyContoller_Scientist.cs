@@ -82,9 +82,9 @@ public class EnemyContoller_Scientist : EnemyController
 
         // 특수 공격 모션 필요
 
-        // 공격
-        GameObject bombObj = Instantiate(_bombPrefab, _bombTransform.position, Quaternion.identity);        // 폭탄 생성
-
+        // 공격 (폭탄 생성)
+        GameObject bombObj = Instantiate(_bombPrefab, _bombTransform.position, Quaternion.identity);        
+        bombObj.GetComponent<EnemyBomb>()._damage = (int)Damage;
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;
