@@ -27,7 +27,7 @@ public class EnemyBomb : MonoBehaviour
 
         ShakeManager.Instance.ShakeAmount++;
 
-        Collider[] col = Physics.OverlapSphere(transform.position, _radius, 1 << 8);        // Player Layer 8번째.
+        Collider[] col = Physics.OverlapSphere(transform.position, _radius, LayerMask.NameToLayer("Player"));        // Player Layer 8번째.
         if(col.Length > 0)
         {
             col[0].gameObject.GetComponent<PlayerHit>().Hit(_damage);
