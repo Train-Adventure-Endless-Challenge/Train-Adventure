@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class GreatSword : Weapon
 {
@@ -12,8 +12,8 @@ public class GreatSword : Weapon
 
     [SerializeField] private TrailRenderer _trailRenderer;
 
-    //private List<Collider> _detectionLists = new List<Collider>();
-    private List<RaycastHit> _detectionLists = new List<RaycastHit>();
+    private List<Collider> _detectionLists = new List<Collider>();
+    //private List<RaycastHit> _detectionLists = new List<RaycastHit>();
 
     protected override void Init()
     {
@@ -34,20 +34,17 @@ public class GreatSword : Weapon
 
         // 플레이어의 위치를 기준으로 감지 영역을 생성
         Vector3 origin = _playerTransform.position;
-        //Collider[] hits;
-        RaycastHit[] hits;
+
+        Collider[] hits;
 
         while (AttackSpeed > currentTime)
         {
             currentTime += Time.deltaTime;
 
-            //hits = Physics.OverlapSphere(origin, _range, _targetLayer);
+            hits = Physics.OverlapSphere(origin, _range, _targetLayer);
 
-            hits = Physics.SphereCastAll(origin, _range, Vector3.forward, 1 << 9);
-
-            foreach (RaycastHit hit in hits)
+            foreach (Collider hit in hits)
             {
-                print(1);
                 // 적의 위치를 가져와서 플레이어와의 각도를 계산
                 Vector3 direction = hit.transform.position - origin;
                 float angle = Vector3.Angle(transform.forward, direction);
@@ -57,7 +54,7 @@ public class GreatSword : Weapon
                 {
                     // 감지한 적에 대한 처리를 수행
                     _detectionLists.Add(hit);
-                    hit.collider.GetComponent<EnemyController>().Hit(_damage);
+                    hit.GetComponent<EnemyController_Melee>().Hit(_damage);
                 }
             }
             yield return new WaitForEndOfFrame();
