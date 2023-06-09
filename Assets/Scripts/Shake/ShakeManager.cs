@@ -13,7 +13,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     private Shake _shake;
     private IncreaseShake _increaseShake;
 
-    public float ShakeAmount { get { return _increaseShake.ImpulseDefinition.m_AmplitudeGain; } }
+    public float ShakeAmount { get { return _increaseShake.ImpulseDefinition.m_AmplitudeGain; } set { _increaseShake.ImpulseDefinition.m_AmplitudeGain = value; } }
     
     #endregion
 
