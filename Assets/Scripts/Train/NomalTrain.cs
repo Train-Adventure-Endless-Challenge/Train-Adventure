@@ -18,7 +18,9 @@ public class NomalTrain : Train
         NavMeshSurface surfaces = _floor.GetComponent<NavMeshSurface>();
 
         surfaces.RemoveData();
-        surfaces.BuildNavMesh();    
+        surfaces.BuildNavMesh();
+
+        Init(); // 임시 코드 
     }
 
     public override void Init()
@@ -31,9 +33,6 @@ public class NomalTrain : Train
         for (int i = 0; i < _enemySpawnPoints.Length; i++)
         {
             _currentTrainEnemys.Add(Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position, Quaternion.identity));
-
-            // 임시로 조정한 크기
-            _currentTrainEnemys[i].transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
         }
     }
 
