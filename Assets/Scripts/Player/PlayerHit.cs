@@ -10,7 +10,7 @@ public class PlayerHit : MonoBehaviour
     #region Variable
 
     [Header("Variable")]
-    [SerializeField] private float _animTime = 0.8f; // 충돌 애니메이션 속도 (원래는 0.71초 이지만, 오류 방지를 위해 0.09초 추가 하여 사용)
+    [SerializeField] private float _animTime = 0.4f; // 충돌 애니메이션 속도 (애니메이션 변경에 따라 수치 수정)
 
     [Header("Event")]
     [SerializeField] private UnityEvent _OnHit;
