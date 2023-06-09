@@ -33,7 +33,7 @@ public class EnemyBomb : MonoBehaviour
             col[0].gameObject.GetComponent<PlayerHit>().Hit(_damage);
         }
 
-
+        yield return new WaitForSeconds(0.2f);      // 약간 기다림 (임시)
         Destroy(gameObject);
     }
 
