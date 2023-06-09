@@ -23,16 +23,12 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private StaminaSlider _staminaSlider;
 
-    private float _animTime = 0.5f;                        // 공격 애니메이션 속도 (원래는 0.44f 초이지만, 오류 방지를 위해 0.06초 추가 하여 사용)
-    private float _attackSpeed;                            // 공격 속도
-
-    private Weapon _weapon;                                // 무기 (추후 공격, 스킬을 위해 사용)
     private Player _player;                                // 플레이어
     private Animator _animator;                            // 애니메이션
     private PlayerController _playerController;            // 플레이어 움직임
+    private WeaponController _weaponController;
 
     private IEnumerator _attackCor;                        // 플레이어 공격 코루틴을 담을 변수
-    private IEnumerator _attackTimerCor;                   // 플레이어 공격 타이머 코루틴을 담을 변수
 
     #endregion
 
@@ -43,11 +39,6 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         Init(); // 초기화 진행
-    }
-
-    private void Start()
-    {
-        _attackSpeed = _weapon.AttackSpeed; // AttackSpeed가 Awake에서 초기화 되니, Start시 가져옴
     }
 
     #endregion
@@ -63,30 +54,22 @@ public class PlayerAttack : MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
-        _weapon = _weaponTr.GetComponent<Weapon>(); // ※추후 활성화※
+        _weaponController = GetComponent<WeaponController>();
     }
 
     /// <summary>
     /// 공격 함수
     /// </summary>
-    #region Mobile
-    ///// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
-    //public void Attack(bool isPC)
-    #endregion
     public void Attack()
     {
-        if (_attackCor == null && _attackTimerCor == null && CanAttack()) // 코루틴이 실행되고 있지 않거나 스태미너가 충분하다면
+        if (_attackCor == null && CanAttack()) // 코루틴이 실행되고 있지 않거나 스태미너가 충분하다면
         {
-            #region Mobile
-            //if ((isPC && Input.GetMouseButtonDown(0)) || !isPC) // PC, 모바일 체크
-            #endregion
             if (Input.GetMouseButtonDown(0))
             {
                 _player.Stamina -= _staminaValue;
                 _staminaSlider.ChangeUI(_player.Stamina);
-                _player.playerState = PlayerState.Attack; // 상태 
-                StartCoroutine(AttackCor());              // 공격 코루틴 실행
-                StartCoroutine(AttackTimerCor());         // 공격 속도 타이머 실행
+                _player.playerState = PlayerState.Attack;  // 상태 
+                StartCoroutine(AttackCor());               // 공격 코루틴 실행
             }
         }
     }
@@ -107,34 +90,34 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackCor()
     {
+        Weapon curWeapon = _weaponController._currentWeapon;
+
         _attackCor = AttackCor();                                       // 코루틴 변수 할당
         // 공격 실행
         _animator.SetBool("IsAttack", true);                            // 애니메이션 실행
-        _OnAttackEvent.Invoke();                                        // 공격 이벤트 실행
-        _playerController.ChangeSlowSpeed(_slowSpeedScale, _animTime);  // 감속 실행
+        _animator.SetTrigger("OnState");
+        _animator.SetInteger("Weapon", curWeapon.Id);
+        _animator.SetFloat("AttackSpeed", curWeapon.DefalutAttackSpeed / curWeapon.AttackSpeed);
+        // 공격속도에 따라 애니메이션 속도 조정
 
-        yield return new WaitForSeconds(_animTime);                     // 애니메이션 시간 대기
+        curWeapon.Attack();
+
+        _playerController.ChangeSlowSpeed(_slowSpeedScale,
+            curWeapon.AttackSpeed);                                     // 감속 실행
+
+        yield return new WaitForSeconds(curWeapon.AttackSpeed);         // 애니메이션 시간 대기
 
         // 공격 멈춤
-        _playerController.ChangeSlowSpeed(_originSpeedScale, _animTime); // 감속 해제
+        _playerController.ChangeSlowSpeed(_originSpeedScale,
+            curWeapon.AttackSpeed);                                      // 감속 해제
+
         _animator.SetBool("IsAttack", false);                            // 애니메이션 중단
-        _OnStopEvent.Invoke();                                           // 멈춤 이벤트 실행
+        _animator.SetTrigger("OnState");
 
         // 플레이어의 속도에 따라 상태를 Idle, Move로 바꿈
         if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
         _attackCor = null;                                               // 코루틴 초기화
-    }
-
-    /// <summary>
-    /// 공격 속도 타이머 코루틴 함수
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator AttackTimerCor()
-    {
-        _attackTimerCor = AttackTimerCor();                   // 코루틴 변수 할당
-        yield return new WaitForSeconds(_attackSpeed); // 공격 속도만큼 기다리기
-        _attackTimerCor = null;                               // 코루틴 초기화
     }
 
     #endregion

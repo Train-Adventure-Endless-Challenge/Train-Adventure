@@ -12,15 +12,22 @@ public class Weapon : Item
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
-
+    protected float _defalutAttackSpeed;   
+    protected Transform _playerTransform;
     protected attackType _attackType;
 
     public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
+    public float DefalutAttackSpeed { get { return _defalutAttackSpeed; } }
 
     public float currentCoolTime;
     void Update()
     {
 
+    }
+
+    private void Start()
+    {
+        _playerTransform = PlayerManager.Instance.transform;
     }
 
     protected override void Init()
@@ -29,6 +36,7 @@ public class Weapon : Item
         _damage = itemData.Damage;
         _range = itemData.Range;
         _attackSpeed = itemData.AttackSpeed;
+        _defalutAttackSpeed = _attackSpeed;
     }
 
     /// <summary>
