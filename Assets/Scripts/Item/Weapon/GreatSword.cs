@@ -54,7 +54,7 @@ public class GreatSword : Weapon
                 {
                     // 감지한 적에 대한 처리를 수행
                     _detectionLists.Add(hit);
-                    hit.GetComponent<EnemyController_Melee>().Hit(_damage);
+                    hit.GetComponent<EnemyController>().Hit(_damage);
                 }
             }
             yield return new WaitForEndOfFrame();
