@@ -18,7 +18,9 @@ public class EnemyFieldOfView : MonoBehaviour
 
     private void Start()
     {
-        _playerRef = GameObject.FindGameObjectWithTag("Player"); // 추후 싱글톤 등 다른 방법으로 호출할 수 있음
+        _playerRef = PlayerManager.Instance.gameObject; 
+        // 추후 EnemyRange 함수에 _radius 적용
+        
         StartCoroutine(FOVCor());
     }
 
