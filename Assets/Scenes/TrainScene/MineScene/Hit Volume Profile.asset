@@ -9,14 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b108ee452e613f643842bcaf15f08a17, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Hit Volume Profile
   m_EditorClassIdentifier: 
-  _hp: 100
-  _speed: 5
-  _damage: 100
-  _strength: 5
-  _attackSpeed: 3
-  _mp: 5
-  _defense: 5
-  _stamina: 0
+  components: []

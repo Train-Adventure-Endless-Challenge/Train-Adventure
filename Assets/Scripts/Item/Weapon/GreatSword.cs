@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class GreatSword : Weapon
 {
@@ -13,6 +13,7 @@ public class GreatSword : Weapon
     [SerializeField] private TrailRenderer _trailRenderer;
 
     private List<Collider> _detectionLists = new List<Collider>();
+    //private List<RaycastHit> _detectionLists = new List<RaycastHit>();
 
     protected override void Init()
     {
@@ -33,6 +34,7 @@ public class GreatSword : Weapon
 
         // 플레이어의 위치를 기준으로 감지 영역을 생성
         Vector3 origin = _playerTransform.position;
+
         Collider[] hits;
 
         while (AttackSpeed > currentTime)
