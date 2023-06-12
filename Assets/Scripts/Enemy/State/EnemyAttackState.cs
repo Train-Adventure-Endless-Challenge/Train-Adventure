@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
+using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyAttackState : State<EnemyController>
 {
@@ -76,6 +77,18 @@ public class EnemyAttackState : State<EnemyController>
     }
 
 
+    /// <summary>
+    /// Animation clip에 맞춰서 실행되는 event
+    /// </summary>
+    public void CheckHitEvent()
+    {
+        // 실제 공격 체크
+        if (_enemyController._enemyFieldOfView._isVisiblePlayer && Vector3.Distance(_enemyController.transform.position, _player.transform.position) < _enemyController.AttackRange + _agent.stoppingDistance)
+        {
+            PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
+            player.Hit(_enemyController.Damage);
+        }
+    }
 
 
     public override void OnExit()
