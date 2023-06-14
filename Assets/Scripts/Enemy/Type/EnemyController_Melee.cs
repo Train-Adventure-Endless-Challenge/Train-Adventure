@@ -60,7 +60,6 @@ public class EnemyController_Melee : EnemyController
     /// </summary>
     public void CheckHitEvent()
     {
-        Debug.Log("Hit");
 
         // 실제 공격 체크
         if (_enemyFieldOfView._isVisiblePlayer && Vector3.Distance(transform.position, _player.transform.position) < AttackRange + _agent.stoppingDistance)

@@ -99,6 +99,16 @@ public abstract class EnemyController : MonoBehaviour
     public void Hit(int damage)
     {
         HP -= damage;
+
+    }
+
+    /// <summary>
+    /// Animation clip으로 찾기
+    /// </summary>
+    public void ChangeIdleEvent()
+    {
+        _stateMachine.ChangeState<EnemyIdleState>();        // 맞았을시 IDle State
+
     }
 }
 
