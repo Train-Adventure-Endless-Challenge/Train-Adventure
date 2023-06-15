@@ -22,11 +22,12 @@ public class EnemyAttackState : State<EnemyController>
         base.OnEnter();
 
 
+
         _player = GameObject.FindGameObjectWithTag("Player");
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
-
+        _agent.isStopped = false;
 
         _agentStopDistance = _agent.stoppingDistance;
         _agent.stoppingDistance += _enemyController.AttackRange;
@@ -56,10 +57,9 @@ public class EnemyAttackState : State<EnemyController>
     private void CheckAttack()
     {
 
-
-
         if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false )
         {
+            _enemyController._anim.SetBool("WalkToPlayer", false);
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:

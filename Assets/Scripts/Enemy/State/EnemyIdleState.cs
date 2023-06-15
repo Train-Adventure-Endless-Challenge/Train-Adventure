@@ -23,7 +23,10 @@ public class EnemyIdleState : State<EnemyController>
     }
     public override void Update(float deltaTime)
     {
-
+        if (_enemyController._enemyFieldOfView._isVisiblePlayer)
+        {
+            _enemyController.ChangeState<EnemyAttackState>();
+        }
     }
 
     public override void OnExit()
