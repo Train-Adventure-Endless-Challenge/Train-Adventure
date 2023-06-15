@@ -59,6 +59,7 @@ public class EnemyAttackState : State<EnemyController>
 
         if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false )
         {
+            _enemyController._anim.SetBool("WalkToPlayer", false);
             switch (_enemyController.EnemyType)
             {
                 case EnemyType.range:
