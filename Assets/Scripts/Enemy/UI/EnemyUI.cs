@@ -7,8 +7,7 @@ public class EnemyUI : MonoBehaviour
 {
 
     EnemyController _enemyController;
-    
-    [SerializeField] Slider _hpBarSlider;
+    public Slider _hpBarSlider;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +19,5 @@ public class EnemyUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _hpBarSlider.value = _enemyController.HP;
     }
 }
