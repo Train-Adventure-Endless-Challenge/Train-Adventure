@@ -28,6 +28,8 @@ public class EnemyMoveState : State<EnemyController>
         }
 
         _enemyController._anim.SetBool("Walk", true);
+
+        _enemyController.StartCoroutine(ChangeStateCor());
     }
 
     public override void Update(float deltaTime)
@@ -71,10 +73,22 @@ public class EnemyMoveState : State<EnemyController>
         return false;
     }
 
+    /// <summary>
+    /// 1~3초 후에 Idle State로 변경
+    /// 기존 움직임은 너무 난잡하다는 피드백
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator ChangeStateCor()
+    {
+        yield return new WaitForSeconds(Random.Range(1f,3f));
+        _enemyController.ChangeState<EnemyIdleState>();
+    }
+
     public override void OnExit()
     {
         _enemyController._anim.SetBool("Walk", false);
 
         base.OnExit();
     }
+
 }
