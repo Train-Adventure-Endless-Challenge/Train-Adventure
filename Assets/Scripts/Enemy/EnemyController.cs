@@ -47,12 +47,15 @@ public abstract class EnemyController : MonoBehaviour
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
     public bool _isCurrentAttackCor;
 
+    EnemyUI _enemyUI;
+
 
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();
         _agent = GetComponentInChildren<NavMeshAgent>();
         _anim = GetComponentInChildren<Animator>();
+        _enemyUI = GetComponent<EnemyUI>();
     }
 
     protected virtual void Start()
@@ -100,6 +103,7 @@ public abstract class EnemyController : MonoBehaviour
     {
         _anim.SetTrigger("Hit");
         HP -= damage;
+        _enemyUI._hpBarSlider.value = HP;
 
     }
 
@@ -108,6 +112,7 @@ public abstract class EnemyController : MonoBehaviour
     /// </summary>
     public void ChangeIdleEvent()
     {
+        Debug.Log("fd");
         _stateMachine.ChangeState<EnemyIdleState>();        // 맞았을시 IDle State
 
     }

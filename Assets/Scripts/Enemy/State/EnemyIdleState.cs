@@ -10,7 +10,19 @@ public class EnemyIdleState : State<EnemyController>
     public override void OnEnter()
     {
         base.OnEnter();
+
+
         _enemyController = _context.GetComponent<EnemyController>();
+
+        if(_enemyController.HP <= 0)
+        {
+            _enemyController.ChangeState<EnemyDieState>();
+        }
+
+        _enemyController._anim.SetBool("Walk",false);
+        _enemyController._anim.SetBool("WalkToPlayer", false);
+
+
         _enemyController.StartCoroutine(DelayToMoveCor());
     }
 
