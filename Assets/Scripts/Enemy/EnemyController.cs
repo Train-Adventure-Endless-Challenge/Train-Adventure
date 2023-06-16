@@ -112,6 +112,7 @@ public abstract class EnemyController : MonoBehaviour
     /// </summary>
     public void ChangeIdleEvent()
     {
+        Debug.Log("fd");
         _stateMachine.ChangeState<EnemyIdleState>();        // 맞았을시 IDle State
 
     }
