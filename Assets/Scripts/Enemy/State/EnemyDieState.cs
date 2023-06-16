@@ -9,6 +9,8 @@ public class EnemyDieState : State<EnemyController>
     private EnemyController _enemyController;
     private NavMeshAgent _agent;
 
+    bool isDieCor = false;
+
     public override void OnEnter()
     {
         base.OnEnter();
@@ -16,12 +18,15 @@ public class EnemyDieState : State<EnemyController>
         _agent = _enemyController._agent;
 
         _agent.isStopped = true;
-        _enemyController.StartCoroutine(DieCor());
+
+        if(!isDieCor)
+            _enemyController.StartCoroutine(DieCor());
         
     }
 
     IEnumerator DieCor()
     {
+        isDieCor= true;
         _enemyController._anim.SetTrigger("Die");
         yield return new WaitForSeconds(5f);
 
