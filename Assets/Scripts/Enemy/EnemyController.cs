@@ -47,7 +47,8 @@ public abstract class EnemyController : MonoBehaviour
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
     public bool _isCurrentAttackCor;
 
-    EnemyUI _enemyUI;
+    public EnemyUI _enemyUI;
+    public int _eventDamage;        // 받은 데미지
 
 
     protected virtual void Awake()
@@ -103,19 +104,17 @@ public abstract class EnemyController : MonoBehaviour
 
     public void Hit(int damage)
     {
-        _anim.SetTrigger("Hit");
-        HP -= damage;
-        _enemyUI._hpBarSlider.value = HP;
+        _eventDamage = damage;
+        ChangeState<EnemyHitState>();
 
     }
 
     /// <summary>
-    /// Animation clip으로 찾기
+    /// animation event clip 실행 마지막 함수
     /// </summary>
-    public void ChangeIdleEvent()
+    public void EndAnimEvent()
     {
-        _stateMachine.ChangeState<EnemyIdleState>();        // 맞았을시 IDle State
-
+        ChangeState<EnemyIdleState>();
     }
 }
 

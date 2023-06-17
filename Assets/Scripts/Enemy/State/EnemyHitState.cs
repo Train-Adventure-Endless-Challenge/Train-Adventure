@@ -1,18 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class EnemyHitState : MonoBehaviour
+public class EnemyHitState : State<EnemyController> 
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private EnemyController _enemyController;
+    private GameObject _player;         // 추후 싱글톤으로 찾기 가능
+
+    private NavMeshAgent _agent;
+    public override void OnEnter()
     {
-        
+        base.OnEnter();
+
+        _player = GameObject.FindGameObjectWithTag("Player");
+
+        _enemyController = _context.GetComponent<EnemyController>();
+        _agent = _enemyController._agent;
+        _agent.isStopped = true;
+
+
+        _enemyController._anim.SetTrigger("Hit");
+        _enemyController.HP -= _enemyController._eventDamage;
+        _enemyController._enemyUI._hpBarSlider.value = _enemyController.HP;
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Update(float deltaTime)
     {
-        
+        //enemyController 기반 State 필수 구현 함수
     }
+
+
 }
