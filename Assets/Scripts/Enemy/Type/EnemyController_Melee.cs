@@ -70,7 +70,7 @@ public class EnemyController_Melee : EnemyController
             player.Hit(Damage);
         }
 
-        ChangeState<EnemyAttackWalkState>();
+        ChangeState<EnemyIdleState>();
 
     }
 }

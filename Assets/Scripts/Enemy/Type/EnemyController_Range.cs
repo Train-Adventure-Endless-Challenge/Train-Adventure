@@ -81,8 +81,13 @@ public class EnemyController_Range : EnemyController
         _agent.isStopped = false;
         _isCurrentAttackCor = false;
 
-        ChangeState<EnemyAttackWalkState>();        // 공격 대기 상태로 돌아가기
+    }
 
-
+    /// <summary>
+    /// animation Event로 실행
+    /// </summary>
+    void AttackAnimEnd()
+    {
+        ChangeState<EnemyIdleState>();
     }
 }
