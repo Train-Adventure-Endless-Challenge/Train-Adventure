@@ -16,7 +16,7 @@ public class EnemyAttackWalkState : State<EnemyController>
     {
         base.OnEnter();
 
-        _player = GameObject.Find("Player");
+        _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
