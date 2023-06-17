@@ -15,7 +15,7 @@ public class EnemyHitState : State<EnemyController>
     {
         base.OnEnter();
 
-        _player = GameObject.FindGameObjectWithTag("Player");
+        _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
