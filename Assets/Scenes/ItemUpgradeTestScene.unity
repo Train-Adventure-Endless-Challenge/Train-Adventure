@@ -213,10 +213,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 183838656}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca2787bcc2b32c34289c67ca580fabde, type: 3}
+  m_Script: {fileID: 11500000, guid: 1731a64f5083ebc4b99af456029b969e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _debugText: {fileID: 2031182285}
+  _upgradeSlot: {fileID: 1105440153}
 --- !u!1 &220814158
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +437,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 214, y: -459}
+  m_AnchoredPosition: {x: 395, y: -459}
   m_SizeDelta: {x: 50.9842, y: 265.9678}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &762812065
@@ -486,9 +487,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 762812063}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 439af9a9285e3084586da46117126996, type: 3}
+  m_Script: {fileID: 11500000, guid: 65a62fd378fd5444c9c544189c1be55e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: 9df314e3477522c4a977b3f00dfeeeb0, type: 2}
+  _levelupEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &782317574
 GameObject:
   m_ObjectHideFlags: 0
@@ -659,7 +664,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1105440149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b73675a9cb0053d4692408e57c7eed6d, type: 3}
+  m_Script: {fileID: 11500000, guid: b42cd9273dc651b41aa80baab27ed582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1202787088
@@ -823,8 +828,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: UP
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9bf3253a3ef2b44093d9bfde96787dd, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: b9bf3253a3ef2b44093d9bfde96787dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -984,7 +989,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 183838660}
         m_TargetAssemblyTypeName: ItemUpgradeSystem, Assembly-CSharp
-        m_MethodName: ItemLevelUp
+        m_MethodName: LevelUpItem
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1092,8 +1097,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: b9bf3253a3ef2b44093d9bfde96787dd, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: b9bf3253a3ef2b44093d9bfde96787dd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
