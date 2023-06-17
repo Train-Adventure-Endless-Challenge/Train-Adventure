@@ -9,9 +9,7 @@ public class EnemyAttackWalkState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
-    private PlayerManager _player => PlayerManager.Instance;
-
-    private float _agentStopDistance;
+    private GameObject _player;
 
 
     public override void OnEnter()
@@ -22,9 +20,8 @@ public class EnemyAttackWalkState : State<EnemyController>
         _agent = _enemyController._agent;
         _fov = _enemyController._enemyFieldOfView;
 
-        _agent.isStopped = false;
-        _agentStopDistance = _agent.stoppingDistance;
-        _agent.stoppingDistance += _enemyController.AttackRange;
+        _player = GameObject.Find("Player");
+
         _enemyController._anim.SetBool("WalkToPlayer", true);
 
 
@@ -48,7 +45,7 @@ public class EnemyAttackWalkState : State<EnemyController>
     /// </summary>
     void CheckAttack()
     {
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false)
+        if (_agent.remainingDistance <= _agent.stoppingDistance + 0.2f && _enemyController._isCurrentAttackCor == false)
         {
             _enemyController.ChangeState<EnemyAttackState>();
         }
@@ -56,7 +53,6 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     public override void OnExit()
     {
-        _enemyController._agent.stoppingDistance = _agentStopDistance;
         _enemyController._anim.SetBool("WalkToPlayer", false);
         base.OnExit();
 

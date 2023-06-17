@@ -12,7 +12,6 @@ public class EnemyAttackState : State<EnemyController>
     private GameObject _player;         // 추후 싱글톤으로 찾기 가능
     
     private NavMeshAgent _agent;
-    private EnemyFieldOfView _fov;
 
 
     public override void OnEnter()
@@ -46,12 +45,9 @@ public class EnemyAttackState : State<EnemyController>
         }
     }
 
-    public override void Update(float deltaTime)
+    public override void Update(float deltaTime)    
     {
-        //if (!_enemyController._enemyFieldOfView._isVisiblePlayer && !_enemyController._isCurrentAttackCor)
-        //{
-        //    _enemyController.ChangeState<EnemyIdleState>();
-        //}
+        // enemyController의 필수 구현 함수 (추상화)
     }
 
 
@@ -59,6 +55,7 @@ public class EnemyAttackState : State<EnemyController>
     public override void OnExit()
     {
         _enemyController.StopAllCoroutines();
+        
         base.OnExit();
 
     }
