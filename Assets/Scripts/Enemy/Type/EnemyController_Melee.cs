@@ -50,7 +50,6 @@ public class EnemyController_Melee : EnemyController
         yield return new WaitForSeconds(AttackSpeed);
 
         _agent.isStopped = false;
-
         _isCurrentAttackCor = false;
 
     }
@@ -67,5 +66,8 @@ public class EnemyController_Melee : EnemyController
             PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
             player.Hit(Damage);
         }
+
+        ChangeState<EnemyAttackWalkState>();
+
     }
 }

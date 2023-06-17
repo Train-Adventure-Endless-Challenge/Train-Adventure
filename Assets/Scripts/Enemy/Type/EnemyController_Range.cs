@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyController_Range : EnemyController
 {
@@ -77,6 +76,9 @@ public class EnemyController_Range : EnemyController
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;
         _isCurrentAttackCor = false;
+
+        ChangeState<EnemyAttackWalkState>();        // 공격 대기 상태로 돌아가기
+
 
     }
 }
