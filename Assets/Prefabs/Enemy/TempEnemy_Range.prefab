@@ -680,6 +680,19 @@ CapsuleCollider:
   m_Height: 13.86
   m_Direction: 1
   m_Center: {x: 0, y: 5, z: 0}
+--- !u!114 &1577209317541497964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8964912878081897295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9e355cca52db9b45a191329c4a6b4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpBarSlider: {fileID: 6371048499371825891}
 --- !u!195 &8117928622505348626
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -714,7 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1587d8f19340df40835dc5b0cbf5efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 5
+  _radius: 8
   _angle: 180
   _viewCheckDelay: 0.2
   _playerRef: {fileID: 0}
@@ -746,16 +759,3 @@ MonoBehaviour:
   _attackTransform: {fileID: 8117928621170609875}
   _bulletPrefab: {fileID: 8618363741703801523, guid: 9b8284176b33516438708f1b081364ed,
     type: 3}
---- !u!114 &1577209317541497964
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8964912878081897295}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9e355cca52db9b45a191329c4a6b4dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hpBarSlider: {fileID: 6371048499371825891}

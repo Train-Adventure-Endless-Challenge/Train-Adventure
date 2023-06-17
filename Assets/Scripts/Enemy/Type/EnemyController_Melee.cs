@@ -14,6 +14,7 @@ public class EnemyController_Melee : EnemyController
         _stateMachine.AddState(new EnemyDieState());
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
+        _stateMachine.AddState(new EnemyAttackWalkState());
     }
 
     /// <summary>
@@ -25,9 +26,11 @@ public class EnemyController_Melee : EnemyController
         _isCurrentAttackCor = true;
 
         // 잘못 인식된 경우 나가기
-        if (Vector3.Distance(transform.position, _player.transform.position) > AttackRange + _agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
         {
             _isCurrentAttackCor = false;
+            ChangeState<EnemyAttackWalkState>();
+
             yield break;
         }
 

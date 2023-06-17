@@ -48,30 +48,19 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
-        if (_enemyController._enemyFieldOfView._isVisiblePlayer)
-        {
-            _agent.SetDestination(_player.transform.position);
-        }
-        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
-        {
-            _enemyController.ChangeState<EnemyIdleState>();
-            return;
-        }
-        else if ((_enemyController._enemyFieldOfView._isVisiblePlayer ) &&  (_agent.remainingDistance > _agent.stoppingDistance) && (_enemyController._isCurrentAttackCor = false))
-        {
-            _enemyController.ChangeState<EnemyAttackWalkState>();
-            return; 
-        }
+        //if (!_enemyController._enemyFieldOfView._isVisiblePlayer && !_enemyController._isCurrentAttackCor)
+        //{
+        //    _enemyController.ChangeState<EnemyIdleState>();
+        //}
     }
 
 
 
     public override void OnExit()
     {
+        _enemyController.StopAllCoroutines();
         base.OnExit();
 
-        _enemyController.StopAllCoroutines();
-        _enemyController._anim.SetBool("WalkToPlayer", false);
     }
 
 }

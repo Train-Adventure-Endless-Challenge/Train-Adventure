@@ -37,7 +37,8 @@ public class EnemyMoveState : State<EnemyController>
 
         if (_fov._isVisiblePlayer)
         {
-            _enemyController.ChangeState<EnemyAttackState>();
+            Debug.Log("보이");
+            _enemyController.ChangeState<EnemyAttackWalkState>();
         }
         else
         {

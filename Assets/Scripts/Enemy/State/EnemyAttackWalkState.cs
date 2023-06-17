@@ -35,15 +35,16 @@ public class EnemyAttackWalkState : State<EnemyController>
         if (!_fov._isVisiblePlayer)
         {
             _enemyController.ChangeState<EnemyIdleState>();
+            return;
         }
 
-        _agent.SetDestination(_player.transform.position);
+        _agent.SetDestination(_player.gameObject.transform.position);
 
         CheckAttack();
     }
 
     /// <summary>
-    /// 
+    /// 몬스터에게 접근 완료 시 && 
     /// </summary>
     void CheckAttack()
     {
@@ -56,7 +57,9 @@ public class EnemyAttackWalkState : State<EnemyController>
     public override void OnExit()
     {
         _enemyController._agent.stoppingDistance = _agentStopDistance;
+        _enemyController._anim.SetBool("WalkToPlayer", false);
         base.OnExit();
+
     }
 
 }

@@ -37,7 +37,7 @@ public class EnemyIdleState : State<EnemyController>
     {
         if (_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
-            _enemyController.ChangeState<EnemyAttackState>();
+            _enemyController.ChangeState<EnemyAttackWalkState>();
         }
     }
 
