@@ -18,6 +18,8 @@ public class EnemyController_Range : EnemyController
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
         _stateMachine.AddState(new EnemyAttackWalkState());
+        _stateMachine.AddState(new EnemyHitState());
+
 
     }
 
