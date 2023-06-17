@@ -16,14 +16,15 @@ public class EnemyAttackWalkState : State<EnemyController>
     {
         base.OnEnter();
 
+        _player = GameObject.Find("Player");
+
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
         _fov = _enemyController._enemyFieldOfView;
-
-        _player = GameObject.Find("Player");
-
         _enemyController._anim.SetBool("WalkToPlayer", true);
 
+
+        _enemyController._isCurrentAttackCor = false;
 
     }
 
@@ -41,7 +42,7 @@ public class EnemyAttackWalkState : State<EnemyController>
     }
 
     /// <summary>
-    /// ¸ó½ºÅÍ¿¡°Ô Á¢±Ù ¿Ï·á ½Ã && 
+    /// ëª¬ìŠ¤í„°ì—ê²Œ ì ‘ê·¼ ì™„ë£Œ ì‹œ && 
     /// </summary>
     void CheckAttack()
     {

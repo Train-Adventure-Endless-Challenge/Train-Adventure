@@ -47,7 +47,12 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)    
     {
-        // enemyController의 필수 구현 함수 (추상화)
+
+        if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
+        {
+            _enemyController.ChangeState<EnemyIdleState>();
+        }
+
     }
 
 
