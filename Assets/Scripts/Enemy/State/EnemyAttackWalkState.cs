@@ -19,6 +19,8 @@ public class EnemyAttackWalkState : State<EnemyController>
         _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();
+
+        // 초기화
         _agent = _enemyController._agent;
         _fov = _enemyController._enemyFieldOfView;
         _enemyController._anim.SetBool("WalkToPlayer", true);
@@ -30,7 +32,7 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
-        if (!_fov._isVisiblePlayer)
+        if (!_fov._isVisiblePlayer)     // 시야에 플레이어가 보이지 않는다면 
         {
             _enemyController.ChangeState<EnemyIdleState>();
             return;
@@ -42,7 +44,8 @@ public class EnemyAttackWalkState : State<EnemyController>
     }
 
     /// <summary>
-    /// 몬스터에게 접근 완료 시 && 
+    /// 몬스터에게 접근 완료 시 && 공격을 실행중이 아닐때
+    /// 0.2f는 navmesh로 거리를 체크할때 약간의 오차를 방지하기 위함의 임시 수
     /// </summary>
     void CheckAttack()
     {

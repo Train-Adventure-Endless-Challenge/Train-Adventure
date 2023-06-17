@@ -9,7 +9,7 @@ using UnityEngine.UIElements;
 public class EnemyAttackState : State<EnemyController>
 {
     private EnemyController _enemyController;
-    private GameObject _player;         // 추후 싱글톤으로 찾기 가능
+    private GameObject _player;     
     
     private NavMeshAgent _agent;
 
@@ -30,7 +30,9 @@ public class EnemyAttackState : State<EnemyController>
 
     private void Attack()
     {
-        switch (_enemyController.EnemyType)
+        // 몬스터 타입에 따른 본인의 공격 로직 호출
+        // 공격이 다 끝난 상황에서 idle state로 돌아온다 => 각 몬스터 controller에 해당 로직 존재
+        switch (_enemyController.EnemyType)         
         {
             case EnemyType.range:
                 EnemyController_Range enemyR = _enemyController.GetComponent<EnemyController_Range>();
@@ -47,7 +49,7 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)    
     {
-
+        // 플레이어가 보이지 않고 현재 공격이 실행중이 아닐때
         if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
         {
             _enemyController.ChangeState<EnemyIdleState>();

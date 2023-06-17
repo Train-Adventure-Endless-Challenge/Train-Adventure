@@ -105,7 +105,7 @@ public abstract class EnemyController : MonoBehaviour
     public void Hit(int damage)
     {
         _eventDamage = damage;
-        ChangeState<EnemyHitState>();
+        ChangeState<EnemyHitState>();           
 
     }
 
