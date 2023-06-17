@@ -6,12 +6,15 @@ using UnityEngine;
 /// <summary>
 /// 플레이어의 데이터를 담고 있는 클래스
 /// </summary>
-public class Player : MonoBehaviour
+public class Player : Entity
 {
     /// <summary>
     /// 스크립터블 오브젝트로 저장 되어 있는 플레이어 데이터 원본 값
     /// </summary>
     [SerializeField] private PlayerData playerData;
+
+    private PlayerHit _playerHit;
+    private PlayerDie _playerDie;
 
     /// <summary>
     /// 플레이어의 상태를 저장하는 Enum 값
@@ -53,5 +56,15 @@ public class Player : MonoBehaviour
         _mp = playerData.Mp;
         _defense = playerData.Defense;
         _stamina = playerData.Stamina;
+    }
+
+    public override void Hit(float damage, GameObject attacker)
+    {
+        _playerHit.Hit(damage);
+    }
+
+    public override void Die()
+    {
+        _playerDie.Die();
     }
 }

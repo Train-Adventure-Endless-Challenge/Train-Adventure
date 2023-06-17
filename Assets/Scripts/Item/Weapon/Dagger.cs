@@ -48,7 +48,7 @@ public class Dagger : Weapon
                 {
                     // 감지한 적에 대한 처리를 수행
                     _detectionLists.Add(hit);
-                    hit.GetComponent<EnemyController>().Hit(_damage);
+                    hit.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
                 }
             }
             yield return new WaitForEndOfFrame();
