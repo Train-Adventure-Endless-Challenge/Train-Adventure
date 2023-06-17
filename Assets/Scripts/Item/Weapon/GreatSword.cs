@@ -47,7 +47,7 @@ public class GreatSword : Weapon
             {
                 // 적의 위치를 가져와서 플레이어와의 각도를 계산
                 Vector3 direction = hit.transform.position - origin;
-                float angle = Vector3.Angle(transform.forward, direction);
+                float angle = Vector3.Angle(_playerTransform.forward, direction);
 
                 // 감지 범위 내에 있는지, 중복이 아닌지 체크
                 if (angle < _detectionAngle * 0.5f && _detectionLists.Contains(hit) == false)
