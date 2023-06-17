@@ -78,6 +78,8 @@ public abstract class EnemyController : MonoBehaviour
         _attackRange = _enemyData._attackRange;
         _enemyType = _enemyData._enemyType;
 
+        _agent.stoppingDistance = AttackRange;
+
     }
 
 
