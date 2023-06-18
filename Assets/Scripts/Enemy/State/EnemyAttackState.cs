@@ -5,83 +5,66 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UIElements;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class EnemyAttackState : State<EnemyController>
 {
     private EnemyController _enemyController;
-    private GameObject _player;         // 추후 싱글톤으로 찾기 가능
+    private GameObject _player;     
     
     private NavMeshAgent _agent;
-    private EnemyFieldOfView _fov;
 
-    private float _agentStopDistance;
 
     public override void OnEnter()
     {
         base.OnEnter();
 
-
-
         _player = GameObject.FindGameObjectWithTag("Player");
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
-        _agent.isStopped = false;
+        _agent.isStopped = true;
 
-        _agentStopDistance = _agent.stoppingDistance;
-        _agent.stoppingDistance += _enemyController.AttackRange;
 
-        _enemyController._anim.SetBool("WalkToPlayer", true);
+        Attack();
     }
 
-    public override void Update(float deltaTime)
+    private void Attack()
     {
-        if (_enemyController._enemyFieldOfView._isVisiblePlayer)
+        // 몬스터 타입에 따른 본인의 공격 로직 호출
+        // 공격이 다 끝난 상황에서 idle state로 돌아온다 => 각 몬스터 controller에 해당 로직 존재
+        switch (_enemyController.EnemyType)         
         {
-            _agent.SetDestination(_player.transform.position);
+            case EnemyType.range:
+                EnemyController_Range enemyR = _enemyController.GetComponent<EnemyController_Range>();
+                _enemyController.StartCoroutine(enemyR.AttackRangeCor());
+                break;
+            case EnemyType.melee:
+                EnemyController_Melee enemyM = _enemyController.GetComponent<EnemyController_Melee>();
+                _enemyController.StartCoroutine(enemyM.AttackMeleeCor());
+                break;
+            default:
+                break;
         }
-        else if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
+    }
+
+    public override void Update(float deltaTime)    
+    {
+        // 플레이어가 보이지 않고 현재 공격이 실행중이 아닐때
+        if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
         {
-            _enemyController._anim.SetBool("WalkToPlayer", false);
             _enemyController.ChangeState<EnemyIdleState>();
-            return;
         }
 
-        CheckAttack();
     }
-
-    /// <summary>
-    /// 공격 체크
-    /// </summary>
-    private void CheckAttack()
-    {
-
-        if (_agent.remainingDistance <= _agent.stoppingDistance && _enemyController._isCurrentAttackCor == false )
-        {
-            _enemyController._anim.SetBool("WalkToPlayer", false);
-            switch (_enemyController.EnemyType)
-            {
-                case EnemyType.range:
-                    EnemyController_Range enemyR = _enemyController.GetComponent<EnemyController_Range>();
-                    _enemyController.StartCoroutine(enemyR.AttackRangeCor());
-                    break;
-                case EnemyType.melee:
-                    EnemyController_Melee enemyM = _enemyController.GetComponent<EnemyController_Melee>();
-                     _enemyController.StartCoroutine(enemyM.AttackMeleeCor());
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
-
 
 
 
     public override void OnExit()
     {
-        _enemyController._agent.stoppingDistance = _agentStopDistance;
+        _enemyController.StopAllCoroutines();
+        
         base.OnExit();
+
     }
+
 }

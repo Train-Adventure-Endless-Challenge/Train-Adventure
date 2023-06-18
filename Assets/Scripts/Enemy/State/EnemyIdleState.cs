@@ -22,6 +22,8 @@ public class EnemyIdleState : State<EnemyController>
         _enemyController._anim.SetBool("Walk",false);
         _enemyController._anim.SetBool("WalkToPlayer", false);
 
+        _enemyController._agent.isStopped = true;
+
 
         _enemyController.StartCoroutine(DelayToMoveCor());
     }
@@ -37,7 +39,7 @@ public class EnemyIdleState : State<EnemyController>
     {
         if (_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
-            _enemyController.ChangeState<EnemyAttackState>();
+            _enemyController.ChangeState<EnemyAttackWalkState>();
         }
     }
 

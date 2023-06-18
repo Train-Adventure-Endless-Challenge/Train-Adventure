@@ -14,6 +14,8 @@ public class EnemyController_Melee : EnemyController
         _stateMachine.AddState(new EnemyDieState());
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
+        _stateMachine.AddState(new EnemyAttackWalkState());
+        _stateMachine.AddState(new EnemyHitState());
     }
 
     /// <summary>
@@ -25,9 +27,11 @@ public class EnemyController_Melee : EnemyController
         _isCurrentAttackCor = true;
 
         // 잘못 인식된 경우 나가기
-        if (Vector3.Distance(transform.position, _player.transform.position) > AttackRange + _agent.stoppingDistance)
+        if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
         {
             _isCurrentAttackCor = false;
+            ChangeState<EnemyAttackWalkState>();
+
             yield break;
         }
 
@@ -50,7 +54,6 @@ public class EnemyController_Melee : EnemyController
         yield return new WaitForSeconds(AttackSpeed);
 
         _agent.isStopped = false;
-
         _isCurrentAttackCor = false;
 
     }
@@ -67,5 +70,8 @@ public class EnemyController_Melee : EnemyController
             PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
             player.Hit(Damage);
         }
+
+        ChangeState<EnemyIdleState>();
+
     }
 }

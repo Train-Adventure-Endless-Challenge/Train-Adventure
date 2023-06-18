@@ -35,9 +35,9 @@ public class EnemyMoveState : State<EnemyController>
     public override void Update(float deltaTime)
     {
 
-        if (_fov._isVisiblePlayer)
+        if (_fov._isVisiblePlayer)      // 시야에 플레이어가 보인다면
         {
-            _enemyController.ChangeState<EnemyAttackState>();
+            _enemyController.ChangeState<EnemyAttackWalkState>();
         }
         else
         {
