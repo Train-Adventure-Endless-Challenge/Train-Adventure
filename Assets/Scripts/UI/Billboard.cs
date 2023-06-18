@@ -5,7 +5,7 @@ using UnityEngine;
 public class Billboard : MonoBehaviour
 {
 
-    VCamera _cam => VCamera.Instance;
+    CameraManager _cam => CameraManager.Instance;
 
     void Update()
     {
