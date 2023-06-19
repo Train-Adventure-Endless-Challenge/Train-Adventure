@@ -71,7 +71,7 @@ public class PlayerRolling : MonoBehaviour
             if (Input.GetKeyDown(_rollingKey) && CanRoll())
             {
                 _player.Stamina -= _staminaValue;
-                _staminaSlider.ChangeUI(_player.Stamina);
+                IngameUIController.Instance.UpdateStemina(_player.Stamina, _player._maxStamina);
                 _player.playerState = PlayerState.Rolling;
                 _rollCor = RollCor(transform.position);
                 StartCoroutine(RollCor(transform.position));

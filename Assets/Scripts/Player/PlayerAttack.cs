@@ -67,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _player.Stamina -= _staminaValue;
-                _staminaSlider.ChangeUI(_player.Stamina);
+                IngameUIController.Instance.UpdateStemina(_player.Stamina, _player._maxStamina);
                 _player.playerState = PlayerState.Attack;  // 상태 
                 StartCoroutine(AttackCor());               // 공격 코루틴 실행
             }
