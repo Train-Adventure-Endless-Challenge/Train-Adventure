@@ -70,14 +70,6 @@ public class EnemyController_Range : EnemyController
 
         _anim.SetTrigger("Attack");
 
-        //공격
-        GameObject bullet = InsBullet();
-        bullet.transform.position = _attackTransform.position;
-        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
-
-        // damage 할당
-        EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
-        eb._damage = (int)Damage;
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;
@@ -91,5 +83,22 @@ public class EnemyController_Range : EnemyController
     void AttackAnimEnd()
     {
         ChangeState<EnemyIdleState>();
+    }
+
+    /// <summary>
+    /// anim clip에 따라 총알 생성
+    /// </summary>
+    public void SpawnBullet()
+    {
+        Vector3 dir = _player.transform.position - transform.position;
+
+        //공격 총알 생성
+        GameObject bullet = InsBullet();
+        bullet.transform.position = _attackTransform.position;
+        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
+
+        // damage 할당
+        EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
+        eb._damage = (int)Damage;
     }
 }
