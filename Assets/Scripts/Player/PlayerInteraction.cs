@@ -8,9 +8,7 @@ public class PlayerInteraction : MonoBehaviour
     #region Variable
 
     [Header("Variable")]
-    [SerializeField] private float _detectionAngle; // 감지할 부채꼴의 각도
-    [SerializeField] private float _range;          // 감지 범위
-    [SerializeField] private Color _color;          // 부채꼴 색상
+    [SerializeField] private Transform _playerTransform;
 
     [Header("Layer")]
     [SerializeField] private LayerMask _targetLayer; // 감지할 대상의 레이어
@@ -18,15 +16,29 @@ public class PlayerInteraction : MonoBehaviour
     [Header("Key")]
     [SerializeField] private KeyCode _keyCode; // 상호작용 키
 
+    private float _detectionAngle; // 감지할 부채꼴의 각도
+    private float _range;          // 감지 범위
+    private Color _color;          // 부채꼴 색상
+
     private Player _player;
 
     #endregion
 
     #region Function
 
+    private void Awake()
+    {
+        Init();
+    }
+
     private void Start()
     {
         DataInit();
+    }
+
+    private void Init()
+    {
+        _player = _playerTransform.GetComponent<Player>();
     }
 
     /// <summary>
