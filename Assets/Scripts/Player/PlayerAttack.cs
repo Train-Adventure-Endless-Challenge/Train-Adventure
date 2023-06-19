@@ -21,8 +21,6 @@ public class PlayerAttack : MonoBehaviour
     public UnityEvent _OnAttackEvent;                      // 플레이어 공격 이벤트
     public UnityEvent _OnStopEvent;                        // 공격 멈춤 이벤트
 
-    [SerializeField] private StaminaSlider _staminaSlider;
-
     private Player _player;                                // 플레이어
     private Animator _animator;                            // 애니메이션
     private PlayerController _playerController;            // 플레이어 움직임
@@ -67,7 +65,7 @@ public class PlayerAttack : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 _player.Stamina -= _staminaValue;
-                IngameUIController.Instance.UpdateStemina(_player.Stamina, _player._maxStamina);
+                IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
                 _player.playerState = PlayerState.Attack;  // 상태 
                 StartCoroutine(AttackCor());               // 공격 코루틴 실행
             }
