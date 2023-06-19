@@ -58,7 +58,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.32142857
-        functionName: SpawnBullet
+        functionName: SpawnBulletEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

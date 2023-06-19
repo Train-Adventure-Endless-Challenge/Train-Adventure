@@ -88,7 +88,7 @@ public class EnemyController_Range : EnemyController
     /// <summary>
     /// anim clip에 따라 총알 생성
     /// </summary>
-    public void SpawnBullet()
+    public void SpawnBulletEvent()
     {
         Vector3 dir = _player.transform.position - transform.position;
 
