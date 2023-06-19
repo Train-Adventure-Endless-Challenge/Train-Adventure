@@ -93,7 +93,6 @@ public class EnemyController_Range : EnemyController
         //공격 총알 생성
         GameObject bullet = InsBullet();
         bullet.transform.position = _attackTransform.position;
-        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
 
         // damage 할당
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
