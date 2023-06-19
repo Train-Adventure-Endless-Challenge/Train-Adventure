@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2e1cdae07ca55f43a447337ef16ca90, type: 3}
   m_Name: DaggerData
   m_EditorClassIdentifier: 
-  _id: 0
+  _id: 2
   _name: Dagger
-  _itemImage: {fileID: 0}
+  _itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   _description: "\uB2E8\uAC80"
   _damage: 5
   _range: 1
-  _attackSpeed: 0.5
+  _attackSpeed: 0.7
   _additionalHp: 0
   _additionalStemina: 0
   _additionalStrength: 0

@@ -14,9 +14,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _hp: 100
   _speed: 5
-  _damage: 100
-  _strength: 5
-  _attackSpeed: 3
-  _mp: 5
   _defense: 5
-  _stamina: 0
+  _stamina: 100
+  _originSpeedScale: 1
+  _attackSlowSpeedScale: 0.3
+  _walkSpeedScale: 0.5
+  _runSpeedScale: 1
+  _moveSlowSpeedScale: 1
+  _interactionAngle: 90
+  _interactionRange: 1
+  _interactionColor: {r: 0, g: 1, b: 0, a: 0}
+  _rollingRange: 5
+  _staminaUseValue: 20
+  _rollingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _waitTime: 0.5
+  _recoveryTime: 1
+  _maxValue: 100
+  _recoveryValue: 20

@@ -1,6 +1,13 @@
+// 작성자 : 박재만
+// 작성일 : 2023-06-19
+
+#region Namespace
+
 using UnityEngine;
 using System.Collections;
 using UnityEngine.Events;
+
+#endregion
 
 /// <summary>
 /// 플레이어의 충돌을 담당하는 클래스
@@ -16,9 +23,13 @@ public class PlayerHit : MonoBehaviour
     [SerializeField] private UnityEvent _OnHit;
     [SerializeField] private UnityEvent _OnStopHit;
 
+    #region Class
+
     private Player _player;
     private Animator _animator;
     private PlayerDie _playerDie;
+
+    #endregion
 
     #endregion
 

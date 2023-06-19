@@ -5954,16 +5954,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4c9a354370032745a60851573e638bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _slowSpeedScale: 0.3
-  _originSpeedScale: 1
-  _staminaValue: 7
-  _weaponTr: {fileID: 0}
-  _OnAttackEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _OnStopEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  _weaponTransform: {fileID: 0}
   _staminaSlider: {fileID: 0}
 --- !u!114 &6401699004113738591
 MonoBehaviour:
@@ -6071,8 +6062,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6098,8 +6089,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6135,32 +6126,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rollingKey: 32
-  _rollingRange: 10
-  _rollingCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  _staminaValue: 20
   _staminaSlider: {fileID: 0}
   _isGodMode: 0
 --- !u!114 &1528040907
@@ -6177,8 +6142,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _waitTime: 0.5
   _recoveryTime: 1
-  _recoveryValue: 20
   _maxValue: 100
+  _recoveryValue: 20
   _staminaSlider: {fileID: 0}
 --- !u!114 &5753880084684766115
 MonoBehaviour:
@@ -6331,9 +6296,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e10a316625c9fbe4b9e18de267a7d9f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _detectionAngle: 90
-  _range: 1
-  _color: {r: 0, g: 1, b: 0, a: 1}
+  _playerTransform: {fileID: 1167497307699225306}
   _targetLayer:
     serializedVersion: 2
     m_Bits: 128

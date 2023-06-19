@@ -34,6 +34,7 @@ public class EnemyMoveState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
+        if (_enemyController._isDie) return;
 
         if (_fov._isVisiblePlayer)      // 시야에 플레이어가 보인다면
         {

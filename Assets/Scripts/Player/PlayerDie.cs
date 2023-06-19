@@ -1,5 +1,12 @@
+// 작성자 : 박재만
+// 작성일 : 2023-06-19
+
+#region Namespace
+
 using UnityEngine;
 using UnityEngine.Events;
+
+#endregion
 
 /// <summary>
 /// 플레이어 죽음을 담당하는 클래스
@@ -11,6 +18,8 @@ public class PlayerDie : MonoBehaviour
     [SerializeField] private UnityEvent _OnDie;
 
     private Animator _animator;
+
+    private bool _isDie;
 
     #endregion
 
@@ -40,8 +49,12 @@ public class PlayerDie : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        _animator.SetBool("IsDie", true);
-        _OnDie.Invoke();
+        if (_isDie == false)
+        {
+            _isDie = true;
+            _animator.SetBool("IsDie", true);
+            _OnDie.Invoke();
+        }
     }
 
     #endregion

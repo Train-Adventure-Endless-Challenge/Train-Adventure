@@ -1,5 +1,12 @@
-using System.Collections;
+// 작성자 : 박재만
+// 작성일 : 2023-06-19
+
+#region
+
 using UnityEngine;
+using System.Collections;
+
+#endregion
 
 /// <summary>
 /// 플레이어의 구르기를 담당하는 클래스
@@ -18,6 +25,10 @@ public class PlayerRolling : MonoBehaviour
 
     public bool _isGodMode;
 
+    private float _rollingRange;          // 구르기 사용 범위
+    private int _staminaUseValue;            // 필요 스태미너 값
+    private AnimationCurve _rollingCurve; // 구르기 변화 커브
+
     private Player _player;
     private Animator _animator;
     private CharacterController _characterController;
@@ -25,7 +36,7 @@ public class PlayerRolling : MonoBehaviour
     private float _lerpTime = 1f;
     private float _currentTime = 0f;
 
-    private IEnumerator _rollCor;
+    private Coroutine _rollCor;
 
     private Vector3 _endPosition;
     private Vector3 _moveDirection;
@@ -40,6 +51,11 @@ public class PlayerRolling : MonoBehaviour
         Init();
     }
 
+    private void Start()
+    {
+        DataInit();
+    }
+
     /// <summary>
     /// 초기화 함수
     /// </summary>
@@ -48,6 +64,13 @@ public class PlayerRolling : MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _characterController = GetComponent<CharacterController>();
+    }
+
+    private void DataInit()
+    {
+        _rollingRange = _player.RollingRange;
+        _staminaUseValue = _player.StaminaUseValue;
+        _rollingCurve = _player.RollingCurve;
     }
 
     /// <summary>
@@ -61,18 +84,13 @@ public class PlayerRolling : MonoBehaviour
     {
         if (_rollCor == null)
         {
-            #region Mobile
-
-            //if ((isPC && Input.GetKeyDown(_rollingKey)) || !isPC)
-
-            #endregion
             if (Input.GetKeyDown(_rollingKey) && CanRoll())
             {
                 _player.Stamina -= _staminaValue;
                 IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
+
                 _player.playerState = PlayerState.Rolling;
-                _rollCor = RollCor(transform.position);
-                StartCoroutine(RollCor(transform.position));
+                _rollCor = StartCoroutine(RollCor(transform.position));
             }
         }
     }
@@ -83,7 +101,7 @@ public class PlayerRolling : MonoBehaviour
     /// <returns></returns>
     private bool CanRoll()
     {
-        return _player.Stamina - _staminaValue >= 0; // 스태미나가 충분한지 체크
+        return _player.Stamina - _staminaUseValue >= 0; // 스태미나가 충분한지 체크
     }
 
     /// <summary>
