@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
@@ -52,6 +53,7 @@ public class EnemyController : Entity
     public EnemyUI _enemyUI;
     public int _eventDamage;        // 받은 데미지
 
+    public Action _dieEvent;
 
     protected virtual void Awake()
     {
@@ -119,10 +121,10 @@ public class EnemyController : Entity
         ChangeState<EnemyHitState>();
     }
 
-
     public override void Die()
     {
         Destroy(gameObject);
+        _dieEvent.Invoke();
     }
 
 }

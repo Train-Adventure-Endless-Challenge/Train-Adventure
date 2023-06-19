@@ -77,7 +77,6 @@ public class EnemyController_Melee : EnemyController
 
     public void DieEvent()
     {
-        Die(); 
-
+        Die();
     }
 }

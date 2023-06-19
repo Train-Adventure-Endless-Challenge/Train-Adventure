@@ -303,7 +303,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floor: {fileID: 7890271424603324656}
-  _enemySpawnPoints: []
+  _frontDoorAnimation: {fileID: 6230214222537084578}
+  _enemySpawnPoints:
+  - enemySpawmPointTr: {fileID: 3788870344107607917}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 8876521892686029412}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 7712344741735447109}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 1809244890572921}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 8979273795655839945}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 7079339749799710838}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 4664433053259044233}
+    enemy: {fileID: 189667525702800064, guid: 62f80d407c75f574a82359caf48e4984, type: 3}
+  - enemySpawmPointTr: {fileID: 5885541893992931277}
+    enemy: {fileID: 939469062122110911, guid: fcf8aff1cf8d22b43aeb59cff6078c87, type: 3}
+  treasureBox: {fileID: 1732782875715410699, guid: c6c9f8e913990a74dabeab2d81b1e3e8,
+    type: 3}
+  treasureBoxSpawnPoint: {fileID: 436576100404063263}
 --- !u!1 &6103806838743626613
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,9 +759,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a2ea95802681264c9e1188ac6e37705, type: 3}
+--- !u!4 &436576100404063263 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7054211508801822025, guid: 3a2ea95802681264c9e1188ac6e37705,
+    type: 3}
+  m_PrefabInstance: {fileID: 7487956039809675606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3547049537164552660 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6256404345251731586, guid: 3a2ea95802681264c9e1188ac6e37705,
+    type: 3}
+  m_PrefabInstance: {fileID: 7487956039809675606}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &6230214222537084578 stripped
+Animation:
+  m_CorrespondingSourceObject: {fileID: 3574937314388901876, guid: 3a2ea95802681264c9e1188ac6e37705,
     type: 3}
   m_PrefabInstance: {fileID: 7487956039809675606}
   m_PrefabAsset: {fileID: 0}

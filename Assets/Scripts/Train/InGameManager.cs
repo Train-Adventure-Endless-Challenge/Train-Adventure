@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UI;
 using UnityEngine;
 
-public class TrainManager : SceneSingleton<TrainManager>
+public class InGameManager : SceneSingleton<InGameManager>
 {
     [SerializeField] private Transform _backgroundGroup;
 
@@ -15,10 +16,14 @@ public class TrainManager : SceneSingleton<TrainManager>
     private Train _nextTrain;                  // 다음 기차
 
     private Vector3 _trainInterval = new Vector3(0, 0, 1.5f);   // 기차 간격
-    private Vector3 _startPosition = Vector3.zero;           
-    
+    private Vector3 _startPosition = Vector3.zero;
+
+    private int score;
+
     private void Start()
     {
+        IngameUIController.Instance.UpdateScore(++score);
+
         _currentTrain = CreateTrain(_nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)], _startPosition);
         _currentTrain.Init();
 
@@ -29,10 +34,10 @@ public class TrainManager : SceneSingleton<TrainManager>
             + (_currentTrain._floor.transform.localScale.z / 2)) + _trainInterval;
     }
 
-    [ContextMenu("!")] // 테스트 용
     public void RandomNextStage()
     {
         StartNextTrain(_nomalTrainObjects[Random.Range(0,_nomalTrainObjects.Length)]);
+        IngameUIController.Instance.UpdateScore(++score);
     }
 
     // 다음 기차로 이동했을 때 함수

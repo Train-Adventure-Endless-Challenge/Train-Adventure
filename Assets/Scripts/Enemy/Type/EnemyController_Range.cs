@@ -109,6 +109,5 @@ public class EnemyController_Range : EnemyController
     public void DieEvent()
     {
         Die();
-
     }
 }

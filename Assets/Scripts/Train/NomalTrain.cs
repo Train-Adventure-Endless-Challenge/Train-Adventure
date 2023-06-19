@@ -9,8 +9,11 @@ public class NomalTrain : Train
     [SerializeField] private Animation _frontDoorAnimation;
 
     [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;           // 몬스터 스폰 포인트
-        
-    private List<GameObject> _currentTrainEnemys = new List<GameObject>();  // 현재 스테이지 몬스터
+
+    [SerializeField] private GameObject treasureBox;
+    [SerializeField] private Transform treasureBoxSpawnPoint;
+
+    private int _enemyCount;
 
     private bool _isClear;                                                     
 
@@ -21,12 +24,12 @@ public class NomalTrain : Train
 
         surfaces.RemoveData();
         surfaces.BuildNavMesh();
-
-        Init(); // 임시 코드 
     }
 
     public override void Init()
     {
+        _enemyCount = _enemySpawnPoints.Length;
+
         SpawnEnemy();
     }
 
@@ -34,16 +37,28 @@ public class NomalTrain : Train
     {
         for (int i = 0; i < _enemySpawnPoints.Length; i++)
         {
-            _currentTrainEnemys.Add(Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position, Quaternion.identity));
+            Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position, 
+                Quaternion.identity).GetComponentInChildren<EnemyController>()._dieEvent += KillEnemy;
         }
     }
 
     private void ClearStage()
     {
         _isClear = true;
+        _frontDoorAnimation.Play();
+        Instantiate(treasureBox, treasureBoxSpawnPoint.position, Quaternion.identity);
+    }
+
+    private void KillEnemy()
+    {
+        _enemyCount -= 1;
+
+        if (_enemyCount <= 0)
+        {
+            ClearStage();
+        }
     }
 }
-
 
 [Serializable]
 class EnemySpawnPoint
