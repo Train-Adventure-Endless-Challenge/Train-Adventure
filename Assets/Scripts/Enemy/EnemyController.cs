@@ -20,6 +20,8 @@ public class EnemyController : Entity
     private float _attackRange;
     private EnemyType _enemyType;
 
+    public bool _isDie;
+
     public string Name { get { return _name; } }
     public float HP
     {
@@ -107,6 +109,7 @@ public class EnemyController : Entity
 
     public override void Hit(float damage, GameObject attacker)
     {
+        if (_isDie) return;
 
         _eventDamage = (int)damage;
         ChangeState<EnemyHitState>();
