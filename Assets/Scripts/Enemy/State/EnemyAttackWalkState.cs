@@ -32,6 +32,8 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
+        if (_enemyController._isDie) return;
+
         if (!_fov._isVisiblePlayer)     // 시야에 플레이어가 보이지 않는다면 
         {
             _enemyController.ChangeState<EnemyIdleState>();

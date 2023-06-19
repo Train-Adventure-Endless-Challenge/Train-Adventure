@@ -90,6 +90,10 @@ public class EnemyController : Entity
     {
         _stateMachine.Update(Time.deltaTime);
 
+        if(!_isDie && HP <= 0 )
+        {
+            ChangeState<EnemyDieState>();
+        }
 
     }
 
@@ -115,9 +119,11 @@ public class EnemyController : Entity
         ChangeState<EnemyHitState>();
     }
 
+
     public override void Die()
     {
         Destroy(gameObject);
     }
+
 }
 
