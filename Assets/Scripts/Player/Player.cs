@@ -22,6 +22,7 @@ public class Player : Entity
     public PlayerState playerState;
 
     private float _hp;
+    private float _maxHp;
     private float _speed;
     private float _damage;
     private float _strength;
@@ -50,6 +51,7 @@ public class Player : Entity
     private void Init()
     {
         _hp = playerData.Hp;
+        _maxHp = _hp;
         _speed = playerData.Speed;
         _damage = playerData.Damage;
         _strength = playerData.Strength;
@@ -61,6 +63,7 @@ public class Player : Entity
     public override void Hit(float damage, GameObject attacker)
     {
         _playerHit.Hit(damage);
+        IngameUIController.Instance.UpdateHp(_hp, _maxHp);
     }
 
     public override void Die()
