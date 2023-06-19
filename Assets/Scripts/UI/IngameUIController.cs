@@ -7,11 +7,11 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 {
 
     [SerializeField] Slider _hpSlider;
-    [SerializeField] Slider _steminaSlider;
+    [SerializeField] Slider _staminaSlider;
 
 
     Coroutine _hpUpdateCoroutine;
-    Coroutine _steminaUpdateCoroutine;
+    Coroutine _staminaUpdateCoroutine;
     public void UpdateHp(float hp, float maxHp)
     {
         if (_hpSlider.maxValue != maxHp)
@@ -42,20 +42,20 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         }
     }
 
-    public void UpdateStemina(float stemina, float maxStemina)
+    public void UpdateStamina(float stamina, float maxStamina)
     {
-        if (_hpSlider.maxValue != maxStemina)
-        {
-            _steminaSlider.maxValue = maxStemina;
-            _steminaSlider.value = maxStemina;
-        }
-        if (_steminaUpdateCoroutine != null)
-            StopCoroutine(_steminaUpdateCoroutine);
 
-        _steminaUpdateCoroutine = StartCoroutine(UpdateSteminaCor(stemina));
+        if (_staminaSlider.maxValue != maxStamina)
+        {
+            _staminaSlider.maxValue = maxStamina;
+        }
+        if (_staminaUpdateCoroutine != null)
+            StopCoroutine(_staminaUpdateCoroutine);
+
+        _staminaUpdateCoroutine = StartCoroutine(UpdateSteminaCor(stamina));
     }
 
-    IEnumerator UpdateSteminaCor(float stemina)
+    IEnumerator UpdateSteminaCor(float stamina)
     {
         while (true)
         {
@@ -63,11 +63,10 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
             _steminaSlider.value = Mathf.Lerp(_hpSlider.value, stemina, 10 * Time.deltaTime);
 
-            if (Mathf.Abs(_steminaSlider.value - stemina) <= 0.1f)
+            if (Mathf.Abs(_staminaSlider.value - stamina) <= 0.1f)
             {
                 _hpUpdateCoroutine = null;
                 break;
-
             }
         }
     }
