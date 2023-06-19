@@ -8,19 +8,36 @@ public class PlayerInteraction : MonoBehaviour
     #region Variable
 
     [Header("Variable")]
-    [SerializeField] private float _detectionAngle = 90f; // 감지할 부채꼴의 각도
-    [SerializeField] private float _range = 1f;
-    [SerializeField] private Color _color = Color.green;  // 부채꼴 색상
+    [SerializeField] private float _detectionAngle; // 감지할 부채꼴의 각도
+    [SerializeField] private float _range;          // 감지 범위
+    [SerializeField] private Color _color;          // 부채꼴 색상
 
     [Header("Layer")]
-    [SerializeField] private LayerMask _targetLayer;      // 감지할 대상의 레이어
+    [SerializeField] private LayerMask _targetLayer; // 감지할 대상의 레이어
 
     [Header("Key")]
-    [SerializeField] private KeyCode _keyCode;            // 상호작용 키
+    [SerializeField] private KeyCode _keyCode; // 상호작용 키
+
+    private Player _player;
 
     #endregion
 
     #region Function
+
+    private void Start()
+    {
+        DataInit();
+    }
+
+    /// <summary>
+    /// 데이터 초기화를 담당하는 함수
+    /// </summary>
+    private void DataInit()
+    {
+        _detectionAngle = _player.InteractionAngle;
+        _range = _player.InteractionRange;
+        _color = _player.InteractionColor;
+    }
 
     /// <summary>
     /// 상호작용 함수

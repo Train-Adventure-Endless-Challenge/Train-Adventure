@@ -1,5 +1,12 @@
+// 작성자 : 박재만
+// 작성일 : 2023-06-19
+
+#region Namespace
+
 using UnityEngine;
 using System.Collections;
+
+#endregion
 
 /// <summary>
 /// 플레이어 스태미나를 담당하는 클래스
@@ -9,16 +16,20 @@ public class PlayerStamina : MonoBehaviour
 {
     #region Variable
 
-    [SerializeField] private float _waitTime = 0.5f;     // 변화 대기 시간
-    [SerializeField] private float _recoveryTime = 1.0f; // 회복 시간
-    [SerializeField] private int _recoveryValue = 20;    // 회복 시간당 회복량
-    [SerializeField] private int _maxValue = 100;        // 스테미너 최대값
+    [SerializeField] private float _waitTime;     // 변화 대기 시간
+    [SerializeField] private float _recoveryTime; // 회복 시간
+    [SerializeField] private int _maxValue;        // 스테미너 최대값
+    [SerializeField] private int _recoveryValue;    // 회복 시간당 회복량
 
     [SerializeField] private StaminaSlider _staminaSlider; // 스태미나 UI
 
     private IEnumerator _recoverCor;
 
+    #region Class
+
     private Player _player;
+
+    #endregion
 
     #endregion
 
@@ -31,6 +42,11 @@ public class PlayerStamina : MonoBehaviour
         Init(); // 초기화
     }
 
+    private void Start()
+    {
+        DataInit();
+    }
+
     #endregion
 
     /// <summary>
@@ -39,6 +55,14 @@ public class PlayerStamina : MonoBehaviour
     private void Init()
     {
         _player = GetComponent<Player>();
+    }
+
+    private void DataInit()
+    {
+        _waitTime = _player.WaitTime;
+        _recoveryTime = _player.RecoveryTime;
+        _maxValue = _player.MaxValue;
+        _recoveryValue = _player.RecoveryValue;
     }
 
     /// <summary>

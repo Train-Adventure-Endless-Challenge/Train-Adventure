@@ -1,5 +1,12 @@
+// 작성자 : 박재만
+// 작성일 : 2023-06-19
+
+#region Namespace
+
 using UnityEngine;
 using UnityEngine.Events;
+
+#endregion
 
 /// <summary>
 /// 플레이어 죽음을 담당하는 클래스
