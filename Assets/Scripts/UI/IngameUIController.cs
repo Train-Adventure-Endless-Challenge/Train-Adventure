@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,10 +9,12 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
     [SerializeField] Slider _hpSlider;
     [SerializeField] Slider _staminaSlider;
-
+    [SerializeField] TMP_Text _scoreText;
+    [SerializeField] TMP_Text _gearText;
 
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
+    Coroutine _gearUpdateCoroutine;
     public void UpdateHp(float hp, float maxHp)
     {
         if (_hpSlider.maxValue != maxHp)
@@ -70,4 +73,44 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             }
         }
     }
+
+    public void UpdateScore(int score)
+    {
+        _scoreText.text = score.ToString();
+    }
+
+    public void UpdateGear(int gear)
+    {
+
+
+        if (_gearUpdateCoroutine != null)
+            StopCoroutine(_gearUpdateCoroutine);
+
+        _gearUpdateCoroutine = StartCoroutine(TextCountCor(_gearText, gear, float.Parse(_gearText.text)));
+            
+
+    }
+
+    private IEnumerator TextCountCor(TMP_Text text, float target, float current)
+    {
+        float duration = 0.2f; // 카운팅에 걸리는 시간 설정
+
+        float offset = (target - current) / duration;
+
+        while (current < target)
+        {
+            current += offset * Time.deltaTime;
+
+            text.text = ((int)current).ToString();
+
+            yield return null;
+        }
+
+        current = (int)target;
+
+        text.text = current.ToString();
+
+        _gearUpdateCoroutine = null;
+    }
+
 }
