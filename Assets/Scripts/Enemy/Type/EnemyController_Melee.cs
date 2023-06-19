@@ -67,8 +67,8 @@ public class EnemyController_Melee : EnemyController
         // 실제 공격 체크
         if (_enemyFieldOfView._isVisiblePlayer && Vector3.Distance(transform.position, _player.transform.position) < AttackRange + _agent.stoppingDistance)
         {
-            PlayerHit player = _player.GetComponent<PlayerHit>();     //  추후 싱글톤으로 찾는다면 로직 수정
-            player.Hit(Damage);
+            Player player = _player.GetComponent<Player>();     //  추후 싱글톤으로 찾는다면 로직 수정
+            player.Hit(Damage,gameObject);
         }
 
         ChangeState<EnemyIdleState>();

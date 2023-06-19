@@ -78,6 +78,7 @@ public class EnemyController_Range : EnemyController
         // damage 할당
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
         eb._damage = (int)Damage;
+        eb.Owner = gameObject;
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;

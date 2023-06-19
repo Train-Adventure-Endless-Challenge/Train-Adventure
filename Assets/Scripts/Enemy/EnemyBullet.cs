@@ -8,6 +8,8 @@ public class EnemyBullet : MonoBehaviour
     [SerializeField] int _speed;
     public int _damage;
 
+    public GameObject Owner { get; set; }
+
     private void Awake()
     {
         _rigid = GetComponent<Rigidbody>();
@@ -27,8 +29,8 @@ public class EnemyBullet : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            PlayerHit player = other.gameObject.GetComponent<PlayerHit>();
-            player.Hit(_damage);
+            Player player = other.gameObject.GetComponent<Player>();
+            player.Hit(_damage, Owner);
 
             Destroy(gameObject);
         }
