@@ -101,4 +101,13 @@ public class EnemyController_Range : EnemyController
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
         eb._damage = Damage;
     }
+
+    /// <summary>
+    /// animation clip 실행 event
+    /// </summary>
+    public void DieEvent()
+    {
+        Die();
+
+    }
 }
