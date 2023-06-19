@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class NomalTrain : Train
 {
-    [SerializeField] private Animation frontDoorAnimation;
+    [SerializeField] private Animation _frontDoorAnimation;
 
     [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;           // 몬스터 스폰 포인트
         
