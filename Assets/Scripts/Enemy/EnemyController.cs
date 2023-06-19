@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public abstract class EnemyController : MonoBehaviour
+public class EnemyController : Entity
 {
     protected StateMachine<EnemyController> _stateMachine;
     public Animator _anim;
@@ -97,24 +97,24 @@ public abstract class EnemyController : MonoBehaviour
         return _stateMachine.ChangeState<R>();
     }
 
-    public void DestroyGameObject()
-    {
-        Destroy(gameObject);
-    }
-
-    public void Hit(int damage)
-    {
-        _eventDamage = damage;
-        ChangeState<EnemyHitState>();           
-
-    }
-
     /// <summary>
     /// animation event clip 실행 마지막 함수
     /// </summary>
     public void EndAnimEvent()
     {
         ChangeState<EnemyIdleState>();
+    }
+
+    public override void Hit(float damage, GameObject attacker)
+    {
+
+        _eventDamage = (int)damage;
+        ChangeState<EnemyHitState>();
+    }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
     }
 }
 
