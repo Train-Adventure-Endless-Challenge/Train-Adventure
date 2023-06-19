@@ -23,10 +23,6 @@ public class EnemyDieState : State<EnemyController>
 
         _enemyController._isDie = true;
         _enemyController._anim.SetTrigger("Die");
-
-        
-        
-        Debug.Log("DeadState");
         
     }
 
