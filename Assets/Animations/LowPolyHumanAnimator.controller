@@ -36,7 +36,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DaggerAttack
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 946162855507214997}
@@ -203,7 +203,7 @@ AnimatorStateTransition:
     m_EventTreshold: 0
   - m_ConditionMode: 6
     m_ConditionEvent: Weapon
-    m_EventTreshold: 0
+    m_EventTreshold: 2
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -8160956127570090143}
   m_Solo: 0
@@ -392,7 +392,7 @@ AnimatorStateMachine:
     m_Position: {x: 250, y: 320, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 6480786333171573826}
-    m_Position: {x: 30, y: 320, z: 0}
+    m_Position: {x: 30, y: 420, z: 0}
   m_AnyStateTransitions:
   - {fileID: -3149944645400199822}
   - {fileID: 7140373642384103391}
@@ -408,10 +408,12 @@ AnimatorStateMachine:
     - {fileID: -259962370256334955}
   - first: {fileID: 805912587954155561}
     second: []
+  - first: {fileID: 6480786333171573826}
+    second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 240, z: 0}
   m_EntryPosition: {x: 20, y: 30, z: 0}
-  m_ExitPosition: {x: 690, y: 230, z: 0}
+  m_ExitPosition: {x: 470, y: 430, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 6847286137344619648}
 --- !u!1101 &-2319083057539398629
@@ -728,11 +730,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.8897059
-  m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_ExitTime: 0
+  m_HasExitTime: 0
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
@@ -1153,11 +1155,11 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 1
   serializedVersion: 3
-  m_TransitionDuration: 0.25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
-  m_ExitTime: 0.84375
+  m_ExitTime: 0
   m_HasExitTime: 1
-  m_HasFixedDuration: 1
+  m_HasFixedDuration: 0
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
