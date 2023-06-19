@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 939469062122110910}
   m_Layer: 9
   m_Name: TempEnemy_Range
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -57,12 +57,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8117928621170609872}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7.16, z: 1.37}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8584446307481233909}
-  m_RootOrder: 2
+  m_Father: {fileID: 160061192359344630}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &964496150006504577
 PrefabInstance:
@@ -184,7 +184,7 @@ PrefabInstance:
     - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
@@ -546,6 +546,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c9c2dec7679a31949822db4c5234fcc7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: c9c2dec7679a31949822db4c5234fcc7,
         type: 3}
       propertyPath: m_Layer
@@ -654,6 +659,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c9c2dec7679a31949822db4c5234fcc7, type: 3}
+--- !u!4 &160061192359344630 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8255111157037086696, guid: c9c2dec7679a31949822db4c5234fcc7,
+    type: 3}
+  m_PrefabInstance: {fileID: 8117928622505348638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8584446307481233909 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c9c2dec7679a31949822db4c5234fcc7,
@@ -752,10 +763,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _anim: {fileID: 0}
   _enemyData: {fileID: 11400000, guid: f383b3a758608c048a6f445cab4ca641, type: 2}
+  _isDie: 0
   _agent: {fileID: 0}
   _target: {fileID: 8117928622439771839}
   _enemyFieldOfView: {fileID: 0}
   _isCurrentAttackCor: 0
+  _enemyUI: {fileID: 0}
+  _eventDamage: 0
   _attackTransform: {fileID: 8117928621170609875}
   _bulletPrefab: {fileID: 8618363741703801523, guid: 9b8284176b33516438708f1b081364ed,
     type: 3}
