@@ -90,11 +90,6 @@ public class EnemyController : Entity
     {
         _stateMachine.Update(Time.deltaTime);
 
-        if(!_isDie && HP <= 0 )
-        {
-            ChangeState<EnemyDieState>();
-        }
-
     }
 
     public R ChangeState<R>() where R : State<EnemyController>
