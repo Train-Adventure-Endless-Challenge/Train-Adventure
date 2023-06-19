@@ -29,6 +29,7 @@ public class Player : Entity
     private int _mp;
     private int _defense;
     public int _stamina;
+    public int _maxStamina;
 
     public float Hp { get { return _hp; } set { _hp = value; } }
     public float Speed { get { return _speed; } set { _speed = value; } }
@@ -58,6 +59,7 @@ public class Player : Entity
         _mp = playerData.Mp;
         _defense = playerData.Defense;
         _stamina = playerData.Stamina;
+        _maxStamina = _stamina;
         _playerHit = GetComponent<PlayerHit>();
         _playerDie = GetComponent<PlayerDie>();
     }
