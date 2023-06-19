@@ -119,13 +119,11 @@ public class PlayerController : MonoBehaviour
         if (x != 0 || z != 0)                                                                                                  // 움직이고 있다면
         {
             if (Input.GetKey(_runningKey))                                                                                     // 달리는 키를 눌렀을 때
-            {
-                StopMove();                                                                                                       // 코루틴 종료
+            {                                                                                                // 코루틴 종료
                 _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));                                                // 달리기 코루틴 실행
             }
             else
-            {
-                StopMove();                                                                                                     // 코루틴 종료
+            {                                                                                               // 코루틴 종료
                 _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _walkSpeedScale));                                                   // 걷기 코루틴 실행
             }
             _moveDirection = new Vector3(x, 0f, z).normalized;                                                                            // 움직임 방향
@@ -138,8 +136,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         else
-        {
-            StopMove();                                                                                                        // 코루틴 종료
+        {                                                                                                  // 코루틴 종료
             _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
             if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
             {

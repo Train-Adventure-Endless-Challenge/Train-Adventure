@@ -1,5 +1,5 @@
 // 작성자 : 박재만
-// 작성일 : 2023-05-03
+// 작성일 : 2023-06-19
 
 #region Namespace
 
@@ -40,7 +40,7 @@ public class Player : Entity
     private float _hp;    // 체력
     private float _speed; // 속도
     private int _defense; // 방어력
-    public int _stamina;  // 스태미나
+    private int _stamina; // 스태미나
 
     #endregion
 
@@ -157,10 +157,50 @@ public class Player : Entity
     {
         #region Stat
 
-        _hp = playerData.Hp;
-        _speed = playerData.Speed;
-        _defense = playerData.Defense;
-        _stamina = playerData.Stamina;
+        _hp = playerData.Hp;           // 체력
+        _speed = playerData.Speed;     // 속도
+        _defense = playerData.Defense; // 방어력
+        _stamina = playerData.Stamina; // 스태미나
+
+        #endregion
+
+        #region Attack
+
+        _originSpeedScale = playerData.OriginSpeedScale;         // 원래 속도 배율
+        _attackSlowSpeedScale = playerData.AttackSlowSpeedScale; // 공격시 움직임 감속 배율
+
+        #endregion
+
+        #region Controller
+
+        _walkSpeedScale = playerData.WalkSpeedScale;         // 걷기 속도 배율
+        _runSpeedScale = playerData.RunSpeedScale;           // 달리기 속도 배율
+        _moveSlowSpeedScale = playerData.MoveSlowSpeedScale; // 상태 변경시, 움직임 감속 배율
+
+        #endregion
+
+        #region Interaction
+
+        _interactionAngle = playerData.InteractionAngle; // 상호작용 각도
+        _interactionRange = playerData.InteractionRange; // 상호작용 범위
+        _interactionColor = playerData.InteractionColor; // 에디터 상에서 보여질 상호작용 범위 
+
+        #endregion
+
+        #region Rolling
+
+        _rollingRange = playerData.RollingRange;       // 구르기 범위
+        _staminaUseValue = playerData.StaminaUseValue; // 구르기 사용 스태미나
+        _rollingCurve = playerData.RollingCurve;       // 구르기 변화 커브
+
+        #endregion
+
+        #region Stamina
+
+        _waitTime = playerData.WaitTime;           // 변화 대기 시간
+        _recoveryTime = playerData.RecoveryTime;   // 회복 시간
+        _maxValue = playerData.MaxValue;           // 스테미너 최대값
+        _recoveryValue = playerData.RecoveryValue; // 회복 시간당 회복량
 
         #endregion
     }
