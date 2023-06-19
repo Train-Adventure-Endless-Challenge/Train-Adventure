@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class NomalTrain : Train
 {
+    [SerializeField] private Animation frontDoorAnimation;
+
     [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;           // 몬스터 스폰 포인트
         
     private List<GameObject> _currentTrainEnemys = new List<GameObject>();  // 현재 스테이지 몬스터
