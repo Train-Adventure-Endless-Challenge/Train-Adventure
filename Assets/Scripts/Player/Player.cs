@@ -58,6 +58,8 @@ public class Player : Entity
         _mp = playerData.Mp;
         _defense = playerData.Defense;
         _stamina = playerData.Stamina;
+        _playerHit = GetComponent<PlayerHit>();
+        _playerDie = GetComponent<PlayerDie>();
     }
 
     public override void Hit(float damage, GameObject attacker)
