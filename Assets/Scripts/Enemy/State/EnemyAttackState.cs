@@ -4,7 +4,6 @@ using System.Reflection;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UIElements;
 
 public class EnemyAttackState : State<EnemyController>
 {
@@ -23,7 +22,6 @@ public class EnemyAttackState : State<EnemyController>
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
         _agent.isStopped = true;
-
 
         Attack();
     }

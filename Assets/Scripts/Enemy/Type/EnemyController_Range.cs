@@ -58,12 +58,10 @@ public class EnemyController_Range : EnemyController
 
         Vector3 dir = _player.transform.position - transform.position;
         float timer = 0;
-        while (timer <= 0.5f)       // 약간의 delay. temp 값.
+        while (timer <= 1f)       // 약간의 delay. temp 값.
         {
             timer += Time.deltaTime;
-
             transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
-
             yield return new WaitForEndOfFrame();
 
         }
@@ -94,7 +92,6 @@ public class EnemyController_Range : EnemyController
         //공격 총알 생성
         GameObject bullet = InsBullet();
         bullet.transform.position = _attackTransform.position;
-        bullet.transform.rotation = Quaternion.LookRotation(dir).normalized;
 
         // damage 할당
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();

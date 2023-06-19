@@ -33,8 +33,14 @@ public class EnemyBullet : MonoBehaviour
             player.Hit(_damage, Owner);
 
             Destroy(gameObject);
+        } 
+        else if(!other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);    
         }
+
         //else if 추후 벽 인 경우에도 태그를 사용하여 총알 삭제 
+
     }
 
 }
