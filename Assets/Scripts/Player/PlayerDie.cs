@@ -19,6 +19,8 @@ public class PlayerDie : MonoBehaviour
 
     private Animator _animator;
 
+    private bool _isDie;
+
     #endregion
 
     #region Function
@@ -47,8 +49,12 @@ public class PlayerDie : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        _animator.SetBool("IsDie", true);
-        _OnDie.Invoke();
+        if (_isDie == false)
+        {
+            _isDie = true;
+            _animator.SetBool("IsDie", true);
+            _OnDie.Invoke();
+        }
     }
 
     #endregion
