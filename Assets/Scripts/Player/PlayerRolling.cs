@@ -25,9 +25,7 @@ public class PlayerRolling : MonoBehaviour
 
     public bool _isGodMode;
 
-    private float _rollingRange;          // 구르기 사용 범위
     private int _staminaUseValue;            // 필요 스태미너 값
-    private AnimationCurve _rollingCurve; // 구르기 변화 커브
 
     private Player _player;
     private Animator _animator;

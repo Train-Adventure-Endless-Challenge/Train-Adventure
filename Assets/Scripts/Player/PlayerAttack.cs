@@ -19,7 +19,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform _weaponTransform; // 무기 위치
 
     [Header("UI")]
-    [SerializeField] private StaminaSlider _staminaSlider; // 스태미나 슬라이더 UI ※ 추후 UI Manager를 통해 관리 ※
 
     private float _slowSpeedScale;   // 공격시 움직임 감속 배율
     private float _originSpeedScale; // 원래 속도 배율
