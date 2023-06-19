@@ -61,11 +61,11 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         {
             yield return null;
 
-            _steminaSlider.value = Mathf.Lerp(_hpSlider.value, stemina, 10 * Time.deltaTime);
+            _staminaSlider.value = Mathf.Lerp(_staminaSlider.value, stamina, 10 * Time.deltaTime);
 
             if (Mathf.Abs(_staminaSlider.value - stamina) <= 0.1f)
             {
-                _hpUpdateCoroutine = null;
+                _staminaUpdateCoroutine = null;
                 break;
             }
         }
