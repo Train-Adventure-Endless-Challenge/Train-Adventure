@@ -99,6 +99,6 @@ public class EnemyController_Range : EnemyController
 
         // damage 할당
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
-        eb._damage = (int)Damage;
+        eb._damage = Damage;
     }
 }
