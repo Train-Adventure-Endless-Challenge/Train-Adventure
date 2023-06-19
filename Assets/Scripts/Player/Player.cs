@@ -33,14 +33,17 @@ public class Player : Entity
     /// </summary>
     public PlayerState playerState;
 
+
     #endregion
 
     #region Stat
 
     private float _hp;    // 체력
+    private float _maxHp;
     private float _speed; // 속도
     private int _defense; // 방어력
     private int _stamina; // 스태미나
+    public int _maxStamina;
 
     #endregion
 
@@ -158,9 +161,11 @@ public class Player : Entity
         #region Stat
 
         _hp = playerData.Hp;           // 체력
+        _maxHp = _hp;
         _speed = playerData.Speed;     // 속도
         _defense = playerData.Defense; // 방어력
         _stamina = playerData.Stamina; // 스태미나
+        _maxStamina = 100;
 
         #endregion
 
@@ -203,11 +208,15 @@ public class Player : Entity
         _recoveryValue = playerData.RecoveryValue; // 회복 시간당 회복량
 
         #endregion
+
+        _playerHit = GetComponent<PlayerHit>();
+        _playerDie = GetComponent<PlayerDie>();
     }
 
     public override void Hit(float damage, GameObject attacker)
     {
-        _playerHit.Hit(damage); // 플레이어 충돌 실행
+        _playerHit.Hit(damage);
+        IngameUIController.Instance.UpdateHp(_hp, _maxHp);
     }
 
     public override void Die()
