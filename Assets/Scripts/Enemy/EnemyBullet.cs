@@ -6,7 +6,7 @@ public class EnemyBullet : MonoBehaviour
 {
     Rigidbody _rigid;
     [SerializeField] int _speed;
-    public int _damage;
+    public float _damage;
 
     public GameObject Owner { get; set; }
 

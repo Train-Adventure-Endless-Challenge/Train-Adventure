@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _id: 0
   _name: 
-  _itemImage: {fileID: 0}
+  _itemImage: {fileID: 10901, guid: 0000000000000000f000000000000000, type: 0}
   _description: 
   _damage: 0
   _range: 0
@@ -31,4 +31,8 @@ MonoBehaviour:
   _upgradeValueDefense: 0
   _upgradeValueAttackSpeed: 0
   _upgradeValueSpeed: 0
-  _isStackable: 0
+  _maxDurability: 0
+  _attackConsumeDurability: 0
+  _skillConsumeDurability: 0
+  _skillCooltime: 0
+  _isStackable: 1

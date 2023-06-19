@@ -1,5 +1,12 @@
-using System.Collections;
+// 작성자 : 박재만
+// 작성일 : 2023-06-18
+
+#region Namespace
+
 using UnityEngine;
+using System.Collections;
+
+#endregion
 
 /// <summary>
 /// 플레이어의 움직임을 담당하는 클래스
@@ -14,20 +21,24 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode _runningKey;
 
     [Header("Variable")]
-    public float _moveSpeedScale;                    // 현재 움직임 속도 비율
+    public float _moveSpeedScale; // 현재 움직임 속도 비율
+
+    #region Class
 
     private Player _player;
     private Animator _animator;
     private CharacterController _controller;
 
-    private Vector3 _velocity;                      // 중력 방향
-    private Vector3 _moveDirection;                 // 움직일 방향
+    #endregion
 
-    private float _speed;                           // 기본 속도
-    private float _gravity = -9.81f;                // 중력 가속도
-    private float _speedScale = 0.5f;               // 걷기 속도 비율
-    private float _runSpeedScale = 1f;              // 달리기 속도 비율
-    private float _slowSpeedScale = 1f;             // 감속 비율 
+    private Vector3 _velocity;      // 중력 방향
+    private Vector3 _moveDirection; // 움직일 방향
+
+    private float _speed;            // 기본 속도
+    private float _gravity = -9.81f; // 중력 가속도
+    private float _walkSpeedScale;   // 걷기 속도 비율
+    private float _runSpeedScale;    // 달리기 속도 비율
+    private float _slowSpeedScale;   // 감속 비율 
 
     #endregion
 
@@ -35,11 +46,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] AnimationCurve _animationCurve; // 시간에 따른 변화량
 
-    private float _lerpTime = 1f;                    // 최종 러프 시간
-    private float _currentTime = 0f;                 // 현재 시간
+    private float _lerpTime = 1f;    // 최종 러프 시간
+    private float _currentTime = 0f; // 현재 시간
 
-    private IEnumerator _smoothMoveCor;              // 부드러운 움직임 코루틴 변수      
-    private IEnumerator _changeSlowSpeedCor;         // 속도 변화 코루틴 변수
+    private Coroutine _smoothMoveCor;      // 부드러운 움직임 코루틴 변수      
+    private Coroutine _changeSlowSpeedCor; // 속도 변화 코루틴 변수
 
     #endregion
 
@@ -70,13 +81,12 @@ public class PlayerController : MonoBehaviour
     #region Move
 
     /// <summary>
-    /// 초기화 함수
+    /// 초기화를 담당하는 함수
     /// <br/>
     /// 플레이어, 애니메이션 등 초기화
     /// </summary>
     private void Init()
     {
-        // 플레이어, 애니메이션 등 초기화
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _controller = GetComponent<CharacterController>();
@@ -90,6 +100,9 @@ public class PlayerController : MonoBehaviour
     private void DataInit()
     {
         _speed = _player.Speed;
+        _walkSpeedScale = _player.WalkSpeedScale;
+        _runSpeedScale = _player.RunSpeedScale;
+        _slowSpeedScale = _player.MoveSlowSpeedScale;
     }
 
     /// <summary>
@@ -106,14 +119,12 @@ public class PlayerController : MonoBehaviour
         if (x != 0 || z != 0)                                                                                                  // 움직이고 있다면
         {
             if (Input.GetKey(_runningKey))                                                                                     // 달리는 키를 눌렀을 때
-            {
-                StopMove();                                                                                                    // 코루틴 종료
-                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));                                                // 달리기 코루틴 실행
+            {                                                                                                // 코루틴 종료
+                _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));                                                // 달리기 코루틴 실행
             }
             else
-            {
-                StopMove();                                                                                                    // 코루틴 종료
-                StartCoroutine(SmoothMoveCor(_moveSpeedScale, _speedScale));                                                   // 걷기 코루틴 실행
+            {                                                                                               // 코루틴 종료
+                _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _walkSpeedScale));                                                   // 걷기 코루틴 실행
             }
             _moveDirection = new Vector3(x, 0f, z).normalized;                                                                            // 움직임 방향
             _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection);                    // 움직이기
@@ -125,9 +136,8 @@ public class PlayerController : MonoBehaviour
             }
         }
         else
-        {
-            StopMove();                                                                                                        // 코루틴 종료
-            StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
+        {                                                                                                  // 코루틴 종료
+            _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
             if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
             {
                 _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
@@ -136,49 +146,7 @@ public class PlayerController : MonoBehaviour
         }
         _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
     }
-
-    #region Mobile
-
-    ///// <summary>
-    ///// 플레이어의 움직임 함수
-    ///// <br/>
-    //// 조이스틱의 입력 값에 따른 애니메이션 변경
-    ///// </summary>
-    ///// <param name="inputDirection">조이스틱 입력 값</param>
-    //public void Move(Vector2 inputDirection)
-    //{
-    //    Vector3 _inputDirection = new Vector3(inputDirection.x, 0, inputDirection.y);                                          // 입력값 받기
-    //    if (_inputDirection != Vector3.zero)                                                                                   // 움직이고 있다면
-    //    {
-    //        if (_smoothMoveCor != null)                                                                                        // 코루틴이 실행되고 있다면
-    //        {
-    //            StopCoroutine(_smoothMoveCor);                                                                                 // 코루틴 종료
-    //            _smoothMoveCor = null;                                                                                         // 코루틴 초기화
-    //        }
-    //        StartCoroutine(SmoothMoveCor(_moveSpeedScale, _inputDirection.magnitude));                                         // 움직임 코루틴 실행
-    //        _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _inputDirection);                   // 움직이기
-    //        transform.forward = _inputDirection;                                                                               // 움직이는 방향으로 플레이어 시점 초기화
-    //        if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)                          // 상태를 초기화 해야할 때
-    //        {
-    //            _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
-    //            _player.playerState = PlayerState.Move;                                                                        // 상태 변경
-    //        }
-    //    }
-    //    else
-    //    {
-    //        StopMove();                                                                                                        // 코루틴 종료
-    //        StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
-    //        if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
-    //        {
-    //            _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
-    //            _player.playerState = PlayerState.Idle;                                                                        // 상태 변경
-    //        }
-    //    }
-    //    _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
-    //}
-
-    #endregion
-
+    
     /// <summary>
     /// 중력 함수
     /// <br/>
@@ -222,7 +190,7 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(_changeSlowSpeedCor);                 // 코루틴 종료
             _changeSlowSpeedCor = null;                         // 코루틴 초기화
         }
-        StartCoroutine(ChangeSlowSpeedCor(endValue, lerpTime)); // 감속 코루틴 실행
+        _changeSlowSpeedCor = StartCoroutine(ChangeSlowSpeedCor(endValue, lerpTime)); // 감속 코루틴 실행
     }
 
     #endregion
@@ -245,7 +213,6 @@ public class PlayerController : MonoBehaviour
         }
         _lerpTime = 1f;                                                            // 러프 시간 
         _currentTime = 0f;                                                         // 현재 시간
-        _smoothMoveCor = SmoothMoveCor(startValue, endValue);                      // 현재 코루틴을 할당
         while (_moveSpeedScale != endValue)                                        // 달성값과 일치 할 때까지 진행
         {
             _currentTime += Time.deltaTime;                                        // 현재 시간 더하기
@@ -276,7 +243,6 @@ public class PlayerController : MonoBehaviour
         {
             yield break;                                                         // 코루틴 종료
         }
-        _changeSlowSpeedCor = ChangeSlowSpeedCor(endValue, lerpTime);            // 현재 코루틴 할당
         float currentTime = 0f;                                                  // 현재 시간
         float startValue = _slowSpeedScale;                                      // 시작 값
         while (_slowSpeedScale != endValue)                                      // 달성값과 일치 할 때 까지 진행
