@@ -26,13 +26,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private void Start()
     {
-        Init();
+        DataInit();
     }
 
     /// <summary>
-    /// 초기화를 담당하는 함수
+    /// 데이터 초기화를 담당하는 함수
     /// </summary>
-    private void Init()
+    private void DataInit()
     {
         _detectionAngle = _player.InteractionAngle;
         _range = _player.InteractionRange;
