@@ -59,7 +59,8 @@ public class Player : Entity
         _mp = playerData.Mp;
         _defense = playerData.Defense;
         _stamina = playerData.Stamina;
-        _maxStamina = _stamina;
+        _maxStamina = 100;
+
         _playerHit = GetComponent<PlayerHit>();
         _playerDie = GetComponent<PlayerDie>();
     }
