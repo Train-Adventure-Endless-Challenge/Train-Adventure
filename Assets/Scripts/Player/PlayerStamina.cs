@@ -21,8 +21,6 @@ public class PlayerStamina : MonoBehaviour
     [SerializeField] private int _maxValue;        // 스테미너 최대값
     [SerializeField] private int _recoveryValue;    // 회복 시간당 회복량
 
-    [SerializeField] private StaminaSlider _staminaSlider; // 스태미나 UI
-
     private IEnumerator _recoverCor;
 
     #region Class
@@ -108,7 +106,7 @@ public class PlayerStamina : MonoBehaviour
             {
                 _player.Stamina += _recoveryValue; // 회복 
             }
-            _staminaSlider.ChangeUI(_player.Stamina);       // ※추후 변경 예정※ UI 변경
+            IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);       // ※추후 변경 예정※ UI 변경
             yield return new WaitForSeconds(_recoveryTime); // 회복 시간 대기
         }
     }

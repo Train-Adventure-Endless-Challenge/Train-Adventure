@@ -70,7 +70,6 @@ public class EnemyController_Range : EnemyController
 
         _anim.SetTrigger("Attack");
 
-
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;
         _isCurrentAttackCor = false;
@@ -100,6 +99,8 @@ public class EnemyController_Range : EnemyController
         // damage 할당
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
         eb._damage = Damage;
+        eb.Owner = gameObject;
+
     }
 
     /// <summary>

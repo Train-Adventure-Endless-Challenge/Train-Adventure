@@ -18,14 +18,14 @@ public class PlayerRolling : MonoBehaviour
     [Header("Key")]
     [SerializeField] private KeyCode _rollingKey;
 
-    [Header("UI")]
-    [SerializeField] private StaminaSlider _staminaSlider;
+    [Header("Attribute")]
+    [SerializeField] private float _rollingRange;
+    [SerializeField] private AnimationCurve _rollingCurve;
+    [SerializeField] private int _staminaValue = 20;       // 필요 스태미너 값
 
     public bool _isGodMode;
 
-    private float _rollingRange;          // 구르기 사용 범위
     private int _staminaUseValue;            // 필요 스태미너 값
-    private AnimationCurve _rollingCurve; // 구르기 변화 커브
 
     private Player _player;
     private Animator _animator;
@@ -84,8 +84,9 @@ public class PlayerRolling : MonoBehaviour
         {
             if (Input.GetKeyDown(_rollingKey) && CanRoll())
             {
-                _player.Stamina -= _staminaUseValue;
-                _staminaSlider.ChangeUI(_player.Stamina);
+                _player.Stamina -= _staminaValue;
+                IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
+
                 _player.playerState = PlayerState.Rolling;
                 _rollCor = StartCoroutine(RollCor(transform.position));
             }

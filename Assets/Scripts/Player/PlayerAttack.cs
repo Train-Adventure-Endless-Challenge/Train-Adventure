@@ -19,7 +19,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform _weaponTransform; // 무기 위치
 
     [Header("UI")]
-    [SerializeField] private StaminaSlider _staminaSlider; // 스태미나 슬라이더 UI ※ 추후 UI Manager를 통해 관리 ※
 
     private float _slowSpeedScale;   // 공격시 움직임 감속 배율
     private float _originSpeedScale; // 원래 속도 배율
@@ -88,7 +87,7 @@ public class PlayerAttack : MonoBehaviour
         if (CanAttack()) // 공격이 가능한 상태라면 
         {
             _player.Stamina -= _staminaValue;         // 스태미나 감소
-            _staminaSlider.ChangeUI(_player.Stamina); // 사용 스태미나에 따른 UI 변경
+            IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
             _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행
         }
