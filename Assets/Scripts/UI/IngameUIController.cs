@@ -11,6 +11,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
 
     Coroutine _hpUpdateCoroutine;
+    Coroutine _steminaUpdateCoroutine;
     public void UpdateHp(float hp, float maxHp)
     {
         if (_hpSlider.maxValue != maxHp)
@@ -30,7 +31,6 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         {
             yield return null;
 
-            Debug.Log($"UPDate HP: {_hpSlider.value} -> {hp}");
             _hpSlider.value = Mathf.Lerp(_hpSlider.value, hp, 10 * Time.deltaTime);
 
             if (Mathf.Abs(_hpSlider.value - hp) <= 0.1f)
@@ -40,5 +40,35 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
             }
         }
-    } 
+    }
+
+    public void UpdateStemina(float stemina, float maxStemina)
+    {
+        if (_hpSlider.maxValue != maxStemina)
+        {
+            _steminaSlider.maxValue = maxStemina;
+            _steminaSlider.value = maxStemina;
+        }
+        if (_steminaUpdateCoroutine != null)
+            StopCoroutine(_steminaUpdateCoroutine);
+
+        _steminaUpdateCoroutine = StartCoroutine(UpdateSteminaCor(stemina));
+    }
+
+    IEnumerator UpdateSteminaCor(float stemina)
+    {
+        while (true)
+        {
+            yield return null;
+
+            _steminaSlider.value = Mathf.Lerp(_hpSlider.value, stemina, 10 * Time.deltaTime);
+
+            if (Mathf.Abs(_steminaSlider.value - stemina) <= 0.1f)
+            {
+                _hpUpdateCoroutine = null;
+                break;
+
+            }
+        }
+    }
 }
