@@ -13,8 +13,11 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     Coroutine _hpUpdateCoroutine;
     public void UpdateHp(float hp, float maxHp)
     {
-        _hpSlider.maxValue = maxHp;
-
+        if (_hpSlider.maxValue != maxHp)
+        {
+            _hpSlider.maxValue = maxHp;
+            _hpSlider.value = maxHp;
+        }
         if (_hpUpdateCoroutine != null)
             StopCoroutine(_hpUpdateCoroutine);
 
