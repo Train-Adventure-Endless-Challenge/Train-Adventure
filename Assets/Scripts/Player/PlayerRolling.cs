@@ -20,7 +20,7 @@ public class PlayerRolling : MonoBehaviour
 
     [Header("UI")]
     [SerializeField] private StaminaSlider _staminaSlider;
-    
+
     public bool _isGodMode;
 
     private float _rollingRange;          // 구르기 사용 범위
@@ -34,7 +34,7 @@ public class PlayerRolling : MonoBehaviour
     private float _lerpTime = 1f;
     private float _currentTime = 0f;
 
-    private IEnumerator _rollCor;
+    private Coroutine _rollCor;
 
     private Vector3 _endPosition;
     private Vector3 _moveDirection;
@@ -87,8 +87,7 @@ public class PlayerRolling : MonoBehaviour
                 _player.Stamina -= _staminaUseValue;
                 _staminaSlider.ChangeUI(_player.Stamina);
                 _player.playerState = PlayerState.Rolling;
-                _rollCor = RollCor(transform.position);
-                StartCoroutine(RollCor(transform.position));
+                _rollCor = StartCoroutine(RollCor(transform.position));
             }
         }
     }
