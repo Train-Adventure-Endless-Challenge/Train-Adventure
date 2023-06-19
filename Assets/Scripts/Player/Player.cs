@@ -208,6 +208,9 @@ public class Player : Entity
         _recoveryValue = playerData.RecoveryValue; // 회복 시간당 회복량
 
         #endregion
+
+        _playerHit = GetComponent<PlayerHit>();
+        _playerDie = GetComponent<PlayerDie>();
     }
 
     public override void Hit(float damage, GameObject attacker)

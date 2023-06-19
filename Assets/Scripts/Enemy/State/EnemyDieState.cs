@@ -20,16 +20,17 @@ public class EnemyDieState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-        //if (_enemyController._isDie) return;
-        
-        _enemyController._anim.SetTrigger("Die");
-        _enemyController._isDie = true;
 
+        _enemyController._isDie = true;
+        _enemyController._anim.SetTrigger("Die");
+
+        
+        
+        Debug.Log("DeadState");
         
     }
 
     public override void Update(float deltaTime)
     {
-        Debug.Log("DeadState");
     }
 }

@@ -22,11 +22,15 @@ public class EnemyHitState : State<EnemyController>
         _agent.isStopped = true;
 
 
-        _enemyController._anim.SetTrigger("Hit");                       // anim
+
 
         // 체력 감소 및 적용
         _enemyController.HP -= _enemyController._eventDamage;
         _enemyController._enemyUI._hpBarSlider.value = _enemyController.HP;
+
+        if (_enemyController.HP <= 0) return;
+
+        _enemyController._anim.SetTrigger("Hit");                       // anim
     }
 
     public override void Update(float deltaTime)
