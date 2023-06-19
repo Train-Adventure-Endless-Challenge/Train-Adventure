@@ -27,10 +27,15 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         {
             yield return null;
 
+            Debug.Log($"UPDate HP: {_hpSlider.value} -> {hp}");
             _hpSlider.value = Mathf.Lerp(_hpSlider.value, hp, 10 * Time.deltaTime);
 
-            if (Mathf.Abs(_hpSlider.value - hp) <= 0.5f)
+            if (Mathf.Abs(_hpSlider.value - hp) <= 0.1f)
+            {
+                _hpUpdateCoroutine = null;
                 break;
+
+            }
         }
     } 
 }
