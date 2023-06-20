@@ -12,7 +12,7 @@ public class Weapon : Item
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
-    protected float _defalutAttackSpeed;   
+    protected float _defalutAttackSpeed;
     protected Transform _playerTransform;
     protected attackType _attackType;
 
@@ -20,6 +20,9 @@ public class Weapon : Item
     public float DefalutAttackSpeed { get { return _defalutAttackSpeed; } }
 
     public float currentCoolTime;
+
+    [SerializeField] protected GameObject _hittingFeelingEffect;
+
     void Update()
     {
 
@@ -37,6 +40,7 @@ public class Weapon : Item
         _range = itemData.Range;
         _attackSpeed = itemData.AttackSpeed;
         _defalutAttackSpeed = _attackSpeed;
+        _hittingFeelingEffect = itemData.HittingFeelingEffect;
     }
 
     /// <summary>

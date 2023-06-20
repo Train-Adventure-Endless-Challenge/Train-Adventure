@@ -33,6 +33,9 @@ public class ItemData : ScriptableObject
     [SerializeField] private float _skillCooltime;                                      // 스킬 쿨타임
 
     [SerializeField] private bool _isStackable = false;
+
+    [SerializeField] private GameObject _hittingFeelingEffect;                          // 타격 효과 이펙트 프리팹
+
     public int Id { get { return _id; } }
     public string Name { get { return _name; } }
     public Sprite ItemImage { get { return _itemImage; } }
@@ -63,4 +66,5 @@ public class ItemData : ScriptableObject
     public int SkillConsumeDurability { get { return _skillConsumeDurability; } }
     public float SkillCooltime { get { return _skillCooltime; } }
     public bool IsStackable { get { return _isStackable; } }
+    public GameObject HittingFeelingEffect { get { return _hittingFeelingEffect; } }
 }
