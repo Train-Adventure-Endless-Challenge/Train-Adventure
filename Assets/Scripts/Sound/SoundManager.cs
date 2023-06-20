@@ -5,13 +5,19 @@ using UnityEngine.Audio;
 
 public class SoundManager : GlobalSingleton<SoundManager>
 {
-    private AudioSource _bgSoundSource;
-    [SerializeField] private AudioMixerGroup sfxMixerGroup;
+    private AudioSource _bgSoundSource;                         // bgm을 실행시킬 source
+    [SerializeField] private AudioMixerGroup sfxMixerGroup;     // sfx의 mixerGroup을 받아옴
 
     private void Start()
     {
         _bgSoundSource= GetComponent<AudioSource>();
     }
+
+    /// <summary>
+    /// 효과음을 재생 시키는 함수
+    /// </summary>
+    /// <param name="sfxName">효과음 이름</param>
+    /// <param name="clip">효과음 clip</param>
     public void SFXPlay(string sfxName, AudioClip clip)
     {
         GameObject go = new GameObject(sfxName + "Sound");
@@ -24,6 +30,10 @@ public class SoundManager : GlobalSingleton<SoundManager>
         Destroy(go, clip.length);
     }
 
+    /// <summary>
+    /// 배경음악을 재생 시키는 함수
+    /// </summary>
+    /// <param name="clip">배경음악 clip</param>
     public void BgSoundPlay(AudioClip clip)
     {
         _bgSoundSource.clip = clip;
