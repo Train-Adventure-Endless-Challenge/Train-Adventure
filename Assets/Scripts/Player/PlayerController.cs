@@ -113,40 +113,42 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Move()
     {
-        // 입력값 받기
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        if (x != 0 || z != 0)                                                                                                  // 움직이고 있다면
+        if (x != 0 || z != 0) // 움직이고 있다면
         {
-            if (Input.GetKey(_runningKey))                                                                                     // 달리는 키를 눌렀을 때
-            {                                                                                                // 코루틴 종료
-                _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale));                                                // 달리기 코루틴 실행
+            if (Input.GetKey(_runningKey)) // 달리기 키를 눌렀을 때
+            {
+                _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _runSpeedScale)); // 달리기 코루틴 실행
             }
             else
-            {                                                                                               // 코루틴 종료
-                _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _walkSpeedScale));                                                   // 걷기 코루틴 실행
-            }
-            _moveDirection = new Vector3(x, 0f, z).normalized;                                                                            // 움직임 방향
-            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection);                    // 움직이기
-            transform.forward = _moveDirection;                                                                                // 움직이는 방향으로 플레이어 시점 초기화
-            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)                          // 상태를 초기화 해아할 때
             {
-                _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
-                _player.playerState = PlayerState.Move;                                                                        // 상태 초기화
+                _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _walkSpeedScale)); // 걷기 코루틴 실행
+            }
+            if (_player.playerState != PlayerState.Attack)
+            {
+                _moveDirection = new Vector3(x, 0f, z).normalized; // 움직임 방향
+            }
+            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection); // 움직이기
+            transform.forward = _moveDirection;                                                             // 움직이는 방향으로 플레이어 시점 초기화
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)       // 상태를 초기화 해아할 때
+            {
+                _animator.SetTrigger("OnState");                                                            // 상태 변경 트리거
+                _player.playerState = PlayerState.Move;                                                     // 상태 초기화
             }
         }
         else
-        {                                                                                                  // 코루틴 종료
-            _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                                                // 멈춤 코루틴 실행
+        {
+            _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                               // 멈춤 코루틴 실행
             if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
             {
                 _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
                 _player.playerState = PlayerState.Idle;                                                                        // 상태 변경
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100);                                             // 부동 소수점 오차 해결
+        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
     }
-    
+
     /// <summary>
     /// 중력 함수
     /// <br/>
