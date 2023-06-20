@@ -6,12 +6,9 @@ public class SoundManager : GlobalSingleton<SoundManager>
 {
     private AudioSource _bgSoundSource;
 
-    [SerializeField] AudioClip test;
-
     private void Start()
     {
         _bgSoundSource= GetComponent<AudioSource>();
-        BgSoundPlay(test);
     }
     public void SFXPlay(string sfxName, AudioClip clip)
     {
