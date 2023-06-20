@@ -108,4 +108,12 @@ public class EnemyController_Range : EnemyController
         Die();
 
     }
+
+    /// <summary>
+    /// 실제 공격 호출 함수
+    /// </summary>
+    public override void Attack()
+    {
+        StartCoroutine(AttackRangeCor());
+    }
 }

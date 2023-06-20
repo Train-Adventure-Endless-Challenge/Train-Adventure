@@ -80,4 +80,12 @@ public class EnemyController_Melee : EnemyController
         Die(); 
 
     }
+
+    /// <summary>
+    /// 공격 함수 호출
+    /// </summary>
+    public override void Attack()
+    {
+        StartCoroutine(AttackMeleeCor());
+    }
 }

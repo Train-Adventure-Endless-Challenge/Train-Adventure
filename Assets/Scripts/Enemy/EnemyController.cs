@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : Entity
+public abstract class EnemyController : Entity
 {
     protected StateMachine<EnemyController> _stateMachine;
     public Animator _anim;
@@ -119,6 +119,11 @@ public class EnemyController : Entity
     {
         Destroy(gameObject);
     }
+
+    /// <summary>
+    /// 공격 함수
+    /// </summary>
+    public abstract void Attack();
 
 }
 
