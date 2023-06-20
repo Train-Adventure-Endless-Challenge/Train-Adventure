@@ -76,7 +76,10 @@ public class EnemyController_Scientist : EnemyController
 
         _anim.SetTrigger("Attack");
 
-        yield return null;
+        yield return new WaitForSeconds(AttackSpeed);
+
+        _agent.isStopped = false;
+        _isCurrentAttackCor = false;
         _timer = 0;         // 공격 스킬이 끝났을 때
 
     }
