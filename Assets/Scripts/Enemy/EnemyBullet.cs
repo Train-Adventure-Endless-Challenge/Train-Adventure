@@ -22,7 +22,7 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        _rigid.velocity = transform.forward * _speed;
+        _rigid.velocity = Owner.transform.forward * _speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,11 +34,8 @@ public class EnemyBullet : MonoBehaviour
 
             Destroy(gameObject);
         } 
-        else if(!other.gameObject.CompareTag("Enemy"))
-        {
-            Destroy(gameObject);    
-        }
 
+        Destroy(gameObject);    
         //else if 추후 벽 인 경우에도 태그를 사용하여 총알 삭제 
 
     }
