@@ -40,17 +40,17 @@ public class EnemyController_Scientist : EnemyController
     {
         if(_timer >= _skillDelayTime)
         {
-            StartCoroutine(AttackSkill());
+            StartCoroutine(AttackSkillCor());
             _anim.SetInteger("AttackInt", 1);   
         }
         else
         {
-            StartCoroutine(Attack());
+            StartCoroutine(AttackCor());
             _anim.SetInteger("AttackInt", 0);
         }
     }
 
-    IEnumerator AttackSkill()
+    IEnumerator AttackSkillCor()
     {
         // 잘못 인식된 경우 나가기
         if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
@@ -95,7 +95,7 @@ public class EnemyController_Scientist : EnemyController
     }
 
 
-    IEnumerator Attack()
+    IEnumerator AttackCor()
     {
 
         // 잘못 인식된 경우 나가기
@@ -154,6 +154,14 @@ public class EnemyController_Scientist : EnemyController
     public GameObject InsBullet(GameObject _go)
     {
         return Instantiate(_go);
+    }
+
+    /// <summary>
+    /// 실제 공격 호출 함수
+    /// </summary>
+    public override void Attack()
+    {
+        CheckAttack();
     }
 
 }

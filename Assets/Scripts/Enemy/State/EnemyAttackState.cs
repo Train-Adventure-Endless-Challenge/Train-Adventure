@@ -28,25 +28,7 @@ public class EnemyAttackState : State<EnemyController>
 
     private void Attack()
     {
-        // 몬스터 타입에 따른 본인의 공격 로직 호출
-        // 공격이 다 끝난 상황에서 idle state로 돌아온다 => 각 몬스터 controller에 해당 로직 존재
-        switch (_enemyController.EnemyType)         
-        {
-            case EnemyType.range:
-                EnemyController_Range enemyR = _enemyController.GetComponent<EnemyController_Range>();
-                _enemyController.StartCoroutine(enemyR.AttackRangeCor());
-                break;
-            case EnemyType.melee:
-                EnemyController_Melee enemyM = _enemyController.GetComponent<EnemyController_Melee>();
-                _enemyController.StartCoroutine(enemyM.AttackMeleeCor());
-                break;
-            case EnemyType.scientist:
-                EnemyController_Scientist enemyS = _enemyController.GetComponent<EnemyController_Scientist>();
-                enemyS.CheckAttack();
-                break;
-            default:
-                break;
-        }
+        _enemyController.Attack();
     }
 
     public override void Update(float deltaTime)    
