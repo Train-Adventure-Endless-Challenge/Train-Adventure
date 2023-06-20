@@ -148,7 +148,7 @@ public class EnemyController_Scientist : EnemyController
     }
 
     /// <summary>
-    /// 총알 생성
+    /// 총알 또는 폭탄 생성
     /// </summary>
     public GameObject InsBullet(GameObject _go)
     {
