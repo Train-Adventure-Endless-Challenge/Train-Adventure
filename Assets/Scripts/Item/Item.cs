@@ -19,6 +19,7 @@ public class Item : MonoBehaviour
     [SerializeField] protected ItemData itemData;
     public ItemData ItemData { get { return itemData; } }
 
+    #region Stat
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
     protected int _id;
     protected string _name;                               
@@ -30,7 +31,12 @@ public class Item : MonoBehaviour
     protected float _additionalAttackSpeed;
     protected float _additionalSpeed;
     protected int _durability;
+
+    #endregion
+
+    #region etc
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
+
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
     public int Id { get { return _id; } }
@@ -47,7 +53,7 @@ public class Item : MonoBehaviour
     public int Level { get { return _level; } }
 
     public UnityEvent _levelupEvent;
-
+    #endregion
     public Item(Item item)
     {
         itemData = item.ItemData;
@@ -159,11 +165,19 @@ public class Item : MonoBehaviour
         // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
     }
 
+    /// <summary>
+    /// 내구도를 최대로 회복하는 함수
+    /// </summary>
     public void SetDurabilityMax()
     {
         _durability = itemData.MaxDurability;
     }
 
+
+    /// <summary>
+    /// 내구도를 감소시키는 함수
+    /// </summary>
+    /// <param name="value"></param>
     public void SubDurability(int value)
     {
         _durability -= value;
@@ -171,6 +185,9 @@ public class Item : MonoBehaviour
             Destruction();
     }
 
+    /// <summary>
+    /// 아이템 분해함수(직접 분해했을 경우)
+    /// </summary>
     public void Decomposition() 
     {
         //3~7개
@@ -179,6 +196,9 @@ public class Item : MonoBehaviour
         //TODO: 아이템 포인터 null로 만들기
     }
 
+    /// <summary>
+    /// 아이템 파괴함수(공격으로 인해 자연적으로 부숴지는 경우)
+    /// </summary>
     public void Destruction()
     {
         //2~5개
