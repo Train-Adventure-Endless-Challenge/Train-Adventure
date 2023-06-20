@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public enum attackType
@@ -23,6 +24,8 @@ public class Weapon : Item
 
     [SerializeField] protected GameObject _hittingFeelingEffect;
 
+    private CinemachineImpulseSource _shakeImpulse;
+ 
     void Update()
     {
 
@@ -41,6 +44,7 @@ public class Weapon : Item
         _attackSpeed = itemData.AttackSpeed;
         _defalutAttackSpeed = _attackSpeed;
         _hittingFeelingEffect = itemData.HittingFeelingEffect;
+        _shakeImpulse = GetComponent<CinemachineImpulseSource>();
     }
 
     /// <summary>
@@ -58,5 +62,10 @@ public class Weapon : Item
     {
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + itemData.SkillCooltime;
+    }
+
+    protected void Shake()
+    {
+        _shakeImpulse.GenerateImpulse();
     }
 }
