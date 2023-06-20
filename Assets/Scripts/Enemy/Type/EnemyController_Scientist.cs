@@ -38,10 +38,12 @@ public class EnemyController_Scientist : EnemyController
         if(_timer >= _skillDelayTime)
         {
             StartCoroutine(AttackSkill());
+            _anim.SetInteger("AttackInt", 1);   
         }
         else
         {
             StartCoroutine(Attack());
+            _anim.SetInteger("AttackInt", 0);
         }
     }
 
@@ -49,9 +51,6 @@ public class EnemyController_Scientist : EnemyController
     {
         GameObject go = InsBullet(_bombPrefab);
         go.transform.position = _bombTransform.position;
-
-        _anim.SetInteger("AttackInt", 1);
-
 
         yield return null;
         _timer = 0;         // 공격 스킬이 끝났을 때
@@ -85,7 +84,6 @@ public class EnemyController_Scientist : EnemyController
         }
 
         _anim.SetTrigger("Attack"); //총알 공격 모션
-        _anim.SetInteger("AttackInt", 0);
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;
