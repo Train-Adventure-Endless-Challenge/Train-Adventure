@@ -33,6 +33,9 @@ public class EnemyController_Scientist : EnemyController
         _timer += Time.deltaTime;
     }
 
+    /// <summary>
+    /// 쿨타임에 따라 공격 스킬일지 일반 공격일지 판단
+    /// </summary>
     public void CheckAttack()
     {
         if(_timer >= _skillDelayTime)
@@ -73,11 +76,22 @@ public class EnemyController_Scientist : EnemyController
 
         _anim.SetTrigger("Attack");
 
-
-
         yield return null;
         _timer = 0;         // 공격 스킬이 끝났을 때
 
+    }
+
+    /// <summary>
+    /// animation clip event로 폭탄 생성
+    /// </summary>
+    public void SpawnBombEvent()
+    {
+        GameObject go = InsBullet(_bombPrefab);
+        go.transform.position = _bombTransform.position;
+
+        EnemyBomb _enemyBomb = go.GetComponent<EnemyBomb>();
+        _enemyBomb._damage = Damage;
+        _enemyBomb._owner = this.gameObject;
     }
 
 
@@ -132,19 +146,6 @@ public class EnemyController_Scientist : EnemyController
         eb._damage = Damage;
         eb.Owner = gameObject;
 
-    }
-
-    /// <summary>
-    /// animation clip event로 폭탄 생성
-    /// </summary>
-    public void SpawnBombEvent()
-    {
-        GameObject go = InsBullet(_bombPrefab);
-        go.transform.position = _bombTransform.position;
-
-        EnemyBomb _enemyBomb = go.GetComponent<EnemyBomb>();
-        _enemyBomb._damage = Damage;
-        _enemyBomb._owner = this.gameObject;
     }
 
     /// <summary>

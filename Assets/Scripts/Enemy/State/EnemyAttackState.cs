@@ -40,6 +40,10 @@ public class EnemyAttackState : State<EnemyController>
                 EnemyController_Melee enemyM = _enemyController.GetComponent<EnemyController_Melee>();
                 _enemyController.StartCoroutine(enemyM.AttackMeleeCor());
                 break;
+            case EnemyType.scientist:
+                EnemyController_Scientist enemyS = _enemyController.GetComponent<EnemyController_Scientist>();
+                enemyS.CheckAttack();
+                break;
             default:
                 break;
         }
