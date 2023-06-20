@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5894373062190888248}
   - component: {fileID: 582184200957908685}
+  - component: {fileID: 716203300129698088}
   m_Layer: 0
   m_Name: NomalTrain_1
   m_TagString: Untagged
@@ -273,6 +274,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _floor: {fileID: 7260286539040503544}
+  playerSpawnPoint: {fileID: 3789046883933064027}
   _frontDoorAnimation: {fileID: 6901892864511473834}
   _enemySpawnPoints:
   - enemySpawmPointTr: {fileID: 4855400039233356719}
@@ -296,6 +298,19 @@ MonoBehaviour:
   treasureBox: {fileID: 1732782875715410699, guid: c6c9f8e913990a74dabeab2d81b1e3e8,
     type: 3}
   treasureBoxSpawnPoint: {fileID: 1130790036043258391}
+--- !u!65 &716203300129698088
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894373062190888247}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 2}
+  m_Center: {x: 1.5, y: 2, z: 22}
 --- !u!1 &5912018810869134944
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1012,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainObject
       objectReference: {fileID: 0}
+    - target: {fileID: 4000596409726894632, guid: 3a2ea95802681264c9e1188ac6e37705,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000596409726894632, guid: 3a2ea95802681264c9e1188ac6e37705,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 20.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4000596409726894632, guid: 3a2ea95802681264c9e1188ac6e37705,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6256404345251731586, guid: 3a2ea95802681264c9e1188ac6e37705,
         type: 3}
       propertyPath: m_RootOrder
@@ -1057,11 +1087,32 @@ PrefabInstance:
       propertyPath: m_CollectObjects
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6539699883527605253, guid: 3a2ea95802681264c9e1188ac6e37705,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539699883527605253, guid: 3a2ea95802681264c9e1188ac6e37705,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6539699883527605253, guid: 3a2ea95802681264c9e1188ac6e37705,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -15.4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a2ea95802681264c9e1188ac6e37705, type: 3}
 --- !u!4 &1130790036043258391 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7054211508801822025, guid: 3a2ea95802681264c9e1188ac6e37705,
+    type: 3}
+  m_PrefabInstance: {fileID: 7950199651304605534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3789046883933064027 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6539699883527605253, guid: 3a2ea95802681264c9e1188ac6e37705,
     type: 3}
   m_PrefabInstance: {fileID: 7950199651304605534}
   m_PrefabAsset: {fileID: 0}

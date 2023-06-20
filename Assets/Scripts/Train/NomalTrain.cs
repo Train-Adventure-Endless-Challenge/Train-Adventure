@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +13,6 @@ public class NomalTrain : Train
     [SerializeField] private Transform treasureBoxSpawnPoint;
 
     private int _enemyCount;
-
     private bool _isClear;                                                     
 
     private void Start()
@@ -26,6 +24,9 @@ public class NomalTrain : Train
         surfaces.BuildNavMesh();
     }
 
+    /// <summary>
+    /// 초기화 함수
+    /// </summary>
     public override void Init()
     {
         _enemyCount = _enemySpawnPoints.Length;
@@ -44,18 +45,34 @@ public class NomalTrain : Train
 
     private void ClearStage()
     {
+        if (_isClear == true)
+            return;
+
         _isClear = true;
-        _frontDoorAnimation.Play();
-        Instantiate(treasureBox, treasureBoxSpawnPoint.position, Quaternion.identity);
+        _frontDoorAnimation.Play(); // 문 Open
+
+        Instantiate(treasureBox, treasureBoxSpawnPoint.position, Quaternion.identity); // 상자 생성 
     }
 
+    /// <summary>
+    /// 적이 죽었을 때 실행되는 함수
+    /// </summary>
     private void KillEnemy()
     {
         _enemyCount -= 1;
 
+        // 적 카운트가 0이 되면 게임 클리어
         if (_enemyCount <= 0)
         {
             ClearStage();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InGameManager.Instance.NextStage();
         }
     }
 }

@@ -51,6 +51,7 @@ MonoBehaviour:
   treasureBox: {fileID: 1732782875715410699, guid: c6c9f8e913990a74dabeab2d81b1e3e8,
     type: 3}
   treasureBoxSpawnPoint: {fileID: 4232788513499122997}
+  playerSpawnPoint: {fileID: 0}
 --- !u!1001 &6582139790804832380
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -83,6 +83,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerInteraction = _interactionTransform.GetComponent<PlayerInteraction>();
     }
 
+    public void StopMove()
+    {
+        _playerController.StopMove();
+    }
+
     #region Mobile
 
     ///// <summary>

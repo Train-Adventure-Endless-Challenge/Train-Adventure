@@ -1,7 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.ShaderGraph;
 using UnityEditor.UI;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InGameManager : SceneSingleton<InGameManager>
 {
@@ -11,6 +14,9 @@ public class InGameManager : SceneSingleton<InGameManager>
     [SerializeField] private GameObject[] _nomalTrainObjects;
     [SerializeField] private GameObject _bossTrainObject;
     [SerializeField] private GameObject _storeTrainObject;
+
+    [Header("UI")]
+    [SerializeField] private Image fadeImage;  // 페이드 이미지
 
     private Train _currentTrain;               // 현재 기차       
     private Train _nextTrain;                  // 다음 기차
@@ -34,9 +40,14 @@ public class InGameManager : SceneSingleton<InGameManager>
             + (_currentTrain._floor.transform.localScale.z / 2)) + _trainInterval;
     }
 
-    public void RandomNextStage()
+    /// <summary>
+    /// 다음 스테이지로 이동하는 함수
+    /// </summary>
+    public void NextStage()
     {
         StartNextTrain(_nomalTrainObjects[Random.Range(0,_nomalTrainObjects.Length)]);
+
+        StartCoroutine(FadeInOutCor(1.5f, 1, 0));
         IngameUIController.Instance.UpdateScore(++score);
     }
 
@@ -64,5 +75,36 @@ public class InGameManager : SceneSingleton<InGameManager>
         return Instantiate(train, position, Quaternion.identity).GetComponent<Train>();
     }
 
+    /// <summary>
+    /// Fade 코루틴
+    /// </summary>
+    /// <param name="time">페이드 되는 시간</param>
+    /// <param name="start">시작하는 알파 값</param>
+    /// <param name="end">끝나는 알파 값</param>
+    /// <returns></returns>
+    private IEnumerator FadeInOutCor(float time, float start, float end)
+    {
+        float current = 0;
+        float percent = 0;
+
+        fadeImage.color = new Color(0, 0, 0, start);
+
+        while (percent < 1)
+        {
+            current += Time.deltaTime;
+            percent = current / time;
+
+            Color color = fadeImage.color;
+            color.a = Mathf.Lerp(start, end, percent);
+            fadeImage.color = color;
+
+            PlayerManager.Instance.StopMove();
+            PlayerManager.Instance.gameObject.transform.position = _currentTrain.playerSpawnPoint.position;
+
+            yield return null;
+        }
+
+        fadeImage.color = new Color(0, 0, 0, end);
+    }
 }
 
