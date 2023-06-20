@@ -3,7 +3,37 @@ guid: a141e12ae855b2e44b58ee8c5de55f59
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: body
+    second: {fileID: 2100000, guid: d48c7882f1733df4287e2d808f4b05f8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold
+    second: {fileID: 2100000, guid: b12b608dc0e2ad64a93030358016d671, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: metal
+    second: {fileID: 2100000, guid: 78b44eb52115d9d4e8b8ae08c23b6f60, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal003_1K_Color
+    second: {fileID: 2800000, guid: 7390719bdc832714a8fa7448b37e5b9f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal007_1K_Color
+    second: {fileID: 2800000, guid: f4f887664fabecb438bd2ae14756684d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: PaintedPlaster001_1K_Color
+    second: {fileID: 2800000, guid: 288fced6e9fb07444bd68e5989c79ab4, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
