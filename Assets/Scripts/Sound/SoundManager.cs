@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : GlobalSingleton<SoundManager>
 {
     private AudioSource _bgSoundSource;
+    [SerializeField] private AudioMixerGroup sfxMixerGroup;
 
     private void Start()
     {
@@ -14,8 +16,10 @@ public class SoundManager : GlobalSingleton<SoundManager>
     {
         GameObject go = new GameObject(sfxName + "Sound");
         AudioSource audiosource = go.AddComponent<AudioSource>();
+        audiosource.outputAudioMixerGroup = sfxMixerGroup;
         audiosource.clip = clip;
         audiosource.Play();
+        
 
         Destroy(go, clip.length);
     }
