@@ -1,29 +1,9 @@
 fileFormatVersion: 2
-guid: 67c41f2660da3b744875dcaae74da08f
+guid: a8b753f8fd39b524fb79e00f98483769
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: gold
-    second: {fileID: 2100000, guid: afc793b14a1ad5445ac8f6d6c39008dc, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: matel
-    second: {fileID: 2100000, guid: 5ce0eaa29be45934b8739d547207b4f0, type: 2}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Metal003_1K_Color
-    second: {fileID: 2800000, guid: 1159b68e384ac9247bc62aaf857fabde, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Metal007_1K_Color
-    second: {fileID: 2800000, guid: 383723f7edcda9c448a2faa7f93b8170, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -3,7 +3,47 @@ guid: 6dcd5e9778da3bc4691f41a8b05ffe3d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold
+    second: {fileID: 2100000, guid: b411ef318afac824ab9da263b400c9fc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold.001
+    second: {fileID: 2100000, guid: 1b0a5a7b466819a4a9962c045316823f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: goold
+    second: {fileID: 2100000, guid: e425c2d52e1d75c4782ec8e6900f26ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: matel
+    second: {fileID: 2100000, guid: 9230cf3e4da608f4083a3a9c78d4a08a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: meatl
+    second: {fileID: 2100000, guid: 71236a18802aff7478e3be6bf4e6943d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: mtael
+    second: {fileID: 2100000, guid: ba86f8428cbc76b4884dc8c0dde0e013, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal003_1K_Color
+    second: {fileID: 2800000, guid: 0573abb1f96bd244eb4e2766e28ee211, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal007_1K_Color
+    second: {fileID: 2800000, guid: 1f70a340977a07446bc19caaa2f17b89, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
