@@ -53,8 +53,7 @@ public class EnemyController_Melee : EnemyController
 
         yield return new WaitForSeconds(AttackSpeed);
 
-        _agent.isStopped = false;
-        _isCurrentAttackCor = false;
+
 
     }
 
@@ -63,13 +62,8 @@ public class EnemyController_Melee : EnemyController
     /// </summary>
     public void CheckHitEvent()
     {
-
-        // 실제 공격 체크
-        if (_enemyFieldOfView._isVisiblePlayer && Vector3.Distance(transform.position, _player.transform.position) < AttackRange + _agent.stoppingDistance)
-        {
-            Player player = _player.GetComponent<Player>();     //  추후 싱글톤으로 찾는다면 로직 수정
-            player.Hit(Damage,gameObject);
-        }
+        _agent.isStopped = false;
+        _isCurrentAttackCor = false;
 
         ChangeState<EnemyIdleState>();
 
