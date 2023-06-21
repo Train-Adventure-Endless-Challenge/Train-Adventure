@@ -46,7 +46,7 @@ public class EnemyAttackState : State<EnemyController>
     public override void OnExit()
     {
         _enemyController.StopAllCoroutines();
-        
+        _enemyController._agent.isStopped = false;
         base.OnExit();
 
     }
