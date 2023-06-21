@@ -99,7 +99,7 @@ public class PlayerRolling : MonoBehaviour
     /// <returns></returns>
     private bool CanRoll()
     {
-        return _player.Stamina - _staminaUseValue >= 0; // 스태미나가 충분한지 체크
+        return _player.Stamina - _staminaUseValue >= 0 && _player.playerState != PlayerState.Attack; // 스태미나가 충분한지 체크
     }
 
     /// <summary>
