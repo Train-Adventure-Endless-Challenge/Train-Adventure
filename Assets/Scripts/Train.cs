@@ -5,10 +5,11 @@ using UnityEngine;
 public class Train : MonoBehaviour
 {
     public GameObject _floor;   // 바닥
+    public Transform playerSpawnPoint;
 
     public virtual void Init()
     {
-  
+        
     }
 
     public void DestroyGameObejct()
@@ -16,4 +17,5 @@ public class Train : MonoBehaviour
         Destroy(gameObject);
     }
 
+    
 }

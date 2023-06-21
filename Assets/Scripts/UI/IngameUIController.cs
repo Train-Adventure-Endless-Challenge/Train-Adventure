@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class IngameUIController : SceneSingleton<IngameUIController>
 {
-
     [SerializeField] Slider _hpSlider;
     [SerializeField] Slider _staminaSlider;
     [SerializeField] TMP_Text _scoreText;
@@ -93,7 +92,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             }
         }
     }
-    
+
     /// <summary>
     /// 점수 UI를 업데이트하는 함수
     /// </summary>
@@ -115,7 +114,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             StopCoroutine(_gearUpdateCoroutine);
 
         _gearUpdateCoroutine = StartCoroutine(TextCountCor(_gearText, gear, float.Parse(_gearText.text)));
-            
+
 
     }
 
@@ -147,5 +146,4 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
         _gearUpdateCoroutine = null;
     }
-
 }

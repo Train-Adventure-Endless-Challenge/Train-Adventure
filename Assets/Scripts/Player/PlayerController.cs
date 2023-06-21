@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 실행되고 있는 움직임 코루틴을 종료하는 함수
     /// </summary>
-    private void StopMove()
+    public void StopMove()
     {
         if (_smoothMoveCor != null)        // 코루틴이 실행 중이라면
         {
