@@ -16,15 +16,16 @@ public class Weapon : Item
     protected float _defalutAttackSpeed;
     protected Transform _playerTransform;
     protected attackType _attackType;
-
+    [SerializeField] protected CapsuleCollider _weaponCollider;
     public float AttackSpeed { get { return _attackSpeed; } set { _attackSpeed = value; } }
     public float DefalutAttackSpeed { get { return _defalutAttackSpeed; } }
 
     public float currentCoolTime;
 
-    [SerializeField] protected GameObject _hittingFeelingEffect;
+    protected GameObject _hittingFeelingEffect;
 
     private CinemachineImpulseSource _shakeImpulse;
+
  
     void Update()
     {
@@ -50,10 +51,11 @@ public class Weapon : Item
     /// <summary>
     /// 애니메이션 이벤트로 판정 콜라이더를 활성화하기위한 함수
     /// </summary>
-    public virtual void AttackCollisionOn()
+    public void AttackCollisionOn()
     {
-
+        _weaponCollider.enabled = true;
     }
+
     /// <summary>
     /// 공격 로직이 들어있는 함수
     /// </summary>
