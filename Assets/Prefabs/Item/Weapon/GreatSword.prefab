@@ -354,8 +354,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   currentCoolTime: 0
-  _detectionAngle: 90
-  _targetLayer:
-    serializedVersion: 2
-    m_Bits: 640
+  _hittingFeelingEffect: {fileID: 2646761093411473258, guid: 16c4ecacc12f26445a0322001cbc5b3b,
+    type: 3}
   _trailRenderer: {fileID: 4749988429227109528}
