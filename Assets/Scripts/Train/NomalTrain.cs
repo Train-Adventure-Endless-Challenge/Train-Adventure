@@ -7,8 +7,7 @@ public class NomalTrain : Train
 {
     [SerializeField] private Animation _frontDoorAnimation;
 
-    [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;           // 몬스터 스폰 포인트
-
+    [SerializeField] private GameObject[] _objectsInTrainPrefab; // 기차 내 오브젝트 프리팹이 모두 있는 배열
     [SerializeField] private GameObject treasureBox;
     [SerializeField] private Transform treasureBoxSpawnPoint;
 
@@ -29,20 +28,15 @@ public class NomalTrain : Train
     /// </summary>
     public override void Init()
     {
-        _enemyCount = _enemySpawnPoints.Length;
-
-        SpawnEnemy();
+        // 오브젝트들 모두 생성
+        SpawnPointSystem system = Instantiate(_objectsInTrainPrefab[UnityEngine.Random.Range(0, _objectsInTrainPrefab.Length)], 
+            transform.position, Quaternion.identity).GetComponent<SpawnPointSystem>();
+        
+        // 초기화
+        _enemyCount = system.EnemyCount;
+        system.Init(KillEnemy);
+        system.transform.parent = transform;
     }
-
-    private void SpawnEnemy()
-    {
-        for (int i = 0; i < _enemySpawnPoints.Length; i++)
-        {
-            Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position, 
-                Quaternion.identity).GetComponentInChildren<EnemyController>()._dieEvent += KillEnemy;
-        }
-    }
-
     private void ClearStage()
     {
         if (_isClear == true)
