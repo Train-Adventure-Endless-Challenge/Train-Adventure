@@ -8,30 +8,29 @@ public class GreatSword : Weapon
 
     private string _targetLayer = "Enemy";
 
-    CapsuleCollider _capsuleCollider;
 
     private List<GameObject> _detectionLists = new List<GameObject>();
 
     protected override void Init()
     {
         base.Init();
-        _capsuleCollider = GetComponent<CapsuleCollider>();
+        _weaponCollider = GetComponent<CapsuleCollider>();
     }
 
     public override void Attack()
     {
         base.Attack();
         _trailRenderer.enabled = true;
-        _capsuleCollider.enabled = true;
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
     }
 
+    
     private IEnumerator AttackCor()
     {
         yield return new WaitForSeconds(_attackSpeed);
         _trailRenderer.enabled = false;
-        _capsuleCollider.enabled = false;
+        _weaponCollider.enabled = false;
     }
 
     private void OnCollisionEnter(Collision collision)
