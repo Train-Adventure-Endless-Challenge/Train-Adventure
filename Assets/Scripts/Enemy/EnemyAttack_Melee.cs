@@ -13,7 +13,7 @@ public class EnemyAttack_Melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!_enemyController._isCurrentAttackCor) return;
+        if (!_enemyController._isCurrentAttackCor) return;          // 현재 공격 상태가 아니라면 return
 
         if(other.gameObject.CompareTag("Player"))
         {
