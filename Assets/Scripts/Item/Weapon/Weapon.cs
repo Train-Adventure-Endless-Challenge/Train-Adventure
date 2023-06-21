@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 public enum attackType
@@ -12,7 +13,7 @@ public class Weapon : Item
     protected int _damage;
     protected float _range;
     protected float _attackSpeed;
-    protected float _defalutAttackSpeed;   
+    protected float _defalutAttackSpeed;
     protected Transform _playerTransform;
     protected attackType _attackType;
 
@@ -20,6 +21,11 @@ public class Weapon : Item
     public float DefalutAttackSpeed { get { return _defalutAttackSpeed; } }
 
     public float currentCoolTime;
+
+    [SerializeField] protected GameObject _hittingFeelingEffect;
+
+    private CinemachineImpulseSource _shakeImpulse;
+ 
     void Update()
     {
 
@@ -37,6 +43,8 @@ public class Weapon : Item
         _range = itemData.Range;
         _attackSpeed = itemData.AttackSpeed;
         _defalutAttackSpeed = _attackSpeed;
+        _hittingFeelingEffect = itemData.HittingFeelingEffect;
+        _shakeImpulse = GetComponent<CinemachineImpulseSource>();
     }
 
     /// <summary>
@@ -54,5 +62,10 @@ public class Weapon : Item
     {
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + itemData.SkillCooltime;
+    }
+
+    protected void Shake()
+    {
+        _shakeImpulse.GenerateImpulse();
     }
 }
