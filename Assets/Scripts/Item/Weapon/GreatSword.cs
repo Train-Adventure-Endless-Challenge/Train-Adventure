@@ -18,15 +18,19 @@ public class GreatSword : Weapon
         _capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
+    public override void AttackCollisionOn()
+    {
+        _capsuleCollider.enabled = true;
+    }
     public override void Attack()
     {
         base.Attack();
         _trailRenderer.enabled = true;
-        _capsuleCollider.enabled = true;
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
     }
 
+    
     private IEnumerator AttackCor()
     {
         yield return new WaitForSeconds(_attackSpeed);

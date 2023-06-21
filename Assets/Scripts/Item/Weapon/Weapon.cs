@@ -48,6 +48,13 @@ public class Weapon : Item
     }
 
     /// <summary>
+    /// 애니메이션 이벤트로 판정 콜라이더를 활성화하기위한 함수
+    /// </summary>
+    public virtual void AttackCollisionOn()
+    {
+
+    }
+    /// <summary>
     /// 공격 로직이 들어있는 함수
     /// </summary>
     public virtual void Attack()

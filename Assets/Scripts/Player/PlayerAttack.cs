@@ -141,5 +141,9 @@ public class PlayerAttack : MonoBehaviour
         _attackCor = null; // 코루틴 초기화
     }
 
+    public void AttackCollsionOnEvent()
+    {
+        _weaponController._currentWeapon.AttackCollisionOn();
+    }
     #endregion
 }
