@@ -125,12 +125,16 @@ public class PlayerController : MonoBehaviour
             {
                 _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _walkSpeedScale)); // 걷기 코루틴 실행
             }
+           
+                _moveDirection = new Vector3(x, 0f, z).normalized; // 움직임 방향
+            
+            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection); // 움직이기
+
             if (_player.playerState != PlayerState.Attack)
             {
-                _moveDirection = new Vector3(x, 0f, z).normalized; // 움직임 방향
+                transform.forward = _moveDirection;                                                             // 움직이는 방향으로 플레이어 시점 초기화
             }
-            _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection); // 움직이기
-            transform.forward = _moveDirection;                                                             // 움직이는 방향으로 플레이어 시점 초기화
+
             if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)       // 상태를 초기화 해아할 때
             {
                 _animator.SetTrigger("OnState");                                                            // 상태 변경 트리거
