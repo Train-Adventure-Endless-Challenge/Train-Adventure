@@ -301,29 +301,6 @@ CapsuleCollider:
   m_Height: 17.06
   m_Direction: 1
   m_Center: {x: 0, y: 7.77, z: 0}
---- !u!114 &5588158182885500039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4705216608209476053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1587d8f19340df40835dc5b0cbf5efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _radius: 8
-  _angle: 180
-  _viewCheckDelay: 0.2
-  _playerRef: {fileID: 0}
-  _targetMask:
-    serializedVersion: 2
-    m_Bits: 256
-  _obstructMask:
-    serializedVersion: 2
-    m_Bits: 128
-  _isVisiblePlayer: 0
 --- !u!114 &5588158182885500032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +363,29 @@ MonoBehaviour:
   _bombTransform: {fileID: 5588158183086236331}
   _bombPrefab: {fileID: 8618363741703801523, guid: 9b8284176b33516438708f1b081364ed,
     type: 3}
+--- !u!114 &5588158182885500039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4705216608209476053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1587d8f19340df40835dc5b0cbf5efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _radius: 8
+  _angle: 360
+  _viewCheckDelay: 0.2
+  _playerRef: {fileID: 0}
+  _targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  _obstructMask:
+    serializedVersion: 2
+    m_Bits: 128
+  _isVisiblePlayer: 0
 --- !u!4 &5334400783551578991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8fd5474fcd8f60d41bfbf87f1d443d60,
