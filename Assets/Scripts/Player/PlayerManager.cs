@@ -53,6 +53,9 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
         #endregion
 
+        _playerStamina.Recover();
+
+
         if (_player.playerState != PlayerState.Hit)
         {
             _playerRolling.Roll();
@@ -62,14 +65,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerAttack.Attack();
             _playerController.Move();
         }
-        if (_player.playerState == PlayerState.Idle)
-        {
-            _playerStamina.Recover();
-        }
-        else
+        if (_player.playerState == PlayerState.Rolling || _player.playerState == PlayerState.Attack)
         {
             _playerStamina.RecoverStop();
         }
+        
         _playerInteraction.Interact(); // 상호작용 실행
     }
 
