@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyController_Melee : EnemyController
 {
     PlayerManager _player => PlayerManager.Instance;
+
+    public bool _isAttackCheck = false;             // animation event clip으로 실행할 공격 체크 함수
 
     protected override void Start()
     {
@@ -62,11 +65,22 @@ public class EnemyController_Melee : EnemyController
     /// </summary>
     public void CheckHitEvent()
     {
+        _isAttackCheck = true;
+    }
+
+    public void CheckHitEndEffect()
+    {
+        _isAttackCheck = false;
+    }
+
+    /// <summary>
+    /// anmation이 끝났을때 clip event
+    /// </summary>
+    public void EndAnmationEvent()
+    {
         _agent.isStopped = false;
         _isCurrentAttackCor = false;
-
         ChangeState<EnemyIdleState>();
-
     }
 
     public void DieEvent()
