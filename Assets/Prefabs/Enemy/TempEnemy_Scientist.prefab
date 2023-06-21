@@ -358,10 +358,10 @@ MonoBehaviour:
   _enemyUI: {fileID: 0}
   _eventDamage: 0
   _attackTransform: {fileID: 5588158183086236331}
-  _bulletPrefab: {fileID: 711570339242256460, guid: 5675322573483a14aa5db249373b0e52,
+  _bulletPrefab: {fileID: 8618363741703801523, guid: 9b8284176b33516438708f1b081364ed,
     type: 3}
-  _bombTransform: {fileID: 5588158183086236331}
-  _bombPrefab: {fileID: 8618363741703801523, guid: 9b8284176b33516438708f1b081364ed,
+  _bombTransform: {fileID: 5588158182675840840}
+  _bombPrefab: {fileID: 711570339242256460, guid: 5675322573483a14aa5db249373b0e52,
     type: 3}
 --- !u!114 &5588158182885500039
 MonoBehaviour:
