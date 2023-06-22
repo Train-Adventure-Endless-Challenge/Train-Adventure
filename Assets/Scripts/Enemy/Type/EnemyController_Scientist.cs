@@ -177,4 +177,11 @@ public class EnemyController_Scientist : EnemyController
         ChangeState<EnemyIdleState>();
     }
 
+    /// <summary>
+    /// animation clip 실행 event
+    /// </summary>
+    public override void DieEvent()
+    {
+        Die();
+    }
 }

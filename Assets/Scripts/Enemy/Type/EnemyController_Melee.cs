@@ -83,7 +83,7 @@ public class EnemyController_Melee : EnemyController
         ChangeState<EnemyIdleState>();
     }
 
-    public void DieEvent()
+    public override void DieEvent()
     {
         Die();
     }

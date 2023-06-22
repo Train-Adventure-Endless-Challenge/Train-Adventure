@@ -103,7 +103,7 @@ public class EnemyController_Range : EnemyController
     /// <summary>
     /// animation clip 실행 event
     /// </summary>
-    public void DieEvent()
+    public override void DieEvent()
     {
         Die();
     }
