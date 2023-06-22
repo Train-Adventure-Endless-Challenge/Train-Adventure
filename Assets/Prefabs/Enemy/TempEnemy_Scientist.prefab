@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e355cca52db9b45a191329c4a6b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hpBarSlider: {fileID: 0}
+  _hpBarSlider: {fileID: 2434019953570062987}
 --- !u!195 &5588158182885500033
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -700,3 +700,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47cb719c64e1df5489147af36b3d5538, type: 3}
+--- !u!114 &2434019953570062987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7803119683906734008, guid: 47cb719c64e1df5489147af36b3d5538,
+    type: 3}
+  m_PrefabInstance: {fileID: 5588158184635180339}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
