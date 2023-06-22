@@ -50,7 +50,7 @@ public abstract class EnemyController : Entity
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
     public bool _isCurrentAttackCor;
 
-    public EnemyUI _enemyUI;
+    [HideInInspector] public EnemyUI _enemyUI;
     public int _eventDamage;        // 받은 데미지
 
     public Action _dieEvent;
