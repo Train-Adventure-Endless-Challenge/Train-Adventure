@@ -14,6 +14,12 @@ public enum ArmorType
     cloak
 }
 
+public enum Itemtype
+{
+    weapon,
+    armor,
+}
+
 public class Item : MonoBehaviour
 {
     [SerializeField] protected ItemData itemData;
@@ -39,6 +45,7 @@ public class Item : MonoBehaviour
 
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
+    [SerializeField] protected Itemtype _itemType;
     public int Id { get { return _id; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }  
@@ -51,6 +58,8 @@ public class Item : MonoBehaviour
 
 
     public int Level { get { return _level; } }
+
+    public Itemtype ItemType { get { return _itemType; } }
 
     public UnityEvent _levelupEvent;
     #endregion
