@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum ArmorType
+public enum Armortype
 {
-    hat,
-    top,
-    bottom,
-    shoes,
+    hat = 0,
+    top = 1,
+    bottom = 2,
+    shoes = 3,
     gloves,
     mask,
     cloak
