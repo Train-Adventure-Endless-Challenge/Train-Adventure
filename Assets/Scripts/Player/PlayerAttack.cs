@@ -29,7 +29,6 @@ public class PlayerAttack : MonoBehaviour
     private Player _player;                     // 플레이어 데이터 담당 클래스
     private Animator _animator;                 // 애니메이션
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
-    private WeaponController _weaponController; // 무기 담당 클래스
 
     private Coroutine _attackCor; // 플레이어 공격 코루틴을 담을 변수
 
