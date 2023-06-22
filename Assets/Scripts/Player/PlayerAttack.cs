@@ -62,7 +62,6 @@ public class PlayerAttack : MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
-        _weaponController = GetComponent<WeaponController>();
     }
 
     /// <summary>
@@ -144,7 +143,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackCollsionOnEvent()
     {
-        _weaponController._currentWeapon.AttackCollisionOn();
+        PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
     #endregion
 }
