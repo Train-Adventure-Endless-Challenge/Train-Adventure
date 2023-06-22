@@ -116,7 +116,9 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackCor()
     {
-        Weapon curWeapon = _weaponController._currentWeapon; // 무기 변경
+        Weapon curWeapon = PlayerManager.Instance.EquipItem.CurrentWeapon; // 무기 변경
+
+        if (curWeapon == null) { StopCoroutine(_attackCor); _attackCor = null; }
 
         _animator.SetBool("IsAttack", true);          // 애니메이션 실행
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경

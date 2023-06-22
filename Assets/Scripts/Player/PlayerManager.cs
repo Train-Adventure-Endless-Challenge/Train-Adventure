@@ -22,7 +22,9 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     private PlayerAttack _playerAttack;
     private PlayerStamina _playerStamina;
     private PlayerInteraction _playerInteraction;
+    private PlayerEquip _playerEquip;
 
+    public PlayerEquip EquipItem { get { return _playerEquip; } }
     #endregion
 
     #region Function
