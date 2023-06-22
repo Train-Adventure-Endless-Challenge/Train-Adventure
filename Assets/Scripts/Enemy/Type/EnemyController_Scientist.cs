@@ -96,7 +96,7 @@ public class EnemyController_Scientist : EnemyController
 
         EnemyBomb _enemyBomb = go.GetComponent<EnemyBomb>();
         _enemyBomb._damage = Damage;
-        _enemyBomb._owner = this.gameObject;
+        _enemyBomb.Owner = this.gameObject;
     }
 
 

@@ -6,7 +6,8 @@ public class EnemyBomb : MonoBehaviour
 {
     float _attackDelayTime = 10f;
     public float _damage;
-    public GameObject _owner;
+
+    public GameObject Owner { get; set; }
 
     [SerializeField] GameObject _effectPrefab;      // 폭탄이 터지는 effect
     void Start()
@@ -24,7 +25,7 @@ public class EnemyBomb : MonoBehaviour
         {
             if (item.gameObject.CompareTag("Player"))
             {
-                item.GetComponent<Player>().Hit(_damage,_owner); break;
+                item.GetComponent<Player>().Hit(_damage,Owner); break;
             }
         }
 
