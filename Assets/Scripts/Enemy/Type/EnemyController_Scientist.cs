@@ -167,4 +167,12 @@ public class EnemyController_Scientist : EnemyController
         CheckAttack();
     }
 
+    /// <summary>
+    /// Event가 종료시 Idle 상태로 돌아가는 animation event 
+    /// </summary>
+    public void EndAttackEvent()
+    {
+        ChangeState<EnemyIdleState>();
+    }
+
 }
