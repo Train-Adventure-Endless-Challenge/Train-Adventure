@@ -64,6 +64,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _damage: 0
   _owner: {fileID: 0}
+  _effectPrefab: {fileID: 8592499858754565221, guid: e450b5eb9f9ce8c4c98c07918ad5ac11,
+    type: 3}
 --- !u!1001 &2161948302273153807
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -38,7 +38,9 @@ public class EnemyController_Scientist : EnemyController
     /// </summary>
     public void CheckAttack()
     {
-        if(_timer >= _skillDelayTime)
+        _isCurrentAttackCor = true;
+
+        if (_timer >= _skillDelayTime)
         {
             StartCoroutine(AttackSkillCor());
             _anim.SetInteger("AttackInt", 1);   
