@@ -16,6 +16,12 @@ public class PlayerEquip : MonoBehaviour
     [SerializeField] private Transform[] _armorEquipTransform;          // 방어구 피봇
 
 
+    private void Start()
+    {
+        // TEST
+        EquipItem((ItemDataManager.Instance.ItemPrefab[0] as GameObject).GetComponent<Item>());
+    }
+
     /// <summary>
     /// 아이템을 장착하는 함수
     /// </summary>
