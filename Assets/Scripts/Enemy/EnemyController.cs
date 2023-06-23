@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -50,7 +48,7 @@ public abstract class EnemyController : Entity
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
     public bool _isCurrentAttackCor;
 
-    public EnemyUI _enemyUI;
+    [HideInInspector] public EnemyUI _enemyUI;
     public int _eventDamage;        // 받은 데미지
 
     public Action _dieEvent;
@@ -115,6 +113,8 @@ public abstract class EnemyController : Entity
         _eventDamage = (int)damage;
         ChangeState<EnemyHitState>();
     }
+
+    public abstract void DieEvent();
 
     public override void Die()
     {

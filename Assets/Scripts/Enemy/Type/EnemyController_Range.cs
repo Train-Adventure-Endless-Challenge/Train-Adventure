@@ -103,7 +103,7 @@ public class EnemyController_Range : EnemyController
     /// <summary>
     /// animation clip 실행 event
     /// </summary>
-    public void DieEvent()
+    public override void DieEvent()
     {
         Die();
     }
@@ -114,5 +114,13 @@ public class EnemyController_Range : EnemyController
     public override void Attack()
     {
         StartCoroutine(AttackRangeCor());
+    }
+
+    /// <summary>
+    /// Event가 종료시 Idle 상태로 돌아가는 animation event 
+    /// </summary>
+    public void EndAttackEvent()
+    {
+        ChangeState<EnemyIdleState>();
     }
 }

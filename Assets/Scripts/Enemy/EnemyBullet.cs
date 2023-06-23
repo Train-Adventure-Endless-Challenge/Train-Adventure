@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
@@ -22,7 +23,10 @@ public class EnemyBullet : MonoBehaviour
 
     void Update()
     {
-        _rigid.velocity = Owner.transform.forward * _speed;
+        if(Owner != null)
+        {
+            _rigid.velocity = Owner.transform.forward * _speed;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

@@ -38,7 +38,9 @@ public class EnemyController_Scientist : EnemyController
     /// </summary>
     public void CheckAttack()
     {
-        if(_timer >= _skillDelayTime)
+        _isCurrentAttackCor = true;
+
+        if (_timer >= _skillDelayTime)
         {
             StartCoroutine(AttackSkillCor());
             _anim.SetInteger("AttackInt", 1);   
@@ -94,7 +96,7 @@ public class EnemyController_Scientist : EnemyController
 
         EnemyBomb _enemyBomb = go.GetComponent<EnemyBomb>();
         _enemyBomb._damage = Damage;
-        _enemyBomb._owner = this.gameObject;
+        _enemyBomb.Owner = this.gameObject;
     }
 
 
@@ -167,4 +169,19 @@ public class EnemyController_Scientist : EnemyController
         CheckAttack();
     }
 
+    /// <summary>
+    /// Event가 종료시 Idle 상태로 돌아가는 animation event 
+    /// </summary>
+    public void EndAttackEvent()
+    {
+        ChangeState<EnemyIdleState>();
+    }
+
+    /// <summary>
+    /// animation clip 실행 event
+    /// </summary>
+    public override void DieEvent()
+    {
+        Die();
+    }
 }

@@ -23,7 +23,10 @@ public class EnemyAttackState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-        Attack();
+        if(!_enemyController._isCurrentAttackCor)
+            Attack();
+        else
+            _enemyController.ChangeState<EnemyIdleState>();
     }
 
     private void Attack()
