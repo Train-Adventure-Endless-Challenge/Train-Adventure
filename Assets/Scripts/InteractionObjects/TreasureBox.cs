@@ -31,9 +31,9 @@ public class TreasureBox : InteractionObject
             _GearCount--;
             
             //아이템 나오게하기
-            gear.GetComponent<Rigidbody>().AddForce(Random.Range(-100f, 100f), Random.Range(200f, 400f), Random.Range(-100f, 100f));
+            gear.GetComponent<Rigidbody>().AddForce(Random.Range(-100f, 100f), Random.Range(300f, 400f), Random.Range(-100f, 100f));
 
-            yield return new WaitForSeconds(0.6f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         Destroy(gameObject);
