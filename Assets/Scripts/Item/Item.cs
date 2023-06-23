@@ -60,7 +60,6 @@ public class Item : MonoBehaviour
 
     public Itemtype ItemType { get { return _itemType; } }
 
-    public UnityEvent _levelupEvent;
     #endregion
     public Item(Item item)
     {
@@ -118,7 +117,6 @@ public class Item : MonoBehaviour
         _additionalAttackSpeed = itemData.AdditionalAttackSpeed;
         _additionalSpeed = itemData.AdditionalSpeed;
         _durability = itemData.MaxDurability;
-        _levelupEvent.AddListener(Levelup);
     }
 
 
@@ -156,7 +154,7 @@ public class Item : MonoBehaviour
     /// <summary>
     /// 아이템을 강화할 때 호출 되는 함수
     /// </summary>
-    protected virtual void Levelup()
+    public virtual void Levelup()
     {
         if (_level >= 1) return;
         
