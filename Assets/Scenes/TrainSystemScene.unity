@@ -202,9 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _backgroundGroup: {fileID: 3567304182414327206}
   _nomalTrainObjects:
-  - {fileID: 5894373062190888247, guid: 1598638a3c772b94faa0327fdd23f1ad, type: 3}
-  - {fileID: 5894373062190888247, guid: 77ecac45563bfc143a04f2b85e8fba5c, type: 3}
-  - {fileID: 5894373062190888247, guid: e04b04db9ca8eb948b4675db62b1d28d, type: 3}
+  - {fileID: 0}
   _bossTrainObject: {fileID: 2364587615945282256, guid: 3573735cb4f9d664986344b52b84140b,
     type: 3}
   _storeTrainObject: {fileID: 2364587615945282256, guid: bb57016e246c27443815fdcf30881471,

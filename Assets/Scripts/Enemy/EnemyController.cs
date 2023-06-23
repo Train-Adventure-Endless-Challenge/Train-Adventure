@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public abstract class EnemyController : Entity
 {
@@ -83,6 +84,8 @@ public abstract class EnemyController : Entity
 
         _agent.stoppingDistance = AttackRange;
 
+        _dieEvent += GearDrop;
+
     }
 
 
@@ -118,8 +121,17 @@ public abstract class EnemyController : Entity
 
     public override void Die()
     {
-        Destroy(gameObject);
         _dieEvent.Invoke();
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 기어 드랍 함수 
+    /// _dieEvent에 추가하여 호출
+    /// </summary>
+    private void GearDrop()
+    {
+        GearSystem.Instance.AddGear(UnityEngine.Random.Range(2, 4));
     }
 
     /// <summary>
