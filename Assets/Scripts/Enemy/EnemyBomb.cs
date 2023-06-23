@@ -29,6 +29,8 @@ public class EnemyBomb : MonoBehaviour
             }
         }
 
+        // 흔들림 증가
+
         // 폭파되는 파티클 생성
         GameObject effect = Instantiate(_effectPrefab,transform.position,Quaternion.identity);
         Destroy(effect,2f);
