@@ -27,7 +27,6 @@ public class Item : MonoBehaviour
 
     #region Stat
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
-    protected int _id;
     protected string _name;                               
     protected string _description;
     protected float _additionalHp;
@@ -46,7 +45,7 @@ public class Item : MonoBehaviour
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
     [SerializeField] protected Itemtype _itemType;
-    public int Id { get { return _id; } }
+    public int Id { get { return itemData.Id; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }  
     public float AdditionalHp { get { return _additionalHp; } }
@@ -67,7 +66,6 @@ public class Item : MonoBehaviour
     {
         itemData = item.ItemData;
 
-        _id = item.Id;
         _name = item.Name;
         _description = item.Description;
         _additionalHp = item.AdditionalHp;
