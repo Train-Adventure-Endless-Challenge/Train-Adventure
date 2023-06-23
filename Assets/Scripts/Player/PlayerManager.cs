@@ -83,6 +83,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerAttack = GetComponent<PlayerAttack>();
         _playerStamina = GetComponent<PlayerStamina>();
         _playerInteraction = _interactionTransform.GetComponent<PlayerInteraction>();
+        _playerEquip = GetComponent<PlayerEquip>();
     }
 
     public void StopMove()
