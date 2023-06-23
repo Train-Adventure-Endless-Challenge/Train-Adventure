@@ -32,6 +32,7 @@ public class PlayerEquip : MonoBehaviour
             _currentWeapon = weapon;
             weapon.transform.parent = _weaponEquipTransform;
             weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localEulerAngles = Vector3.zero;
         }
         else if(item.ItemType == Itemtype.armor)
         {
