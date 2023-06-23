@@ -5,7 +5,7 @@ using UnityEngine;
 public class Train : MonoBehaviour
 {
     public GameObject _floor;   // 바닥
-    public Transform playerSpawnPoint;
+    public Transform _playerSpawnPoint;
 
     public virtual void Init()
     {

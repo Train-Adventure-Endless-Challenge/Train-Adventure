@@ -70,6 +70,11 @@ public class IncreaseShake : MonoBehaviour
         _impulseDefinition.m_AmplitudeGain -= value;
     }
 
+    //public void IncreaseShake(float value)
+    //{
+    //    _impulseDefinition.m_AmplitudeGain++; // 1 증가
+    //}
+
     /// <summary>
     /// 흔들림 증가 코루틴 함수
     /// </summary>
@@ -82,11 +87,7 @@ public class IncreaseShake : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(waitTime); // 대기 시간 만큼 대기
-            if (_impulseDefinition.m_AmplitudeGain < maxValue) // 최대값이 아니라면
-            {
-                _impulseDefinition.m_AmplitudeGain++; // 1 증가
-                _shakeSlider.ChangeUI(_impulseDefinition.m_AmplitudeGain);
-            }
+
         }
     }
 
