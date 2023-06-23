@@ -108,14 +108,10 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     /// <param name="gear">변경할 gear수</param>
     public void UpdateGear(int gear)
     {
-
-
         if (_gearUpdateCoroutine != null)
             StopCoroutine(_gearUpdateCoroutine);
 
         _gearUpdateCoroutine = StartCoroutine(TextCountCor(_gearText, gear, float.Parse(_gearText.text)));
-
-
     }
 
     /// <summary>

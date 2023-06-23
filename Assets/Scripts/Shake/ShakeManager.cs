@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 /// <summary>
 /// 흔들림을 관리하는 클래스
@@ -24,18 +25,26 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     private void Awake()
     {
         _shake = GetComponent<Shake>();
-        _increaseShake = GetComponent<IncreaseShake>();
     }
 
     private void Start()
     {
         _shake.StartShake();
-        _increaseShake.StartIncreaseShake(_waitTime, _maxValue);
     }
 
     public void ClearShake()
     {
         _increaseShake.ClearShake();
+    }
+
+    public void DecreaseShake(float value)
+    {
+        _shake._impulseDefinition.m_AmplitudeGain -= value;
+    }
+
+    public void IncreaseShake()
+    {
+        _shake._impulseDefinition.m_AmplitudeGain += 1; // 증가
     }
     #endregion
 

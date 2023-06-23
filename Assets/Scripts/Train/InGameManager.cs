@@ -49,6 +49,7 @@ public class InGameManager : SceneSingleton<InGameManager>
 
         StartCoroutine(FadeInOutCor(1.5f, 1, 0));
         IngameUIController.Instance.UpdateScore(++score);
+        ShakeManager.Instance.IncreaseShake();
     }
 
     /// <summary>

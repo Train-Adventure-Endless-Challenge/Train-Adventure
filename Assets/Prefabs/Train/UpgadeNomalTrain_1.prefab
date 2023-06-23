@@ -5725,6 +5725,7 @@ GameObject:
   - component: {fileID: 5989198570624028969}
   - component: {fileID: 5989198570625356103}
   - component: {fileID: 5989198570626454407}
+  - component: {fileID: 4981319933490279710}
   m_Layer: 0
   m_Name: SimpleDoor_MainDoor_LOD0
   m_TagString: Untagged
@@ -5799,6 +5800,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &4981319933490279710
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5989198570624191753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1661743, y: 2.4341261, z: 0.15107703}
+  m_Center: {x: -0.57335585, y: 0.62064147, z: 0.05420642}
 --- !u!1 &5989198570624191755
 GameObject:
   m_ObjectHideFlags: 0
@@ -6268,11 +6282,8 @@ Animation:
   m_GameObject: {fileID: 5989198570624191773}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: f054e366653a7c14186595569de398f9, type: 3}
+  m_Animation: {fileID: 7400002, guid: f054e366653a7c14186595569de398f9, type: 3}
   m_Animations:
-  - {fileID: 7400000, guid: f054e366653a7c14186595569de398f9, type: 3}
-  - {fileID: 7400004, guid: f054e366653a7c14186595569de398f9, type: 3}
-  - {fileID: 7400006, guid: f054e366653a7c14186595569de398f9, type: 3}
   - {fileID: 7400002, guid: f054e366653a7c14186595569de398f9, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 0
@@ -6323,7 +6334,7 @@ BoxCollider:
   m_GameObject: {fileID: 5989198570624191773}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.4858832, y: 2.611988, z: 0.15106297}
   m_Center: {x: 0, y: 1.2975931, z: 0.03}
@@ -6420,6 +6431,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6708287233740334475}
   - component: {fileID: 342783548716303998}
+  - component: {fileID: 7667384152606583790}
   m_Layer: 0
   m_Name: UpgadeNomalTrain_1
   m_TagString: Untagged
@@ -6471,6 +6483,19 @@ MonoBehaviour:
   _treasureBox: {fileID: 1732782875715410699, guid: c6c9f8e913990a74dabeab2d81b1e3e8,
     type: 3}
   _treasureBoxSpawnPoint: {fileID: 6345424533316326676}
+--- !u!65 &7667384152606583790
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6708287233740334468}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 1}
+  m_Center: {x: 0, y: 2.9, z: 33.68}
 --- !u!1 &6835953414370600659
 GameObject:
   m_ObjectHideFlags: 0

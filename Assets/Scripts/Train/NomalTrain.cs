@@ -31,11 +31,11 @@ public class NomalTrain : Train
         // 오브젝트들 모두 생성
         SpawnPointSystem system = Instantiate(_objectsInTrainPrefab[UnityEngine.Random.Range(0, _objectsInTrainPrefab.Length)], 
             transform.position, Quaternion.identity).GetComponent<SpawnPointSystem>();
-        
+
         // 초기화
-        _enemyCount = system.EnemyCount;
         system.Init(KillEnemy);
         system.transform.parent = transform;
+        _enemyCount = system.EnemyCount;
     }
     private void ClearStage()
     {
