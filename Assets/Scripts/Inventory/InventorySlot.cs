@@ -10,19 +10,49 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     /// </summary>
     public void OnDrop(PointerEventData eventData)
     {
+        Debug.Log("Drop");
         if (transform.childCount == 0) // 슬롯이 비어 있으면 슬롯으로 이동
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             inventoryItem._parentAfterDrag = transform;
+            if(inventoryItem._slot != null)
+                inventoryItem._slot.TakeItem(inventoryItem._item);
+            
+            inventoryItem._slot = this;
+            PutItem(inventoryItem._item);
         }
         else // 슬롯이 비어 있지 않으면 아이템 스왑
         {
             InventoryItem dropInventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            Transform temp = dropInventoryItem._parentAfterDrag;
-            dropInventoryItem._parentAfterDrag = transform;
+            InventorySlot prev_slot = dropInventoryItem._slot;
+
+            prev_slot.TakeItem(dropInventoryItem._item);
+            dropInventoryItem._slot = this;
+            this.PutItem(dropInventoryItem._item);
 
             InventoryItem currentSlotInventoryItem = transform.GetComponentInChildren<InventoryItem>();
-            currentSlotInventoryItem.gameObject.transform.SetParent(temp);
+            
+            this.TakeItem(currentSlotInventoryItem._item);
+            currentSlotInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
+            prev_slot.PutItem(currentSlotInventoryItem._item);
         }
+    }
+
+    /// <summary>
+    /// 슬롯에 아이템을 놓았을 때 실행하는 이벤트 함수
+    /// </summary>
+    public virtual bool PutItem(Item item)
+    {
+        Debug.Log("PUT ITEM PARENT");
+        return false;
+    }
+
+    /// <summary>
+    /// 슬롯에서 아이템을 가져갔을 때 실행하는 이벤트 함수
+    /// </summary>
+    public virtual bool TakeItem(Item item)
+    {
+        Debug.Log("TAKE ITEM PARENT");
+        return false;
     }
 }

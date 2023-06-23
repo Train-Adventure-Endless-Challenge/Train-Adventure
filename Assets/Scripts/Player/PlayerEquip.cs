@@ -19,7 +19,7 @@ public class PlayerEquip : MonoBehaviour
     private void Start()
     {
         // TEST
-        EquipItem((ItemDataManager.Instance.ItemPrefab[0] as GameObject).GetComponent<Item>());
+        //EquipItem((ItemDataManager.Instance.ItemPrefab[0] as GameObject).GetComponent<Item>());
     }
 
     /// <summary>

@@ -10,11 +10,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("UI")]
     [SerializeField] private Image _image;                  // 아이템 아이콘 이미지
     [SerializeField] private TMP_Text _countText;
-
+    
     [HideInInspector] public Item _item;                   
     [HideInInspector] public int _count = 1;                // 아이템 갯수
-    [HideInInspector] public Transform _parentAfterDrag; 
+    [HideInInspector] public Transform _parentAfterDrag;
 
+    public InventorySlot _slot;
     /// <summary>
     /// 초기화 함수
     /// </summary>
