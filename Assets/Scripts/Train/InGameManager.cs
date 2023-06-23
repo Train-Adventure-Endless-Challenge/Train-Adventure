@@ -26,6 +26,8 @@ public class InGameManager : SceneSingleton<InGameManager>
 
     private int score;
 
+    [SerializeField] GameOverManager _gameOverManager;
+
     private void Start()
     {
         IngameUIController.Instance.UpdateScore(++score);
@@ -38,6 +40,9 @@ public class InGameManager : SceneSingleton<InGameManager>
         _nextTrain.transform.position += new Vector3(0, 0, 
             (_nextTrain._floor.transform.localScale.z / 2)
             + (_currentTrain._floor.transform.localScale.z / 2)) + _trainInterval;
+
+
+        
     }
 
     /// <summary>
@@ -105,6 +110,14 @@ public class InGameManager : SceneSingleton<InGameManager>
         }
 
         fadeImage.color = new Color(0, 0, 0, end);
+    }
+
+    /// <summary>
+    /// 게임 오버 시 호출 함수
+    /// </summary>
+    public void GameOver()
+    {
+        _gameOverManager.GameOver();
     }
 }
 

@@ -91,7 +91,15 @@ public class Player : Entity
 
     #region Stat
 
-    public float Hp { get { return _hp; } set { _hp = value; } }
+    public float Hp { get { return _hp; }
+        set 
+        { 
+            _hp = value;
+            if(Hp <= 0)
+            {
+                InGameManager.Instance.GameOver();
+            }
+        } }
     public float Speed { get { return _speed; } set { _speed = value; } }
     public int Defense { get { return _defense; } set { _defense = value; } }
     public int Stamina { get { return _stamina; } set { _stamina = value; } }
