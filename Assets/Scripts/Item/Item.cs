@@ -109,7 +109,6 @@ public class Item : MonoBehaviour
     /// </summary>
     protected virtual void Init()
     {
-        _id = itemData.Id;
         _name = itemData.Name;
         _description = itemData.Description;
         _additionalHp = itemData.AdditionalHp;
