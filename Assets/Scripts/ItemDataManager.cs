@@ -27,12 +27,12 @@ public class ItemDataManager : GlobalSingleton<ItemDataManager>,IDataManager
         ItemData[] items = Resources.LoadAll<ItemData>("ScriptableObjects/Item");
 
         foreach (ItemData i in items)
-            ItemData.Add(i.Id, i);
+            _itemData.Add(i.Id, i);
 
         Object[] prefabs = Resources.LoadAll<Object>("Prefabs/Item");
 
         foreach (Object pre in prefabs)
-            ItemPrefab.Add(pre.GetComponent<Item>().Id, pre);
+            _itemPrefab.Add(pre.GetComponent<Item>().Id, pre);
 
         // TODO: 조합법 json 파싱 후 집어넣기
         _itemCombinationMethod.Add(new List<int>() { 1, 2 }, 3); // 테스트
