@@ -78,8 +78,10 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
 
         if (item == null) return;
-        
 
+        ItemObject itemObj = Instantiate(ItemDataManager.Instance.ItemObjectPrefab as GameObject, PlayerManager.Instance.transform.position, Quaternion.identity).GetComponent<ItemObject>();
+        itemObj.Id = item._item.Id;
+        Destroy(item.gameObject);
     }
 
 }
