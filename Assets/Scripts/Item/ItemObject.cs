@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemObject : MonoBehaviour
+public class ItemObject : InteractionObject
 {
     public int Id;
 
@@ -19,12 +19,9 @@ public class ItemObject : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public override void Interact()
     {
-        if (other.CompareTag("Player"))
-        {
-            InventoryManager.Instance.AddItem(new Item(_itemData));
-            Destroy(gameObject);
-        }
+        InventoryManager.Instance.AddItem(new Item(_itemData));
+        Destroy(gameObject);
     }
 }

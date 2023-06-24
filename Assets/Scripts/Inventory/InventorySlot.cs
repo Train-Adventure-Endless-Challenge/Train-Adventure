@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class InventorySlot : MonoBehaviour, IDropHandler
+public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
     /// <summary>
     /// 이 함수를 지닌 오브젝트 위에서 마우스를 땠을 때
@@ -38,12 +38,16 @@ public class InventorySlot : MonoBehaviour, IDropHandler
         }
     }
 
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        InventoryManager.Instance.SelectSlot(this);
+    }
+
     /// <summary>
     /// 슬롯에 아이템을 놓았을 때 실행하는 이벤트 함수
     /// </summary>
     public virtual bool PutItem(Item item)
     {
-        Debug.Log("PUT ITEM PARENT");
         return false;
     }
 
@@ -52,7 +56,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     /// </summary>
     public virtual bool TakeItem(Item item)
     {
-        Debug.Log("TAKE ITEM PARENT");
         return false;
     }
 }

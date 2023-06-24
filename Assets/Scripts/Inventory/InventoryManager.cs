@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryManager : SceneSingleton<InventoryManager>
 {
@@ -9,6 +10,8 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     [SerializeField] private int _maxStackedItem = 10;         // 겹칠 수 있는 최대 아이템 수
 
+    [SerializeField] private Image selectImg;        // 인벤토리 선택 시 나오는 이미지
+    private InventorySlot _selectedSlot;
     public bool AddItem(Item item)
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
@@ -48,4 +51,13 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem.InitialiseItem(item);
     }
+
+    public void SelectSlot(InventorySlot slot)
+    {
+        selectImg.gameObject.SetActive(true);
+
+        selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position;
+        _selectedSlot = slot;
+    }
+
 }
