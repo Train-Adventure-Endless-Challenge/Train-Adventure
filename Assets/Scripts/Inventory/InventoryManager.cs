@@ -75,6 +75,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     public void DisassembleItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+        item._slot.TakeItem(item._item);
 
         if (item == null) return;
 
@@ -85,6 +86,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
 
+        item._slot.TakeItem(item._item);
         if (item == null) return;
 
         ItemObject itemObj = Instantiate(ItemDataManager.Instance.ItemObjectPrefab as GameObject, PlayerManager.Instance.transform.position, Quaternion.identity).GetComponent<ItemObject>();
