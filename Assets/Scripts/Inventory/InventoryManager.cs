@@ -13,6 +13,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     [SerializeField] private Image selectImg;        // 인벤토리 선택 시 나오는 이미지
     private InventorySlot _selectedSlot;
+    public InventorySlot SelectedSlot {  get { return _selectedSlot; } }
 
     [SerializeField] private Button _decompositionBtn;
     [SerializeField] private Button _dropBtn;
@@ -53,14 +54,21 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     {
         GameObject newItemGo = Instantiate(_inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
+        inventoryItem._slot = slot;
         inventoryItem.InitialiseItem(item);
     }
 
     public void SelectSlot(InventorySlot slot)
     {
-        selectImg.gameObject.transform.parent.gameObject.SetActive(true);
+        InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+        if(item != null) item.ItemImage.raycastTarget = false;
+        
+        selectImg.gameObject.transform.parent.gameObject.SetActive(true); // selectImg, 분해, 드롭 버튼 활성화
+        selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position; // selectImg 위치 맞추기
 
-        selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position;
+        InventoryItem itemImg = slot?.GetComponentInChildren<InventoryItem>();
+        if (itemImg != null) itemImg.ItemImage.raycastTarget = true;
+        
         _selectedSlot = slot;
     }
 

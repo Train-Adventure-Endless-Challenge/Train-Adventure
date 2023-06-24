@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// </summary>
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("Drop");
         if (transform.childCount == 0) // 슬롯이 비어 있으면 슬롯으로 이동
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();

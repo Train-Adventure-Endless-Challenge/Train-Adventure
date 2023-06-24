@@ -16,6 +16,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform _parentAfterDrag;
 
     public InventorySlot _slot;
+    public Image ItemImage { get { return _image; } }
     /// <summary>
     /// 초기화 함수
     /// </summary>
@@ -61,6 +62,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
+        InventoryManager.Instance.SelectSlot(_slot); // 아이템을 옮겼을 때 옮긴쪽으로 Select 이동
         _image.raycastTarget = true;
         _countText.raycastTarget = true;
         transform.SetParent(_parentAfterDrag); 

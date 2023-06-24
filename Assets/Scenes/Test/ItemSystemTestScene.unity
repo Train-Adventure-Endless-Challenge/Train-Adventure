@@ -382,12 +382,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &245127524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 245127524, guid: b77f212fd7c9855439d1e1d75a1132c0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1800076729}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &295969184 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6401699004113738585, guid: a19a6135a5352bc4286384ebace07097,
@@ -1235,20 +1229,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1321998329, guid: b77f212fd7c9855439d1e1d75a1132c0, type: 3}
-      propertyPath: m_RaycastTarget
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203396877448316044, guid: b77f212fd7c9855439d1e1d75a1132c0,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8203396877448316044, guid: b77f212fd7c9855439d1e1d75a1132c0,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 245127524}
     - target: {fileID: 8203396878571994964, guid: b77f212fd7c9855439d1e1d75a1132c0,
         type: 3}
       propertyPath: m_Name
