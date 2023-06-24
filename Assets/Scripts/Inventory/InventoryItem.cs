@@ -15,7 +15,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public int _count = 1;                // 아이템 갯수
     [HideInInspector] public Transform _parentAfterDrag;
 
-    public InventorySlot _slot;
+    public InventorySlot _slot;                             // 현재 들어가 있는 slots
     public Image ItemImage { get { return _image; } }
     /// <summary>
     /// 초기화 함수

@@ -36,7 +36,11 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             prev_slot.PutItem(currentSlotInventoryItem._item);
         }
     }
-
+    
+    /// <summary>
+    /// slot이 클릭되었을 때 실행되는 event함수
+    /// </summary>
+    /// <param name="eventData"></param>
     public void OnPointerClick(PointerEventData eventData)
     {
         InventoryManager.Instance.SelectSlot(this);
