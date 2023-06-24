@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 #endregion
 
@@ -99,7 +100,10 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private bool CanAttack()
     {
-        if (_attackCor == null && Input.GetMouseButtonDown(0) && _player.Stamina - _staminaValue >= 0 && PlayerManager.Instance.EquipItem.CurrentWeapon != null)
+        if (_attackCor == null && Input.GetMouseButtonDown(0) 
+            && _player.Stamina - _staminaValue >= 0 &&
+            PlayerManager.Instance.EquipItem.CurrentWeapon != null
+            && !EventSystem.current.IsPointerOverGameObject())
         {
             return true;
         }

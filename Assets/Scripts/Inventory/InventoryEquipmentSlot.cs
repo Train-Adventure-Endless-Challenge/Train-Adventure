@@ -15,9 +15,7 @@ public class InventoryEquipmentSlot : InventorySlot
 
     public override bool PutItem(Item item)
     {
-        Debug.Log("PUT ITEM");
         if (item.ItemType != _slotType) return false;
-        Debug.Log("ENTER");
 
         PlayerManager.Instance.EquipItem.EquipItem(item);
         
