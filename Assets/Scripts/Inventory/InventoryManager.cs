@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,9 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     [SerializeField] private Image selectImg;        // 인벤토리 선택 시 나오는 이미지
     private InventorySlot _selectedSlot;
+
+    [SerializeField] private Button _decompositionBtn;
+    [SerializeField] private Button _dropBtn;
     public bool AddItem(Item item)
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
@@ -54,10 +58,28 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     public void SelectSlot(InventorySlot slot)
     {
-        selectImg.gameObject.SetActive(true);
+        selectImg.gameObject.transform.parent.gameObject.SetActive(true);
 
         selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position;
         _selectedSlot = slot;
+    }
+
+    public void DisassembleItem()
+    {
+        InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+
+        if (item == null) return;
+
+        item._item.Decomposition();
+        Destroy(item.gameObject);
+    }
+    public void DropItem()
+    {
+        InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+
+        if (item == null) return;
+        
+
     }
 
 }
