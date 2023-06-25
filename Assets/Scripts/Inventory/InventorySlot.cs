@@ -46,16 +46,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             currentSlotInventoryItem._slot = prev_slot;
             dropInventoryItem._slot = this;
 
-            /*
-            InventoryItem dropInventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            
-            Transform temp = dropInventoryItem._parentAfterDrag;
-            dropInventoryItem._parentAfterDrag = transform;
-
-            InventoryItem currentSlotInventoryItem = transform.GetComponentInChildren<InventoryItem>();
-            
-            currentSlotInventoryItem.gameObject.transform.SetParent(temp);*/
-
 
         }
     }
