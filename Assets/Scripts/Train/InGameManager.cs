@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
-using UnityEditor.UI;
+using System.Collections.Generic;   
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,8 +45,9 @@ public class InGameManager : SceneSingleton<InGameManager>
         StartNextTrain(_nomalTrainObjects[Random.Range(0,_nomalTrainObjects.Length)]);
 
         StartCoroutine(FadeInOutCor(1.5f, 1, 0));
+
         IngameUIController.Instance.UpdateScore(++score);
-        ShakeManager.Instance.IncreaseShake();
+        ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
     }
 
     /// <summary>

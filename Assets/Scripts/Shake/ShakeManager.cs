@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+
 /// <summary>
 /// 흔들림을 관리하는 클래스
 /// </summary>
@@ -14,7 +15,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     private Shake _shake;
     private IncreaseShake _increaseShake;
 
-    public float ShakeAmount { get { return _increaseShake.ImpulseDefinition.m_AmplitudeGain; } }
+    public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
     
     #endregion
 
@@ -42,9 +43,10 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         _shake._impulseDefinition.m_AmplitudeGain -= value;
     }
 
-    public void IncreaseShake()
+    public void IncreaseShake(float value)
     {
-        _shake._impulseDefinition.m_AmplitudeGain += 1; // 증가
+        _shake._impulseDefinition.m_AmplitudeGain += value; ; // 증가
+        IngameUIController.Instance.UpdateShakeAmount(ShakeAmount); // UI 업데이트
     }
     #endregion
 
