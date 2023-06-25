@@ -13,27 +13,41 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         if (transform.childCount == 0) // 슬롯이 비어 있으면 슬롯으로 이동
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
-            inventoryItem._parentAfterDrag = transform;
-            if(inventoryItem._slot != null)
-                inventoryItem._slot.TakeItem(inventoryItem._item);
-            
+            if (inventoryItem == null) return;
+            if (inventoryItem._slot.TakeItem(inventoryItem._item) == false || PutItem(inventoryItem._item) == false)
+            {
+                inventoryItem.transform.SetParent(inventoryItem._parentAfterDrag);
+                return;
+            }
+
             inventoryItem._slot = this;
-            PutItem(inventoryItem._item);
+            inventoryItem._parentAfterDrag = transform;
+
         }
         else // 슬롯이 비어 있지 않으면 아이템 스왑
         {
             InventoryItem dropInventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             InventorySlot prev_slot = dropInventoryItem._slot;
 
-            prev_slot.TakeItem(dropInventoryItem._item);
-            dropInventoryItem._slot = this;
-            this.PutItem(dropInventoryItem._item);
+            if(prev_slot.TakeItem(dropInventoryItem._item) == false 
+                    || this.PutItem(dropInventoryItem._item) == false)
+                dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
             InventoryItem currentSlotInventoryItem = transform.GetComponentInChildren<InventoryItem>();
             
-            this.TakeItem(currentSlotInventoryItem._item);
+            if(this.TakeItem(currentSlotInventoryItem._item) == false 
+                || prev_slot.PutItem(currentSlotInventoryItem._item) == false)
+                dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
+
+
             currentSlotInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
-            prev_slot.PutItem(currentSlotInventoryItem._item);
+            dropInventoryItem.gameObject.transform.SetParent(transform);
+            
+            currentSlotInventoryItem._slot = prev_slot;
+            dropInventoryItem._slot = this;
+
+
+
         }
     }
     
@@ -51,7 +65,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// </summary>
     public virtual bool PutItem(Item item)
     {
-        return false;
+        return true;
     }
 
     /// <summary>
@@ -59,6 +73,6 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// </summary>
     public virtual bool TakeItem(Item item)
     {
-        return false;
+        return true;
     }
 }
