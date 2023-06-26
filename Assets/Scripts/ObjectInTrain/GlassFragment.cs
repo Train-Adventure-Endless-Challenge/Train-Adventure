@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GlassFragment : MonoBehaviour
 {
+    float _damage = 5;
 
     /// <summary>
     /// 바닥에서 범위 
@@ -32,8 +33,7 @@ public class GlassFragment : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // 추후 플레이어에 Entity 적용시키면 주석 해제
-            //other.GetComponent<Player>().Hit();
+            other.GetComponent<Player>().Hit(_damage, gameObject);
         }
     }
 }
