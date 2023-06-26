@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +11,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] Slider _staminaSlider;
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
+
+    [SerializeField] private GameObject _pointerImage;
 
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
@@ -108,14 +111,10 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     /// <param name="gear">변경할 gear수</param>
     public void UpdateGear(int gear)
     {
-
-
         if (_gearUpdateCoroutine != null)
             StopCoroutine(_gearUpdateCoroutine);
 
         _gearUpdateCoroutine = StartCoroutine(TextCountCor(_gearText, gear, float.Parse(_gearText.text)));
-
-
     }
 
     /// <summary>
@@ -145,5 +144,43 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         text.text = current.ToString();
 
         _gearUpdateCoroutine = null;
+    }
+
+    /// <summary>
+    /// 흔들림 수치를 업데이트하는 함수
+    /// </summary>
+    /// <param name="shakeAmount">목표 흔들림 수치</param>
+    public void UpdateShakeAmount(float endShakeAmount)
+    {
+        StartCoroutine(UpdateShakeAmountCor(_pointerImage.transform.rotation.z, endShakeAmount * 36f));
+    }
+
+    /// <summary>
+    /// 흔들림 수치 Pointer 방향을 자연스럽게 돌리는 코루틴
+    /// </summary>
+    /// <param name="start">시작 수치</param>
+    /// <param name="end">목표 수치</param>
+    /// <returns></returns>
+    private IEnumerator UpdateShakeAmountCor(float start, float end)
+    {
+        float time = 1f;
+        float current = 0;
+        float percent = 0;
+
+        while (percent < 1)
+        {
+            current += Time.deltaTime;
+            percent = current / time;
+
+            float zRotation = Mathf.Lerp(start, end, percent) % 360.0f;
+
+            _pointerImage.transform.eulerAngles = 
+                new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, zRotation);
+
+            yield return null;
+        }
+
+        _pointerImage.transform.eulerAngles =
+            new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, end);
     }
 }

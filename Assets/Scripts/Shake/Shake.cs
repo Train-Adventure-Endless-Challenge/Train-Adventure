@@ -48,6 +48,7 @@ public class Shake : MonoBehaviour
     /// <returns></returns>
     private IEnumerator ShakeCor()
     {
+        Camera camera = Camera.main;
         _shakeCor = ShakeCor(); // 코루틴 할당
         while (true)
         {
@@ -56,7 +57,7 @@ public class Shake : MonoBehaviour
             float eventLength = _impulseDefinition.m_TimeEnvelope.m_AttackTime + _impulseDefinition.m_TimeEnvelope.m_SustainTime; // 이벤트 시간
             if (now - _lastEventTime > eventLength) // 전 흔들림이 끝났다면
             {
-                _impulseDefinition.CreateEvent(transform.position, Vector3.down); // 흔들림 이벤트 생성
+                _impulseDefinition.CreateEvent(camera.transform.position, Vector3.down); // 흔들림 이벤트 생성
                 _lastEventTime = now;                                             // 이벤트 시간 할당
             }
             yield return new WaitForEndOfFrame();

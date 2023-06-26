@@ -8,8 +8,8 @@ public class NomalTrain : Train
     [SerializeField] private Animation _frontDoorAnimation;
 
     [SerializeField] private GameObject[] _objectsInTrainPrefab; // 기차 내 오브젝트 프리팹이 모두 있는 배열
-    [SerializeField] private GameObject treasureBox;
-    [SerializeField] private Transform treasureBoxSpawnPoint;
+    [SerializeField] private GameObject _treasureBox;
+    [SerializeField] private Transform _treasureBoxSpawnPoint;
 
     private int _enemyCount;
     private bool _isClear;                                                     
@@ -31,11 +31,11 @@ public class NomalTrain : Train
         // 오브젝트들 모두 생성
         SpawnPointSystem system = Instantiate(_objectsInTrainPrefab[UnityEngine.Random.Range(0, _objectsInTrainPrefab.Length)], 
             transform.position, Quaternion.identity).GetComponent<SpawnPointSystem>();
-        
+
         // 초기화
-        _enemyCount = system.EnemyCount;
         system.Init(KillEnemy);
         system.transform.parent = transform;
+        _enemyCount = system.EnemyCount;
     }
     private void ClearStage()
     {
@@ -43,9 +43,9 @@ public class NomalTrain : Train
             return;
 
         _isClear = true;
-        _frontDoorAnimation.Play(); // 문 Open
+        _frontDoorAnimation.Play(); // 문 Open   
 
-        Instantiate(treasureBox, treasureBoxSpawnPoint.position, Quaternion.identity); // 상자 생성 
+        Instantiate(_treasureBox, _treasureBoxSpawnPoint.position, Quaternion.identity); // 상자 생성 
     }
 
     /// <summary>

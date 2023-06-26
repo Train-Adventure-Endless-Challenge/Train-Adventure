@@ -9,17 +9,14 @@ public class SpawnPointSystem : MonoBehaviour
 
     [SerializeField] private EnemySpawnPoint[] _enemySpawnPoints;           // 몬스터 스폰 포인트
 
-    void Start()
-    {
-        EnemyCount = _enemySpawnPoints.Length;
-    }
-
     /// <summary>
     /// 초기화함수
     /// </summary>
     /// <param name="enemyDieAction">적이 죽었을 때 실행할 함수</param>
     public void Init(Action enemyDieAction)
     {
+        EnemyCount = _enemySpawnPoints.Length;
+
         for (int i = 0; i < _enemySpawnPoints.Length; i++)
         {
             Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position,

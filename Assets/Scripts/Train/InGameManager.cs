@@ -1,8 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph;
-using UnityEditor.UI;
+using System.Collections.Generic;   
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,10 +50,15 @@ public class InGameManager : SceneSingleton<InGameManager>
         StartNextTrain(_nomalTrainObjects[Random.Range(0,_nomalTrainObjects.Length)]);
 
         StartCoroutine(FadeInOutCor(1.5f, 1, 0));
+
         IngameUIController.Instance.UpdateScore(++score);
+        ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
     }
 
-    // 다음 기차로 이동했을 때 함수
+    /// <summary>
+    /// 다음 기차로 이동했을 때 함수
+    /// </summary>
+    /// <param name="train">생성할 기차</param>
     public void StartNextTrain(GameObject train)
     {
         _currentTrain.DestroyGameObejct();
@@ -74,7 +76,12 @@ public class InGameManager : SceneSingleton<InGameManager>
         _backgroundGroup.position += new Vector3(0, 0, nextPosition.z);
     }
 
-    // 기차 생성 함수
+    /// <summary>
+    /// 기차 생성 함수
+    /// </summary>
+    /// <param name="train">생성할 기차</param>
+    /// <param name="position">위치</param>
+    /// <returns></returns>
     private Train CreateTrain(GameObject train , Vector3 position)
     {
         return Instantiate(train, position, Quaternion.identity).GetComponent<Train>();
@@ -104,7 +111,7 @@ public class InGameManager : SceneSingleton<InGameManager>
             fadeImage.color = color;
 
             PlayerManager.Instance.StopMove();
-            PlayerManager.Instance.gameObject.transform.position = _currentTrain.playerSpawnPoint.position;
+            PlayerManager.Instance.gameObject.transform.position = _currentTrain._playerSpawnPoint.position;
 
             yield return null;
         }

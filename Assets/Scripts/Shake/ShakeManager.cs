@@ -1,4 +1,6 @@
+using Cinemachine;
 using UnityEngine;
+
 /// <summary>
 /// 흔들림을 관리하는 클래스
 /// </summary>
@@ -11,9 +13,8 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     [SerializeField] private float _maxValue = 10.0f; // 흔들림 최대값
 
     private Shake _shake;
-    private IncreaseShake _increaseShake;
 
-    public float ShakeAmount { get { return _increaseShake.ImpulseDefinition.m_AmplitudeGain; } }
+    public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
     
     #endregion
 
@@ -24,18 +25,27 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     private void Awake()
     {
         _shake = GetComponent<Shake>();
-        _increaseShake = GetComponent<IncreaseShake>();
     }
 
     private void Start()
     {
         _shake.StartShake();
-        _increaseShake.StartIncreaseShake(_waitTime, _maxValue);
     }
 
     public void ClearShake()
     {
-        _increaseShake.ClearShake();
+        _shake._impulseDefinition.m_AmplitudeGain = 0;
+    }
+
+    public void DecreaseShake(float value)
+    {
+        _shake._impulseDefinition.m_AmplitudeGain -= value;
+    }
+
+    public void IncreaseShake(float value)
+    {
+        _shake._impulseDefinition.m_AmplitudeGain += value; ; // 증가
+        IngameUIController.Instance.UpdateShakeAmount(ShakeAmount); // UI 업데이트
     }
     #endregion
 
