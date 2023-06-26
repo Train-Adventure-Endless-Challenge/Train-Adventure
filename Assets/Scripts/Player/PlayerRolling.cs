@@ -110,6 +110,7 @@ public class PlayerRolling : MonoBehaviour
     public IEnumerator RollCor(Vector3 startPosition)
     {
         _currentTime = 0f;
+        float _isGodModeFalseTime = .5f;
         _lerpTime = 0.65f;
         _isGodMode = true;
         _animator.SetBool("IsRoll", true);
@@ -124,6 +125,7 @@ public class PlayerRolling : MonoBehaviour
                 _currentTime = _lerpTime;
             }
 
+            if (_isGodModeFalseTime < _currentTime) _isGodMode = false;
             float _curveValue = _rollingCurve.Evaluate(_currentTime / _lerpTime);
 
             _moveDirection = Vector3.Lerp(Vector3.zero, _endPosition, _curveValue);
