@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 243f213441843174ca1de80ff6d38362, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _activateShakingCondition: 7
   _rigid: {fileID: 8923672939364561810}
 --- !u!54 &8923672939364561810
 Rigidbody:
