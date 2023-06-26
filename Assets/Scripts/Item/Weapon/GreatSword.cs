@@ -20,7 +20,6 @@ public class GreatSword : Weapon
     public override void Attack()
     {
         base.Attack();
-        _trailRenderer.enabled = true;
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
     }
@@ -28,7 +27,11 @@ public class GreatSword : Weapon
     
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(_attackSpeed);
+        yield return new WaitForSeconds(_attackSpeed / 2);
+
+        _trailRenderer.enabled = true;
+
+        yield return new WaitForSeconds(_attackSpeed / 2);
         _trailRenderer.enabled = false;
         _weaponCollider.enabled = false;
     }
