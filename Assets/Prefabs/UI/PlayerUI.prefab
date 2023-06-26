@@ -2464,7 +2464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2640,7 +2640,6 @@ MonoBehaviour:
   _staminaSlider: {fileID: 7467809885255578502}
   _scoreText: {fileID: 7467809884622296712}
   _gearText: {fileID: 1133903645}
-  _fadeImage: {fileID: 0}
 --- !u!1 &7467809886006266083
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public enum ArmorType
+public enum Armortype
 {
-    hat,
-    top,
-    bottom,
-    shoes,
+    hat = 0,
+    top = 1,
+    bottom = 2,
+    shoes = 3,
     gloves,
     mask,
     cloak
+}
+
+public enum Itemtype
+{
+    weapon,
+    armor,
 }
 
 public class Item : MonoBehaviour
@@ -21,7 +27,6 @@ public class Item : MonoBehaviour
 
     #region Stat
     // ------------------------------------------------ 스탯 ----------------------------------------------------------
-    protected int _id;
     protected string _name;                               
     protected string _description;
     protected float _additionalHp;
@@ -39,7 +44,8 @@ public class Item : MonoBehaviour
 
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
 
-    public int Id { get { return _id; } }
+    [SerializeField] protected Itemtype _itemType;
+    public int Id { get { return itemData.Id; } }
     public string Name { get { return _name; } }
     public string Description { get { return _description; } }  
     public float AdditionalHp { get { return _additionalHp; } }
@@ -52,13 +58,13 @@ public class Item : MonoBehaviour
 
     public int Level { get { return _level; } }
 
-    public UnityEvent _levelupEvent;
+    public Itemtype ItemType { get { return _itemType; } }
+
     #endregion
     public Item(Item item)
     {
         itemData = item.ItemData;
 
-        _id = item.Id;
         _name = item.Name;
         _description = item.Description;
         _additionalHp = item.AdditionalHp;
@@ -102,7 +108,6 @@ public class Item : MonoBehaviour
     /// </summary>
     protected virtual void Init()
     {
-        _id = itemData.Id;
         _name = itemData.Name;
         _description = itemData.Description;
         _additionalHp = itemData.AdditionalHp;
@@ -112,7 +117,6 @@ public class Item : MonoBehaviour
         _additionalAttackSpeed = itemData.AdditionalAttackSpeed;
         _additionalSpeed = itemData.AdditionalSpeed;
         _durability = itemData.MaxDurability;
-        _levelupEvent.AddListener(Levelup);
     }
 
 
@@ -150,7 +154,7 @@ public class Item : MonoBehaviour
     /// <summary>
     /// 아이템을 강화할 때 호출 되는 함수
     /// </summary>
-    protected virtual void Levelup()
+    public virtual void Levelup()
     {
         if (_level >= 1) return;
         
