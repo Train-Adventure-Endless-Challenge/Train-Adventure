@@ -30,7 +30,7 @@ public abstract class ObjectInTrain : Entity
     /// </summary>
     public void ShakingCheck()
     {
-        if(_isActivate == false /*&& 흔들림 수치 검사*/)
+        if(_isActivate == false && ShakeManager.Instance.ShakeAmount > _activateShakingCondition)
         {
             ActivateByShaking();
             _isActivate = true;
