@@ -10,11 +10,13 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [Header("UI")]
     [SerializeField] private Image _image;                  // 아이템 아이콘 이미지
     [SerializeField] private TMP_Text _countText;
-
+    
     [HideInInspector] public Item _item;                   
     [HideInInspector] public int _count = 1;                // 아이템 갯수
-    [HideInInspector] public Transform _parentAfterDrag; 
+    [HideInInspector] public Transform _parentAfterDrag;
 
+    public InventorySlot _slot;                             // 현재 들어가 있는 slots
+    public Image ItemImage { get { return _image; } }
     /// <summary>
     /// 초기화 함수
     /// </summary>
@@ -60,6 +62,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
+        InventoryManager.Instance.SelectSlot(_slot); // 아이템을 옮겼을 때 옮긴쪽으로 Select 이동
         _image.raycastTarget = true;
         _countText.raycastTarget = true;
         transform.SetParent(_parentAfterDrag); 

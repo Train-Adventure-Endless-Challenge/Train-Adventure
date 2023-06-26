@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.EventSystems;
 
 #endregion
 
@@ -29,7 +30,6 @@ public class PlayerAttack : MonoBehaviour
     private Player _player;                     // 플레이어 데이터 담당 클래스
     private Animator _animator;                 // 애니메이션
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
-    private WeaponController _weaponController; // 무기 담당 클래스
 
     private Coroutine _attackCor; // 플레이어 공격 코루틴을 담을 변수
 
@@ -63,7 +63,6 @@ public class PlayerAttack : MonoBehaviour
         _player = GetComponent<Player>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
-        _weaponController = GetComponent<WeaponController>();
     }
 
     /// <summary>
@@ -101,7 +100,10 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private bool CanAttack()
     {
-        if (_attackCor == null && Input.GetMouseButtonDown(0) && _player.Stamina - _staminaValue >= 0)
+        if (_attackCor == null && Input.GetMouseButtonDown(0) 
+            && _player.Stamina - _staminaValue >= 0 &&
+            PlayerManager.Instance.EquipItem.CurrentWeapon != null
+            && !EventSystem.current.IsPointerOverGameObject())
         {
             return true;
         }
@@ -116,7 +118,9 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private IEnumerator AttackCor()
     {
-        Weapon curWeapon = _weaponController._currentWeapon; // 무기 변경
+        Weapon curWeapon = PlayerManager.Instance.EquipItem.CurrentWeapon; // 무기 변경
+
+        if (curWeapon == null) { StopCoroutine(_attackCor); _attackCor = null; }
 
         _animator.SetBool("IsAttack", true);          // 애니메이션 실행
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
@@ -143,7 +147,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void AttackCollsionOnEvent()
     {
-        _weaponController._currentWeapon.AttackCollisionOn();
+        PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
     #endregion
 }

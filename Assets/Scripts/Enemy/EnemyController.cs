@@ -1,10 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Common;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public abstract class EnemyController : Entity
 {
@@ -50,7 +49,7 @@ public abstract class EnemyController : Entity
     [HideInInspector] public EnemyFieldOfView _enemyFieldOfView;
     public bool _isCurrentAttackCor;
 
-    public EnemyUI _enemyUI;
+    [HideInInspector] public EnemyUI _enemyUI;
     public int _eventDamage;        // 받은 데미지
 
     public Action _dieEvent;
@@ -85,6 +84,8 @@ public abstract class EnemyController : Entity
 
         _agent.stoppingDistance = AttackRange;
 
+        _dieEvent += GearDrop;
+
     }
 
 
@@ -116,10 +117,21 @@ public abstract class EnemyController : Entity
         ChangeState<EnemyHitState>();
     }
 
+    public abstract void DieEvent();
+
     public override void Die()
     {
-        Destroy(gameObject);
         _dieEvent.Invoke();
+        Destroy(gameObject);
+    }
+
+    /// <summary>
+    /// 기어 드랍 함수 
+    /// _dieEvent에 추가하여 호출
+    /// </summary>
+    private void GearDrop()
+    {
+        GearSystem.Instance.AddGear(UnityEngine.Random.Range(2, 4));
     }
 
     /// <summary>

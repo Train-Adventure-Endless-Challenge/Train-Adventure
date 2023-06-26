@@ -66,6 +66,8 @@ public class PlayerHit : MonoBehaviour
         if (_player.Hp <= 0)
         {
             _playerDie.Die();
+            InGameManager.Instance.GameOver();
+
             return;
         }
         _player.playerState = PlayerState.Hit; // 플레이어의 상태 변경

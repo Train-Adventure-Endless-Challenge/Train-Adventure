@@ -52,7 +52,7 @@ public class ItemUpgradeSystem : MonoBehaviour
     {
         try
         {
-            EquipedItem._levelupEvent.Invoke();
+            EquipedItem.Levelup();
         }
         catch
         {
