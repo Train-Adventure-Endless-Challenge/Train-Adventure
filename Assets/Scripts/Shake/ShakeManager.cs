@@ -13,7 +13,6 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     [SerializeField] private float _maxValue = 10.0f; // 흔들림 최대값
 
     private Shake _shake;
-    private IncreaseShake _increaseShake;
 
     public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
     
@@ -35,7 +34,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
 
     public void ClearShake()
     {
-        _increaseShake.ClearShake();
+        _shake._impulseDefinition.m_AmplitudeGain = 0;
     }
 
     public void DecreaseShake(float value)
