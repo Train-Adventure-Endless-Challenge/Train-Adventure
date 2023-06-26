@@ -215,6 +215,8 @@ public class Player : Entity
 
     public override void Hit(float damage, GameObject attacker)
     {
+        if (PlayerManager.Instance.IsGodMode) return;
+
         _playerHit.Hit(damage);
         IngameUIController.Instance.UpdateHp(_hp, _maxHp);
     }

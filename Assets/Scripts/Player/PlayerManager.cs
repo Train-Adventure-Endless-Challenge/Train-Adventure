@@ -25,6 +25,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     private PlayerEquip _playerEquip;
 
     public PlayerEquip EquipItem { get { return _playerEquip; } }
+    public bool IsGodMode { get { return _playerRolling._isGodMode; } }
     #endregion
 
     #region Function
