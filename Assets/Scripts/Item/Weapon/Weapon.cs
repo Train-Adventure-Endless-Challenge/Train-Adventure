@@ -69,6 +69,8 @@ public class Weapon : Item
     /// </summary>
     public virtual void UseActiveSkill()
     {
+        if (currentCoolTime > Time.time) return;
+
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + itemData.SkillCooltime;
     }
