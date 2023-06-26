@@ -196,7 +196,7 @@ public class Item : MonoBehaviour
     {
         //3~7개
         int addedGear = UnityEngine.Random.Range(3, 8);
-        GearSystem.Instance.AddGear(addedGear);
+        GearManager.Instance.AddGear(addedGear);
         //TODO: 아이템 포인터 null로 만들기
     }
 
@@ -207,7 +207,7 @@ public class Item : MonoBehaviour
     {
         //2~5개
         int addedGear = UnityEngine.Random.Range(2, 6);
-        GearSystem.Instance.AddGear(addedGear);
+        GearManager.Instance.AddGear(addedGear);
 
         //TODO: 아이템 포인터 null로 만들기
     }

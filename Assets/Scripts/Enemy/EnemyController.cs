@@ -131,7 +131,7 @@ public abstract class EnemyController : Entity
     /// </summary>
     private void GearDrop()
     {
-        GearSystem.Instance.AddGear(UnityEngine.Random.Range(2, 4));
+        GearManager.Instance.AddGear(UnityEngine.Random.Range(2, 4));
     }
 
     /// <summary>

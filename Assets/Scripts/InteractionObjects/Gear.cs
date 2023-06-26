@@ -30,7 +30,7 @@ public class Gear : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            GearSystem.Instance.AddGear(_acquisitionsGear);
+            GearManager.Instance.AddGear(_acquisitionsGear);
             Destroy(gameObject);
         }
     }
