@@ -1,3 +1,5 @@
+
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,16 +7,23 @@ using UnityEngine;
 public class TreasureBox : InteractionObject
 {
 
+    Animator _anim;
+
     /// <summary>
     /// 보물상자에서 나오는 기어 수
     /// </summary>
     private int _GearCount = 5;
 
+    private void Awake()
+    {
+        _anim = GetComponent<Animator>();
+    }
+
     [ContextMenu("OPEN")]
     public override void Interact()
     {
         GetComponent<Collider>().isTrigger = true;
-        //TODO: 애니메이션 실행
+        _anim.SetTrigger("Open");
         StartCoroutine(BoxOpenCor());
         
     }
