@@ -20,6 +20,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
     private PlayerAttack _playerAttack;
+    private PlayerSkill _playerSkill;
     private PlayerStamina _playerStamina;
     private PlayerInteraction _playerInteraction;
     private PlayerEquip _playerEquip;
@@ -59,11 +60,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerStamina.Recover();
 
 
-        if (_player.playerState != PlayerState.Hit)
+        if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
             _playerRolling.Roll();
         }
-        if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit)
+        if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
             _playerAttack.Attack();
             _playerController.Move();
@@ -72,8 +73,12 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             _playerStamina.RecoverStop();
         }
-        
-        _playerInteraction.Interact(); // 상호작용 실행
+        if(_player.playerState != PlayerState.Rolling || _player.playerState != PlayerState.Attack && _player.playerState != PlayerState.Hit)
+        {
+            _playerSkill.Skill();
+        }
+
+            _playerInteraction.Interact(); // 상호작용 실행
     }
 
     private void Init()
@@ -82,6 +87,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerController = GetComponent<PlayerController>();
         _playerRolling = GetComponent<PlayerRolling>();
         _playerAttack = GetComponent<PlayerAttack>();
+        _playerSkill = GetComponent<PlayerSkill>();
         _playerStamina = GetComponent<PlayerStamina>();
         _playerInteraction = _interactionTransform.GetComponent<PlayerInteraction>();
         _playerEquip = GetComponent<PlayerEquip>();
