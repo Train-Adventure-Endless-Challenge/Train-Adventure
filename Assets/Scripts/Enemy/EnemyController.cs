@@ -31,7 +31,10 @@ public abstract class EnemyController : Entity
             _hp = value;
             if (_hp <= 0)
             {
-                _stateMachine.ChangeState<EnemyDieState>();
+                if (EnemyType != EnemyType.Boss)
+                    _stateMachine.ChangeState<EnemyDieState>();
+                else
+                    _stateMachine.ChangeState<BossEnemyDieState>();
             }
         }
     }
