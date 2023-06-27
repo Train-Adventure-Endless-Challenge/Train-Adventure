@@ -65,8 +65,18 @@ public abstract class EnemyController : Entity
     protected virtual void Start()
     {
         Init();
-        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
-        _stateMachine.AddState(new EnemyDieState());
+        if(EnemyType != EnemyType.Boss)
+        {
+            _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
+            _stateMachine.AddState(new EnemyDieState());
+
+        }
+        else
+        {
+            _stateMachine = new StateMachine<EnemyController>(this, new BossEnemyIdleState());
+            //_stateMachine.AddState(new BossEnemyDieState()); 추후 보스 State 설정 시에 추가
+        }
+
     }
 
     /// <summary>

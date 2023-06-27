@@ -9,7 +9,7 @@ public enum EnemyType
 
     scientist,       //미친과학자
 
-    BossCave
+    Boss            // 보스
 
 
 }
