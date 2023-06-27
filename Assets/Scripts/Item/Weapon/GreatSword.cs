@@ -7,10 +7,11 @@ public class GreatSword : Weapon
     [SerializeField] private TrailRenderer _trailRenderer;
 
     private string _targetLayer = "Enemy";
-
-
+    [SerializeField] private float _skillRadius;
+    
     private List<GameObject> _detectionLists = new List<GameObject>();
 
+    [SerializeField] private GameObject _skillEffectPrefab;
     protected override void Init()
     {
         base.Init();
