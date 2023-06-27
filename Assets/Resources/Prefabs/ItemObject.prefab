@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Id: 0
-  _itemData: {fileID: 0}
+  _item: {fileID: 0}
+  _itemData: {fileID: 11400000, guid: 0263971dc5bf4454bb235f6c60d51594, type: 2}
 --- !u!65 &1455136202708117725
 BoxCollider:
   m_ObjectHideFlags: 0

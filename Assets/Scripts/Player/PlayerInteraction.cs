@@ -22,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private Player _player;
 
+    Outline lastDetectionObject; // 마지막으로 찾은 오브젝트
     #endregion
 
     #region Function
@@ -62,23 +63,39 @@ public class PlayerInteraction : MonoBehaviour
 
         hits = Physics.OverlapSphere(origin, _range, _targetLayer); // 객체 감지
 
+        if (hits.Length <= 0)
+        {
+            if (lastDetectionObject != null) lastDetectionObject.enabled = false;
+            lastDetectionObject = null;
+            return;
+        }
+
+        int i = 0; // 첫번째 오브젝트를 가져오기위한 변수
+
+
         foreach (Collider hit in hits)
         {
             if (hit.CompareTag("Interaction Object")) // 상호작용 객체라면
             {
-                // 적의 위치를 가져와서 플레이어와의 각도를 계산
-                Vector3 direction = hit.transform.position - origin;
-                float angle = Vector3.Angle(transform.forward, direction);
-
-                // 감지 범위 내에 있는지 체크
-                if (angle < _detectionAngle * 0.5f)
+                if (i == 0) // 첫번째라면
                 {
-                    if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
-                    {
-                        hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
-                    }
+                    // 마지막 오브젝트와 첫번째 오브젝트가 다르다면 마지막 비활성화
+                    // => 움직여서 가장 가까운 오브젝트가 바뀔 경우
+                    if (hit != lastDetectionObject && lastDetectionObject != null) lastDetectionObject.enabled = false;
+
+                    lastDetectionObject = hit.GetComponentInChildren<Outline>();
+                    lastDetectionObject.enabled = true;
+                }
+                else hit.GetComponentInChildren<Outline>().enabled = false;
+
+
+                if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
+                {
+                    hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
                 }
             }
+
+            i++;
         }
     }
 
