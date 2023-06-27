@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     private float _runSpeedScale;    // 달리기 속도 비율
     private float _slowSpeedScale;   // 감속 비율 
 
+    private bool isGrounded;
+    [SerializeField] private LayerMask _groundMask;
     #endregion
 
     #region SmoothMove
@@ -160,7 +162,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void UseGravity()
     {
-        if (_controller.isGrounded == false)          // 땅에 닿아 있지 않다면
+        if (isGrounded == false)          // 땅에 닿아 있지 않다면
         {
             _velocity.y += _gravity * Time.deltaTime; // 중력 방향 할당
         }
@@ -199,6 +201,20 @@ public class PlayerController : MonoBehaviour
         _changeSlowSpeedCor = StartCoroutine(ChangeSlowSpeedCor(endValue, lerpTime)); // 감속 코루틴 실행
     }
 
+    public void GroundedCheck()
+    {
+        RaycastHit hitinfo;
+        Physics.Raycast(transform.position - Vector3.down * 0.5f, Vector3.down, out hitinfo,0.65f);
+        if(hitinfo.collider != null)
+        {
+            Debug.Log(hitinfo.collider.name);
+        }
+        else
+        {
+            Debug.Log("없음");
+        }
+        isGrounded = (hitinfo.collider != null);
+    }
     #endregion
 
     #region SmoothMove
