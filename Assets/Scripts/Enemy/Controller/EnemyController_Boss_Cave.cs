@@ -78,7 +78,7 @@ public class EnemyController_Boss_Cave : EnemyController
         if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
         {
             _isCurrentAttackCor = false;
-            ChangeState<EnemyAttackWalkState>();
+            ChangeState<BossEnemyAttackWalkState>();
 
             yield break;
         }
@@ -100,7 +100,7 @@ public class EnemyController_Boss_Cave : EnemyController
         if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
         {
             _isCurrentAttackCor = false;
-            ChangeState<EnemyAttackWalkState>();
+            ChangeState<BossEnemyAttackWalkState>();
 
             yield break;
         }
@@ -118,7 +118,7 @@ public class EnemyController_Boss_Cave : EnemyController
         if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
         {
             _isCurrentAttackCor = false;
-            ChangeState<EnemyAttackWalkState>();
+            ChangeState<BossEnemyAttackWalkState>();
 
             yield break;
         }
@@ -135,7 +135,7 @@ public class EnemyController_Boss_Cave : EnemyController
     {
         _agent.isStopped = false;
         _isCurrentAttackCor = false;
-        ChangeState<EnemyIdleState>();
+        ChangeState<BossEnemyIdleState>();
     }
 
     /// <summary>
