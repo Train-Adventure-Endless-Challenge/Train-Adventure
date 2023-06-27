@@ -24,7 +24,7 @@ public class BossEnemyAttackWalkState : State<EnemyController>
         // 초기화
         _agent = _enemyController._agent;
         _fov = _enemyController._enemyFieldOfView;
-        _enemyController._anim.SetBool("Attack", true);
+        _enemyController._anim.SetBool("Walk", true);
 
         _enemyController._isCurrentAttackCor = false;
 
@@ -59,7 +59,7 @@ public class BossEnemyAttackWalkState : State<EnemyController>
 
     public override void OnExit()
     {
-        _enemyController._anim.SetBool("Attack", false);
+        _enemyController._anim.SetBool("Walk", false);
         base.OnExit();
 
     }
