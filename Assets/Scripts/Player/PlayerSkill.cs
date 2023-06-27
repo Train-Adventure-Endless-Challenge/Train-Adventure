@@ -71,15 +71,22 @@ public class PlayerSkill : MonoBehaviour
         return false;
     }
 
+    /// <summary>
+    /// 공격 콜라이더 활성화 이벤트 함수
+    /// </summary>
     public void AttackCollsionOnEvent()
     {
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
 
+    /// <summary>
+    /// 스킬 발동 이벤트 함수
+    /// </summary>
     public void SkillEvent()
     {
         PlayerManager.Instance.EquipItem.CurrentWeapon.SkillEventFunc();
     }
+
 
     IEnumerator SkillCor()
     {
