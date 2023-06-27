@@ -394,12 +394,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0646cb0cbd63c4e9945047227b49d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &408219697 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 635215942287709950, guid: a2c350fdf1c82474d95e3a9d14b65590,
-    type: 3}
-  m_PrefabInstance: {fileID: 1586892068}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &588395748
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1042,12 +1036,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.29830715
+      value: 0.29830718
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.36218616
+      value: -0.3621862
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
@@ -1074,11 +1068,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: QuarterViewCam
       objectReference: {fileID: 0}
-    - target: {fileID: 635215942287709950, guid: a2c350fdf1c82474d95e3a9d14b65590,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 635215942287709951, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_Follow
@@ -1089,26 +1078,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 588395749}
-    - target: {fileID: 635215943010028183, guid: a2c350fdf1c82474d95e3a9d14b65590,
-        type: 3}
-      propertyPath: m_XDamping
-      value: 5.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 635215943010028183, guid: a2c350fdf1c82474d95e3a9d14b65590,
-        type: 3}
-      propertyPath: m_FollowOffset.x
-      value: 6.41
-      objectReference: {fileID: 0}
-    - target: {fileID: 635215943010028183, guid: a2c350fdf1c82474d95e3a9d14b65590,
-        type: 3}
-      propertyPath: m_FollowOffset.y
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 635215943010028183, guid: a2c350fdf1c82474d95e3a9d14b65590,
-        type: 3}
-      propertyPath: m_FollowOffset.z
-      value: -6.41
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a2c350fdf1c82474d95e3a9d14b65590, type: 3}
 --- !u!4 &1586892069 stripped
@@ -1117,18 +1086,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1586892068}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1586892072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 408219697}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f71dc2421c736c488099334cadb3a8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1667440065
 GameObject:
   m_ObjectHideFlags: 0

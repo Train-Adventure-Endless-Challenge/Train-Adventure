@@ -2209,7 +2209,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_TargetDisplay: 0
 --- !u!114 &8203396878571994970
 MonoBehaviour:
@@ -2284,8 +2284,6 @@ MonoBehaviour:
     type: 3}
   _maxStackedItem: 10
   selectImg: {fileID: 1321998329}
-  _decompositionBtn: {fileID: 1840816816}
-  _dropBtn: {fileID: 1723571520}
 --- !u!1 &8203396878865019992
 GameObject:
   m_ObjectHideFlags: 0

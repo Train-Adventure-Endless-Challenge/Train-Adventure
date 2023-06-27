@@ -10,7 +10,7 @@ public abstract class ObjectInTrain : Entity
     /// <summary>
     /// 오브젝트가 흔들림에 따른 효과를 실행 시킬 흔들림 수치
     /// </summary>
-    private int _activateShakingCondition;
+    [SerializeField] private int _activateShakingCondition;
     private bool _isActivate;
 
     public override void Die()
@@ -30,7 +30,7 @@ public abstract class ObjectInTrain : Entity
     /// </summary>
     public void ShakingCheck()
     {
-        if(_isActivate == false /*&& 흔들림 수치 검사*/)
+        if(_isActivate == false && ShakeManager.Instance.ShakeAmount > _activateShakingCondition)
         {
             ActivateByShaking();
             _isActivate = true;

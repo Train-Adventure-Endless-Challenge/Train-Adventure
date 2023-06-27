@@ -124,7 +124,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: bff5b02809d86104098d7ba7d7e02277, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &57015527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1032,6 +1032,7 @@ MonoBehaviour:
   _bossTrainObject: {fileID: 0}
   _storeTrainObject: {fileID: 0}
   fadeImage: {fileID: 1145582259}
+  _gameOverManager: {fileID: 0}
 --- !u!4 &1499924879
 Transform:
   m_ObjectHideFlags: 0

@@ -81,6 +81,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerInteraction.Interact(); // 상호작용 실행
     }
 
+    private void FixedUpdate()
+    {
+        _playerController.GroundedCheck();
+    }
+
     private void Init()
     {
         _player = GetComponent<Player>();
