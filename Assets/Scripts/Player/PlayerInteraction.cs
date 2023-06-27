@@ -22,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private Player _player;
 
-    Outline lastDetectionObject;
+    Outline lastDetectionObject; // 마지막으로 찾은 오브젝트
     #endregion
 
     #region Function
@@ -63,7 +63,6 @@ public class PlayerInteraction : MonoBehaviour
 
         hits = Physics.OverlapSphere(origin, _range, _targetLayer); // 객체 감지
 
-        int i = 0;
         if (hits.Length <= 0)
         {
             if (lastDetectionObject != null) lastDetectionObject.enabled = false;
@@ -71,13 +70,17 @@ public class PlayerInteraction : MonoBehaviour
             return;
         }
 
+        int i = 0; // 첫번째 오브젝트를 가져오기위한 변수
+
+
         foreach (Collider hit in hits)
         {
             if (hit.CompareTag("Interaction Object")) // 상호작용 객체라면
             {
-                // 감지 범위 내에 있는지 체크
-                if (i == 0)
+                if (i == 0) // 첫번째라면
                 {
+                    // 마지막 오브젝트와 첫번째 오브젝트가 다르다면 마지막 비활성화
+                    // => 움직여서 가장 가까운 오브젝트가 바뀔 경우
                     if (hit != lastDetectionObject && lastDetectionObject != null) lastDetectionObject.enabled = false;
 
                     lastDetectionObject = hit.GetComponentInChildren<Outline>();
