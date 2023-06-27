@@ -87,11 +87,11 @@ public class PlayerSkill : MonoBehaviour
         _animator.SetBool("IsSkill", true);          // 애니메이션 실행
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
-        PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
 
         curWeapon.UseActiveSkill(); // 공격 실행
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+
         // 플레이어의 속도에 따라 상태를 Idle, Move로 바꿈
         if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
