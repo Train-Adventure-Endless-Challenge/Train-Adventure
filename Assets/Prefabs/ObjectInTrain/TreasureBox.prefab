@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 379528236548575207}
   - component: {fileID: 6122290505060754608}
   - component: {fileID: 5136642328699716784}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,9 +95,9 @@ GameObject:
   - component: {fileID: 3119879449001400389}
   - component: {fileID: 3119879449001400390}
   - component: {fileID: 3119879449001400391}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TreasureBox
-  m_TagString: Untagged
+  m_TagString: Interaction Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 2850039717540930842}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8561273210504039066}
@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 7344969877655262095}
   - component: {fileID: 7605408304229690582}
   - component: {fileID: 2657350869209199602}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 8561273210504039066}
   - component: {fileID: 1318300819212748890}
   - component: {fileID: 5291143065509556465}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cylinder.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
