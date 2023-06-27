@@ -85,6 +85,16 @@ public class EnemyController_Boss_Cave : EnemyController
 
         _agent.isStopped = true;
 
+        Vector3 dir = _player.transform.position - transform.position;
+        float timer = 0;
+        while (timer <= 1f)       // 약간의 delay. temp 값.
+        {
+            timer += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
+            yield return new WaitForEndOfFrame();
+
+        }
+
         // animation 실행
 
         yield return new WaitForSeconds(AttackSpeed);
@@ -104,8 +114,20 @@ public class EnemyController_Boss_Cave : EnemyController
 
             yield break;
         }
-
         _agent.isStopped = true;
+
+
+        Vector3 dir = _player.transform.position - transform.position;
+        float timer = 0;
+        while (timer <= 1f)       // 약간의 delay. temp 값.
+        {
+            timer += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
+            yield return new WaitForEndOfFrame();
+
+        }
+
+        _anim.SetTrigger("Attack");
 
         yield return new WaitForSeconds(AttackSpeed);
     }
@@ -124,6 +146,16 @@ public class EnemyController_Boss_Cave : EnemyController
         }
 
         _agent.isStopped = true;
+
+        Vector3 dir = _player.transform.position - transform.position;
+        float timer = 0;
+        while (timer <= 1f)       // 약간의 delay. temp 값.
+        {
+            timer += Time.deltaTime;
+            transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(dir), Time.deltaTime * 2);
+            yield return new WaitForEndOfFrame();
+
+        }
 
         yield return new WaitForSeconds(AttackSpeed);
     }
