@@ -117,7 +117,13 @@ public abstract class EnemyController : Entity
         ChangeState<EnemyHitState>();
     }
 
-    public abstract void DieEvent();
+    /// <summary>
+    /// animation clip 실행 event
+    /// </summary>
+    public virtual void DieEvent()
+    {
+        Die();
+    }
 
     public override void Die()
     {

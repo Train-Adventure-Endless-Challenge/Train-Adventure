@@ -105,7 +105,7 @@ public class EnemyController_Range : EnemyController
     /// </summary>
     public override void DieEvent()
     {
-        Die();
+        base.DieEvent();
     }
 
     /// <summary>

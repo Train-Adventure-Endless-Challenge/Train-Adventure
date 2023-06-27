@@ -74,7 +74,7 @@ public class EnemyController_Melee : EnemyController
     }
 
     /// <summary>
-    /// anmation이 끝났을때 clip event
+    ///  공격 anmation이 끝났을때 clip event
     /// </summary>
     public void EndAnmationEvent()
     {
@@ -85,7 +85,7 @@ public class EnemyController_Melee : EnemyController
 
     public override void DieEvent()
     {
-        Die();
+        base.DieEvent();
     }
 
     /// <summary>
