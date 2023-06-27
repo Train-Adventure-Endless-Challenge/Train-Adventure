@@ -53,7 +53,7 @@ public class BossEnemyAttackWalkState : State<EnemyController>
     {
         if (_agent.remainingDistance <= _agent.stoppingDistance + 0.2f && _enemyController._isCurrentAttackCor == false)
         {
-            //_enemyController.ChangeState<EnemyAttackState>();
+            _enemyController.ChangeState<BossEnemyAttackState>();
         }
     }
 
