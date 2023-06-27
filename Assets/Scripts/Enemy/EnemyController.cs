@@ -124,7 +124,9 @@ public abstract class EnemyController : Entity
         if (_isDie) return;
 
         _eventDamage = (int)damage;
-        ChangeState<EnemyHitState>();
+
+        if(EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
+            ChangeState<EnemyHitState>();
     }
 
     /// <summary>
