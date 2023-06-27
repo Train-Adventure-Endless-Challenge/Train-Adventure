@@ -49,7 +49,6 @@ public class PlayerSkill : MonoBehaviour
             _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 공격 상태로 변경
-
             _skillCor = StartCoroutine(SkillCor());
         }
     }
@@ -78,24 +77,32 @@ public class PlayerSkill : MonoBehaviour
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
 
+    public void SkillEvent()
+    {
+        PlayerManager.Instance.EquipItem.CurrentWeapon.SkillEventFunc();
+    }
+
     IEnumerator SkillCor()
     {
         Weapon curWeapon = PlayerManager.Instance.EquipItem.CurrentWeapon; // 무기 변경
 
         if (curWeapon == null) { StopCoroutine(_skillCor); _skillCor = null; }
 
+        PlayerManager.Instance.StopMove();
         _animator.SetBool("IsSkill", true);          // 애니메이션 실행
-        _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
+        _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
 
-        curWeapon.UseActiveSkill(); // 공격 실행
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+
+        _animator.SetBool("IsSkill", false);          // 애니메이션 실행
+        _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
 
         // 플레이어의 속도에 따라 상태를 Idle, Move로 바꿈
         if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
-        _animator.SetBool("IsSkill", false);          // 애니메이션 실행
-        _skillCor = null; // 코루틴 초기화
+
+        _skillCor = null;
     }
 }
