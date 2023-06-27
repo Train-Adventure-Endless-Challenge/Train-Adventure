@@ -22,7 +22,9 @@ public class ItemObject : InteractionObject
            Instantiate(ItemDataManager.Instance.ItemPrefab[Id] as GameObject, transform.position, Quaternion.identity);
         itemObj.transform.parent = transform;
         itemObj.GetComponent<Item>().enabled = false;
-
+        
+        itemObj.AddComponent<Outline>().enabled = false;
+        
         _isDrop = isDrop;
         _item = item;
         _itemData = ItemDataManager.Instance.ItemData[Id];
