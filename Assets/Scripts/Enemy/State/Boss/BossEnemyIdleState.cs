@@ -25,7 +25,7 @@ public class BossEnemyIdleState : State<EnemyController>
     {
         if (_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
-            _enemyController.ChangeState<BossEnemyAttackState>(); 
+            _enemyController.ChangeState<BossEnemyAttackWalkState>(); 
         }
     }
 
