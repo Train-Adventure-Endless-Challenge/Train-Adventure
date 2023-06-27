@@ -56,11 +56,15 @@ public class EnemyController_Boss_Cave : EnemyController
     private void JumpAttack()
     {
         Debug.Log("점프 공격");
+
+        StartCoroutine(JumpAttackCor());
     }
 
     private void PunchAttack()
     {
         Debug.Log("펀치 공격");
+
+        StartCoroutine(PunchAttackCor());
     }
 
     IEnumerator SpawnBombAttackCor()
@@ -83,6 +87,42 @@ public class EnemyController_Boss_Cave : EnemyController
         yield return new WaitForSeconds(AttackSpeed);
 
         
+    }
+
+    IEnumerator JumpAttackCor()
+    {
+        _isCurrentAttackCor = true;
+
+        // 잘못 인식된 경우 나가기
+        if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
+        {
+            _isCurrentAttackCor = false;
+            ChangeState<EnemyAttackWalkState>();
+
+            yield break;
+        }
+
+        _agent.isStopped = true;
+
+        yield return new WaitForSeconds(AttackSpeed);
+    }
+
+    IEnumerator PunchAttackCor()
+    {
+        _isCurrentAttackCor = true;
+
+        // 잘못 인식된 경우 나가기
+        if (Vector3.Distance(transform.position, _player.transform.position) > _agent.stoppingDistance)
+        {
+            _isCurrentAttackCor = false;
+            ChangeState<EnemyAttackWalkState>();
+
+            yield break;
+        }
+
+        _agent.isStopped = true;
+
+        yield return new WaitForSeconds(AttackSpeed);
     }
 
     /// <summary>
