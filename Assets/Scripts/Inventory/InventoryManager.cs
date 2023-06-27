@@ -12,8 +12,28 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     [SerializeField] private int _maxStackedItem = 10;         // 겹칠 수 있는 최대 아이템 수
 
     [SerializeField] private Image selectImg;        // 인벤토리 선택 시 나오는 이미지
+
+    [SerializeField] private GameObject mainInventoryGroup;
+    [SerializeField] private GameObject selectEventObject;
+
+    [SerializeField] private KeyCode inventoryKeyCode;
+    
+
     private InventorySlot _selectedSlot;
     public InventorySlot SelectedSlot {  get { return _selectedSlot; } }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(inventoryKeyCode))
+        {
+            mainInventoryGroup.SetActive(mainInventoryGroup.activeSelf == false);
+            if (mainInventoryGroup.activeSelf == false)
+            {
+                selectEventObject.SetActive(false);
+            }
+        }
+    }
+
     public bool AddItem(Item item)
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
