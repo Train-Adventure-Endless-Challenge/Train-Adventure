@@ -191,7 +191,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 3558f922401523a48b1e2d7167581273, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
 --- !u!4 &180883246
 Transform:
   m_ObjectHideFlags: 0
@@ -524,10 +524,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponTransform: {fileID: 0}
-  _staminaValue: 7
-  _player: {fileID: 0}
-  _animator: {fileID: 0}
-  _playerController: {fileID: 0}
 --- !u!1 &592285275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,9 +1385,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
         type: 3}
+      propertyPath: Id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
       propertyPath: _itemData
       value: 
-      objectReference: {fileID: 11400000, guid: 0263971dc5bf4454bb235f6c60d51594,
+      objectReference: {fileID: 11400000, guid: d3177aac62c8e4e4baea759501e296e2,
         type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf05d20edb19ac4db61211289348fe3, type: 3}
