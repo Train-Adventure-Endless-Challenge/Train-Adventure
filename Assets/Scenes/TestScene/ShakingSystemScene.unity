@@ -124,7 +124,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: bff5b02809d86104098d7ba7d7e02277, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!1 &57015527
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +922,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226416279}
-  m_LocalRotation: {x: 0.29830715, y: -0.36218616, z: 0.12356287, w: 0.8743948}
+  m_LocalRotation: {x: 0.29830718, y: -0.3621862, z: 0.123562865, w: 0.8743948}
   m_LocalPosition: {x: 2.3199997, y: 8.6, z: -13.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1013,7 +1013,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1499924878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1032,6 +1032,7 @@ MonoBehaviour:
   _bossTrainObject: {fileID: 0}
   _storeTrainObject: {fileID: 0}
   fadeImage: {fileID: 1145582259}
+  _gameOverManager: {fileID: 0}
 --- !u!4 &1499924879
 Transform:
   m_ObjectHideFlags: 0
@@ -1203,17 +1204,17 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.29830715
+      value: 0.29830718
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.36218616
+      value: -0.3621862
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.12356287
+      value: 0.123562865
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
