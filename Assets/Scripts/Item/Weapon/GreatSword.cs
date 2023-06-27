@@ -37,6 +37,24 @@ public class GreatSword : Weapon
         _weaponCollider.enabled = false;
     }
 
+    public override void UseActiveSkill()
+    {
+        base.UseActiveSkill();
+        Instantiate(_skillEffectPrefab, PlayerManager.Instance.gameObject.transform.position + Vector3.up * .5f, Quaternion.identity);
+        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.NameToLayer(_targetLayer));
+        Debug.Log(colliders.Length);
+        if (colliders.Length <= 0) return;
+        
+        Debug.Log("ENTER");
+
+        // Hit Stop
+        foreach (Collider col in colliders)
+        {
+            col.gameObject.GetComponent<Entity>().Hit(_damage * 1.5f, gameObject);
+        }
+
+    }
+
     public override void SkillEventFunc()
     {
         base.SkillEventFunc();
@@ -52,4 +70,12 @@ public class GreatSword : Weapon
             Shake();
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(gameObject.transform.position, _skillRadius);
+    }
+
+
 }
