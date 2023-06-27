@@ -16,7 +16,7 @@ public class EnemyController_Boss_Cave : EnemyController
     void CheckAttack()
     {
         int num = Random.Range(0, 101);
-        switch (num / 10)
+        switch (num / 10)           // 정해진 확률에 따른 공격 패턴 변경
         {
             case 0:
             case 1:
@@ -47,6 +47,7 @@ public class EnemyController_Boss_Cave : EnemyController
     {
         Debug.Log("폭탄 생성");
 
+        _anim.SetInteger("AttackInt", 0);
         StartCoroutine(SpawnBombAttackCor());
     }
 
@@ -57,6 +58,7 @@ public class EnemyController_Boss_Cave : EnemyController
     {
         Debug.Log("점프 공격");
 
+        _anim.SetInteger("AttackInt", 1);
         StartCoroutine(JumpAttackCor());
     }
 
@@ -64,6 +66,7 @@ public class EnemyController_Boss_Cave : EnemyController
     {
         Debug.Log("펀치 공격");
 
+        _anim.SetInteger("AttackInt", 2);
         StartCoroutine(PunchAttackCor());
     }
 
