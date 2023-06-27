@@ -205,14 +205,6 @@ public class PlayerController : MonoBehaviour
     {
         RaycastHit hitinfo;
         Physics.Raycast(transform.position - Vector3.down * 0.5f, Vector3.down, out hitinfo,0.65f);
-        if(hitinfo.collider != null)
-        {
-            Debug.Log(hitinfo.collider.name);
-        }
-        else
-        {
-            Debug.Log("없음");
-        }
         isGrounded = (hitinfo.collider != null);
     }
     #endregion

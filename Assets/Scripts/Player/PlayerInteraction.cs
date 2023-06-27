@@ -22,6 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private Player _player;
 
+    Outline lastDetectionObject;
     #endregion
 
     #region Function
@@ -62,8 +63,17 @@ public class PlayerInteraction : MonoBehaviour
 
         hits = Physics.OverlapSphere(origin, _range, _targetLayer); // 객체 감지
 
+        int i = 0;
+        if (hits.Length <= 0)
+        {
+            if (lastDetectionObject != null) lastDetectionObject.enabled = false; 
+            
+            return;
+        }
+
         foreach (Collider hit in hits)
         {
+            Debug.Log(hit.gameObject.name);
             if (hit.CompareTag("Interaction Object")) // 상호작용 객체라면
             {
                 // 적의 위치를 가져와서 플레이어와의 각도를 계산
@@ -71,14 +81,21 @@ public class PlayerInteraction : MonoBehaviour
                 float angle = Vector3.Angle(transform.forward, direction);
 
                 // 감지 범위 내에 있는지 체크
-                if (angle < _detectionAngle * 0.5f)
+                if (i == 0)
                 {
-                    if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
-                    {
-                        hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
-                    }
+                    lastDetectionObject = hit.GetComponent<Outline>();
+                    lastDetectionObject.enabled = true;
+                }
+                else hit.GetComponent<Outline>().enabled = false;
+
+
+                if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
+                {
+                    hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
                 }
             }
+
+            i++;
         }
     }
 
