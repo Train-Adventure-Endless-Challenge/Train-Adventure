@@ -26,7 +26,7 @@ public class Weapon : Item
 
     private CinemachineImpulseSource _shakeImpulse;
 
- 
+    
     void Update()
     {
 
@@ -75,6 +75,10 @@ public class Weapon : Item
         currentCoolTime = Time.time + itemData.SkillCooltime;
     }
 
+    public virtual void SkillEventFunc()
+    {
+
+    }
     protected void Shake()
     {
         _shakeImpulse.GenerateImpulse();

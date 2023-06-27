@@ -36,6 +36,11 @@ public class GreatSword : Weapon
         _weaponCollider.enabled = false;
     }
 
+    public override void SkillEventFunc()
+    {
+        base.SkillEventFunc();
+        UseActiveSkill();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
