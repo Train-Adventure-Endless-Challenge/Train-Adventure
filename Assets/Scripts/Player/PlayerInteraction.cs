@@ -66,27 +66,24 @@ public class PlayerInteraction : MonoBehaviour
         int i = 0;
         if (hits.Length <= 0)
         {
-            if (lastDetectionObject != null) lastDetectionObject.enabled = false; 
-            
+            if (lastDetectionObject != null) lastDetectionObject.enabled = false;
+            lastDetectionObject = null;
             return;
         }
 
         foreach (Collider hit in hits)
         {
-            Debug.Log(hit.gameObject.name);
             if (hit.CompareTag("Interaction Object")) // 상호작용 객체라면
             {
-                // 적의 위치를 가져와서 플레이어와의 각도를 계산
-                Vector3 direction = hit.transform.position - origin;
-                float angle = Vector3.Angle(transform.forward, direction);
-
                 // 감지 범위 내에 있는지 체크
                 if (i == 0)
                 {
-                    lastDetectionObject = hit.GetComponent<Outline>();
+                    if (hit != lastDetectionObject && lastDetectionObject != null) lastDetectionObject.enabled = false;
+
+                    lastDetectionObject = hit.GetComponentInChildren<Outline>();
                     lastDetectionObject.enabled = true;
                 }
-                else hit.GetComponent<Outline>().enabled = false;
+                else hit.GetComponentInChildren<Outline>().enabled = false;
 
 
                 if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
