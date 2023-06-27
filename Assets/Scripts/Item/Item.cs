@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering.Universal;
 
 public enum Armortype
 {
@@ -54,7 +55,7 @@ public class Item : MonoBehaviour
     public int AdditionalDefense { get { return _additionalDefense; } }
     public float AdditionalAttackSpeed { get { return _additionalAttackSpeed; } }
     public float AdditionalSpeed { get { return _additionalSpeed; } }
-
+    public int Durability { get { return _durability; } }
 
     public int Level { get { return _level; } }
 
