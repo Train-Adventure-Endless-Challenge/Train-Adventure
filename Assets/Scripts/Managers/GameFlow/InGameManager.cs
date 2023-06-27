@@ -38,8 +38,7 @@ public class InGameManager : SceneSingleton<InGameManager>
             (_nextTrain._floor.transform.localScale.z / 2)
             + (_currentTrain._floor.transform.localScale.z / 2)) + _trainInterval;
 
-
-        
+        PlayerManager.Instance.gameObject.transform.position = _currentTrain._playerSpawnPoint.position;
     }
 
     /// <summary>

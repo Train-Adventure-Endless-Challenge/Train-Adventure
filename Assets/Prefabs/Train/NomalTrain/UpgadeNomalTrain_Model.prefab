@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1629314203}
   - component: {fileID: 1629314205}
   - component: {fileID: 1629314204}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -603,7 +603,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 1}
-  m_Center: {x: 0, y: 2.9, z: 25.2}
+  m_Center: {x: 0, y: 2.9, z: 23.48}
 --- !u!1001 &423298215107448487
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2158,6 +2158,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8391222552659086748, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -5568371526223589888, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: -5477749408508380018, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2252,6 +2262,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ShakeMachine
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d,
+        type: 3}
+      propertyPath: m_TagString
+      value: Interaction Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513859187771203891, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dcd5e9778da3bc4691f41a8b05ffe3d, type: 3}
