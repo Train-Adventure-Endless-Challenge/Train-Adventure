@@ -7,10 +7,11 @@ public class GreatSword : Weapon
     [SerializeField] private TrailRenderer _trailRenderer;
 
     private string _targetLayer = "Enemy";
-
-
+    [SerializeField] private float _skillRadius;
+    
     private List<GameObject> _detectionLists = new List<GameObject>();
 
+    [SerializeField] private GameObject _skillEffectPrefab;
     protected override void Init()
     {
         base.Init();
@@ -36,6 +37,30 @@ public class GreatSword : Weapon
         _weaponCollider.enabled = false;
     }
 
+    public override void UseActiveSkill()
+    {
+        base.UseActiveSkill();
+        Instantiate(_skillEffectPrefab, PlayerManager.Instance.gameObject.transform.position + Vector3.up * .5f, Quaternion.identity);
+        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
+        Debug.Log(colliders.Length);
+
+        if (colliders.Length <= 0) return;
+
+        Shake();
+
+        foreach (Collider col in colliders)
+        {
+            Debug.Log(col.gameObject.name);
+            col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, gameObject);
+        }
+
+    }
+
+    public override void SkillEventFunc()
+    {
+        base.SkillEventFunc();
+        UseActiveSkill();
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
@@ -46,4 +71,13 @@ public class GreatSword : Weapon
             Shake();
         }
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(gameObject.transform.position, _skillRadius);
+    }
+
+
 }
+

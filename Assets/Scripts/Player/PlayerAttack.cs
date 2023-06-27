@@ -123,10 +123,11 @@ public class PlayerAttack : MonoBehaviour
         if (curWeapon == null) { StopCoroutine(_attackCor); _attackCor = null; }
 
         _animator.SetBool("IsAttack", true);          // 애니메이션 실행
-        _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
         _animator.SetFloat("AttackSpeed",             // 공격속도에 따라 애니메이션 속도 조정
             curWeapon.DefalutAttackSpeed / curWeapon.AttackSpeed);
+        _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
+
 
         curWeapon.Attack(); // 공격 실행
 

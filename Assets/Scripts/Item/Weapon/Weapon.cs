@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections;
 using UnityEngine;
 
 public enum attackType
@@ -26,7 +27,7 @@ public class Weapon : Item
 
     private CinemachineImpulseSource _shakeImpulse;
 
- 
+    public Coroutine _hitStopCor;
     void Update()
     {
 
@@ -69,12 +70,32 @@ public class Weapon : Item
     /// </summary>
     public virtual void UseActiveSkill()
     {
+        if (currentCoolTime > Time.time) return;
+
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + itemData.SkillCooltime;
     }
 
+    public virtual void SkillEventFunc()
+    {
+
+    }
     protected void Shake()
     {
         _shakeImpulse.GenerateImpulse();
+    }
+
+    public void HitStop(float duration)
+    {
+        Time.timeScale = 0;
+        if (_hitStopCor == null) _hitStopCor = StartCoroutine(HitStopCor(duration));
+
+    }
+    IEnumerator HitStopCor(float duration)
+    {
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = 1;
+
+        _hitStopCor = null;
     }
 }

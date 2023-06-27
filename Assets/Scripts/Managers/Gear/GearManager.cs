@@ -29,7 +29,7 @@ public class GearManager : SceneSingleton<GearManager>
     /// <param name="subCount">뺄 기어 수</param>
     public void SubGear(int subCount)
     {
-        if (_gearAmount < subCount || subCount > 0) return;
+        if (_gearAmount < subCount || subCount < 0) return;
         _gearAmount -= subCount;
 
         IngameUIController.Instance.UpdateGear(_gearAmount);

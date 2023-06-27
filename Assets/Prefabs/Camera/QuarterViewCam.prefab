@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 635215942287709944}
   - component: {fileID: 635215942287709951}
   - component: {fileID: 635215942287709945}
+  - component: {fileID: 1586892072}
   m_Layer: 0
   m_Name: QuarterViewCam
   m_TagString: Untagged
@@ -95,6 +96,18 @@ MonoBehaviour:
     m_FrequencyGain: 1
     m_Duration: 1
     m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!114 &1586892072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635215942287709950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f71dc2421c736c488099334cadb3a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &635215943010028181
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,8 +194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 4
-  m_FollowOffset: {x: -5, y: 5, z: -5}
-  m_XDamping: 0
+  m_FollowOffset: {x: 6.41, y: 7, z: -6.41}
+  m_XDamping: 5.28
   m_YDamping: 0
   m_ZDamping: 0
   m_AngularDampingMode: 0
