@@ -1154,6 +1154,8 @@ MonoBehaviour:
   _weaponCollider: {fileID: 5510357528307337339}
   currentCoolTime: 0
   _trailRenderer: {fileID: 5510357528152201045}
+  _skillEffectPrefab: {fileID: 3259989122145073385, guid: 5e5ab90147108e942bfad655c3579b99,
+    type: 3}
 --- !u!136 &5510357528307337339
 CapsuleCollider:
   m_ObjectHideFlags: 0
