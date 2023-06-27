@@ -71,7 +71,6 @@ public class PlayerSkill : MonoBehaviour
         return false;
     }
 
-
     public void AttackCollsionOnEvent()
     {
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
@@ -105,4 +104,6 @@ public class PlayerSkill : MonoBehaviour
 
         _skillCor = null;
     }
+
+
 }

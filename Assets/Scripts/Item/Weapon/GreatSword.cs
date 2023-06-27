@@ -43,10 +43,11 @@ public class GreatSword : Weapon
         Instantiate(_skillEffectPrefab, PlayerManager.Instance.gameObject.transform.position + Vector3.up * .5f, Quaternion.identity);
         Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
         Debug.Log(colliders.Length);
-        if (colliders.Length <= 0) return;
-        
 
-        // Hit Stop
+        if (colliders.Length <= 0) return;
+
+        Shake();
+
         foreach (Collider col in colliders)
         {
             Debug.Log(col.gameObject.name);
