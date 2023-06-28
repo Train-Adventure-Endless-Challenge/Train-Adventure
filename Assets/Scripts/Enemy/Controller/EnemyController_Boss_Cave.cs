@@ -189,6 +189,9 @@ public class EnemyController_Boss_Cave : EnemyController
         yield return new WaitForSeconds(AttackSpeed);
     }
 
+    /// <summary>
+    /// animation event
+    /// </summary>
     public void PunchAttackEvent()
     {
         // 펀치 오브젝트 활성화
