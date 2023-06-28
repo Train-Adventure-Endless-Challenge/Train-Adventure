@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyBomb : MonoBehaviour
+public class EnemySpawnBomb : MonoBehaviour
 {
     float _attackDelayTime = 10f;
     public float _damage;

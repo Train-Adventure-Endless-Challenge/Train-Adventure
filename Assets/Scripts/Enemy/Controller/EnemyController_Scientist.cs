@@ -94,7 +94,7 @@ public class EnemyController_Scientist : EnemyController
         GameObject go = InsBullet(_bombPrefab);
         go.transform.position = _bombTransform.position;
 
-        EnemyBomb _enemyBomb = go.GetComponent<EnemyBomb>();
+        EnemySpawnBomb _enemyBomb = go.GetComponent<EnemySpawnBomb>();
         _enemyBomb._damage = Damage;
         _enemyBomb.Owner = this.gameObject;
     }
