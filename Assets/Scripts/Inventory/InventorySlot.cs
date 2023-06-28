@@ -37,9 +37,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
                 || prev_slot.PutItem(currentSlotInventoryItem._item) == false)
                 dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
-            if (prev_slot.TakeItem(dropInventoryItem._item) == false 
+            if (prev_slot.TakeItem(dropInventoryItem._item) == false
                         || this.PutItem(dropInventoryItem._item) == false)
-                    dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
+                dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
 
             dropInventoryItem._parentAfterDrag = transform;
@@ -51,7 +51,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 
         }
     }
-    
+
     /// <summary>
     /// slot이 클릭되었을 때 실행되는 event함수
     /// </summary>
