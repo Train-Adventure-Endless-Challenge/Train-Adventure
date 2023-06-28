@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,9 +16,16 @@ public class EnemyUI : MonoBehaviour
         _enemyController = GetComponent<EnemyController>();
     }
 
-    private void Start()
+    private void Update()
     {
-        _hpBarSlider.value = _enemyController.HP;
+        Debug.Log(_enemyController.MaxHp);
+    }
+
+    public void Init()
+    {
+        _hpBarSlider.maxValue = _enemyController.MaxHp;
+        _hpBarSlider.value = _enemyController.MaxHp;
+        Debug.Log(_enemyController.MaxHp);
         _hpBarSlider.gameObject.SetActive(false);
     }
 
@@ -31,18 +39,22 @@ public class EnemyUI : MonoBehaviour
 
     IEnumerator UpdateHpCor(float hp)
     {
-        while (true)
-        {
-            yield return null;
+        float time = 1f;
+        float current = 0;
+        float percent = 0;
 
-            _hpBarSlider.value = Mathf.Lerp(_hpBarSlider.value, hp, 10 * Time.deltaTime);
-            
-            if (Mathf.Abs(_hpBarSlider.value - hp) <= 0.1f)
-            {
-                _hpUpdateCoroutine = null;
-                break;
-            }
+        while (percent < 1)
+        {
+            current += Time.deltaTime;
+            percent = current / time;
+
+            _hpBarSlider.value = Mathf.Lerp(_hpBarSlider.value, hp, percent);
+
+            yield return null;
         }
+
         _hpBarSlider.value = hp;
+
+        _hpUpdateCoroutine = null;
     }
 }
