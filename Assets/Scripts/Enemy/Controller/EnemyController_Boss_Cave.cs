@@ -132,6 +132,25 @@ public class EnemyController_Boss_Cave : EnemyController
         yield return new WaitForSeconds(AttackSpeed);
     }
 
+    /// <summary>
+    /// 점프 후 플레이어 공격 데미지 
+    /// animation event clip 중간 점프 바로 후에 실행
+    /// </summary>
+    public void JumpAttackEvent()
+    {
+
+    }
+
+    /// <summary>
+    /// 점프 공격 종료
+    /// animation event clip 종료시 실행 이벤트
+    /// </summary>
+    public void JumpAttackAndEvent()
+    {
+        _isCurrentAttackCor = false;
+        ChangeState<BossEnemyIdleState>();
+    }
+
     IEnumerator PunchAttackCor()
     {
         _isCurrentAttackCor = true;
