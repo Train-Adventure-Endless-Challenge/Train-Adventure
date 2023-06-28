@@ -184,8 +184,17 @@ public class EnemyController_Boss_Cave : EnemyController
 
         }
 
+        _anim.SetTrigger("Attack");
+
         yield return new WaitForSeconds(AttackSpeed);
     }
+
+    public void PunchAttackEvent()
+    {
+        // 펀치 오브젝트 활성화
+    }
+
+    #endregion
 
     /// <summary>
     ///  공격 anmation이 끝났을때 clip event
