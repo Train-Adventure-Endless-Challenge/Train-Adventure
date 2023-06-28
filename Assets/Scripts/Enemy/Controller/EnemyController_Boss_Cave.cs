@@ -1,11 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class EnemyController_Boss_Cave : EnemyController
 {
     PlayerManager _player => PlayerManager.Instance;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        _stateMachine.AddState(new BossEnemyAttackState());
+        _stateMachine.AddState(new BossEnemyAttackWalkState());
+
+
+    }
 
 
     public override void Attack()

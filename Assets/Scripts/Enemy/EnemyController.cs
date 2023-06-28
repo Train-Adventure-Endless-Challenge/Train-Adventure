@@ -77,7 +77,7 @@ public abstract class EnemyController : Entity
         else
         {
             _stateMachine = new StateMachine<EnemyController>(this, new BossEnemyIdleState());
-            //_stateMachine.AddState(new BossEnemyDieState()); 추후 보스 State 설정 시에 추가
+            _stateMachine.AddState(new BossEnemyDieState());
         }
 
     }
