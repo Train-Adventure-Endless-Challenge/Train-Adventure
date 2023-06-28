@@ -13,7 +13,6 @@ public abstract class EnemyController : Entity
     [Header("EnemyData")]
     [SerializeField] private EnemyData _enemyData;
     private string _name;
-    private float _hp;
     private float _damage;
     private float _moveSpeed;
     private float _attackSpeed;
@@ -23,7 +22,7 @@ public abstract class EnemyController : Entity
     public bool _isDie;
 
     public string Name { get { return _name; } }
-    public float HP
+    public override float Hp
     {
         get { return _hp; }
         set
@@ -62,11 +61,13 @@ public abstract class EnemyController : Entity
         _enemyUI = GetComponent<EnemyUI>();
     }
 
-    protected virtual void Start()
+    protected override void Start()
     {
         Init();
         _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
         _stateMachine.AddState(new EnemyDieState());
+        base.Start();
+        _enemyUI.Init();
     }
 
     /// <summary>

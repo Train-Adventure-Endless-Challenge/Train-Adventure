@@ -21,14 +21,13 @@ public class EnemyHitState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-
-
-
         // 체력 감소 및 적용
-        _enemyController.HP -= _enemyController._eventDamage;
-        _enemyController._enemyUI._hpBarSlider.value = _enemyController.HP;
+        _enemyController.Hp -= _enemyController._eventDamage;
 
-        if (_enemyController.HP <= 0) return;
+        _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(_enemyController._enemyUI._hpBarSlider.gameObject.activeSelf == false);
+        _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
+
+        if (_enemyController.Hp <= 0) return;
 
         _enemyController._anim.SetTrigger("Hit");                       // anim
     }
@@ -37,6 +36,4 @@ public class EnemyHitState : State<EnemyController>
     {
         //enemyController 기반 State 필수 구현 함수
     }
-
-
 }
