@@ -6,6 +6,8 @@ public class EnemyController_Boss_Cave : EnemyController
 {
     PlayerManager _player => PlayerManager.Instance;
 
+    [SerializeField] GameObject _enemyAttackObj;        // 펀치 공격 시의 콜라이더 오브젝트
+
     protected override void Start()
     {
         base.Start();
@@ -13,6 +15,7 @@ public class EnemyController_Boss_Cave : EnemyController
         _stateMachine.AddState(new BossEnemyAttackState());
         _stateMachine.AddState(new BossEnemyAttackWalkState());
 
+        _enemyAttackObj.SetActive(false);
 
     }
 
@@ -60,25 +63,6 @@ public class EnemyController_Boss_Cave : EnemyController
         StartCoroutine(SpawnBombAttackCor());
     }
 
-    /// <summary>
-    /// 점프 공격
-    /// </summary>
-    private void JumpAttack()
-    {
-        Debug.Log("점프 공격");
-
-        _anim.SetInteger("AttackInt", 1);
-        StartCoroutine(JumpAttackCor());
-    }
-
-    private void PunchAttack()
-    {
-        Debug.Log("펀치 공격");
-
-        _anim.SetInteger("AttackInt", 2);
-        StartCoroutine(PunchAttackCor());
-    }
-
     IEnumerator SpawnBombAttackCor()
     {
         _isCurrentAttackCor = true;
@@ -112,6 +96,14 @@ public class EnemyController_Boss_Cave : EnemyController
     }
 
     #region JumpAttack
+
+    private void JumpAttack()
+    {
+        Debug.Log("점프 공격");
+
+        _anim.SetInteger("AttackInt", 1);
+        StartCoroutine(JumpAttackCor());
+    }
 
     IEnumerator JumpAttackCor()
     {
@@ -159,6 +151,14 @@ public class EnemyController_Boss_Cave : EnemyController
 
     #region PunchAttack
 
+    private void PunchAttack()
+    {
+        Debug.Log("펀치 공격");
+
+        _anim.SetInteger("AttackInt", 2);
+        StartCoroutine(PunchAttackCor());
+    }
+
     IEnumerator PunchAttackCor()
     {
         _isCurrentAttackCor = true;
@@ -192,6 +192,7 @@ public class EnemyController_Boss_Cave : EnemyController
     public void PunchAttackEvent()
     {
         // 펀치 오브젝트 활성화
+        _enemyAttackObj.SetActive(true);
     }
 
     #endregion
@@ -201,6 +202,8 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     public void EndAnmationEvent()
     {
+        _enemyAttackObj.SetActive(false);
+
         _agent.isStopped = false;
         _isCurrentAttackCor = false;
         ChangeState<BossEnemyIdleState>();
