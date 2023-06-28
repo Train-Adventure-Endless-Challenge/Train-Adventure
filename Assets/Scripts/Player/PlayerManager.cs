@@ -69,7 +69,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerAttack.Attack();
             _playerController.Move();
         }
-        if (_player.playerState == PlayerState.Rolling || _player.playerState == PlayerState.Attack)
+        if (_player.playerState == PlayerState.Rolling || _player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill)
         {
             _playerStamina.RecoverStop();
         }
