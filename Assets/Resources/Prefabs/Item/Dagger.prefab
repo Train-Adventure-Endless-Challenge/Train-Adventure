@@ -226,7 +226,8 @@ MonoBehaviour:
   _weaponCollider: {fileID: 0}
   currentCoolTime: 3
   _trailRenderer: {fileID: 8866011294054360716}
-  _skillEffectPrefab: {fileID: 0}
+  _skillEffectPrefab: {fileID: 1131048944236661263, guid: 0ccf02647e53d68438668c80a1a2e11d,
+    type: 3}
   _skillRadius: 0.5
   skillImpactPosition: {fileID: 4008470357930261061}
 --- !u!114 &7668499607380531063
