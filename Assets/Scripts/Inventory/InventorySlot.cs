@@ -28,17 +28,19 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         {
             InventoryItem dropInventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             InventorySlot prev_slot = dropInventoryItem._slot;
-            Transform temp_transform = dropInventoryItem._parentAfterDrag;
-
-            if (prev_slot.TakeItem(dropInventoryItem._item) == false 
-                    || this.PutItem(dropInventoryItem._item) == false)
-                dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
             InventoryItem currentSlotInventoryItem = transform.GetComponentInChildren<InventoryItem>();
-            
-            if(this.TakeItem(currentSlotInventoryItem._item) == false 
+
+            Transform temp_transform = dropInventoryItem._parentAfterDrag;
+
+            if (this.TakeItem(currentSlotInventoryItem._item) == false
                 || prev_slot.PutItem(currentSlotInventoryItem._item) == false)
                 dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
+
+            if (prev_slot.TakeItem(dropInventoryItem._item) == false 
+                        || this.PutItem(dropInventoryItem._item) == false)
+                    dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
+
 
             dropInventoryItem._parentAfterDrag = transform;
             currentSlotInventoryItem.gameObject.transform.SetParent(temp_transform);
