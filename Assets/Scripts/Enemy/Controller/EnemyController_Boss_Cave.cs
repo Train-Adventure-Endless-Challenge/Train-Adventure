@@ -111,6 +111,8 @@ public class EnemyController_Boss_Cave : EnemyController
         
     }
 
+    #region JumpAttack
+
     IEnumerator JumpAttackCor()
     {
         _isCurrentAttackCor = true;
@@ -153,16 +155,9 @@ public class EnemyController_Boss_Cave : EnemyController
             _player.GetComponent<Player>().Hit(Damage, gameObject);
         }
     }
+    #endregion
 
-    /// <summary>
-    /// 점프 공격 종료
-    /// animation event clip 종료시 실행 이벤트
-    /// </summary>
-    public void JumpAttackAndEvent()
-    {
-        _isCurrentAttackCor = false;
-        ChangeState<BossEnemyIdleState>();
-    }
+    #region PunchAttack
 
     IEnumerator PunchAttackCor()
     {
