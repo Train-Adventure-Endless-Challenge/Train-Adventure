@@ -38,8 +38,6 @@ public class Player : Entity
 
     #region Stat
 
-    private float _hp;    // 체력
-    private float _maxHp;
     private float _speed; // 속도
     private int _defense; // 방어력
     private int _stamina; // 스태미나
@@ -91,7 +89,6 @@ public class Player : Entity
 
     #region Stat
 
-    public float Hp { get { return _hp; } set { _hp = value;} }
     public float Speed { get { return _speed; } set { _speed = value; } }
     public int Defense { get { return _defense; } set { _defense = value; } }
     public int Stamina { get { return _stamina; } set { _stamina = value; } }
@@ -161,7 +158,6 @@ public class Player : Entity
         #region Stat
 
         _hp = playerData.Hp;           // 체력
-        _maxHp = _hp;
         _speed = playerData.Speed;     // 속도
         _defense = playerData.Defense; // 방어력
         _stamina = playerData.Stamina; // 스태미나
@@ -218,7 +214,7 @@ public class Player : Entity
         if (PlayerManager.Instance.IsGodMode) return;
 
         _playerHit.Hit(damage);
-        IngameUIController.Instance.UpdateHp(_hp, _maxHp);
+        IngameUIController.Instance.UpdateHp(_hp, MaxHp);
     }
 
     public override void Die()

@@ -22,12 +22,12 @@ public class EnemyHitState : State<EnemyController>
         _agent.isStopped = true;
 
         // 체력 감소 및 적용
-        _enemyController.HP -= _enemyController._eventDamage;
+        _enemyController.Hp -= _enemyController._eventDamage;
 
         _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(_enemyController._enemyUI._hpBarSlider.gameObject.activeSelf == false);
-        _enemyController._enemyUI.UpdateHpUI(_enemyController.HP);
+        _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
 
-        if (_enemyController.HP <= 0) return;
+        if (_enemyController.Hp <= 0) return;
 
         _enemyController._anim.SetTrigger("Hit");                       // anim
     }

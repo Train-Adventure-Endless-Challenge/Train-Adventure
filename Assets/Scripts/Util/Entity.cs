@@ -7,7 +7,16 @@ using UnityEngine;
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
+    protected float _hp;
+    protected float _maxhp;
 
+    public virtual float Hp { get { return _hp; } set { _hp = value; } }
+    public float MaxHp { get { return _maxhp; } }
+
+    protected virtual void Start()
+    {
+        _maxhp = _hp;
+    }
     /// <summary>
     /// 피격 당했을 때, 체력이 닳았을 때 호출하는 함수
     /// </summary>
