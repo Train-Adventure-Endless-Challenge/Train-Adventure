@@ -11,9 +11,29 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     [SerializeField] private int _maxStackedItem = 10;         // 겹칠 수 있는 최대 아이템 수
 
-    [SerializeField] private Image selectImg;        // 인벤토리 선택 시 나오는 이미지
+    [SerializeField] private Image _selectImg;        // 인벤토리 선택 시 나오는 이미지
+
+    [SerializeField] private GameObject _mainInventoryGroup;
+    [SerializeField] private GameObject _selectEventObject;
+
+    [SerializeField] private KeyCode _inventoryKeyCode;
+    
+
     private InventorySlot _selectedSlot;
     public InventorySlot SelectedSlot {  get { return _selectedSlot; } }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(_inventoryKeyCode))
+        {
+            _mainInventoryGroup.SetActive(_mainInventoryGroup.activeSelf == false);
+            if (_mainInventoryGroup.activeSelf == false)
+            {
+                _selectEventObject.SetActive(false);
+            }
+        }
+    }
+
     public bool AddItem(Item item)
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
@@ -61,8 +81,8 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
         if(item != null) item.ItemImage.raycastTarget = false;
         
-        selectImg.gameObject.transform.parent.gameObject.SetActive(true); // selectImg, 분해, 드롭 버튼 활성화
-        selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position; // selectImg 위치 맞추기
+        _selectImg.gameObject.transform.parent.gameObject.SetActive(true); // selectImg, 분해, 드롭 버튼 활성화
+        _selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position; // selectImg 위치 맞추기
 
         // 현재 선택하는 item의 raycastTarget 키기
         InventoryItem itemImg = slot?.GetComponentInChildren<InventoryItem>();

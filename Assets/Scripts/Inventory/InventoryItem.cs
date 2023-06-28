@@ -46,7 +46,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // 비활성화 해줘야 인벤토리 슬롯이 비었는지 체크할 수 있음
 
         _parentAfterDrag = transform.parent;
-        transform.SetParent(transform.root);
+        transform.SetParent(InventoryManager.Instance.transform);
     }
 
     /// <summary>
