@@ -23,9 +23,7 @@ public class Dagger : Weapon
     public override void UseActiveSkill()
     {
         base.UseActiveSkill();
-        Instantiate(_skillEffectPrefab, skillImpactPosition.position, Quaternion.identity);
         Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
-        Debug.Log(colliders.Length);
 
         if (colliders.Length <= 0) return;
 
@@ -33,7 +31,8 @@ public class Dagger : Weapon
 
         foreach (Collider col in colliders)
         {
-            Debug.Log(col.gameObject.name);
+            Instantiate(_skillEffectPrefab, skillImpactPosition.position, Quaternion.identity);
+
             Entity entity = col.gameObject.GetComponentInParent<Entity>();
             entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), gameObject);
             break;
