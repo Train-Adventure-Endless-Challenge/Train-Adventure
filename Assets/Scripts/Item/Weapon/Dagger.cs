@@ -34,7 +34,8 @@ public class Dagger : Weapon
         foreach (Collider col in colliders)
         {
             Debug.Log(col.gameObject.name);
-            col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, gameObject);
+            Entity entity = col.gameObject.GetComponentInParent<Entity>();
+            entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), gameObject);
             break;
         }
 

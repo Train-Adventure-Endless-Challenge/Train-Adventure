@@ -63,8 +63,8 @@ public abstract class EnemyController : Entity
 
     protected override void Start()
     {
-        base.Start();
         Init();
+        base.Start();
         _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
         _stateMachine.AddState(new EnemyDieState());
     }

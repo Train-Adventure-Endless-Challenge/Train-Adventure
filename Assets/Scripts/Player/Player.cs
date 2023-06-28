@@ -146,6 +146,8 @@ public class Player : Entity
     private void Awake()
     {
         Init(); // 초기화 실행
+        base.Start();
+
     }
 
     #endregion
