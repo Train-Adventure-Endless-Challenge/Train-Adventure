@@ -13,7 +13,7 @@ public class Dagger : Weapon
 
     [SerializeField] private GameObject _skillEffectPrefab;
     [SerializeField] private float _skillRadius;
-    [SerializeField] private Transform skillImpactPosition;
+    [SerializeField] private Transform _skillImpactPosition;
     protected override void Init()
     {
         base.Init();
@@ -31,7 +31,7 @@ public class Dagger : Weapon
 
         foreach (Collider col in colliders)
         {
-            Instantiate(_skillEffectPrefab, skillImpactPosition.position, Quaternion.identity);
+            Instantiate(_skillEffectPrefab, _skillImpactPosition.position, Quaternion.identity);
 
             Entity entity = col.gameObject.GetComponentInParent<Entity>();
             entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), gameObject);
@@ -75,6 +75,6 @@ public class Dagger : Weapon
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(skillImpactPosition.position, _skillRadius);
+        Gizmos.DrawWireSphere(_skillImpactPosition.position, _skillRadius);
     }
 }
