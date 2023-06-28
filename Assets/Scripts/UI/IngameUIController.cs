@@ -52,7 +52,6 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             {
                 _hpUpdateCoroutine = null;
                 break;
-
             }
         }
     }
