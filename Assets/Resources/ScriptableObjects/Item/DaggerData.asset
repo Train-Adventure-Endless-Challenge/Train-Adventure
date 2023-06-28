@@ -16,7 +16,7 @@ MonoBehaviour:
   _name: Dagger
   _itemImage: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   _description: "\uB2E8\uAC80"
-  _damage: 5
+  _damage: 20
   _range: 1
   _attackSpeed: 0.7
   _additionalHp: 0
@@ -36,5 +36,5 @@ MonoBehaviour:
   _skillConsumeDurability: 0
   _skillCooltime: 0
   _isStackable: 0
-  _hittingFeelingEffect: {fileID: 660604078598729712, guid: 0748e954e2babca42a2698d2e32a039c,
+  _hittingFeelingEffect: {fileID: 2646761093411473258, guid: 16c4ecacc12f26445a0322001cbc5b3b,
     type: 3}
