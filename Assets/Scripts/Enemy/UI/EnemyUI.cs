@@ -39,7 +39,7 @@ public class EnemyUI : MonoBehaviour
 
     IEnumerator UpdateHpCor(float hp)
     {
-        float time = 1f;
+        float time = 0.7f;
         float current = 0;
         float percent = 0;
 
