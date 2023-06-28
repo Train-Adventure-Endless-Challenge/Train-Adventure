@@ -26,7 +26,7 @@ public class PlayerEquip : MonoBehaviour
     /// 아이템을 장착하는 함수
     /// </summary>
     /// <param name="item">장착할 아이템</param>
-    public void EquipItem(Item item)
+    public bool EquipItem(Item item)
     {
 
         Object itemPrefab = ItemDataManager.Instance.ItemPrefab[item.Id];
@@ -39,26 +39,31 @@ public class PlayerEquip : MonoBehaviour
             weapon.transform.parent = _weaponEquipTransform;
             weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localEulerAngles = Vector3.zero;
+            return true;
         }
         else if(item.ItemType == Itemtype.armor)
         {
             Armor armor = itemObj.GetComponent<Armor>();
 
             armor.transform.parent = _armorEquipTransform[(int)armor.ArmorType];
+            return true;
         }
+        return false;
     }
+
     
     /// <summary>
     /// 장착 해제하는 함수
     /// </summary>
     /// <param name="item">해제할 아이템</param>
-    public void ReleaseItem(Item item)
+    public bool ReleaseItem(Item item)
     {
 
         if (item.ItemType == Itemtype.weapon)
         {
             Destroy(_currentWeapon.gameObject);
             _currentWeapon = null;
+            return true;
         }
         else if (item.ItemType == Itemtype.armor)
         {
@@ -66,6 +71,9 @@ public class PlayerEquip : MonoBehaviour
 
             Destroy(_currentArmors[(int)armor.ArmorType].gameObject);
             _currentArmors[(int)armor.ArmorType] = null;
+            return true;
         }
+
+        return false;
     }
 }
