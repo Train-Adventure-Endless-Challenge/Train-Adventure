@@ -4891,7 +4891,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1131048944236661251}
-  - component: {fileID: 1131048944236661250}
   - component: {fileID: 1131048944236661249}
   - component: {fileID: 1131048944236661248}
   m_Layer: 0
@@ -4921,21 +4920,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1131048944236661250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1131048944236661263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 588a08fbd7cc6f64cbd1faa6039392b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shakeAmount: 0.15
-  doShakeOnStart: 1
-  shakeOnStartDelay: 0.3
 --- !u!199 &1131048944236661249
 ParticleSystemRenderer:
   serializedVersion: 6
