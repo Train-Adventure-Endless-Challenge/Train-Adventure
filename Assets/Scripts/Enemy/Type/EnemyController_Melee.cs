@@ -10,6 +10,7 @@ public class EnemyController_Melee : EnemyController
 
     public bool _isAttackCheck = false;             // animation event clip으로 실행할 공격 체크 함수
 
+    [SerializeField] private TrailRenderer _attackTrail;
     protected override void Start()
     {
         base.Start();
@@ -19,6 +20,7 @@ public class EnemyController_Melee : EnemyController
         _stateMachine.AddState(new EnemyAttackState());
         _stateMachine.AddState(new EnemyAttackWalkState());
         _stateMachine.AddState(new EnemyHitState());
+        _attackTrail = GetComponentInChildren<TrailRenderer>();
     }
 
     /// <summary>
@@ -65,11 +67,13 @@ public class EnemyController_Melee : EnemyController
     /// </summary>
     public void CheckHitEvent()
     {
+        _attackTrail.enabled = true;
         _isAttackCheck = true;
     }
 
     public void CheckHitEndEffect()
     {
+        _attackTrail.enabled = false;
         _isAttackCheck = false;
     }
 
