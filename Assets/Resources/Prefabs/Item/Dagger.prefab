@@ -229,6 +229,8 @@ MonoBehaviour:
   _weaponCollider: {fileID: 0}
   currentCoolTime: 3
   isSkillExist: 1
+  _upgradeEffectPrefab: {fileID: 6059418197066807275, guid: a507d0fd5cc10a34696d10c41ac8bb78,
+    type: 3}
   _trailRenderer: {fileID: 8866011294054360716}
   _skillEffectPrefab: {fileID: 1131048944236661263, guid: 0ccf02647e53d68438668c80a1a2e11d,
     type: 3}

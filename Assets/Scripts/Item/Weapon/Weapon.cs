@@ -15,6 +15,8 @@ public class Weapon : Item
     protected float _range;
     protected float _attackSpeed;
     protected float _defalutAttackSpeed;
+    protected float _skillCoolTime;
+    
     protected Transform _playerTransform;
     protected attackType _attackType;
     [SerializeField] protected CapsuleCollider _weaponCollider;
@@ -55,6 +57,7 @@ public class Weapon : Item
         _range = itemData.Range;
         _attackSpeed = itemData.AttackSpeed;
         _defalutAttackSpeed = _attackSpeed;
+        _skillCoolTime = itemData.SkillCooltime;
         _hittingFeelingEffect = itemData.HittingFeelingEffect;
         _shakeImpulse = GetComponent<CinemachineImpulseSource>();
     }
@@ -89,7 +92,7 @@ public class Weapon : Item
     public virtual void UseActiveSkill()
     {
         SubDurability(itemData.SkillConsumeDurability);
-        currentCoolTime = Time.time + itemData.SkillCooltime;
+        currentCoolTime = Time.time + _skillCoolTime;
     }
 
     public virtual void SkillEventFunc()
