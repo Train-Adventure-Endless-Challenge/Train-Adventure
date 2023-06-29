@@ -23,6 +23,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public void InitialiseItem(Item newItem)
     {
         _item = newItem;
+        _item.InventoryItem = this;
         _image.sprite = newItem.ItemData.ItemImage;
         RefreshCount();
     }

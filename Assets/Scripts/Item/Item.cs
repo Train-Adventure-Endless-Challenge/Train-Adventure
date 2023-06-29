@@ -61,6 +61,9 @@ public class Item : MonoBehaviour
 
     public Itemtype ItemType { get { return _itemType; } }
 
+    private InventoryItem _inventoryItem;
+
+    public InventoryItem InventoryItem { get { return _inventoryItem; } set { _inventoryItem = value; } }
     #endregion
     public Item(Item item)
     {
