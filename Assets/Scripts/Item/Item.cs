@@ -237,7 +237,7 @@ public class Item : MonoBehaviour
             obj.AddComponent<Rigidbody>().AddForce(Random.Range(-10,10), Random.Range(-10, 10), Random.Range(-10, 10));
             obj.AddComponent<MeshCollider>().convex = true;
         }
-
+        Destroy(destructionItem.gameObject, 2);
 
         Destroy(gameObject);
         
