@@ -30,7 +30,10 @@ public abstract class EnemyController : Entity
             _hp = value;
             if (_hp <= 0)
             {
-                _stateMachine.ChangeState<EnemyDieState>();
+                if (EnemyType != EnemyType.Boss)
+                    _stateMachine.ChangeState<EnemyDieState>();
+                else
+                    _stateMachine.ChangeState<BossEnemyDieState>();
             }
         }
     }
@@ -65,10 +68,18 @@ public abstract class EnemyController : Entity
     {
         Init();
         base.Start();
-        _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
-        _stateMachine.AddState(new EnemyDieState());
-        base.Start();
         _enemyUI.Init();
+        if(EnemyType != EnemyType.Boss)
+        {
+            _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
+            _stateMachine.AddState(new EnemyDieState());
+
+        }
+        else
+        {
+            _stateMachine = new StateMachine<EnemyController>(this, new BossEnemyIdleState());
+            _stateMachine.AddState(new BossEnemyDieState());
+        }
     }
 
     /// <summary>
@@ -116,10 +127,21 @@ public abstract class EnemyController : Entity
         if (_isDie) return;
 
         _eventDamage = (int)damage;
-        ChangeState<EnemyHitState>();
+
+        if(EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
+            ChangeState<EnemyAttackState>();
+        else if(EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
+            ChangeState<EnemyHitState>();
+
     }
 
-    public abstract void DieEvent();
+    /// <summary>
+    /// animation clip 실행 event
+    /// </summary>
+    public virtual void DieEvent()
+    {
+        Die();
+    }
 
     public override void Die()
     {
@@ -133,6 +155,7 @@ public abstract class EnemyController : Entity
     /// </summary>
     private void GearDrop()
     {
+        if (EnemyType == EnemyType.Bomb) return;        // 폭탄 몬스터는 터져도 기어가 드랍되지 않음
         GearManager.Instance.AddGear(UnityEngine.Random.Range(2, 4));
     }
 
