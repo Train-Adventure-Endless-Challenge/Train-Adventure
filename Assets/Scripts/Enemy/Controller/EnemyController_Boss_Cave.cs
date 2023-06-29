@@ -155,7 +155,7 @@ public class EnemyController_Boss_Cave : EnemyController
     public void JumpAttackEvent()
     {
         // 몬스터가 바닥에 착지 했을 때 플레이어의 거리가 일정 이하(5는 임시. 추후 기획을 통해 변경)라면 
-        if(Vector2.Distance(_player.transform.position, transform.position) <= 5)
+        if(Vector3.Distance(_player.transform.position, transform.position) <= 5)
         {
             _player.GetComponent<Player>().Hit(Damage, gameObject);
         }

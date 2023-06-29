@@ -24,8 +24,6 @@ public class EnemyController_Bomb : EnemyController
         _anim.SetTrigger("Attack");
     }
 
-    GameObject _go;         // 파티클 임시 오브젝트
-
     /// <summary>
     /// 폭탄 터짐
     /// animation event
