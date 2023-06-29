@@ -11,6 +11,11 @@ public class EnemyAttack_BossCave_Punch : MonoBehaviour
         _owner = GetComponentInParent<EnemyController>();
     }
 
+    private void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
