@@ -5,8 +5,6 @@ using UnityEngine.AI;
 
 public class NomalTrain : Train
 {
-    [SerializeField] private Animation _frontDoorAnimation;
-
     [SerializeField] private GameObject[] _objectsInTrainPrefab; // 기차 내 오브젝트 프리팹이 모두 있는 배열
     [SerializeField] private GameObject _treasureBox;
     [SerializeField] private Transform _treasureBoxSpawnPoint;
@@ -14,13 +12,9 @@ public class NomalTrain : Train
     private int _enemyCount;
     private bool _isClear;                                                     
 
-    private void Start()
+    public override void Start()
     {
-        // 동적타임에 NavMesh 생성하기
-        NavMeshSurface surfaces = _floor.GetComponent<NavMeshSurface>();
-
-        surfaces.RemoveData();
-        surfaces.BuildNavMesh();
+        base.Start();
     }
 
     /// <summary>
@@ -41,9 +35,9 @@ public class NomalTrain : Train
     {
         if (_isClear == true)
             return;
-
         _isClear = true;
-        _frontDoorAnimation.Play(); // 문 Open   
+
+        OpenDoor();
 
         Instantiate(_treasureBox, _treasureBoxSpawnPoint.position, Quaternion.identity); // 상자 생성 
     }

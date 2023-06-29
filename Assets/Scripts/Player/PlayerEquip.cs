@@ -50,6 +50,7 @@ public class PlayerEquip : MonoBehaviour
             Armor armor = itemObj.GetComponent<Armor>();
 
             armor.transform.parent = _armorEquipTransform[(int)armor.ArmorType];
+
             itemInventory._item = armor;
             itemInventory._item.InventoryItem = itemInventory;
          

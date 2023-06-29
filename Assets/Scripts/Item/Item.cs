@@ -21,6 +21,7 @@ public enum Itemtype
 {
     weapon,
     armor,
+    consumable,
 }
 
 public class Item : MonoBehaviour
@@ -71,7 +72,6 @@ public class Item : MonoBehaviour
     [SerializeField] private GameObject _itemModel;
 
     public GameObject ItemModel { get { return _itemModel; } }
-
     #endregion
     public Item(Item item)
     {
@@ -155,6 +155,7 @@ public class Item : MonoBehaviour
     /// </summary>
     public virtual void EarnItem()
     {
+
     }
 
     /// <summary>
