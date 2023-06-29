@@ -67,7 +67,7 @@ public class Dagger : Weapon
         if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
         {
             if (_detectionLists.Count == 0)
-                SubDurability(itemData.AttackConsumeDurability); // Ã¹ Å¸°İ »ó´ë¶ó¸é ³»±¸µµ °¨¼Ò -> ¿©·¯¸íÀ» ¶§¸± ¶§ ¿©·¯ ¹ø °¨¼Ò¸¦ ¸·±âÀ§ÇÔ.
+                SubDurability(itemData.AttackConsumeDurability); // ì²« íƒ€ê²© ìƒëŒ€ë¼ë©´ ë‚´êµ¬ë„ ê°ì†Œ -> ì—¬ëŸ¬ëª…ì„ ë•Œë¦´ ë•Œ ì—¬ëŸ¬ ë²ˆ ê°ì†Œë¥¼ ë§‰ê¸°ìœ„í•¨.
 
             _detectionLists.Add(collision.gameObject);
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
