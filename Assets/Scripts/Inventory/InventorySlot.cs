@@ -5,6 +5,8 @@ using UnityEngine.EventSystems;
 
 public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 {
+
+
     /// <summary>
     /// 이 함수를 지닌 오브젝트 위에서 마우스를 땠을 때
     /// </summary>
