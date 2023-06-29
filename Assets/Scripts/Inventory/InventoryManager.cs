@@ -109,6 +109,11 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
         if (item == null) return;
+        if (GearManager.Instance.GearAmount < 20)
+        {
+            Debug.Log("기어 부족");
+            return;
+        }
 
         item._item.SetDurabilityMax();
         GearManager.Instance.SubGear(20);
