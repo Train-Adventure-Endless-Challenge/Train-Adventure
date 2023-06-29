@@ -87,6 +87,7 @@ public class PlayerInteraction : MonoBehaviour
                     lastDetectionObject.enabled = true;
                 }
                 else hit.GetComponentInChildren<Outline>().enabled = false;
+                Debug.Log(hit.name);
 
 
                 if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때

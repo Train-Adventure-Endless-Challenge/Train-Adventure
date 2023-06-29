@@ -25,7 +25,6 @@ public class TreasureBox : InteractionObject
         GetComponent<Collider>().isTrigger = true;
         _anim.SetTrigger("Open");
         StartCoroutine(BoxOpenCor());
-        
     }
 
     IEnumerator BoxOpenCor()
