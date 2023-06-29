@@ -240,6 +240,5 @@ public class Item : MonoBehaviour
         PlayerManager.Instance.EquipItem.ReleaseItem(this);
         Destroy(gameObject);
         
-        //TODO: 아이템 포인터 null로 만들기
     }
 }
