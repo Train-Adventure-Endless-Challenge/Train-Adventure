@@ -66,6 +66,9 @@ public class Dagger : Weapon
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
         {
+            if (_detectionLists.Count == 0)
+                SubDurability(itemData.AttackConsumeDurability); // 첫 타격 상대라면 내구도 감소 -> 여러명을 때릴 때 여러 번 감소를 막기위함.
+
             _detectionLists.Add(collision.gameObject);
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);

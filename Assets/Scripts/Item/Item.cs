@@ -185,7 +185,9 @@ public class Item : MonoBehaviour
     /// <param name="value"></param>
     public void SubDurability(int value)
     {
+        
         _durability -= value;
+        Debug.Log(_durability);
         if (_durability <= 0)
             Destruction();
     }

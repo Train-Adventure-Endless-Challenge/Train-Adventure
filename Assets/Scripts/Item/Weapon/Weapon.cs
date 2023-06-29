@@ -62,7 +62,6 @@ public class Weapon : Item
     /// </summary>
     public virtual void Attack()
     {
-        SubDurability(itemData.AttackConsumeDurability);
     }
 
     /// <summary>

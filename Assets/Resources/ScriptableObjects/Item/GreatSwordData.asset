@@ -31,10 +31,10 @@ MonoBehaviour:
   _upgradeValueDefense: 0
   _upgradeValueAttackSpeed: 0
   _upgradeValueSpeed: 0
-  _maxDurability: 0
-  _attackConsumeDurability: 0
-  _skillConsumeDurability: 0
-  _skillCooltime: 3
+  _maxDurability: 100
+  _attackConsumeDurability: 10
+  _skillConsumeDurability: 20
+  _skillCooltime: 6
   _isStackable: 0
   _hittingFeelingEffect: {fileID: 2646761093411473258, guid: 16c4ecacc12f26445a0322001cbc5b3b,
     type: 3}
