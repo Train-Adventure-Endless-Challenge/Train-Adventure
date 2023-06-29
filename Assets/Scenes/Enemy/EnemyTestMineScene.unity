@@ -345,6 +345,8 @@ MonoBehaviour:
   _isCurrentAttackCor: 0
   _enemyUI: {fileID: 0}
   _eventDamage: 0
+  _bombEffect: {fileID: 8592499858754565221, guid: e450b5eb9f9ce8c4c98c07918ad5ac11,
+    type: 3}
 --- !u!195 &72228102
 NavMeshAgent:
   m_ObjectHideFlags: 0

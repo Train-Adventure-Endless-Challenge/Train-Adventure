@@ -7,6 +7,8 @@ public class EnemyController_Bomb : EnemyController
 {
     PlayerManager _player => PlayerManager.Instance;
 
+    [SerializeField] GameObject _bombEffect;        //폭탄이 터질때 effect 파티클
+
     protected override void Start()
     {
         base.Start();
@@ -34,6 +36,7 @@ public class EnemyController_Bomb : EnemyController
             _player.GetComponent<Player>().Hit(Damage, gameObject);
 
         // 파티클 추가
+        Instantiate(_bombEffect, transform.position, Quaternion.identity);
     }
 
     /// <summary>
