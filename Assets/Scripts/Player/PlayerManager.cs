@@ -103,6 +103,13 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         _playerController.StopMove();
     }
 
+    /// <summary>
+    /// 스킬 발동 이벤트 함수
+    /// </summary>
+    public void SkillEvent()
+    {
+        EquipItem.CurrentWeapon.SkillEventFunc();
+    }
     #region Mobile
 
     ///// <summary>

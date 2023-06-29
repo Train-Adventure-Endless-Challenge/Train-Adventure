@@ -49,7 +49,8 @@ public class PlayerSkill : MonoBehaviour
             _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 공격 상태로 변경
-            _skillCor = StartCoroutine(SkillCor());
+            if(_skillCor == null)
+                _skillCor = StartCoroutine(SkillCor());
         }
     }
 
@@ -80,13 +81,7 @@ public class PlayerSkill : MonoBehaviour
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
 
-    /// <summary>
-    /// 스킬 발동 이벤트 함수
-    /// </summary>
-    public void SkillEvent()
-    {
-        PlayerManager.Instance.EquipItem.CurrentWeapon.SkillEventFunc();
-    }
+    
 
 
     IEnumerator SkillCor()
