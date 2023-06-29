@@ -92,10 +92,20 @@ public class EnemyController_Boss_Cave : EnemyController
         }
 
         // animation 실행
+        _anim.SetTrigger("Attack");
 
         yield return new WaitForSeconds(AttackSpeed);
 
         
+    }
+
+    /// <summary>
+    /// animation clip event
+    /// 폭탄을 생성한다 
+    /// </summary>
+    public void StartSpawnBombEvent()
+    {
+        Instantiate(_bombPrefab, _enemyAttackObj.transform.position, Quaternion.identity);      // 폭탄 왼손에 소환
     }
 
     #region JumpAttack
