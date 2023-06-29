@@ -42,7 +42,6 @@ public class GreatSword : Weapon
         base.UseActiveSkill();
         Instantiate(_skillEffectPrefab, PlayerManager.Instance.gameObject.transform.position + Vector3.up * .5f, Quaternion.identity);
         Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
-        Debug.Log(colliders.Length);
 
         if (colliders.Length <= 0) return;
 
@@ -50,7 +49,6 @@ public class GreatSword : Weapon
 
         foreach (Collider col in colliders)
         {
-            Debug.Log(col.gameObject.name);
             col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, gameObject);
         }
 
@@ -65,6 +63,9 @@ public class GreatSword : Weapon
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
         {
+            if(_detectionLists.Count == 0)
+                SubDurability(itemData.AttackConsumeDurability); // 첫 타격 상대라면 내구도 감소 -> 여러명을 때릴 때 여러 번 감소를 막기위함.
+
             _detectionLists.Add(collision.gameObject);
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);

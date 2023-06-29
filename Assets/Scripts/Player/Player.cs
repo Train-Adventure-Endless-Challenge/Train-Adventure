@@ -147,6 +147,7 @@ public class Player : Entity
     {
         Init(); // 초기화 실행
         base.Start();
+
     }
 
     #endregion

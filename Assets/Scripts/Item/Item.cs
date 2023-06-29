@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
+using Random = UnityEngine.Random;
 
 public enum Armortype
 {
@@ -65,6 +67,11 @@ public class Item : MonoBehaviour
     private InventoryItem _inventoryItem;
 
     public InventoryItem InventoryItem { get { return _inventoryItem; } set { _inventoryItem = value; } }
+
+    [SerializeField] private GameObject _itemDestroyEffect;
+    [SerializeField] private GameObject _itemModel;
+
+    public GameObject ItemModel { get { return _itemModel; } }
     #endregion
     public Item(Item item)
     {
@@ -124,6 +131,24 @@ public class Item : MonoBehaviour
         _durability = itemData.MaxDurability;
     }
 
+
+    /// <summary>
+    /// item을 drop이 아닌 처음 먹었을 때 사용하는 데이터 초기화 함수
+    /// </summary>
+    public virtual void UpdateData()
+    {
+        Init();
+    }
+
+    /// <summary>
+    /// drop한 아이템을 다시 먹을 때 기존 데이터를 가지고 오기위한 함수
+    /// </summary>
+    /// <param name="item"></param>
+    public virtual void UpdateData(Item item)
+    {
+        _level = item.Level;
+        _durability = item.Durability;
+    }
 
     /// <summary>
     /// 아이템을 얻었을 때 실행하는 함수
@@ -190,9 +215,11 @@ public class Item : MonoBehaviour
     /// <param name="value"></param>
     public void SubDurability(int value)
     {
+        
         _durability -= value;
         if (_durability <= 0)
             Destruction();
+
     }
 
     /// <summary>
@@ -212,9 +239,26 @@ public class Item : MonoBehaviour
     public void Destruction()
     {
         //2~5개
+
+
         int addedGear = UnityEngine.Random.Range(2, 6);
         GearManager.Instance.AddGear(addedGear);
 
+        InventoryManager.Instance.DeleteItem(_inventoryItem);
+
+        Instantiate(_itemDestroyEffect, transform.position, Quaternion.identity);
+        Item destructionItem = Instantiate(ItemDataManager.Instance.ItemPrefab[Id] as GameObject, transform.position, Quaternion.identity).GetComponent<Item>();
+        
+        for (int i = 0; i < destructionItem.ItemModel.transform.childCount; i++)
+        {
+            GameObject obj = destructionItem.ItemModel.transform.GetChild(i).gameObject;
+            obj.AddComponent<Rigidbody>().AddForce(Random.Range(-10,10), Random.Range(-10, 10), Random.Range(-10, 10));
+            obj.AddComponent<MeshCollider>().convex = true;
+        }
+        Destroy(destructionItem.gameObject, 2);
+
+        Destroy(gameObject);
+        
         //TODO: 아이템 포인터 null로 만들기
     }
 }

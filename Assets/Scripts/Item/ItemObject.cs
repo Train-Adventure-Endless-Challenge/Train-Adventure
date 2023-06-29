@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemObject : InteractionObject
@@ -34,11 +35,14 @@ public class ItemObject : InteractionObject
     {
         if (!_isDrop)
         {
-            InventoryManager.Instance.AddItem(new Item(_itemData));
+            Object itemPrefab = ItemDataManager.Instance.ItemPrefab[_itemData.Id];
+            Item item = itemPrefab.GetComponent<Item>();
+            item.UpdateData();
+            InventoryManager.Instance.AddItem(item);
         }
         else
         {
-            InventoryManager.Instance.AddItem(new Item(_item));
+            InventoryManager.Instance.AddItem(_item);
         }
         Destroy(gameObject);
     }

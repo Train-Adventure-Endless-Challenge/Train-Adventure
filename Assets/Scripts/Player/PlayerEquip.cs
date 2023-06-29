@@ -39,10 +39,10 @@ public class PlayerEquip : MonoBehaviour
             weapon.transform.parent = _weaponEquipTransform;
             weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localEulerAngles = Vector3.zero;
+            weapon.UpdateData(itemInventory._item);
 
             itemInventory._item = weapon;
             itemInventory._item.InventoryItem = itemInventory;
-
             return true;
         }
         else if(itemInventory._item.ItemType == Itemtype.armor)
@@ -53,7 +53,7 @@ public class PlayerEquip : MonoBehaviour
 
             itemInventory._item = armor;
             itemInventory._item.InventoryItem = itemInventory;
-
+         
             return true;
         }
 
