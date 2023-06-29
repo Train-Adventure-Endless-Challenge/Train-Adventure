@@ -128,8 +128,11 @@ public abstract class EnemyController : Entity
 
         _eventDamage = (int)damage;
 
-        if(EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
+        if(EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
+            ChangeState<EnemyAttackState>();
+        else if(EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
             ChangeState<EnemyHitState>();
+
     }
 
     /// <summary>

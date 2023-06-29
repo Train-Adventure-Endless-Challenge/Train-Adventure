@@ -15,6 +15,12 @@ public class EnemyHitState : State<EnemyController>
     {
         base.OnEnter();
 
+        if(_enemyController.EnemyType == EnemyType.Bomb)
+        {
+            _enemyController.ChangeState<EnemyAttackState>();
+            return;
+        }
+
         _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();

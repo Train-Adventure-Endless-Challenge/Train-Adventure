@@ -36,6 +36,8 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)    
     {
+        if (_enemyController.EnemyType == EnemyType.Bomb) return;       // 폭탄이 공격하는 상황은 취소 될 수 없다
+
         // 플레이어가 보이지 않고 현재 공격이 실행중이 아닐때
         if (!_enemyController._enemyFieldOfView._isVisiblePlayer && _enemyController._isCurrentAttackCor == false)
         {
