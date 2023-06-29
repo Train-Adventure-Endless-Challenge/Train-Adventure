@@ -190,7 +190,6 @@ public class Item : MonoBehaviour
     {
         
         _durability -= value;
-        Debug.Log(_durability);
         if (_durability <= 0)
             Destruction();
     }
