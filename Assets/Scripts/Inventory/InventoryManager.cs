@@ -23,11 +23,16 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     private InventorySlot _selectedSlot;
     public InventorySlot SelectedSlot {  get { return _selectedSlot; } }
 
+    public bool _isDrag;
+
     private void Update()
     {
         if (Input.GetKeyDown(_inventoryKeyCode))
         {
+            if (_isDrag == true) return;
+
             _mainInventoryGroup.SetActive(_mainInventoryGroup.activeSelf == false);
+
             if (_mainInventoryGroup.activeSelf == false)
             {
                 _selectedSlot = null;

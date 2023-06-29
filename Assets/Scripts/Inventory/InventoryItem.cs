@@ -16,10 +16,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform _parentAfterDrag;
 
     public InventorySlot _slot;                             // 현재 들어가 있는 slots
+
+
     public Image ItemImage { get { return _image; } }
+
     /// <summary>
     /// 초기화 함수
-    /// </summary>
     public void InitialiseItem(Item newItem)
     {
         _item = newItem;
@@ -42,12 +44,16 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (_slot != InventoryManager.Instance.SelectedSlot) return;
+
         _image.raycastTarget = false;
         _countText.raycastTarget = false;
         // 비활성화 해줘야 인벤토리 슬롯이 비었는지 체크할 수 있음
 
         _parentAfterDrag = transform.parent;
         transform.SetParent(InventoryManager.Instance.transform);
+
+        InventoryManager.Instance._isDrag = true;
     }
 
     /// <summary>
@@ -55,6 +61,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void OnDrag(PointerEventData eventData)
     {
+        if (_slot != InventoryManager.Instance.SelectedSlot) return;
+
         transform.position = Input.mousePosition;
     }
 
@@ -63,9 +71,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (_slot != InventoryManager.Instance.SelectedSlot) return;
+
         InventoryManager.Instance.SelectSlot(_slot); // 아이템을 옮겼을 때 옮긴쪽으로 Select 이동
         _image.raycastTarget = true;
         _countText.raycastTarget = true;
-        transform.SetParent(_parentAfterDrag); 
+        transform.SetParent(_parentAfterDrag);
+        InventoryManager.Instance._isDrag = false;
     }
 }
