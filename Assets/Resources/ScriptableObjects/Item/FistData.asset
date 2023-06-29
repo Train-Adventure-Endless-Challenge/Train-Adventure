@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2e1cdae07ca55f43a447337ef16ca90, type: 3}
-  m_Name: GreatSwordData
+  m_Name: FistData
   m_EditorClassIdentifier: 
-  _id: 1
-  _name: GreatSword
-  _itemImage: {fileID: 21300000, guid: 2a0bc5c4ff865a7498182b25a3f99177, type: 3}
-  _description: "\uB300\uAC80"
-  _damage: 100
-  _range: 5
-  _attackSpeed: 0.8
+  _id: 0
+  _name: "\uC8FC\uBA39"
+  _itemImage: {fileID: 0}
+  _description: "\uC8FC\uBA39"
+  _damage: 10
+  _range: 0
+  _attackSpeed: 0.7
   _additionalHp: 0
   _additionalStemina: 0
   _additionalStrength: 0
@@ -32,9 +32,9 @@ MonoBehaviour:
   _upgradeValueAttackSpeed: 0
   _upgradeValueSpeed: 0
   _maxDurability: 100
-  _attackConsumeDurability: 10
-  _skillConsumeDurability: 20
-  _skillCooltime: 6
+  _attackConsumeDurability: 0
+  _skillConsumeDurability: 0
+  _skillCooltime: 0
   _isStackable: 0
   _hittingFeelingEffect: {fileID: 2646761093411473258, guid: 16c4ecacc12f26445a0322001cbc5b3b,
     type: 3}

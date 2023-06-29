@@ -29,10 +29,13 @@ public class Weapon : Item
 
     public Coroutine _hitStopCor;
 
+
+    public bool isSkillExist;
     public bool CanSkill
     {
         get { return currentCoolTime <= Time.time; }
     }
+
     void Update()
     {
 

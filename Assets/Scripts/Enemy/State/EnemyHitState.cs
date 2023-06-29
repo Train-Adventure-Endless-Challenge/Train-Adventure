@@ -24,7 +24,7 @@ public class EnemyHitState : State<EnemyController>
         // 체력 감소 및 적용
         _enemyController.Hp -= _enemyController._eventDamage;
 
-        _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(_enemyController._enemyUI._hpBarSlider.gameObject.activeSelf == false);
+        _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(true);
         _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
 
         if (_enemyController.Hp <= 0) return;

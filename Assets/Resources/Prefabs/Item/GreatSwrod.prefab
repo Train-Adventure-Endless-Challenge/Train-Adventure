@@ -1157,6 +1157,7 @@ MonoBehaviour:
   _itemModel: {fileID: 4663988874889082240}
   _weaponCollider: {fileID: 5510357528307337339}
   currentCoolTime: 0
+  isSkillExist: 1
   _trailRenderer: {fileID: 5510357528152201045}
   _skillRadius: 3
   _skillEffectPrefab: {fileID: 3259989122145073385, guid: 5e5ab90147108e942bfad655c3579b99,

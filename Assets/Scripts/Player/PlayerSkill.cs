@@ -66,7 +66,8 @@ public class PlayerSkill : MonoBehaviour
             && _player.Stamina - _staminaValue >= 0 &&
             PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject()
-            && PlayerManager.Instance.EquipItem.CurrentWeapon.CanSkill)
+            && PlayerManager.Instance.EquipItem.CurrentWeapon.CanSkill
+            && PlayerManager.Instance.EquipItem.CurrentWeapon.isSkillExist)
         {
             return true;
         }

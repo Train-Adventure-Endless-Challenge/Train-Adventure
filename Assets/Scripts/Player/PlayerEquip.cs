@@ -8,6 +8,8 @@ public class PlayerEquip : MonoBehaviour
 
     private Weapon _currentWeapon;                                          
     public Weapon CurrentWeapon { get { return _currentWeapon; } }      // 현재 무기
+    
+    [SerializeField] private Weapon _fistObject;
 
     private Armor[] _currentArmors;
     public Armor[] CurrentArmors { get { return _currentArmors; } }     // 현재 방어구
@@ -15,11 +17,9 @@ public class PlayerEquip : MonoBehaviour
     [SerializeField] private Transform _weaponEquipTransform;           // 무기 피봇
     [SerializeField] private Transform[] _armorEquipTransform;          // 방어구 피봇
 
-
     private void Start()
     {
-        // TEST
-        //EquipItem((ItemDataManager.Instance.ItemPrefab[0] as GameObject).GetComponent<Item>());
+        FistActivate(true);
     }
 
     /// <summary>
@@ -34,6 +34,8 @@ public class PlayerEquip : MonoBehaviour
         
         if (itemInventory._item.ItemType == Itemtype.weapon)
         {
+            FistActivate(false);
+
             Weapon weapon = itemObj.GetComponent<Weapon>();
             _currentWeapon = weapon;
             weapon.transform.parent = _weaponEquipTransform;
@@ -60,7 +62,6 @@ public class PlayerEquip : MonoBehaviour
         return false;
     }
 
-    
     /// <summary>
     /// 장착 해제하는 함수
     /// </summary>
@@ -71,7 +72,7 @@ public class PlayerEquip : MonoBehaviour
         if (item.ItemType == Itemtype.weapon)
         {
             Destroy(_currentWeapon.gameObject);
-            _currentWeapon = null;
+            FistActivate(true);
             return true;
         }
         else if (item.ItemType == Itemtype.armor)
@@ -84,5 +85,21 @@ public class PlayerEquip : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void FistActivate(bool on)
+    {
+        if (on)
+        {
+            _fistObject.gameObject.SetActive(true);
+            _currentWeapon = _fistObject;
+
+        }
+        else
+        {
+            _fistObject.gameObject.SetActive(false);
+            _currentWeapon = null;
+
+        }
     }
 }
