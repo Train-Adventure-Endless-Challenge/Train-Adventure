@@ -215,6 +215,8 @@ public class Item : MonoBehaviour
         int addedGear = UnityEngine.Random.Range(2, 6);
         GearManager.Instance.AddGear(addedGear);
 
+        InventoryManager.Instance.DeleteItem(_inventoryItem);
+        Destroy(gameObject);
         //TODO: 아이템 포인터 null로 만들기
     }
 }
