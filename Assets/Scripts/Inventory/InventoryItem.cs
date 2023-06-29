@@ -71,8 +71,6 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     /// </summary>
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (_slot != InventoryManager.Instance.SelectedSlot) return;
-
         InventoryManager.Instance.SelectSlot(_slot); // 아이템을 옮겼을 때 옮긴쪽으로 Select 이동
         _image.raycastTarget = true;
         _countText.raycastTarget = true;
