@@ -88,7 +88,6 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 else hit.GetComponentInChildren<Outline>().enabled = false;
 
-
                 if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
                 {
                     hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
