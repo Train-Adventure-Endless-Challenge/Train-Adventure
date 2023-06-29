@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -35,7 +36,8 @@ public class OnMouseCheckItem : MonoBehaviour
 
         if (results.Count > 0 && !_isShow)
         {
-            if (results[0].gameObject.TryGetComponent<InventoryItem>(out InventoryItem item))
+            if (results[0].gameObject.TryGetComponent<InventoryItem>(out InventoryItem item) &&
+                InventoryManager.Instance.SelectedSlot == item._slot) 
             {
                 StartCoroutine(ShowDescriptionImageCoroutine(item));
             }
@@ -65,8 +67,9 @@ public class OnMouseCheckItem : MonoBehaviour
             List<RaycastResult> results = new List<RaycastResult>();
             _graphicRaycaster.Raycast(_pointerEventData, results);
 
-            if (!results[0].gameObject.transform.GetComponent<InventoryItem>())
+            if (results.Count <= 0 || !results[0].gameObject.transform.GetComponent<InventoryItem>() )
             {
+                Debug.Log("1");
                 _isShow = false;
                 Destroy(descriptionObj);
                 yield break;

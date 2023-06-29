@@ -30,6 +30,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
             _mainInventoryGroup.SetActive(_mainInventoryGroup.activeSelf == false);
             if (_mainInventoryGroup.activeSelf == false)
             {
+                _selectedSlot = null;
                 _selectEventObject.SetActive(false);
             }
         }
