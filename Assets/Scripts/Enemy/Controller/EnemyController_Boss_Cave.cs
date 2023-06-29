@@ -8,6 +8,9 @@ public class EnemyController_Boss_Cave : EnemyController
 
     [SerializeField] GameObject _enemyAttackObj;        // 펀치 공격 시의 콜라이더 오브젝트
 
+    [Header("Spawn")]
+    [SerializeField] GameObject _bombPrefab;
+
     protected override void Start()
     {
         base.Start();
