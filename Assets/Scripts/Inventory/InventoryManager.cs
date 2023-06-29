@@ -75,6 +75,10 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         inventoryItem.InitialiseItem(item);
     }
 
+    public void DeleteItem(InventoryItem inventoryItem)
+    {
+        Destroy(inventoryItem.gameObject);
+    }
     public void SelectSlot(InventorySlot slot)
     {
         // 전에 선택하던 item의 raycastTarget 끄기
