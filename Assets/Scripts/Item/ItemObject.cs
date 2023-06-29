@@ -17,7 +17,6 @@ public class ItemObject : InteractionObject
 
     public void Init(int id, Item item, bool isDrop) 
     {
-
         GameObject itemObj =
            Instantiate(ItemDataManager.Instance.ItemPrefab[Id] as GameObject, transform.position, Quaternion.identity);
         itemObj.transform.parent = transform;
@@ -28,7 +27,6 @@ public class ItemObject : InteractionObject
         _isDrop = isDrop;
         _item = item;
         _itemData = ItemDataManager.Instance.ItemData[Id];
-    
     }
 
 

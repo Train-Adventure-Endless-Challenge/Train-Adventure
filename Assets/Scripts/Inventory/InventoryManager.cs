@@ -101,6 +101,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         item._item.Decomposition();
         Destroy(item.gameObject);
     }
+
     public void DropItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();

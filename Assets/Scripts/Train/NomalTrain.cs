@@ -14,13 +14,9 @@ public class NomalTrain : Train
     private int _enemyCount;
     private bool _isClear;                                                     
 
-    private void Start()
+    public override void Start()
     {
-        // 동적타임에 NavMesh 생성하기
-        NavMeshSurface surfaces = _floor.GetComponent<NavMeshSurface>();
-
-        surfaces.RemoveData();
-        surfaces.BuildNavMesh();
+        base.Start();
     }
 
     /// <summary>

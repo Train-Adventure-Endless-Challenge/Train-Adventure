@@ -126,6 +126,7 @@ public class Item : MonoBehaviour
     /// </summary>
     public virtual void EarnItem()
     {
+
     }
 
     /// <summary>
