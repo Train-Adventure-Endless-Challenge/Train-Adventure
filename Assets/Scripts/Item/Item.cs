@@ -133,6 +133,24 @@ public class Item : MonoBehaviour
 
 
     /// <summary>
+    /// item을 drop이 아닌 처음 먹었을 때 사용하는 데이터 초기화 함수
+    /// </summary>
+    public virtual void UpdateData()
+    {
+        Init();
+    }
+
+    /// <summary>
+    /// drop한 아이템을 다시 먹을 때 기존 데이터를 가지고 오기위한 함수
+    /// </summary>
+    /// <param name="item"></param>
+    public virtual void UpdateData(Item item)
+    {
+        _level = item.Level;
+        _durability = item.Durability;
+    }
+
+    /// <summary>
     /// 아이템을 얻었을 때 실행하는 함수
     /// </summary>
     public virtual void EarnItem()
@@ -227,7 +245,6 @@ public class Item : MonoBehaviour
 
         InventoryManager.Instance.DeleteItem(_inventoryItem);
 
-        Debug.Log(1);
         Instantiate(_itemDestroyEffect, transform.position, Quaternion.identity);
         Item destructionItem = Instantiate(ItemDataManager.Instance.ItemPrefab[Id] as GameObject, transform.position, Quaternion.identity).GetComponent<Item>();
         
