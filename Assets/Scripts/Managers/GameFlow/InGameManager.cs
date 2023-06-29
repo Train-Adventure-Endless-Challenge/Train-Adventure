@@ -49,9 +49,9 @@ public class InGameManager : SceneSingleton<InGameManager>
         IngameUIController.Instance.UpdateScore(++score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
 
-        GameObject nextTrain = _storeTrainObject;
+        GameObject nextTrain = _nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)];
 
-        if (score == 1)
+        if (score == 4)
         {
             nextTrain = _storeTrainObject;
         }
