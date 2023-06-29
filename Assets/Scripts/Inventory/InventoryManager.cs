@@ -104,7 +104,20 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         
         _selectedSlot = slot;
     }
+    
+    public void RepairItem()
+    {
+        InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+        if (item == null) return;
+        if (GearManager.Instance.GearAmount < 20)
+        {
+            Debug.Log("기어 부족");
+            return;
+        }
 
+        item._item.SetDurabilityMax();
+        GearManager.Instance.SubGear(20);
+    }
     public void DisassembleItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
