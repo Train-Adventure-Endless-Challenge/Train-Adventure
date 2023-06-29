@@ -25,8 +25,11 @@ public class EnemyAttackState : State<EnemyController>
 
         if(!_enemyController._isCurrentAttackCor)
             Attack();
-        else
+        else if (!(_enemyController.EnemyType == EnemyType.Bomb))       //폭탄은 공격 중에는 상태를 변경하지 않는다
+        {
+
             _enemyController.ChangeState<EnemyIdleState>();
+        }
     }
 
     private void Attack()
