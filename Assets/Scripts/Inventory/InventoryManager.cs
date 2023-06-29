@@ -100,7 +100,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
         if (item == null) return;
 
-        item._slot.TakeItem(item._item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
+        item._slot.TakeItem(ref item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
 
         item._item.Decomposition();
         Destroy(item.gameObject);
@@ -111,7 +111,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
         if (item == null) return;
 
-        item._slot.TakeItem(item._item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
+        item._slot.TakeItem(ref item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
 
         ItemObject itemObj = Instantiate(ItemDataManager.Instance.ItemObjectPrefab as GameObject, PlayerManager.Instance.transform.position + Vector3.up, Quaternion.identity).GetComponent<ItemObject>();
         itemObj.Init(item._item.Id, item._item,isDrop:true);
