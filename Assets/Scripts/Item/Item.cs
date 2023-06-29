@@ -227,7 +227,6 @@ public class Item : MonoBehaviour
 
         InventoryManager.Instance.DeleteItem(_inventoryItem);
 
-        Debug.Log(1);
         Instantiate(_itemDestroyEffect, transform.position, Quaternion.identity);
         Item destructionItem = Instantiate(ItemDataManager.Instance.ItemPrefab[Id] as GameObject, transform.position, Quaternion.identity).GetComponent<Item>();
         
@@ -238,7 +237,7 @@ public class Item : MonoBehaviour
             obj.AddComponent<MeshCollider>().convex = true;
         }
         Destroy(destructionItem.gameObject, 2);
-
+        PlayerManager.Instance.EquipItem.ReleaseItem(this);
         Destroy(gameObject);
         
         //TODO: 아이템 포인터 null로 만들기
