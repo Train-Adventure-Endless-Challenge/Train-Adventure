@@ -149,6 +149,10 @@ public class Item : MonoBehaviour
     {
         _level = item.Level;
         _durability = item.Durability;
+        isUpgrade = item.isUpgrade;
+
+        if (isUpgrade)
+            UpgradeItem();
     }
 
     /// <summary>
