@@ -18,7 +18,6 @@ public class EnemyUI : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_enemyController.MaxHp);
     }
 
     public void Init()

@@ -14,7 +14,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             if (inventoryItem == null) return;
-            if (inventoryItem._slot.TakeItem(inventoryItem._item) == false || PutItem(inventoryItem._item) == false)
+            if (inventoryItem._slot.TakeItem(ref inventoryItem) == false || PutItem(ref inventoryItem) == false)
             {
                 inventoryItem.transform.SetParent(inventoryItem._parentAfterDrag);
                 return;
@@ -33,12 +33,12 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
 
             Transform temp_transform = dropInventoryItem._parentAfterDrag;
 
-            if (this.TakeItem(currentSlotInventoryItem._item) == false
-                || prev_slot.PutItem(currentSlotInventoryItem._item) == false)
+            if (this.TakeItem(ref currentSlotInventoryItem) == false
+                || prev_slot.PutItem(ref currentSlotInventoryItem) == false)
                 dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
-            if (prev_slot.TakeItem(dropInventoryItem._item) == false
-                        || this.PutItem(dropInventoryItem._item) == false)
+            if (prev_slot.TakeItem(ref dropInventoryItem) == false
+                        || this.PutItem(ref dropInventoryItem) == false)
                 dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
 
@@ -64,7 +64,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// <summary>
     /// 슬롯에 아이템을 놓았을 때 실행하는 이벤트 함수
     /// </summary>
-    public virtual bool PutItem(Item item)
+    /// <param name="inventoryItem">놓일 아이템UI 스크립트</param>
+    /// <returns></returns>
+    public virtual bool PutItem(ref InventoryItem inventoryItem) // 장비를 장착할 때 새로운 item 객체가 생성되는데 그것을 적용시켜주기위해 주솟값을 넘겨줌
     {
         return true;
     }
@@ -72,7 +74,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
     /// <summary>
     /// 슬롯에서 아이템을 가져갔을 때 실행하는 이벤트 함수
     /// </summary>
-    public virtual bool TakeItem(Item item)
+    public virtual bool TakeItem(ref InventoryItem inventoryItem)
     {
         return true;
     }

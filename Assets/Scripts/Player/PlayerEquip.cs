@@ -26,28 +26,34 @@ public class PlayerEquip : MonoBehaviour
     /// 아이템을 장착하는 함수
     /// </summary>
     /// <param name="item">장착할 아이템</param>
-    public bool EquipItem(Item item)
+    public bool EquipItem(ref InventoryItem itemInventory)
     {
 
-        Object itemPrefab = ItemDataManager.Instance.ItemPrefab[item.Id];
+        Object itemPrefab = ItemDataManager.Instance.ItemPrefab[itemInventory._item.Id];
         GameObject itemObj = Instantiate(itemPrefab as GameObject, transform.position, Quaternion.identity);
         
-        if (item.ItemType == Itemtype.weapon)
+        if (itemInventory._item.ItemType == Itemtype.weapon)
         {
             Weapon weapon = itemObj.GetComponent<Weapon>();
             _currentWeapon = weapon;
             weapon.transform.parent = _weaponEquipTransform;
             weapon.transform.localPosition = Vector3.zero;
             weapon.transform.localEulerAngles = Vector3.zero;
+            itemInventory._item = weapon;
+            itemInventory._item.InventoryItem = itemInventory;
             return true;
         }
-        else if(item.ItemType == Itemtype.armor)
+        else if(itemInventory._item.ItemType == Itemtype.armor)
         {
             Armor armor = itemObj.GetComponent<Armor>();
 
             armor.transform.parent = _armorEquipTransform[(int)armor.ArmorType];
+            itemInventory._item = armor;
+            itemInventory._item.InventoryItem = itemInventory;
+         
             return true;
         }
+
         return false;
     }
 

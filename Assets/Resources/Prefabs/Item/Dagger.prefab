@@ -223,13 +223,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: d3177aac62c8e4e4baea759501e296e2, type: 2}
   _itemType: 0
+  _itemDestroyEffect: {fileID: 823794951709449306, guid: 09493efb518a384428bb7500e8dcd0e9,
+    type: 3}
+  _itemModel: {fileID: 5897267721135852934}
   _weaponCollider: {fileID: 0}
   currentCoolTime: 3
   _trailRenderer: {fileID: 8866011294054360716}
   _skillEffectPrefab: {fileID: 1131048944236661263, guid: 0ccf02647e53d68438668c80a1a2e11d,
     type: 3}
   _skillRadius: 1.7
-  skillImpactPosition: {fileID: 4008470357930261061}
+  _skillImpactPosition: {fileID: 4008470357930261061}
 --- !u!114 &7668499607380531063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,6 +1570,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc0060a831da5b947bd5a3ee9e817815, type: 3}
+--- !u!1 &5897267721135852934 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: cc0060a831da5b947bd5a3ee9e817815,
+    type: 3}
+  m_PrefabInstance: {fileID: 6707588752759533783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6529266268285851452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cc0060a831da5b947bd5a3ee9e817815,

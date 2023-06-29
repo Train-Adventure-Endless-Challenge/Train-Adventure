@@ -28,6 +28,11 @@ public class Weapon : Item
     private CinemachineImpulseSource _shakeImpulse;
 
     public Coroutine _hitStopCor;
+
+    public bool CanSkill
+    {
+        get { return currentCoolTime <= Time.time; }
+    }
     void Update()
     {
 
@@ -62,7 +67,6 @@ public class Weapon : Item
     /// </summary>
     public virtual void Attack()
     {
-        SubDurability(itemData.AttackConsumeDurability);
     }
 
     /// <summary>
@@ -70,8 +74,6 @@ public class Weapon : Item
     /// </summary>
     public virtual void UseActiveSkill()
     {
-        if (currentCoolTime > Time.time) return;
-
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + itemData.SkillCooltime;
     }
