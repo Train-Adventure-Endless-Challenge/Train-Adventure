@@ -7,7 +7,8 @@ public enum EnemyType
     range,          // 원거리
     melee,          // 근거리
 
-    scientist,       //미친과학자
+    scientist,      // 미친과학자
+    Bomb,           // 폭탄
 
     Boss            // 보스
 

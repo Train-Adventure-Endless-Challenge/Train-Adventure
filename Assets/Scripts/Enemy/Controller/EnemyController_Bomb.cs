@@ -19,7 +19,7 @@ public class EnemyController_Bomb : EnemyController
 
     public override void Attack()
     {
-
+        _anim.SetTrigger("Attack");
     }
 
     /// <summary>
