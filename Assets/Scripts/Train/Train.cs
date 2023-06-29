@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class Train : MonoBehaviour
 {
+    [SerializeField] private Animation _frontDoorAnimation;
+
     public GameObject _floor;   // 바닥
     public Transform _playerSpawnPoint;
 
@@ -27,5 +29,9 @@ public class Train : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void OpenDoor()
+    {
+        _frontDoorAnimation.Play();
+    }
     
 }
