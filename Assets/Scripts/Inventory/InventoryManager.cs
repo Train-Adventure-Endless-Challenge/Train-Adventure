@@ -47,6 +47,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
             {
                 itemInSlot._count++;
                 itemInSlot.RefreshCount();
+                item.EarnItem();
                 return true;
             }
         }
@@ -60,6 +61,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
             if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
+                item.EarnItem();
                 return true;
             }
         }

@@ -19,6 +19,7 @@ public enum Itemtype
 {
     weapon,
     armor,
+    consumable,
 }
 
 public class Item : MonoBehaviour

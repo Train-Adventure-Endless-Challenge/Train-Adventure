@@ -218,6 +218,12 @@ public class Player : Entity
         IngameUIController.Instance.UpdateHp(_hp, MaxHp);
     }
 
+    public void Heal(float healAmount)
+    {
+        _hp += healAmount;
+        IngameUIController.Instance.UpdateHp(_hp, MaxHp);
+    }
+
     public override void Die()
     {
         _playerDie.Die(); // 플레이어 죽음 실행
