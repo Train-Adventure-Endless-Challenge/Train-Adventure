@@ -46,12 +46,19 @@ public class InGameManager : SceneSingleton<InGameManager>
     /// </summary>
     public void NextStage()
     {
-        StartNextTrain(_nomalTrainObjects[Random.Range(0,_nomalTrainObjects.Length)]);
-
-        StartCoroutine(FadeInOutCor(1.5f, 1, 0));
-
         IngameUIController.Instance.UpdateScore(++score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
+
+        GameObject nextTrain = _storeTrainObject;
+
+        if (score == 1)
+        {
+            nextTrain = _storeTrainObject;
+        }
+
+        StartNextTrain(nextTrain);
+
+        StartCoroutine(FadeInOutCor(1.5f, 1, 0));
     }
 
     /// <summary>

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -47,7 +48,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
             {
                 itemInSlot._count++;
                 itemInSlot.RefreshCount();
-                item.EarnItem();
+                slot.GetComponentInChildren<InventoryItem>()._item.EarnItem();
                 return true;
             }
         }
@@ -61,7 +62,6 @@ public class InventoryManager : SceneSingleton<InventoryManager>
             if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
-                item.EarnItem();
                 return true;
             }
         }
@@ -75,6 +75,8 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem._slot = slot;
         inventoryItem.InitialiseItem(item);
+
+        inventoryItem._item.EarnItem();
     }
 
     public void DeleteItem(InventoryItem inventoryItem)

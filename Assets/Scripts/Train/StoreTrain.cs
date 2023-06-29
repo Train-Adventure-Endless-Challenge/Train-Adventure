@@ -21,7 +21,7 @@ public class StoreTrain : Train
         {
             storeItemObject = 
                 Instantiate(_storeItemObject, _storeItemTransform[i].position, Quaternion.identity).GetComponent<StoreItemObject>();
-            storeItemObject.Init(ItemDataManager.Instance.ItemData[1], Random.Range(50, 60));
+            storeItemObject.Init(ItemDataManager.Instance.ItemData[0], Random.Range(50, 60));
         }
     }
 

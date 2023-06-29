@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StoreItemObject : InteractionObject
@@ -29,7 +30,8 @@ public class StoreItemObject : InteractionObject
             return;
         }
 
-        InventoryManager.Instance.AddItem(new Item(_itemData));
+        Object itemObj = ItemDataManager.Instance.ItemPrefab[_itemData.Id];
+        InventoryManager.Instance.AddItem(itemObj.GetComponent<Item>());
 
         GearManager.Instance.SubGear(_cost);
 
