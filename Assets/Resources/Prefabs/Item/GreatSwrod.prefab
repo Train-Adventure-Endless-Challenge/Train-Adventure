@@ -1152,6 +1152,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemData: {fileID: 11400000, guid: 0263971dc5bf4454bb235f6c60d51594, type: 2}
   _itemType: 0
+  _itemDestroyEffect: {fileID: 823794951709449306, guid: 09493efb518a384428bb7500e8dcd0e9,
+    type: 3}
   _weaponCollider: {fileID: 5510357528307337339}
   currentCoolTime: 0
   _trailRenderer: {fileID: 5510357528152201045}

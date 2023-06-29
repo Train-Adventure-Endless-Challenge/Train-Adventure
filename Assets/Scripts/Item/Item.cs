@@ -64,6 +64,9 @@ public class Item : MonoBehaviour
     private InventoryItem _inventoryItem;
 
     public InventoryItem InventoryItem { get { return _inventoryItem; } set { _inventoryItem = value; } }
+
+    [SerializeField] private GameObject _itemDestroyEffect;
+
     #endregion
     public Item(Item item)
     {
@@ -215,6 +218,7 @@ public class Item : MonoBehaviour
         GearManager.Instance.AddGear(addedGear);
 
         InventoryManager.Instance.DeleteItem(_inventoryItem);
+        Instantiate(_itemDestroyEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         //TODO: 아이템 포인터 null로 만들기
     }
