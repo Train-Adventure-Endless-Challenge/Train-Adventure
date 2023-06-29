@@ -63,6 +63,15 @@ public class Weapon : Item
     public void AttackCollisionOn()
     {
         _weaponCollider.enabled = true;
+        AttackColliderOnFunc();
+    }
+
+    /// <summary>
+    /// 공격으로 인해 collider가 on 됐을 때 실행되는 이벤트
+    /// </summary>
+    public virtual void AttackColliderOnFunc()
+    {
+
     }
 
     /// <summary>
