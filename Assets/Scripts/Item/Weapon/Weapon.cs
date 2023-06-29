@@ -36,6 +36,8 @@ public class Weapon : Item
         get { return currentCoolTime <= Time.time; }
     }
 
+    [SerializeField] protected GameObject _upgradeEffectPrefab;
+
     void Update()
     {
 
@@ -111,5 +113,14 @@ public class Weapon : Item
         Time.timeScale = 1;
 
         _hitStopCor = null;
+    }
+
+    public override void UpgradeItem()
+    {
+        base.UpgradeItem();
+        GameObject obj = Instantiate(_upgradeEffectPrefab, transform);
+
+        obj.transform.localPosition = Vector3.zero;
+        obj.transform.localEulerAngles = Vector3.zero;
     }
 }
