@@ -14,7 +14,6 @@ public class EnemyController_Melee : EnemyController
     {
         base.Start();
 
-        _stateMachine.AddState(new EnemyDieState());
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
         _stateMachine.AddState(new EnemyAttackWalkState());
