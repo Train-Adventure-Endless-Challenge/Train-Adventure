@@ -155,6 +155,7 @@ public abstract class EnemyController : Entity
     /// </summary>
     private void GearDrop()
     {
+        if (EnemyType == EnemyType.Bomb) return;        // 폭탄 몬스터는 터져도 기어가 드랍되지 않음
         GearManager.Instance.AddGear(UnityEngine.Random.Range(2, 4));
     }
 

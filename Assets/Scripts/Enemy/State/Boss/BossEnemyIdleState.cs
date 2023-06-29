@@ -24,7 +24,7 @@ public class BossEnemyIdleState : State<EnemyController>
 
     IEnumerator StartAttackWalkCor()
     {
-        yield return new WaitForSeconds(3f);        // 3초 마다 공격
+        yield return new WaitForSeconds(2f);        // 3초 마다 공격
          _enemyController.ChangeState<BossEnemyAttackWalkState>(); 
     }
 
