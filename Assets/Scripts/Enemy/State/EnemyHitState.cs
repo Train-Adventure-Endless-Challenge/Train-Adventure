@@ -15,17 +15,17 @@ public class EnemyHitState : State<EnemyController>
     {
         base.OnEnter();
 
-        if(_enemyController.EnemyType == EnemyType.Bomb)
-        {
-            _enemyController.ChangeState<EnemyAttackState>();
-            return;
-        }
-
         _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
         _agent.isStopped = true;
+
+        if(_enemyController.EnemyType == EnemyType.Bomb)
+        {
+            _enemyController.ChangeState<EnemyAttackState>();
+            return;
+        }
 
         // 체력 감소 및 적용
         _enemyController.Hp -= _enemyController._eventDamage;
