@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
+    public Vector3 _dir;
     Rigidbody _rigid;
     [SerializeField] int _speed;
     public float _damage;
@@ -18,6 +19,7 @@ public class EnemyBullet : MonoBehaviour
 
     void Start()
     {
+        transform.LookAt(PlayerManager.Instance.transform);
         Destroy(gameObject, 3f);
     }
 
@@ -44,4 +46,5 @@ public class EnemyBullet : MonoBehaviour
 
     }
 
+   
 }
