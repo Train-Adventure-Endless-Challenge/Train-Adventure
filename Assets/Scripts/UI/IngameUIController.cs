@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +10,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] Slider _staminaSlider;
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
+    [SerializeField] Image _shakeAmountBackground;
 
     [SerializeField] private GameObject _pointerImage;
 
@@ -151,7 +151,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     /// <param name="shakeAmount">목표 흔들림 수치</param>
     public void UpdateShakeAmount(float endShakeAmount)
     {
-        StartCoroutine(UpdateShakeAmountCor(_pointerImage.transform.rotation.z, endShakeAmount * 36f));
+        StartCoroutine(UpdateShakeAmountCor(_pointerImage.transform.eulerAngles.z, endShakeAmount * 36f));
     }
 
     /// <summary>
@@ -173,6 +173,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
             float zRotation = Mathf.Lerp(start, end, percent) % 360.0f;
 
+            _shakeAmountBackground.fillAmount = Mathf.Lerp(start, end, percent) / 360f;
+
             _pointerImage.transform.eulerAngles = 
                 new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, zRotation);
 
@@ -181,5 +183,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
         _pointerImage.transform.eulerAngles =
             new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, end);
+
+        _shakeAmountBackground.fillAmount = end / 360.0f;
+
     }
 }
