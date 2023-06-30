@@ -31,20 +31,16 @@ public class EnemyBullet : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            Player player = other.gameObject.GetComponent<Player>();
+            Player player = collision.gameObject.GetComponent<Player>();
             player.Hit(_damage, Owner);
 
             Destroy(gameObject);
-        } 
+        }
 
         Destroy(gameObject);    
-        //else if 추후 벽 인 경우에도 태그를 사용하여 총알 삭제 
-
     }
-
-   
 }

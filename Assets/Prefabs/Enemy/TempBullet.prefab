@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8618363741703801513}
   - component: {fileID: 8618363741703801512}
   - component: {fileID: 8189791630715752692}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TempBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -182,7 +182,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0.0054359436
-        value: 1
+        value: 0.3353653
         inSlope: 0
         outSlope: 0
         tangentMode: 0
