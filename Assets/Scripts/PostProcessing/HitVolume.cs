@@ -41,6 +41,8 @@ public class HitVolume : MonoBehaviour
     {
         _volume = GetComponent<Volume>();
         _volume.profile.TryGet(out _vignette);
+
+        _player = PlayerManager.Instance.gameObject.GetComponent<Player>();
     }
 
     #endregion
