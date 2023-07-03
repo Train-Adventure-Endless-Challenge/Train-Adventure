@@ -9,11 +9,13 @@ public abstract class InteractionObject : MonoBehaviour
 
     public virtual void OnDetection()
     {
-        _interactionUI.SetActive(true);
+        if(_interactionUI != null)
+            _interactionUI.SetActive(true);
     }
 
     public virtual void OffDetection()
     {
-        _interactionUI.SetActive(false);
+        if(_interactionUI != null)
+            _interactionUI.SetActive(false);
     }
 }

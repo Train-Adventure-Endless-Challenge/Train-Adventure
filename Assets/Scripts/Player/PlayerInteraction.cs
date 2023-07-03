@@ -22,7 +22,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private Player _player;
 
-    Outline lastDetectionObject; // 마지막으로 찾은 오브젝트
+    InteractionObject lastDetectionObject; // 마지막으로 찾은 오브젝트
     #endregion
 
     #region Function
@@ -65,7 +65,11 @@ public class PlayerInteraction : MonoBehaviour
 
         if (hits.Length <= 0)
         {
-            if (lastDetectionObject != null) lastDetectionObject.enabled = false;
+            if (lastDetectionObject != null)
+            {
+                lastDetectionObject.GetComponentInChildren<Outline>().enabled = false;
+                lastDetectionObject.GetComponentInChildren<InteractionObject>().OffDetection();
+            }
             lastDetectionObject = null;
             return;
         }
@@ -81,16 +85,25 @@ public class PlayerInteraction : MonoBehaviour
                 {
                     // 마지막 오브젝트와 첫번째 오브젝트가 다르다면 마지막 비활성화
                     // => 움직여서 가장 가까운 오브젝트가 바뀔 경우
-                    if (hit != lastDetectionObject && lastDetectionObject != null) lastDetectionObject.enabled = false;
-                    
-                    lastDetectionObject = hit.GetComponentInChildren<Outline>();
-                    lastDetectionObject.enabled = true;
-                }
-                else hit.GetComponentInChildren<Outline>().enabled = false;
+                    if (hit != lastDetectionObject && lastDetectionObject != null)
+                    {
+                        lastDetectionObject.OffDetection();
+                        lastDetectionObject.GetComponentInChildren<Outline>().enabled = false;
+                    }
+                    lastDetectionObject = hit.GetComponentInChildren<InteractionObject>();
+                    lastDetectionObject.OnDetection();
 
+                    lastDetectionObject.GetComponentInChildren<Outline>().enabled = true;
+
+                }
+                else
+                {
+                    hit.GetComponentInChildren<Outline>().enabled = false;
+                    hit.GetComponentInChildren<InteractionObject>().OffDetection();
+                }
                 if (Input.GetKeyDown(_keyCode)) // 상호작용 키를 눌렀을 때
                 {
-                    hit.GetComponent<InteractionObject>().Interact(); // 상호작용 시작
+                    lastDetectionObject.Interact(); // 상호작용 시작
                 }
             }
 
