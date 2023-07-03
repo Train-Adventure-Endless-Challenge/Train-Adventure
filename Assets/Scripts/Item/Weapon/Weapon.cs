@@ -39,6 +39,7 @@ public class Weapon : Item
     }
 
     [SerializeField] protected GameObject _upgradeEffectPrefab;
+    [SerializeField] protected Transform _upgradeEffectTransform;
 
     void Update()
     {
@@ -121,7 +122,7 @@ public class Weapon : Item
     public override void UpgradeItem()
     {
         base.UpgradeItem();
-        GameObject obj = Instantiate(_upgradeEffectPrefab, transform);
+        GameObject obj = Instantiate(_upgradeEffectPrefab, _upgradeEffectTransform);
 
         obj.transform.localPosition = Vector3.zero;
         obj.transform.localEulerAngles = Vector3.zero;
