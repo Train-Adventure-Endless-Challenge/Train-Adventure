@@ -5,43 +5,32 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    Rigidbody _rigid;
+    public Vector3 _dir;
     [SerializeField] int _speed;
     public float _damage;
-
     public GameObject Owner { get; set; }
-
-    private void Awake()
-    {
-        _rigid = GetComponent<Rigidbody>();
-    }
 
     void Start()
     {
+        transform.LookAt(_dir);
+
         Destroy(gameObject, 3f);
     }
 
     void Update()
     {
-        if(Owner != null)
-        {
-            _rigid.velocity = Owner.transform.forward * _speed;
-        }
+        transform.position += transform.forward * _speed * Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.Hit(_damage, Owner);
 
             Destroy(gameObject);
-        } 
-
+        }
         Destroy(gameObject);    
-        //else if 추후 벽 인 경우에도 태그를 사용하여 총알 삭제 
-
     }
-
 }

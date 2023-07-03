@@ -15,6 +15,8 @@ public class EnemyController_Scientist : EnemyController
     float _skillDelayTime = 15f;
     float _timer = 0f;
 
+    Vector3 _dir;
+
     protected override void Start()
     {
         base.Start();
@@ -115,7 +117,8 @@ public class EnemyController_Scientist : EnemyController
         _isCurrentAttackCor = true;
         _agent.isStopped = true;
 
-        Vector3 dir = _player.transform.position - transform.position;
+        Vector3 dir = PlayerManager.Instance.transform.position - transform.position;
+        _dir = _player.transform.position + new Vector3(0, 1f, 0);            // 기존 플레이어의 위치는 바닥에 붙어 있어 총알이 바닥에 먼저 체크 되는 문제로 임시 vector 값을 더해줌
         float timer = 0;
         while (timer <= 1f)       // 약간의 delay. temp 값.
         {
@@ -124,6 +127,8 @@ public class EnemyController_Scientist : EnemyController
             yield return new WaitForEndOfFrame();
 
         }
+
+
 
         _anim.SetTrigger("Attack"); //총알 공격 모션
 
@@ -140,7 +145,6 @@ public class EnemyController_Scientist : EnemyController
     /// </summary>
     public void SpawnBulletEvent()
     {
-        Vector3 dir = _player.transform.position - transform.position;
 
         //공격 총알 생성
         GameObject bullet = InsBullet(_bulletPrefab);
@@ -150,6 +154,7 @@ public class EnemyController_Scientist : EnemyController
         EnemyBullet eb = bullet.GetComponent<EnemyBullet>();
         eb._damage = Damage;
         eb.Owner = gameObject;
+        eb._dir = _dir;
 
     }
 
