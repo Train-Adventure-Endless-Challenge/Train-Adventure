@@ -69,7 +69,6 @@ public class OnMouseCheckItem : MonoBehaviour
 
             if (results.Count <= 0 || !results[0].gameObject.transform.GetComponent<InventoryItem>() )
             {
-                Debug.Log("1");
                 _isShow = false;
                 Destroy(descriptionObj);
                 yield break;

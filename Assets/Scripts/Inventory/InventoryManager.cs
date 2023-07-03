@@ -15,7 +15,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     [SerializeField] private Image _selectImg;        // 인벤토리 선택 시 나오는 이미지
 
     [SerializeField] private GameObject _mainInventoryGroup;
-    [SerializeField] private GameObject _selectEventObject;
+    [SerializeField] private GameObject _selectEventObject;   // 아이템 활동 버튼 부모(버리기버튼, 수리)
 
     [SerializeField] private KeyCode _inventoryKeyCode;
 
@@ -35,11 +35,9 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
             _mainInventoryGroup.SetActive(_mainInventoryGroup.activeSelf == false);
 
-            if (_mainInventoryGroup.activeSelf == false)
-            {
-                _selectedSlot = null;
-                _selectEventObject.SetActive(false);
-            }
+            _selectedSlot = null;
+            _selectEventObject.SetActive(false);
+            _selectImg.gameObject.SetActive(false);
         }
     }
 
@@ -49,12 +47,14 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     /// <param name="inventorySlots">슬롯들</param>
     public void CopyInventory(InventorySlot[] inventorySlots)
     {
-        for(int i = 0; i < inventorySlots.Length; i++)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             InventoryItem item = _inventorySlots[i].GetComponentInChildren<InventoryItem>();
 
             if (item == null) continue;
 
+            item.ParentCanvas = inventorySlots[i].gameObject.GetComponentInParent<Canvas>().gameObject;
+            item._slot = inventorySlots[i];
             item.transform.SetParent(inventorySlots[i].transform);
         }
     }
@@ -72,6 +72,8 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
             if (item == null) continue;
 
+            item.ParentCanvas = gameObject;
+            item._slot = _inventorySlots[i];
             item.transform.parent = _inventorySlots[i].transform;
         }
 
@@ -141,6 +143,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         GameObject newItemGo = Instantiate(_inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGo.GetComponent<InventoryItem>();
         inventoryItem._slot = slot;
+        inventoryItem.ParentCanvas = gameObject;
         inventoryItem.InitialiseItem(item);
 
         inventoryItem._item.EarnItem();
@@ -156,7 +159,9 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
         if (item != null) item.ItemImage.raycastTarget = false;
 
-        _selectImg.gameObject.transform.parent.gameObject.SetActive(true); // selectImg, 분해, 드롭 버튼 활성화
+        _selectImg.gameObject.SetActive(true); // selectImg, 분해, 드롭 버튼 활성화
+        _selectEventObject.SetActive(true);
+        _selectImg.gameObject.transform.SetParent(slot.GetComponentInParent<Canvas>().transform);
         _selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position; // selectImg 위치 맞추기
 
         // 현재 선택하는 item의 raycastTarget 키기

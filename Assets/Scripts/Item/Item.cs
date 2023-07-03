@@ -201,7 +201,7 @@ public class Item : MonoBehaviour
         _additionalDefense += itemData.UpgradeValueDefense;
         _additionalAttackSpeed += itemData.UpgradeValueAttackSpeed;
         _additionalSpeed += itemData.UpgradeValueSpeed;
-        
+        isUpgrade = true;
         // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
     }
 
