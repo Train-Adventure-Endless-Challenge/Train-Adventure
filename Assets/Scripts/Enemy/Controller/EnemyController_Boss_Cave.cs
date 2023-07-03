@@ -10,6 +10,7 @@ public class EnemyController_Boss_Cave : EnemyController
 
     [Header("Spawn")]
     [SerializeField] GameObject _bombPrefab;
+    public GameObject _floorEffect;
 
     protected override void Start()
     {
@@ -159,6 +160,8 @@ public class EnemyController_Boss_Cave : EnemyController
         {
             _player.GetComponent<Player>().Hit(Damage, gameObject);
         }
+
+        Instantiate(_floorEffect, transform.position, Quaternion.identity);
     }
     #endregion
 
