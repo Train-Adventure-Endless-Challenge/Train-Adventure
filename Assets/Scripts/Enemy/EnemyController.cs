@@ -98,7 +98,7 @@ public abstract class EnemyController : Entity
         _agent.stoppingDistance = AttackRange;
 
         _dieEvent += GearDrop;
-
+        _agent.ResetPath();
     }
 
 
