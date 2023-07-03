@@ -6,41 +6,35 @@ using UnityEngine;
 public class EnemyBullet : MonoBehaviour
 {
     public Vector3 _dir;
-    Rigidbody _rigid;
     [SerializeField] int _speed;
     public float _damage;
 
-    public GameObject Owner { get; set; }
+    PlayerManager _player => PlayerManager.Instance;
 
-    private void Awake()
-    {
-        _rigid = GetComponent<Rigidbody>();
-    }
+    public GameObject Owner { get; set; }
 
     void Start()
     {
-        transform.LookAt(PlayerManager.Instance.transform);
+        _dir = _player.transform.position + new Vector3(0,1f,0);            // 기존 플레이어의 위치는 바닥에 붙어 있어 총알이 바닥에 먼저 체크 되는 문제로 임시 vector 값을 더해줌
+        transform.LookAt(_dir);
+
         Destroy(gameObject, 3f);
     }
 
     void Update()
     {
-        if(Owner != null)
-        {
-            _rigid.velocity = Owner.transform.forward * _speed;
-        }
+        transform.position += transform.forward * _speed * Time.deltaTime;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            Player player = collision.gameObject.GetComponent<Player>();
+            Player player = other.gameObject.GetComponent<Player>();
             player.Hit(_damage, Owner);
 
             Destroy(gameObject);
         }
-
         Destroy(gameObject);    
     }
 }

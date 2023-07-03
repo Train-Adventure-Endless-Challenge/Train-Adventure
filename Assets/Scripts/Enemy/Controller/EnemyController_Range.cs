@@ -87,7 +87,6 @@ public class EnemyController_Range : EnemyController
     /// </summary>
     public void SpawnBulletEvent()
     {
-        Vector3 dir = _player.transform.position - transform.position;
 
         //공격 총알 생성
         GameObject bullet = InsBullet();
