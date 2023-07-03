@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2364587615945282271}
   - component: {fileID: 7118862589882259059}
+  - component: {fileID: 7255579474836788712}
   m_Layer: 0
   m_Name: BossTrain
   m_TagString: Untagged
@@ -85,6 +86,19 @@ MonoBehaviour:
   _bossSpawnPoint: {fileID: 7971911326820414058}
   _boss:
   - {fileID: 3439160660107458348, guid: f8d75047c2417354b82a0a514d5a4a7c, type: 3}
+--- !u!65 &7255579474836788712
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2364587615945282256}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10, y: 10, z: 1}
+  m_Center: {x: 0, y: 2.9, z: 23.48}
 --- !u!1 &3129235623850855033
 GameObject:
   m_ObjectHideFlags: 0

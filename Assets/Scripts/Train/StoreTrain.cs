@@ -24,12 +24,4 @@ public class StoreTrain : Train
             storeItemObject.Init(ItemDataManager.Instance.ItemData[1], Random.Range(50, 60));
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            InGameManager.Instance.NextStage();
-        }
-    }
 }

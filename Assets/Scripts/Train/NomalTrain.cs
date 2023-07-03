@@ -56,14 +56,6 @@ public class NomalTrain : Train
             ClearStage();
         }
     }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            InGameManager.Instance.NextStage();
-        }
-    }
 }
 
 [Serializable]
