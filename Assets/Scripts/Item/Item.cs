@@ -48,6 +48,7 @@ public class Item : MonoBehaviour
 
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
     protected bool isUpgrade = false;
+    public bool IsUpgrade { get { return isUpgrade; } }
 
     [SerializeField] protected Itemtype _itemType;
     public int Id { get { return itemData.Id; } }

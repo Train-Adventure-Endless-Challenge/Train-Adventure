@@ -78,6 +78,11 @@ public class ItemUpgradeSystem : MonoBehaviour
             }
         }
 
+        if (EquipedItem._item.IsUpgrade)
+        {
+            Debug.Log("이미 업그레이드된 아이템 입니다.");
+            return;
+        }
         InventoryManager.Instance.PasteInventory(_slots);
 
 
