@@ -31,6 +31,7 @@ public class NomalTrain : Train
         system.transform.parent = transform;
         _enemyCount = system.EnemyCount;
     }
+
     private void ClearStage()
     {
         if (_isClear == true)
