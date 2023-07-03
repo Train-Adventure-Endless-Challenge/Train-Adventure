@@ -105,12 +105,10 @@ public abstract class EnemyController : Entity
     protected virtual void Update()
     {
         _stateMachine.Update(Time.deltaTime);
-
     }
 
     public R ChangeState<R>() where R : State<EnemyController>
     {
-
         return _stateMachine.ChangeState<R>();
     }
 
