@@ -16,7 +16,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector] public Transform _parentAfterDrag;
 
     public InventorySlot _slot;                             // 현재 들어가 있는 slots
-
+    private GameObject _parentCanvas;
+    public GameObject ParentCanvas { get { return _parentCanvas; } set { _parentCanvas = value; } }
 
     public Image ItemImage { get { return _image; } }
 
@@ -51,7 +52,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         // 비활성화 해줘야 인벤토리 슬롯이 비었는지 체크할 수 있음
 
         _parentAfterDrag = transform.parent;
-        transform.SetParent(InventoryManager.Instance.transform);
+        transform.SetParent(_parentCanvas.gameObject.transform);
 
         InventoryManager.Instance._isDrag = true;
     }

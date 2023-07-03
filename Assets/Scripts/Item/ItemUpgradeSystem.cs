@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class ItemUpgradeSystem : MonoBehaviour
 {
@@ -12,17 +13,19 @@ public class ItemUpgradeSystem : MonoBehaviour
     public static ItemUpgradeSystem Instance { get { return _instance; } }
     #endregion
 
-    //--------------------------------------- Test 용 -------------------------------------------------------------------------------------------------------
-    public TestItemSlot CurrentDragSlot { get; set; }
+    [SerializeField] private int _upgradeCost;
 
-    public TMP_Text _debugText;
-    // -------------------------------------------------------------------------------------------------------------------------------------------------
     [SerializeField] private InventorySlot _upgradeSlot;
     public InventorySlot UpgradeSlot { get { return _upgradeSlot; } set { _upgradeSlot = value; } }
 
-    public Item EquipedItem { get { 
+    [SerializeField] private InventorySlot[] _slots;
+
+    public InventoryItem EquipedItem
+    {
+        get
+        {
             if (UpgradeSlot.GetComponentInChildren<InventoryItem>() != null)
-                return UpgradeSlot.GetComponentInChildren<InventoryItem>()._item;
+                return UpgradeSlot.GetComponentInChildren<InventoryItem>();
 
             return null;
         }
@@ -38,26 +41,52 @@ public class ItemUpgradeSystem : MonoBehaviour
 
     private void Update()
     {
-        // Test => 나중에 삭제
-        try
-        {
-            _debugText.text = EquipedItem.ToString();
-        }
-        catch
-        {
-        }
     }
 
     public void LevelUpItem()
     {
-        try
+        if (GearManager.Instance.GearAmount < _upgradeCost)
         {
-            EquipedItem.Levelup();
+            Debug.Log("기어 부족");
+            return;
         }
-        catch
-        {
-            Debug.LogError("아이템 없음");
 
-        }
+        EquipedItem._item.Levelup();
+        GearManager.Instance.SubGear(_upgradeCost);
+        Debug.Log("강화 성공");
     }
+
+    public void OpenEvent()
+    {
+        InventoryManager.Instance.CopyInventory(_slots);
+    }
+    public void CloseEvent()
+    {
+        if (EquipedItem != null)
+        {
+            for (int i = 0; i < _slots.Length; i++)
+            {
+                InventorySlot slot = _slots[i];
+                InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+                if (itemInSlot == null)
+                {
+                    InventoryManager.Instance.AddItem(slot, EquipedItem);
+                    Destroy(EquipedItem.gameObject);
+                    break;
+                }
+            }
+        }
+
+        if (EquipedItem._item.IsUpgrade)
+        {
+            Debug.Log("이미 업그레이드된 아이템 입니다.");
+            return;
+        }
+        InventoryManager.Instance.PasteInventory(_slots);
+
+
+    }
+
+
 }

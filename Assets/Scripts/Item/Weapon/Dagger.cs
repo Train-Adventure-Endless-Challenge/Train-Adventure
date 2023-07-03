@@ -75,6 +75,16 @@ public class Dagger : Weapon
         }
     }
 
+
+    [ContextMenu("a")]
+    public override void UpgradeItem()
+    {
+        base.UpgradeItem();
+
+        _skillCoolTime -= 1;
+        _damage += 5;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;

@@ -36,10 +36,10 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
             Transform temp_transform = dropInventoryItem._parentAfterDrag;
 
             if (this.TakeItem(ref currentSlotInventoryItem) == false
-                || prev_slot.PutItem(ref currentSlotInventoryItem) == false)
+                || prev_slot.TakeItem(ref dropInventoryItem) == false)
                 dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
-            if (prev_slot.TakeItem(ref dropInventoryItem) == false
+            if (prev_slot.PutItem(ref currentSlotInventoryItem) == false
                         || this.PutItem(ref dropInventoryItem) == false)
                 dropInventoryItem.gameObject.transform.SetParent(prev_slot.transform);
 
