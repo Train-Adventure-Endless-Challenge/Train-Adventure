@@ -52,6 +52,7 @@ public class ItemUpgradeSystem : MonoBehaviour
         }
 
         EquipedItem._item.Levelup();
+        GearManager.Instance.SubGear(_upgradeCost);
         Debug.Log("강화 성공");
     }
 
