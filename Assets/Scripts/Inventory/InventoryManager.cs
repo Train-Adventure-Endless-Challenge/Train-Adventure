@@ -18,10 +18,12 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     [SerializeField] private GameObject _selectEventObject;
 
     [SerializeField] private KeyCode _inventoryKeyCode;
-    
+
 
     private InventorySlot _selectedSlot;
-    public InventorySlot SelectedSlot {  get { return _selectedSlot; } }
+    public InventorySlot SelectedSlot { get { return _selectedSlot; } }
+
+
 
     public bool _isDrag;
 
@@ -41,6 +43,65 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         }
     }
 
+    /// <summary>
+    /// 다른 슬롯(강화 인벤토리 UI)에 인벤토리의 아이템을 옮기는 함수
+    /// </summary>
+    /// <param name="inventorySlots">슬롯들</param>
+    public void CopyInventory(InventorySlot[] inventorySlots)
+    {
+        for(int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventoryItem item = _inventorySlots[i].GetComponentInChildren<InventoryItem>();
+
+            if (item == null) continue;
+
+            item.transform.SetParent(inventorySlots[i].transform);
+        }
+    }
+
+    /// <summary>
+    /// 다른 슬롯의 아이템ㅇ르 다시 인벤토리에 옮기는 함수
+    /// </summary>
+    /// <param name="inventorySlots"></param>
+
+    public void PasteInventory(InventorySlot[] inventorySlots)
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventoryItem item = inventorySlots[i].GetComponentInChildren<InventoryItem>();
+
+            if (item == null) continue;
+
+            item.transform.parent = _inventorySlots[i].transform;
+        }
+
+    }
+
+    /// <summary>
+    /// 지정된 슬롯에 item을 넣는 함수
+    /// </summary>
+    /// <param name="slot">아이템을 얻을 슬롯</param>
+    /// <param name="invenitem">얻을 아이템</param>
+    /// <returns></returns>
+    public bool AddItem(InventorySlot slot, InventoryItem invenitem)
+    {
+        if (invenitem == null) return false;
+
+        // 아래 조건에 충족하면 겹칠 수 있기 때문에 아이템 갯수 추가 
+        if (invenitem != null && invenitem._item.Id == invenitem._item.Id
+            && invenitem._count < _maxStackedItem && invenitem._item.ItemData.IsStackable == true)
+        {
+            invenitem._count++;
+            invenitem.RefreshCount();
+            slot.GetComponentInChildren<InventoryItem>()._item.EarnItem();
+            return true;
+        }
+
+        SpawnNewItem(invenitem._item, slot);
+        return true;
+
+    }
+
     public bool AddItem(Item item)
     {
         for (int i = 0; i < _inventorySlots.Length; i++)
@@ -49,7 +110,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
             // 아래 조건에 충족하면 겹칠 수 있기 때문에 아이템 갯수 추가 
-            if (itemInSlot != null && itemInSlot._item.Id == item.Id 
+            if (itemInSlot != null && itemInSlot._item.Id == item.Id
                 && itemInSlot._count < _maxStackedItem && itemInSlot._item.ItemData.IsStackable == true)
             {
                 itemInSlot._count++;
@@ -93,18 +154,18 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     {
         // 전에 선택하던 item의 raycastTarget 끄기
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
-        if(item != null) item.ItemImage.raycastTarget = false;
-        
+        if (item != null) item.ItemImage.raycastTarget = false;
+
         _selectImg.gameObject.transform.parent.gameObject.SetActive(true); // selectImg, 분해, 드롭 버튼 활성화
         _selectImg.rectTransform.position = slot.GetComponent<RectTransform>().position; // selectImg 위치 맞추기
 
         // 현재 선택하는 item의 raycastTarget 키기
         InventoryItem itemImg = slot?.GetComponentInChildren<InventoryItem>();
         if (itemImg != null) itemImg.ItemImage.raycastTarget = true;
-        
+
         _selectedSlot = slot;
     }
-    
+
     public void RepairItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
@@ -137,7 +198,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         item._slot.TakeItem(ref item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
 
         ItemObject itemObj = Instantiate(ItemDataManager.Instance.ItemObjectPrefab as GameObject, PlayerManager.Instance.transform.position + Vector3.up, Quaternion.identity).GetComponent<ItemObject>();
-        itemObj.Init(item._item.Id, item._item,isDrop:true);
+        itemObj.Init(item._item.Id, item._item, isDrop: true);
 
 
         Destroy(item.gameObject);
