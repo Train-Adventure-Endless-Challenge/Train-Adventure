@@ -8,14 +8,10 @@ public class EnemyBullet : MonoBehaviour
     public Vector3 _dir;
     [SerializeField] int _speed;
     public float _damage;
-
-    PlayerManager _player => PlayerManager.Instance;
-
     public GameObject Owner { get; set; }
 
     void Start()
     {
-        _dir = _player.transform.position + new Vector3(0,1f,0);            // 기존 플레이어의 위치는 바닥에 붙어 있어 총알이 바닥에 먼저 체크 되는 문제로 임시 vector 값을 더해줌
         transform.LookAt(_dir);
 
         Destroy(gameObject, 3f);
