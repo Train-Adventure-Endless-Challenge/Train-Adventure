@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -158,6 +159,9 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     public void JumpAttackEvent()
     {
+        //카메라 흔들림. 추후 흔들림 메니저 관리 호출로 변경
+        _player.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
+
         // 몬스터가 바닥에 착지 했을 때 플레이어의 거리가 일정 이하(5는 임시. 추후 기획을 통해 변경)라면 
         if(Vector3.Distance(_player.transform.position, transform.position) <= 5)
         {
