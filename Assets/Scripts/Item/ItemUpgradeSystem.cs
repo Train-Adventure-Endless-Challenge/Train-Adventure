@@ -21,14 +21,11 @@ public class ItemUpgradeSystem : MonoBehaviour
 
     [SerializeField] private InventorySlot[] _slots;
 
-
-    private Weapon _currentWeapon;
-
-    [SerializeField] Animation _upgradeAnim;
+    [SerializeField] Animator _upgradeAnim;
 
     [SerializeField] GameObject _effectPrefab;
     [SerializeField] Transform _effectPos;
-    [SerializeField] Transform _weaponOnObject;
+    [SerializeField] Transform _weaponOnObjectPos;
     [SerializeField] Transform _spawnWeaponPos;
 
 
@@ -52,7 +49,7 @@ public class ItemUpgradeSystem : MonoBehaviour
     }
     private void Start()
     {
-        _upgradeAnim = GetComponentInChildren<Animation>();
+        _upgradeAnim = GetComponentInChildren<Animator>();
     }
     private void Update()
     {
@@ -83,20 +80,33 @@ public class ItemUpgradeSystem : MonoBehaviour
 
     IEnumerator UpgradeCor()
     {
-        CloseEvent();
 
-        _upgradeAnim.Play();
+        // 모루 위 아이템 소환  
+        Object prefab = ItemDataManager.Instance.ItemPrefab[EquipedItem._item.ItemData.Id];
+        GameObject weaponObj = Instantiate(prefab as GameObject, _weaponOnObjectPos.position, _weaponOnObjectPos.rotation);
 
-        yield return new WaitForSeconds(_upgradeAnim.clip.length);
+        // UI 정리
+        InventoryItem _equipitem = EquipedItem; // 삭제 전 아이템 복사
 
-        Instantiate(_effectPrefab, _effectPos);
+        Destroy(EquipedItem.gameObject); // 강화 슬롯에있던 아이템 제거
+        _upgradePanel.SetActive(false); // UI 비활성화
+        InventoryManager.Instance.PasteInventory(_slots); // 인벤 다시 복귀
+
+        _upgradeAnim.SetTrigger("Upgrade");
+
+        yield return new WaitForSeconds(_upgradeAnim.GetCurrentAnimatorStateInfo(0).length);
+
+        Instantiate(_effectPrefab, _effectPos); // 이펙트 소환
 
         yield return new WaitForSeconds(1);
 
-        Object prefab = ItemDataManager.Instance.ItemObjectPrefab;
 
+        Destroy(weaponObj); // 모루 위 아이템 제거
+
+        // 강화된 아이템 소환
+        prefab = ItemDataManager.Instance.ItemObjectPrefab;
         ItemObject obj = Instantiate(prefab as GameObject, _spawnWeaponPos.position, Quaternion.identity).GetComponent<ItemObject>();
-        obj.Init(EquipedItem._item, false);
+        obj.Init(_equipitem._item, true);
 
         if (EquipedItem != null)
         {
@@ -109,7 +119,7 @@ public class ItemUpgradeSystem : MonoBehaviour
     }
     public void CloseEvent()
     {
-        /*if (EquipedItem != null)
+        if (EquipedItem != null)
         {
             for (int i = 0; i < _slots.Length; i++)
             {
@@ -124,7 +134,7 @@ public class ItemUpgradeSystem : MonoBehaviour
                 }
             }
         }
-*/
+
         _upgradePanel.SetActive(false);
         InventoryManager.Instance.PasteInventory(_slots);
 

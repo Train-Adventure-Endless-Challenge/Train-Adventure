@@ -6,16 +6,16 @@ using UnityEngine;
 public class ItemObject : InteractionObject
 {
     public Item _item;
-    private bool _isDrop;                           // 드랍으로 인해  생긴 오브젝트인가
+    private bool _isDataReset;                           // 드랍으로 인해  생긴 오브젝트인가
     [SerializeField] private ItemData _itemData;
 
     private void Start()
     {
         // 상자나 drop으로 얻은 것이아닌 그냥 바닥에 떨어져있을 경우에만 실행하기
-        Init(_item, _isDrop);
+        Init(_item, _isDataReset);
     }
 
-    public void Init(Item item, bool isDrop = false) 
+    public void Init(Item item, bool isDataReset = false) 
     {
         GameObject itemObj =
            Instantiate(ItemDataManager.Instance.ItemPrefab[_itemData.Id] as GameObject, transform.position, Quaternion.identity);
@@ -24,7 +24,7 @@ public class ItemObject : InteractionObject
         
         itemObj.AddComponent<Outline>().enabled = false;
         
-        _isDrop = isDrop;
+        _isDataReset = isDataReset;
         _item = item;
         _itemData = ItemDataManager.Instance.ItemData[_itemData.Id];
     }
@@ -32,7 +32,7 @@ public class ItemObject : InteractionObject
 
     public override void Interact()
     {
-        if (!_isDrop)
+        if (!_isDataReset)
         {
             Object itemPrefab = ItemDataManager.Instance.ItemPrefab[_itemData.Id];
             Item item = itemPrefab.GetComponent<Item>();
