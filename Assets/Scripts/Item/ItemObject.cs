@@ -20,8 +20,13 @@ public class ItemObject : InteractionObject
         GameObject itemObj =
            Instantiate(ItemDataManager.Instance.ItemPrefab[_itemData.Id] as GameObject, transform.position, Quaternion.identity);
         itemObj.transform.parent = transform;
-        itemObj.GetComponent<Item>().enabled = false;
+        Item tempItem = itemObj.GetComponent<Item>();
+
+        if(isDataReset == true) // 혹시라도 드랍, 강화로 인해 아이템 데이터가 바뀐 상황이라면
+            tempItem.UpdateData(item);  // 아이템 업데이트
         
+        tempItem.enabled = false;
+
         itemObj.AddComponent<Outline>().enabled = false;
         
         _isDataReset = isDataReset;
