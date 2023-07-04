@@ -20,6 +20,11 @@ public class EnemyDieState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
+        // enemy trail 비활성화
+        if(_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    
+        {
+            enemy._attackTrail.gameObject.SetActive(false);
+        }
 
         _enemyController._isDie = true;
         _enemyController._anim.SetTrigger("Die");

@@ -10,7 +10,7 @@ public class EnemyController_Melee : EnemyController
 
     public bool _isAttackCheck = false;             // animation event clip으로 실행할 공격 체크 함수
 
-    [SerializeField] private TrailRenderer _attackTrail;
+    public TrailRenderer _attackTrail;
     protected override void Start()
     {
         base.Start();
