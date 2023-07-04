@@ -12,7 +12,7 @@ public class TrainObjectInTitle : MonoBehaviour
 
     void Update()
     {
-        foreach(GameObject obj in _transObjs)
+        foreach(GameObject obj in _transObjs)           // title Scene 기차 움직임
         {
             obj.transform.Translate(Vector3.forward * Time.deltaTime * 10f);
             if(Vector3.Distance(obj.transform.position,_endTrans.position) <= 1)
