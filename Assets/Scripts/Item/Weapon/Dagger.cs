@@ -49,8 +49,7 @@ public class Dagger : Weapon
     public override void Attack()
     {
         base.Attack();
-        _trailRenderer.enabled = true;
-        _weaponCollider.enabled = true;
+       
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
     }
@@ -75,7 +74,6 @@ public class Dagger : Weapon
         }
     }
 
-
     public override void UpgradeItem()
     {
         base.UpgradeItem();
@@ -84,6 +82,11 @@ public class Dagger : Weapon
         _damage += 5;
     }
 
+    public override void AttackColliderOnFunc()
+    {
+        base.AttackColliderOnFunc();
+        _trailRenderer.enabled = true;
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.blue;
