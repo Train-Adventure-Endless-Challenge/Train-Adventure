@@ -8,10 +8,11 @@ public class InGameManager : SceneSingleton<InGameManager>
     [SerializeField] private Transform _backgroundGroup;
 
     [Header("Train")]
+    [SerializeField] private GameObject _tutorialTrain;
     [SerializeField] private GameObject[] _nomalTrainObjects;
     [SerializeField] private GameObject _bossTrainObject;
     [SerializeField] private GameObject _storeTrainObject;
-
+    
     [Header("UI")]
     [SerializeField] private Image fadeImage;  // 페이드 이미지
 
@@ -28,9 +29,8 @@ public class InGameManager : SceneSingleton<InGameManager>
 
     private void Start()
     {
-        IngameUIController.Instance.UpdateScore(++_score);
+        _currentTrain = CreateTrain(_tutorialTrain, _startPosition);
 
-        _currentTrain = CreateTrain(_nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)], _startPosition);
         _currentTrain.Init();
 
         _nextTrain = CreateTrain(_nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)], _startPosition);

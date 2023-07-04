@@ -1,11 +1,10 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
-public class NomalTrain : Train
+public class TutorialTrain : Train
 {
-    [SerializeField] private GameObject[] _objectsInTrainPrefab; // 기차 내 오브젝트 프리팹이 모두 있는 배열
+    [SerializeField] private GameObject _tutorialObjectInTrainPrefab; // 기차 내 오브젝트 프리팹이 모두 있는 배열
     [SerializeField] private GameObject _treasureBox;
     [SerializeField] private Transform _treasureBoxSpawnPoint;
 
@@ -23,7 +22,7 @@ public class NomalTrain : Train
     public override void Init()
     {
         // 오브젝트들 모두 생성
-        SpawnPointSystem system = Instantiate(_objectsInTrainPrefab[UnityEngine.Random.Range(0, _objectsInTrainPrefab.Length)], 
+        SpawnPointSystem system = Instantiate(_tutorialObjectInTrainPrefab,
             transform.position, Quaternion.identity).GetComponent<SpawnPointSystem>();
 
         // 초기화
@@ -31,7 +30,6 @@ public class NomalTrain : Train
         system.transform.parent = transform;
         _enemyCount = system.EnemyCount;
     }
-
     private void ClearStage()
     {
         if (_isClear == true)
@@ -56,11 +54,12 @@ public class NomalTrain : Train
             ClearStage();
         }
     }
-}
 
-[Serializable]
-class EnemySpawnPoint
-{
-    public Transform enemySpawmPointTr;
-    public GameObject enemy;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InGameManager.Instance.NextStage();
+        }
+    }
 }
