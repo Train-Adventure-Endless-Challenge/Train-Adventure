@@ -18,15 +18,15 @@ public class EnemyAttack_BossCave_Punch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<Player>().Hit(_owner.Damage, _owner.gameObject);
         }
-        
-        if(other.gameObject.CompareTag("Floor"))        // 바닥일 시 effect 생성
+        else
         {
+            
             EnemyController_Boss_Cave enemy = _owner.GetComponent<EnemyController_Boss_Cave>();
-            GameObject go = Instantiate(enemy._floorEffect,new Vector3(transform.position.x,other.transform.position.y + 1f,transform.position.z),Quaternion.identity);
+            GameObject go = Instantiate(enemy._floorEffect, new Vector3(transform.position.x, other.transform.position.y + 1f, transform.position.z), Quaternion.identity);
             Destroy(go, 3f);
         }
     }
