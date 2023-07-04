@@ -1949,20 +1949,40 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5349021315476087137, guid: ead4d99abcb36ec4db042f991d10217f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1580625473}
-    - target: {fileID: 5349021315476087137, guid: ead4d99abcb36ec4db042f991d10217f,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: CloseEvent
-      objectReference: {fileID: 0}
     - target: {fileID: 7837795167318934439, guid: ead4d99abcb36ec4db042f991d10217f,
         type: 3}
       propertyPath: m_Name
       value: UpgradeObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837795167318934489, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _interactEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837795167318934489, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837795167318934489, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1580625473}
+    - target: {fileID: 7837795167318934489, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenEvent
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837795167318934489, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ItemUpgradeSystem, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7837795167318934489, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _interactEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_BoolArgument
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7837795167318934491, guid: ead4d99abcb36ec4db042f991d10217f,
         type: 3}
