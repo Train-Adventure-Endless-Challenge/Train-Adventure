@@ -31,6 +31,7 @@ public class NomalTrain : Train
         system.transform.parent = transform;
         _enemyCount = system.EnemyCount;
     }
+
     private void ClearStage()
     {
         if (_isClear == true)
@@ -53,14 +54,6 @@ public class NomalTrain : Train
         if (_enemyCount <= 0)
         {
             ClearStage();
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            InGameManager.Instance.NextStage();
         }
     }
 }
