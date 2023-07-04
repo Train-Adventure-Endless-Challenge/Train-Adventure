@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class TrainObjectInTitle : MonoBehaviour
+{
+    [SerializeField] Transform _startTrans;
+    [SerializeField] Transform _endTrans;
+
+    [SerializeField] GameObject[] _transObjs;       // 기차 오브젝트들
+
+
+    void Update()
+    {
+        foreach(GameObject obj in _transObjs)
+        {
+            obj.transform.Translate(Vector3.forward * Time.deltaTime * 10f);
+            if(Vector3.Distance(obj.transform.position,_endTrans.position) <= 1)
+            {
+                obj.transform.position = _startTrans.position;
+            }
+        }
+    }
+}
