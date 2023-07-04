@@ -19581,7 +19581,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6678588677961338351
 Transform:
   m_ObjectHideFlags: 0
@@ -24464,7 +24464,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8936291774acdf8459af7a3d94f423a7,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8786273
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8936291774acdf8459af7a3d94f423a7,
         type: 3}
@@ -24474,7 +24474,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8936291774acdf8459af7a3d94f423a7,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.8804226
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8936291774acdf8459af7a3d94f423a7,
         type: 3}
@@ -24524,6 +24524,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3439160660748130266}
   m_PrefabAsset: {fileID: 0}
+--- !u!136 &3439160660529568719
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2556694077243320971}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 2.95
+  m_Height: 7.35
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.62, z: 0}
 --- !u!95 &3439160660748130256
 Animator:
   serializedVersion: 5
@@ -24569,7 +24583,8 @@ MonoBehaviour:
   _enemyAttackObj: {fileID: 3439160660118562697}
   _bombPrefab: {fileID: 185151429010545066, guid: 9a9ea8932c5d5404286962a45353332b,
     type: 3}
-  _floorEffect: {fileID: 0}
+  _floorEffect: {fileID: 1571180351976222645, guid: a39f58f3661ac9641a772093097e8abb,
+    type: 3}
 --- !u!114 &3439160660748130262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24628,20 +24643,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpBarSlider: {fileID: 8230778707468861023}
---- !u!136 &3439160660529568719
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2556694077243320971}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 2.95
-  m_Height: 7.35
-  m_Direction: 1
-  m_Center: {x: 0, y: 3.62, z: 0}
 --- !u!4 &2896064266507300913 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8936291774acdf8459af7a3d94f423a7,

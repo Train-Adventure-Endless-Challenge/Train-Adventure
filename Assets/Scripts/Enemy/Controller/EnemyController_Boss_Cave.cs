@@ -161,7 +161,8 @@ public class EnemyController_Boss_Cave : EnemyController
             _player.GetComponent<Player>().Hit(Damage, gameObject);
         }
 
-        Instantiate(_floorEffect, transform.position, Quaternion.identity);
+        GameObject go =  Instantiate(_floorEffect, transform.position, Quaternion.identity);
+        Destroy(go, 3f);
     }
     #endregion
 

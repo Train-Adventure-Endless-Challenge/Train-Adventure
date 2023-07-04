@@ -26,7 +26,8 @@ public class EnemyAttack_BossCave_Punch : MonoBehaviour
         if(other.gameObject.CompareTag("Floor"))        // 바닥일 시 effect 생성
         {
             EnemyController_Boss_Cave enemy = _owner.GetComponent<EnemyController_Boss_Cave>();
-             Instantiate(enemy._floorEffect,new Vector3(transform.position.x,other.transform.position.y,transform.position.z),Quaternion.identity);
+            GameObject go = Instantiate(enemy._floorEffect,new Vector3(transform.position.x,other.transform.position.y + 1f,transform.position.z),Quaternion.identity);
+            Destroy(go, 3f);
         }
     }
 }
