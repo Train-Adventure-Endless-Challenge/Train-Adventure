@@ -749,7 +749,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1226416279}
-  m_LocalRotation: {x: 0.29830715, y: -0.36218616, z: 0.12356287, w: 0.8743948}
+  m_LocalRotation: {x: 0.29830718, y: -0.3621862, z: 0.123562865, w: 0.8743948}
   m_LocalPosition: {x: 2.3199997, y: 8.6, z: -13.36}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1049,17 +1049,17 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.29830715
+      value: 0.29830718
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.36218616
+      value: -0.3621862
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.12356287
+      value: 0.123562865
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
@@ -1624,8 +1624,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3992741657944909216, guid: f8d75047c2417354b82a0a514d5a4a7c,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3992741657944909216, guid: f8d75047c2417354b82a0a514d5a4a7c,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8d75047c2417354b82a0a514d5a4a7c, type: 3}
+--- !u!1 &3439160660529568718 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2556694077243320971, guid: f8d75047c2417354b82a0a514d5a4a7c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3439160660529568717}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &3439160660529568719
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3439160660529568718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 3.69
+  m_Height: 8.76
+  m_Direction: 1
+  m_Center: {x: 0, y: 3.96, z: 0}
 --- !u!1001 &3567304182414327205
 PrefabInstance:
   m_ObjectHideFlags: 0
