@@ -36,7 +36,8 @@ public class EnemyController_Bomb : EnemyController
             _player.GetComponent<Player>().Hit(Damage, gameObject);
 
         // 파티클 추가
-        Instantiate(_bombEffect, transform.position, Quaternion.identity);
+        GameObject go = Instantiate(_bombEffect, transform.position, Quaternion.identity);
+        Destroy(go,2f);
     }
 
     /// <summary>
