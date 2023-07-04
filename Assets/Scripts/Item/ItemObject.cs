@@ -12,13 +12,13 @@ public class ItemObject : InteractionObject
     private void Start()
     {
         // 상자나 drop으로 얻은 것이아닌 그냥 바닥에 떨어져있을 경우에만 실행하기
-        Init(_itemData.Id, _item, _isDrop);
+        Init(_item, _isDrop);
     }
 
-    public void Init(int id, Item item, bool isDrop) 
+    public void Init(Item item, bool isDrop = false) 
     {
         GameObject itemObj =
-           Instantiate(ItemDataManager.Instance.ItemPrefab[id] as GameObject, transform.position, Quaternion.identity);
+           Instantiate(ItemDataManager.Instance.ItemPrefab[_itemData.Id] as GameObject, transform.position, Quaternion.identity);
         itemObj.transform.parent = transform;
         itemObj.GetComponent<Item>().enabled = false;
         
@@ -26,7 +26,7 @@ public class ItemObject : InteractionObject
         
         _isDrop = isDrop;
         _item = item;
-        _itemData = ItemDataManager.Instance.ItemData[id];
+        _itemData = ItemDataManager.Instance.ItemData[_itemData.Id];
     }
 
 
