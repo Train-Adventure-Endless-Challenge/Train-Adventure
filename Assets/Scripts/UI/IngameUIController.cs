@@ -12,6 +12,10 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] TMP_Text _gearText;
     [SerializeField] Image _shakeAmountBackground;
 
+    [Header("Popup")]
+    [SerializeField] private GameObject _popupPanel;
+    [SerializeField] private GameObject _popupText;
+
     [SerializeField] private GameObject _pointerImage;
 
     Coroutine _hpUpdateCoroutine;
