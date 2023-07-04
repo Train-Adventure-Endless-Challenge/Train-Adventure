@@ -169,6 +169,7 @@ public class EnemyController_Boss_Cave : EnemyController
         }
 
         GameObject go =  Instantiate(_floorEffect, transform.position, Quaternion.identity);
+        go.transform.localScale = new Vector3(5, 5, 1);
         Destroy(go, 3f);
     }
     #endregion
