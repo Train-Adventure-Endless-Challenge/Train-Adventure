@@ -66,6 +66,14 @@ public class PlayerData : ScriptableObject
 
     #endregion
 
+    #region Sound
+
+    [Header("Sound")]
+    [SerializeField] private AudioClip _attackSound; // 공격 효과음
+    [SerializeField] private AudioClip _skillSound;  // 스킬 효과음
+
+    #endregion
+
     #region Property
 
     #region Stat
@@ -114,6 +122,13 @@ public class PlayerData : ScriptableObject
     public float RecoveryTime { get { return _recoveryTime; } }
     public int MaxValue { get { return _maxValue; } }
     public int RecoveryValue { get { return _recoveryValue; } }
+
+    #endregion
+
+    #region Sound
+
+    public AudioClip AttackSound { get { return _attackSound; } }
+    public AudioClip SkillSound { get { return _skillSound; } }
 
     #endregion
 

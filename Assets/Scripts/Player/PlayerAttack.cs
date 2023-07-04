@@ -19,8 +19,6 @@ public class PlayerAttack : MonoBehaviour
     [Header("Transform")]
     [SerializeField] private Transform _weaponTransform; // 무기 위치
 
-    [Header("UI")]
-
     private float _slowSpeedScale;   // 공격시 움직임 감속 배율
     private float _originSpeedScale; // 원래 속도 배율
     private int _staminaValue = 7;   // 임시 스태미너 사용값 ※추후 Weapon의 각 사용량을 가져와 처리※
@@ -28,6 +26,7 @@ public class PlayerAttack : MonoBehaviour
     #region Class
 
     private Player _player;                     // 플레이어 데이터 담당 클래스
+    private PlayerSound _playerSound;           // 플레이어 소리 담당 클래스
     private Animator _animator;                 // 애니메이션
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
 
@@ -61,6 +60,7 @@ public class PlayerAttack : MonoBehaviour
     private void Init()
     {
         _player = GetComponent<Player>();
+        _playerSound = GetComponent<PlayerSound>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
     }
@@ -87,6 +87,7 @@ public class PlayerAttack : MonoBehaviour
         {
             _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
+            _playerSound.PlayAttackSound();
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
             _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행
         }
@@ -100,7 +101,7 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private bool CanAttack()
     {
-        if (_attackCor == null && Input.GetMouseButtonDown(0) 
+        if (_attackCor == null && Input.GetMouseButtonDown(0)
             && _player.Stamina - _staminaValue >= 0 &&
             PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject())
