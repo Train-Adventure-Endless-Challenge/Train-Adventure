@@ -4,6 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Boss Enemy가 Punch 공격을 차징 중일때 활성화 되는 파티클
+/// Animation clip에서 관리
 /// </summary>
 public class ElectricParticle : MonoBehaviour
 {
