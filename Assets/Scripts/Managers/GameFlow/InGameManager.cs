@@ -16,19 +16,21 @@ public class InGameManager : SceneSingleton<InGameManager>
     [Header("UI")]
     [SerializeField] private Image fadeImage;  // 페이드 이미지
 
+    [SerializeField] GameOverManager _gameOverManager;
+
     private Train _currentTrain;               // 현재 기차       
     private Train _nextTrain;                  // 다음 기차
 
     private Vector3 _trainInterval = new Vector3(0, 0, 1.5f);   // 기차 간격
     private Vector3 _startPosition = Vector3.zero;
 
-    private int score;
-
-    [SerializeField] GameOverManager _gameOverManager;
+    private int _score;
+    public int Score { get { return _score; } }
 
     private void Start()
     {
         _currentTrain = CreateTrain(_tutorialTrain, _startPosition);
+
         _currentTrain.Init();
 
         _nextTrain = CreateTrain(_nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)], _startPosition);
@@ -45,14 +47,18 @@ public class InGameManager : SceneSingleton<InGameManager>
     /// </summary>
     public void NextStage()
     {
-        IngameUIController.Instance.UpdateScore(++score);
+        IngameUIController.Instance.UpdateScore(++_score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
 
         GameObject nextTrain = _nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)];
 
-        if (score == 4)
+        if ((_score % 10) == 4)
         {
             nextTrain = _storeTrainObject;
+        }
+        else if ((_score % 10) == 9)
+        {
+            nextTrain = _bossTrainObject;
         }
 
         StartNextTrain(nextTrain);

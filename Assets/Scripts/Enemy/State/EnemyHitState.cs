@@ -30,7 +30,8 @@ public class EnemyHitState : State<EnemyController>
         // 체력 감소 및 적용
         _enemyController.Hp -= _enemyController._eventDamage;
 
-        _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(true);
+        if (_enemyController.EnemyType != EnemyType.Boss)        // Boss는 HP UI 항상 표기
+            _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(true);
         _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
 
         if (_enemyController.Hp <= 0) return;

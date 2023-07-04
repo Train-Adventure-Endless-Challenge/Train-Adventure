@@ -33,5 +33,12 @@ public class Train : MonoBehaviour
     {
         _frontDoorAnimation.Play();
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            InGameManager.Instance.NextStage();
+        }
+    }
 }
