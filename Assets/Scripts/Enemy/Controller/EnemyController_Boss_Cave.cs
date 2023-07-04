@@ -23,6 +23,7 @@ public class EnemyController_Boss_Cave : EnemyController
 
     }
 
+    #region SpawnAttack
 
     public override void Attack()
     {
@@ -108,6 +109,8 @@ public class EnemyController_Boss_Cave : EnemyController
     {
         Instantiate(_bombPrefab, _enemyAttackObj.transform.position, Quaternion.identity);      // 폭탄 왼손에 소환
     }
+
+    #endregion
 
     #region JumpAttack
 
