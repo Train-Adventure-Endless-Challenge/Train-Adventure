@@ -28,7 +28,7 @@ public class ItemUpgradeSystem : MonoBehaviour
     [SerializeField] Transform _weaponOnObjectPos;
     [SerializeField] Transform _spawnWeaponPos;
 
-
+    private bool isUpgrading;
     public InventoryItem EquipedItem
     {
         get
@@ -80,7 +80,7 @@ public class ItemUpgradeSystem : MonoBehaviour
 
     IEnumerator UpgradeCor()
     {
-
+        isUpgrading = true;
         // 모루 위 아이템 소환  
         Object prefab = ItemDataManager.Instance.ItemPrefab[EquipedItem._item.ItemData.Id];
         GameObject weaponObj = Instantiate(prefab as GameObject, _weaponOnObjectPos.position, _weaponOnObjectPos.rotation);
@@ -108,14 +108,18 @@ public class ItemUpgradeSystem : MonoBehaviour
         ItemObject obj = Instantiate(prefab as GameObject, _spawnWeaponPos.position, Quaternion.identity).GetComponent<ItemObject>();
         obj.Init(_equipitem._item, true);
 
-        if (EquipedItem != null)
-        {
-            Destroy(EquipedItem.gameObject);
-        }
+        yield return new WaitForSeconds(1); // 연타하면 아이템이 사라지는 버그가 있어 1초 쉬어주기
+        isUpgrading = false;
+        
     }
     public void OpenEvent()
     {
+        if(isUpgrading) return;
+
+        _upgradePanel.SetActive(true);
         InventoryManager.Instance.CopyInventory(_slots);
+
+        
     }
     public void CloseEvent()
     {

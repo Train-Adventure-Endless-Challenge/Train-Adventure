@@ -76,7 +76,6 @@ public class Dagger : Weapon
     }
 
 
-    [ContextMenu("a")]
     public override void UpgradeItem()
     {
         base.UpgradeItem();
