@@ -28,11 +28,8 @@ public class GreatSword : Weapon
     
     private IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(_attackSpeed / 2);
 
-        _trailRenderer.enabled = true;
-
-        yield return new WaitForSeconds(_attackSpeed / 2);
+        yield return new WaitForSeconds(_attackSpeed);
         _trailRenderer.enabled = false;
         _weaponCollider.enabled = false;
     }
@@ -83,6 +80,12 @@ public class GreatSword : Weapon
         _damage += 5;
 
 
+    }
+
+    public override void AttackColliderOnFunc()
+    {
+        base.AttackColliderOnFunc();
+        _trailRenderer.enabled = true;
     }
     private void OnDrawGizmos()
     {

@@ -49,7 +49,7 @@ public class Dagger : Weapon
     public override void Attack()
     {
         base.Attack();
-        _trailRenderer.enabled = true;
+       
         _weaponCollider.enabled = true;
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
