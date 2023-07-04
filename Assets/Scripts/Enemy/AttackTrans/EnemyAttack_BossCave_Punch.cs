@@ -30,7 +30,7 @@ public class EnemyAttack_BossCave_Punch : MonoBehaviour
 
         EnemyController_Boss_Cave enemy = _owner.GetComponent<EnemyController_Boss_Cave>();
         GameObject go = Instantiate(enemy._floorEffect, new Vector3(transform.position.x, other.transform.position.y + 1f, transform.position.z), Quaternion.identity);
-        Destroy(go, 3f);
+        Destroy(go, 1f);
 
     }
 }
