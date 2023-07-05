@@ -108,8 +108,7 @@ public class Item : MonoBehaviour
     /// <returns>전환된 string을 반환한다.</returns>
     public override string ToString()
     {
-        return "Level: " + _level + "   name: " + _name + " hp: " + _additionalHp + "   stemina: " + _additionalStemina + "     str: " + _additionalStrength
-            + "     def: " + _additionalDefense + "   AK: " + _additionalAttackSpeed + "      speed: " + _additionalSpeed; 
+        return "Level: " + _level + "   name: " + _name + " Upgrade: " + IsUpgrade; 
     }
 
     protected virtual void Awake()
@@ -133,13 +132,14 @@ public class Item : MonoBehaviour
         _durability = itemData.MaxDurability;
     }
 
-
     /// <summary>
     /// item을 drop이 아닌 처음 먹었을 때 사용하는 데이터 초기화 함수
     /// </summary>
     public virtual void UpdateData()
     {
         Init();
+        _level = 0;
+        _isUpgrade = false;
     }
 
     /// <summary>
@@ -208,8 +208,6 @@ public class Item : MonoBehaviour
 
     public virtual void UpgradeItem()
     {
-        if (_isUpgrade == true) return;
-        _isUpgrade = true;
     }
     /// <summary>
     /// 내구도를 최대로 회복하는 함수
