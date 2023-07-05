@@ -13,6 +13,9 @@ public class SoundManager : GlobalSingleton<SoundManager>
     [Header("SFXClip")]
     [SerializeField] private AudioClip _onClickSound;
 
+    [Header("Variable")]
+    [SerializeField] private float _maxBackgroundSoundVolume = 0.5f;
+
     private void Start()
     {
         _bgSoundSource = GetComponent<AudioSource>();
@@ -43,7 +46,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
     {
         _bgSoundSource.clip = clip;
         _bgSoundSource.loop = true;
-        _bgSoundSource.volume = 0.1f;
+        _bgSoundSource.volume = _maxBackgroundSoundVolume;
         _bgSoundSource.Play();
     }
 
