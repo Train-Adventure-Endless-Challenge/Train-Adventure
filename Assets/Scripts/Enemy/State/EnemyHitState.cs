@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class EnemyHitState : State<EnemyController> 
+public class EnemyHitState : State<EnemyController>
 {
 
     private EnemyController _enemyController;
@@ -21,7 +21,9 @@ public class EnemyHitState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-        if(_enemyController.EnemyType == EnemyType.Bomb)
+        _enemyController._isHit = true;
+
+        if (_enemyController.EnemyType == EnemyType.Bomb)
         {
             _enemyController.ChangeState<EnemyAttackState>();
             return;
@@ -42,5 +44,11 @@ public class EnemyHitState : State<EnemyController>
     public override void Update(float deltaTime)
     {
         //enemyController 기반 State 필수 구현 함수
+    }
+
+    public override void OnExit()
+    {
+        _enemyController._isHit = true;
+        base.OnExit();
     }
 }

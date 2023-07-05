@@ -20,6 +20,7 @@ public abstract class EnemyController : Entity
     private EnemyType _enemyType;
 
     public bool _isDie;
+    public bool _isHit;
 
     public string Name { get { return _name; } }
     public override float Hp

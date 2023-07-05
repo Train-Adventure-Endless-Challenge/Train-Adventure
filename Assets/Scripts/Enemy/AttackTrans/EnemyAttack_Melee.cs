@@ -13,7 +13,8 @@ public class EnemyAttack_Melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!_enemyController._isAttackCheck || _enemyController._isDie) return;          // 현재 공격 상태가 아니라면 또는 죽었다면 return
+
+        if (!_enemyController._isAttackCheck || _enemyController._isDie ||  _enemyController._isHit) return;
 
         if(other.gameObject.CompareTag("Player"))
         {
