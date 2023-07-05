@@ -87,8 +87,9 @@ public class PlayerAttack : MonoBehaviour
         {
             _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
+
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
-            _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행
+            _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행 
         }
     }
 

@@ -30,6 +30,7 @@ public class PlayerEquip : MonoBehaviour
         Object itemPrefab = ItemDataManager.Instance.ItemPrefab[itemInventory._item.Id];
         GameObject itemObj = Instantiate(itemPrefab as GameObject, transform.position, Quaternion.identity);
 
+
         if (itemInventory._item.ItemType == Itemtype.weapon)
         {
             FistActivate(false);
@@ -43,6 +44,11 @@ public class PlayerEquip : MonoBehaviour
 
             itemInventory._item = weapon;
             itemInventory._item.InventoryItem = itemInventory;
+            
+            // 스킬 쿨타임 재 설정
+            weapon.currentCoolTime = Time.time + weapon.ItemData.SkillCooltime;
+            IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
+
             return true;
         }
         else if (itemInventory._item.ItemType == Itemtype.armor)

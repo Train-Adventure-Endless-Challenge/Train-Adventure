@@ -11,6 +11,7 @@ public class EnemyUI : MonoBehaviour
 
     private Coroutine _hpUpdateCoroutine;
 
+    private bool _isHpUpdateCor;
     private void Awake()
     {
         _enemyController = GetComponent<EnemyController>();
@@ -32,14 +33,18 @@ public class EnemyUI : MonoBehaviour
 
     public void UpdateHpUI(float hp)
     {
-        if (_hpUpdateCoroutine != null)
-            StopCoroutine(_hpUpdateCoroutine);
+        if (_hpUpdateCoroutine != null || !_isHpUpdateCor)
+        {
+            StopAllCoroutines();
+        }
 
         _hpUpdateCoroutine = StartCoroutine(UpdateHpCor(hp));
     }
 
     IEnumerator UpdateHpCor(float hp)
     {
+        _isHpUpdateCor = true;
+
         float time = 0.7f;
         float current = 0;
         float percent = 0;
@@ -56,6 +61,7 @@ public class EnemyUI : MonoBehaviour
 
         _hpBarSlider.value = hp;
 
+        _isHpUpdateCor = false;
         _hpUpdateCoroutine = null;
     }
 }
