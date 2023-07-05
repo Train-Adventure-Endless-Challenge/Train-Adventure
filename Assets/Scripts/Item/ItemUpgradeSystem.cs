@@ -88,7 +88,6 @@ public class ItemUpgradeSystem : MonoBehaviour
         // UI 정리
         InventoryItem _equipitem = EquipedItem; // 삭제 전 아이템 복사
 
-        Destroy(EquipedItem.gameObject); // 강화 슬롯에있던 아이템 제거
         _upgradePanel.SetActive(false); // UI 비활성화
         InventoryManager.Instance.PasteInventory(_slots); // 인벤 다시 복귀
 
@@ -102,11 +101,12 @@ public class ItemUpgradeSystem : MonoBehaviour
 
 
         Destroy(weaponObj); // 모루 위 아이템 제거
+        Destroy(EquipedItem.gameObject); // 강화 슬롯에있던 아이템 제거
 
         // 강화된 아이템 소환
         prefab = ItemDataManager.Instance.ItemObjectPrefab;
         ItemObject obj = Instantiate(prefab as GameObject, _spawnWeaponPos.position, Quaternion.identity).GetComponent<ItemObject>();
-        obj.Init(_equipitem._item, true);
+        obj.Init(_equipitem._item, false);
 
         yield return new WaitForSeconds(1); // 연타하면 아이템이 사라지는 버그가 있어 1초 쉬어주기
         isUpgrading = false;
