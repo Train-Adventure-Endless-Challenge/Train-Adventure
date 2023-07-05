@@ -12,6 +12,7 @@ public class GameOverUI : MonoBehaviour
     public void RestartBtnClick()
     {
         Debug.Log("게임 재시작");
+        SoundManager.Instance.PlayButtonClickSound();                           // 버튼 클릭 효과음 재생
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);       // 현재 씬 재시작
     }
 }

@@ -1,14 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 
 public class PlayerEquip : MonoBehaviour
 {
-
-    private Weapon _currentWeapon;                                          
+    private Weapon _currentWeapon;
     public Weapon CurrentWeapon { get { return _currentWeapon; } }      // 현재 무기
-    
+
     [SerializeField] private Weapon _fistObject;
 
     private Armor[] _currentArmors;
@@ -16,6 +12,8 @@ public class PlayerEquip : MonoBehaviour
 
     [SerializeField] private Transform _weaponEquipTransform;           // 무기 피봇
     [SerializeField] private Transform[] _armorEquipTransform;          // 방어구 피봇
+
+    public bool IsFist { get { return _fistObject.gameObject.activeSelf; } }
 
     private void Start()
     {
@@ -31,7 +29,7 @@ public class PlayerEquip : MonoBehaviour
 
         Object itemPrefab = ItemDataManager.Instance.ItemPrefab[itemInventory._item.Id];
         GameObject itemObj = Instantiate(itemPrefab as GameObject, transform.position, Quaternion.identity);
-        
+
         if (itemInventory._item.ItemType == Itemtype.weapon)
         {
             FistActivate(false);
@@ -47,7 +45,7 @@ public class PlayerEquip : MonoBehaviour
             itemInventory._item.InventoryItem = itemInventory;
             return true;
         }
-        else if(itemInventory._item.ItemType == Itemtype.armor)
+        else if (itemInventory._item.ItemType == Itemtype.armor)
         {
             Armor armor = itemObj.GetComponent<Armor>();
 
@@ -55,7 +53,7 @@ public class PlayerEquip : MonoBehaviour
 
             itemInventory._item = armor;
             itemInventory._item.InventoryItem = itemInventory;
-         
+
             return true;
         }
 
@@ -71,6 +69,7 @@ public class PlayerEquip : MonoBehaviour
 
         if (item.ItemType == Itemtype.weapon)
         {
+            if (_currentWeapon == _fistObject) return false;
             Destroy(_currentWeapon.gameObject);
             FistActivate(true);
             return true;
@@ -89,17 +88,15 @@ public class PlayerEquip : MonoBehaviour
 
     public void FistActivate(bool on)
     {
+        _fistObject.gameObject.SetActive(on);
         if (on)
         {
-            _fistObject.gameObject.SetActive(true);
             _currentWeapon = _fistObject;
-
         }
         else
         {
-            _fistObject.gameObject.SetActive(false);
             _currentWeapon = null;
-
         }
+
     }
 }

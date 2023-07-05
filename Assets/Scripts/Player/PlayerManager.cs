@@ -73,12 +73,12 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             _playerStamina.RecoverStop();
         }
-        if(_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Attack && _player.playerState != PlayerState.Hit)
+        if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Attack && _player.playerState != PlayerState.Hit)
         {
             _playerSkill.Skill();
         }
 
-            _playerInteraction.Interact(); // 상호작용 실행
+        _playerInteraction.Interact(); // 상호작용 실행
     }
 
     private void FixedUpdate()

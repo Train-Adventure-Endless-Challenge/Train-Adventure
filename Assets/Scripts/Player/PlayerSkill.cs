@@ -13,6 +13,7 @@ public class PlayerSkill : MonoBehaviour
     private int _staminaValue = 7;   // 임시 스태미너 사용값 ※추후 Weapon의 각 사용량을 가져와 처리※
 
     private Player _player;                     // 플레이어 데이터 담당 클래스
+    private PlayerSound _playerSound;           // 플레이어 소리 담당 클래스
     private Animator _animator;                 // 애니메이션
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
 
@@ -34,6 +35,7 @@ public class PlayerSkill : MonoBehaviour
     private void Init()
     {
         _player = GetComponent<Player>();
+        _playerSound = GetComponent<PlayerSound>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
     }
@@ -49,7 +51,8 @@ public class PlayerSkill : MonoBehaviour
             _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 공격 상태로 변경
-            if(_skillCor == null)
+            _playerSound.PlaySkillSound();
+            if (_skillCor == null)
                 _skillCor = StartCoroutine(SkillCor());
         }
     }
@@ -82,7 +85,7 @@ public class PlayerSkill : MonoBehaviour
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
 
-    
+
 
 
     IEnumerator SkillCor()
