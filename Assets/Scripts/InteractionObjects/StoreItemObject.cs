@@ -29,7 +29,7 @@ public class StoreItemObject : InteractionObject
     {
         if (GearManager.Instance.GearAmount < _cost)
         {
-            Debug.Log("기어가 없습니다.");
+            IngameUIController.Instance.PopupText("No Gear");
             // 나중에 UI로 구현
             return;
         }

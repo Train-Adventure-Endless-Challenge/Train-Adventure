@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,12 +12,17 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
     [SerializeField] Image _shakeAmountBackground;
-
     [SerializeField] private GameObject _pointerImage;
+
+    [Header("Popup")]
+    [SerializeField] private GameObject _popupPanel;
+    [SerializeField] private GameObject _popupText;
 
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
     Coroutine _gearUpdateCoroutine;
+
+    private int _maxPopupCount = 9;
 
     /// <summary>
     /// HP가 변화했을 때 UI를 업데이트 시켜주는 함수
@@ -185,6 +191,12 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, end);
 
         _shakeAmountBackground.fillAmount = end / 360.0f;
+    }
 
+    public void PopupText(string text)
+    {
+        if (_popupPanel.transform.childCount == _maxPopupCount)
+            return;
+        Instantiate(_popupText, _popupPanel.transform).GetComponent<PopupText>().Init(text);
     }
 }
