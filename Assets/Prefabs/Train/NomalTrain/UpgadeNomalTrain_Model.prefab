@@ -381,6 +381,7 @@ MonoBehaviour:
   _objectsInTrainPrefab:
   - {fileID: 333696980891152403, guid: 7c58d1d5c1754904688d71d43336aa27, type: 3}
   - {fileID: 1880827937349660026, guid: e047e85a301d7574dbbe7a6209e1597d, type: 3}
+  - {fileID: 2312154358258803484, guid: 7d35dbebb9e32b540b06aca914075666, type: 3}
   _treasureBox: {fileID: 2850039717540930842, guid: 70cc6215a59910446b02af94bdc92bdb,
     type: 3}
   _treasureBoxSpawnPoint: {fileID: 6345424533316326676}
@@ -553,6 +554,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4088c4c1c62945049b0b9ec70b14a7dd, type: 3}
+--- !u!1 &423492088332006614 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8818274045019011752, guid: 4088c4c1c62945049b0b9ec70b14a7dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 9187420524875091582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &500920800
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 423492088332006614}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1, y: 1, z: 1}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &1057039018719964780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8154643613487718418, guid: 4088c4c1c62945049b0b9ec70b14a7dd,
