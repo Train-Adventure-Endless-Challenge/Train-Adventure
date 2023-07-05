@@ -6,25 +6,17 @@ using UnityEngine;
 public class ItemObject : InteractionObject
 {
     public Item _item;
-    private bool _isDataReset;                           // 드랍으로 인해  생긴 오브젝트인가
     [SerializeField] private ItemData _itemData;
 
-    [SerializeField] private bool isFieldDrop;                                // 상자등으로 얻는게아닌 필드드랍인가?
+    [SerializeField] private bool _isFieldDrop;                                // 상자등으로 얻는게아닌 필드드랍인가?
     private void Start()
     {
         // 상자나 drop으로 얻은 것이아닌 그냥 바닥에 떨어져있을 경우에만 실행하기
-        if(isFieldDrop == true)
+        if(_isFieldDrop == true)
         {
             _item = new Item(_itemData);
-            Init(_item, _isDataReset);
+            Init(_item, _isFieldDrop);
         }
-    }
-
-    private void Update()
-    {
-        Object itemPrefab = ItemDataManager.Instance.ItemPrefab[_itemData.Id];
-        Item item = itemPrefab.GetComponent<Item>();
-        Debug.Log("item:        " + item.ToString());
     }
     public void Init(Item item, bool isDataReset = false) 
     {
@@ -40,14 +32,6 @@ public class ItemObject : InteractionObject
         tempItem.enabled = false;
         itemObj.AddComponent<Outline>().enabled = false;
 
-
-
-
-
-
-
-
-        _isDataReset = isDataReset;
         _item = item;
         _itemData = ItemDataManager.Instance.ItemData[item.Id];
     }
@@ -55,9 +39,9 @@ public class ItemObject : InteractionObject
 
     public override void Interact()
     {
-        if (!_isDataReset)
+        if (_isFieldDrop)
         {
-            Object itemPrefab = ItemDataManager.Instance.ItemPrefab[_itemData.Id];
+            Object itemPrefab = ItemDataManager.Instance.ItemPrefab[_item.Id];
             Item item = itemPrefab.GetComponent<Item>();
             item.UpdateData();
             InventoryManager.Instance.AddItem(item);
@@ -66,6 +50,7 @@ public class ItemObject : InteractionObject
         {
             InventoryManager.Instance.AddItem(_item);
         }
+
         Destroy(gameObject);
     }
 }

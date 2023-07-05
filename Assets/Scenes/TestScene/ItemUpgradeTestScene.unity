@@ -698,6 +698,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d3177aac62c8e4e4baea759501e296e2,
         type: 2}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
+      propertyPath: isFieldDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
+      propertyPath: _isFieldDrop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf05d20edb19ac4db61211289348fe3, type: 3}
 --- !u!1001 &551092924
@@ -1939,6 +1949,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0263971dc5bf4454bb235f6c60d51594,
         type: 2}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
+      propertyPath: isFieldDrop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
+      propertyPath: _isFieldDrop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf05d20edb19ac4db61211289348fe3, type: 3}
 --- !u!1001 &2120364708
