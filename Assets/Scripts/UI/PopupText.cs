@@ -7,7 +7,7 @@ public class PopupText : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
 
-    private float _destroyTime = 1.5f;
+    private float _destroyTime = 2f;
 
     private void Awake()
     {

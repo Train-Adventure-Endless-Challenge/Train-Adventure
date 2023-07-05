@@ -11,12 +11,11 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
     [SerializeField] Image _shakeAmountBackground;
+    [SerializeField] private GameObject _pointerImage;
 
     [Header("Popup")]
     [SerializeField] private GameObject _popupPanel;
     [SerializeField] private GameObject _popupText;
-
-    [SerializeField] private GameObject _pointerImage;
 
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
@@ -189,6 +188,12 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, end);
 
         _shakeAmountBackground.fillAmount = end / 360.0f;
+    }
 
+    public void PopupText(string text)
+    {
+        if (_popupPanel.transform.childCount == 9)
+            return;
+        Instantiate(_popupText, _popupPanel.transform).GetComponent<PopupText>().Init(text);
     }
 }
