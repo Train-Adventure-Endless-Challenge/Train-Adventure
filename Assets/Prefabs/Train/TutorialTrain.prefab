@@ -1108,7 +1108,6 @@ Transform:
   - {fileID: 2015322300844882619}
   - {fileID: 1156284039824330903}
   - {fileID: 5189426374757994238}
-  - {fileID: 6644257927834332184}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7916,12 +7915,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5612611056653775189}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d7d0bf9c59f43bb4c869ac0eabc6eafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 3
+  outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -14868,7 +14867,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.02, y: 0.02, z: 0.02}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1001 &5189426376219362497
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2

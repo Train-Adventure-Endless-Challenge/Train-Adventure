@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DescriptionImage : MonoBehaviour
 {
@@ -9,10 +10,16 @@ public class DescriptionImage : MonoBehaviour
     [SerializeField] private TMP_Text _descriptionText;
     [SerializeField] private TMP_Text _durabilityText;
 
-    public void Init(string name, string description, string durability)
+    [SerializeField] private Slider _durabilitySlider;
+
+    public void Init(Item item)
     {
-        _nameText.text = name;
-        _descriptionText.text = description;
-        _durabilityText.text = durability;
+        _nameText.text = item.Name;
+        _descriptionText.text = item.Description;
+
+        _durabilityText.text = $"{item.Durability} / {item.ItemData.MaxDurability}";
+
+        _durabilitySlider.maxValue = item.ItemData.MaxDurability;
+        _durabilitySlider.value = item.Durability;
     }
 }

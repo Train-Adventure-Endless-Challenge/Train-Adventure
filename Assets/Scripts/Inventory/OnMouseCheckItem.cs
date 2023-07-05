@@ -58,7 +58,7 @@ public class OnMouseCheckItem : MonoBehaviour
                 descriptionObj.GetComponent<RectTransform>().localScale = Vector3.one;
 
                 Item item = inventoryItem._item;
-                descriptionObj.GetComponent<DescriptionImage>().Init(item.Name, item.Description, $"{item.Durability} / {item.ItemData.MaxDurability}");
+                descriptionObj.GetComponent<DescriptionImage>().Init(item);
             }
 
             #region Check OnMouse
