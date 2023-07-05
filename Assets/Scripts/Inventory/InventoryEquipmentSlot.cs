@@ -23,7 +23,8 @@ public class InventoryEquipmentSlot : InventorySlot
     {
         if (inventoryItem._item.ItemType != _slotType)
         {
-            PlayerManager.Instance.EquipItem.EquipItem(ref inventoryItem);
+            // Take 함수가 실행되어 무기가 빠지고 주먹이 장착되어있음 -> 다시 장착해줌
+            PlayerManager.Instance.EquipItem.EquipItem(ref inventoryItem); 
             return false;
         }
         if(PlayerManager.Instance.EquipItem.EquipItem(ref inventoryItem) == false) return false;
