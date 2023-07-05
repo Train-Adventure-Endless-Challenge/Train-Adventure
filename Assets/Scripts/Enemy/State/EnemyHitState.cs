@@ -15,6 +15,7 @@ public class EnemyHitState : State<EnemyController>
     {
         base.OnEnter();
 
+        Debug.Log("UI");
         _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();
@@ -34,8 +35,8 @@ public class EnemyHitState : State<EnemyController>
 
         if (_enemyController.EnemyType != EnemyType.Boss)        // Boss는 HP UI 항상 표기
             _enemyController._enemyUI._hpBarSlider.gameObject.SetActive(true);
-        _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
 
+        _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
         if (_enemyController.Hp <= 0) return;
 
         _enemyController._anim.SetTrigger("Hit");                       // anim
@@ -48,7 +49,7 @@ public class EnemyHitState : State<EnemyController>
 
     public override void OnExit()
     {
-        _enemyController._isHit = true;
+        _enemyController._isHit = false;
         base.OnExit();
     }
 }

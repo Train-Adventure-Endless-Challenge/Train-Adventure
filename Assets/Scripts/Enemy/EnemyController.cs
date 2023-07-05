@@ -123,13 +123,18 @@ public abstract class EnemyController : Entity
 
     public override void Hit(float damage, GameObject attacker)
     {
+
         if (_isDie) return;
+
+        // 기존 Hit State로 다시 돌아가기 위한 State 초기화
+        ChangeState<EnemyIdleState>();      
 
         _eventDamage = (int)damage;
 
         if(EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
             ChangeState<EnemyAttackState>();
         
+        Debug.Log("fdf");
         if(EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
             ChangeState<EnemyHitState>();
         else  // 보스라면 HP 처리 따로
