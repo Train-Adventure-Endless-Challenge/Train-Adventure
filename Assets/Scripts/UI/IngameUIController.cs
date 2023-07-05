@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,6 +21,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
     Coroutine _gearUpdateCoroutine;
+
+    private int _maxPopupCount = 9;
 
     /// <summary>
     /// HP가 변화했을 때 UI를 업데이트 시켜주는 함수
@@ -192,7 +195,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
     public void PopupText(string text)
     {
-        if (_popupPanel.transform.childCount == 9)
+        if (_popupPanel.transform.childCount == _maxPopupCount)
             return;
         Instantiate(_popupText, _popupPanel.transform).GetComponent<PopupText>().Init(text);
     }
