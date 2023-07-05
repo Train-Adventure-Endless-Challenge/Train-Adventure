@@ -63,6 +63,8 @@ public class PlayerInteraction : MonoBehaviour
 
         hits = Physics.OverlapSphere(origin, _range, _targetLayer); // 객체 감지
 
+        Debug.Log(lastDetectionObject);
+
         if (hits.Length <= 0)
         {
             if (lastDetectionObject != null)
