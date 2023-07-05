@@ -15,7 +15,6 @@ public class EnemyHitState : State<EnemyController>
     {
         base.OnEnter();
 
-        Debug.Log("UI");
         _player = PlayerManager.Instance.gameObject;
 
         _enemyController = _context.GetComponent<EnemyController>();

@@ -33,7 +33,6 @@ public class EnemyUI : MonoBehaviour
 
     public void UpdateHpUI(float hp)
     {
-        Debug.Log(hp);
         if (_hpUpdateCoroutine != null || !_isHpUpdateCor)
         {
             StopAllCoroutines();
