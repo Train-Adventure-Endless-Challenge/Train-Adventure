@@ -86,8 +86,9 @@ public class Player : Entity
 
     #region Sound
 
-    private AudioClip _attackSound; // 공격 효과음
-    private AudioClip _skillSound;  // 스킬 효과음
+    private AudioClip _attackSound;       // 일반 공격 효과음
+    private AudioClip _weaponAttackSound; // 무기 공격 효과음
+    private AudioClip _skillSound;        // 스킬 효과음
 
     #endregion
 
@@ -144,6 +145,7 @@ public class Player : Entity
     #region Sound
 
     public AudioClip AttackSound { get { return _attackSound; } }
+    public AudioClip WeaponAttackSound { get { return _weaponAttackSound; } }
     public AudioClip SkillSound { get { return _skillSound; } }
 
     #endregion
@@ -222,8 +224,9 @@ public class Player : Entity
 
         #region Sound
 
-        _attackSound = _playerData.AttackSound; // 공격 효과음
-        _skillSound = _playerData.SkillSound;   // 스킬 효과음
+        _attackSound = _playerData.AttackSound;             // 일반 공격 효과음
+        _weaponAttackSound = _playerData.WeaponAttackSound; // 무기 공격 효과음
+        _skillSound = _playerData.SkillSound;               // 스킬 효과음
 
         #endregion
 
