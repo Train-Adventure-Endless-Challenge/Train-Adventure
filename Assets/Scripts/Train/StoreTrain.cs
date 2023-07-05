@@ -15,7 +15,7 @@ public class StoreTrain : Train
         StoreItemObject storeItemObject =
                 Instantiate(_storeItemObject, _storeItemTransform[0].position, Quaternion.identity).GetComponent<StoreItemObject>();
 
-        storeItemObject.Init(ItemDataManager.Instance.ItemData[2], Random.Range(1,5));
+        storeItemObject.Init(ItemDataManager.Instance.ItemData[3], 30f);
 
         for (int i = 1; i < _storeItemTransform.Length; i++)
         {
