@@ -698,6 +698,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d3177aac62c8e4e4baea759501e296e2,
         type: 2}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
+      propertyPath: isFieldDrop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf05d20edb19ac4db61211289348fe3, type: 3}
 --- !u!1001 &722364089
@@ -2188,12 +2193,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.37435624
+      value: 0.37435618
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.34985992
+      value: -0.34985986
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
@@ -2361,6 +2366,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0263971dc5bf4454bb235f6c60d51594,
         type: 2}
+    - target: {fileID: 1455136202708117722, guid: aaf05d20edb19ac4db61211289348fe3,
+        type: 3}
+      propertyPath: isFieldDrop
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aaf05d20edb19ac4db61211289348fe3, type: 3}
 --- !u!1001 &2120364708
