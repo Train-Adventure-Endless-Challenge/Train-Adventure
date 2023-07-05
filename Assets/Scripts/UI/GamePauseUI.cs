@@ -11,7 +11,15 @@ public class GamePauseUI : MonoBehaviour
 
     private void Update()
     {
-        if (_pausePanel.activeSelf == false && Input.GetKeyDown(_pauseKeyCode))
+        if (Input.GetKeyDown(_pauseKeyCode)) 
+        {
+            PausePanelOn();
+        }
+    }
+
+    public void PausePanelOn()
+    {
+        if (_pausePanel.activeSelf == false)
         {
             _pausePanel.SetActive(true);
         }
