@@ -6,11 +6,16 @@ using UnityEngine.Audio;
 public class SoundManager : GlobalSingleton<SoundManager>
 {
     private AudioSource _bgSoundSource;                         // bgm을 실행시킬 source
+
+    [Header("AudioMixer")]
     [SerializeField] private AudioMixerGroup sfxMixerGroup;     // sfx의 mixerGroup을 받아옴
+
+    [Header("SFXClip")]
+    [SerializeField] private AudioClip _onClickSound;
 
     private void Start()
     {
-        _bgSoundSource= GetComponent<AudioSource>();
+        _bgSoundSource = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -25,7 +30,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
         audiosource.outputAudioMixerGroup = sfxMixerGroup;
         audiosource.clip = clip;
         audiosource.Play();
-        
+
 
         Destroy(go, clip.length);
     }
@@ -38,7 +43,15 @@ public class SoundManager : GlobalSingleton<SoundManager>
     {
         _bgSoundSource.clip = clip;
         _bgSoundSource.loop = true;
-        _bgSoundSource.volume = 0.1f; 
+        _bgSoundSource.volume = 0.1f;
         _bgSoundSource.Play();
+    }
+
+    /// <summary>
+    /// 버튼 클릭 효과음을 재생하는 함수
+    /// </summary>
+    public void PlayButtonClickSound()
+    {
+        SFXPlay(_onClickSound.name, _onClickSound);
     }
 }

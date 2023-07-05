@@ -836,6 +836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxMixerGroup: {fileID: 0}
+  _onClickSound: {fileID: 8300000, guid: aa317ed0f0e549a4094561d5603b969d, type: 3}
 --- !u!82 &748347276
 AudioSource:
   m_ObjectHideFlags: 0
