@@ -47,8 +47,8 @@ public class Item : MonoBehaviour
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
 
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
-    protected bool isUpgrade = false;
-    public bool IsUpgrade { get { return isUpgrade; } }
+    protected bool _isUpgrade = false;
+    public bool IsUpgrade { get { return _isUpgrade; } }
 
     [SerializeField] protected Itemtype _itemType;
     public int Id { get { return itemData.Id; } }
@@ -150,9 +150,9 @@ public class Item : MonoBehaviour
     {
         _level = item.Level;
         _durability = item.Durability;
-        isUpgrade = item.isUpgrade;
+        _isUpgrade = item._isUpgrade;
 
-        if (isUpgrade)
+        if (_isUpgrade)
             UpgradeItem();
     }
 
@@ -202,14 +202,14 @@ public class Item : MonoBehaviour
         _additionalDefense += itemData.UpgradeValueDefense;
         _additionalAttackSpeed += itemData.UpgradeValueAttackSpeed;
         _additionalSpeed += itemData.UpgradeValueSpeed;
-        isUpgrade = true;
+        _isUpgrade = true;
         // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
     }
 
     public virtual void UpgradeItem()
     {
-        if (isUpgrade == true) return;
-        isUpgrade = true;
+        if (_isUpgrade == true) return;
+        _isUpgrade = true;
     }
     /// <summary>
     /// 내구도를 최대로 회복하는 함수
