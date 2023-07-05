@@ -54,6 +54,7 @@ public class PlayerSkill : MonoBehaviour
             _playerSound.PlaySkillSound();
             if (_skillCor == null)
                 _skillCor = StartCoroutine(SkillCor());
+
         }
     }
 
