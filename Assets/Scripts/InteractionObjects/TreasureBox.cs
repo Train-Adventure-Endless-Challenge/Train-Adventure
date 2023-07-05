@@ -12,7 +12,7 @@ public class TreasureBox : InteractionObject
     /// <summary>
     /// 보물상자에서 나오는 기어 수
     /// </summary>
-    private int _GearCount = 10;
+    private int _GearCount = 5;
 
     private void Awake()
     {
