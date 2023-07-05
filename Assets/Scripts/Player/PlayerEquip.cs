@@ -71,6 +71,7 @@ public class PlayerEquip : MonoBehaviour
 
         if (item.ItemType == Itemtype.weapon)
         {
+            if (_currentWeapon == _fistObject) return false;
             Destroy(_currentWeapon.gameObject);
             FistActivate(true);
             return true;

@@ -8,6 +8,12 @@ public class InventoryEquipmentSlot : InventorySlot
     [SerializeField] private Armortype _armorType;
     public override bool TakeItem(ref InventoryItem inventoryItem)
     {
+        if (inventoryItem._item.ItemType != _slotType)
+        {
+            PlayerManager.Instance.EquipItem.EquipItem(ref inventoryItem);
+            return false;
+        }
+
         if (PlayerManager.Instance.EquipItem.ReleaseItem(inventoryItem._item) == false) return false;
 
         return true;
@@ -15,8 +21,11 @@ public class InventoryEquipmentSlot : InventorySlot
 
     public override bool PutItem(ref InventoryItem inventoryItem)
     {
-        if (inventoryItem._item.ItemType != _slotType) return false;
-
+        if (inventoryItem._item.ItemType != _slotType)
+        {
+            PlayerManager.Instance.EquipItem.EquipItem(ref inventoryItem);
+            return false;
+        }
         if(PlayerManager.Instance.EquipItem.EquipItem(ref inventoryItem) == false) return false;
         
         return true;

@@ -16,7 +16,7 @@ public class InventorySlot : MonoBehaviour, IDropHandler, IPointerClickHandler
         {
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             if (inventoryItem == null) return;
-            if (inventoryItem._slot.TakeItem(ref inventoryItem) == false || PutItem(ref inventoryItem) == false)
+            if (PutItem(ref inventoryItem) == false || inventoryItem._slot.TakeItem(ref inventoryItem) == false)
             {
                 inventoryItem.transform.SetParent(inventoryItem._parentAfterDrag);
                 return;
