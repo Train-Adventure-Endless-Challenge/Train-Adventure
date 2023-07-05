@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Potion : Item
 {
-    [SerializeField] private float _healAmount = 10f;
+    [SerializeField] private float _healAmount = 50f;
 
     public override void EarnItem()
     {

@@ -30,6 +30,8 @@ public class ItemData : ScriptableObject
     [SerializeField] private int _maxDurability;                                        // 최대 내구도
     [SerializeField] private int _attackConsumeDurability;                              // 기본 공격 소모 내구도
     [SerializeField] private int _skillConsumeDurability;                               // 스킬 공격 소모 내구도
+    [SerializeField] private int _attackConsumeStamina;                                 // 기본 공격 소모 스테미나
+    [SerializeField] private int _skillConsumeStamina;                                  // 스킬 공격 소모 스테미나
     [SerializeField] private float _skillCooltime;                                      // 스킬 쿨타임
 
     [SerializeField] private bool _isStackable = false;
@@ -64,6 +66,9 @@ public class ItemData : ScriptableObject
 
     public int AttackConsumeDurability { get { return _attackConsumeDurability; } }
     public int SkillConsumeDurability { get { return _skillConsumeDurability; } }
+
+    public int AttackConsumeStamina { get { return _attackConsumeStamina; } }
+    public int SkillConsumeStamina { get { return _skillConsumeStamina; } }
     public float SkillCooltime { get { return _skillCooltime; } }
     public bool IsStackable { get { return _isStackable; } }
     public GameObject HittingFeelingEffect { get { return _hittingFeelingEffect; } }
