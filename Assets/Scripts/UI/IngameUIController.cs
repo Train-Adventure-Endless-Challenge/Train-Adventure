@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,9 +19,12 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] private GameObject _popupPanel;
     [SerializeField] private GameObject _popupText;
 
+    [Header("Skill")]
+    [SerializeField] private Image _skillCooltimeImg;
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
     Coroutine _gearUpdateCoroutine;
+    Coroutine _skillUIUpdateCoroutine;
 
     private int _maxPopupCount = 9;
 
@@ -198,5 +202,27 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         if (_popupPanel.transform.childCount == _maxPopupCount)
             return;
         Instantiate(_popupText, _popupPanel.transform).GetComponent<PopupText>().Init(text);
+    }
+
+    public void UpdateSkillUI(float coolTime,float currentTime)
+    {
+
+        if (_skillUIUpdateCoroutine != null)
+            StopCoroutine(_skillUIUpdateCoroutine);
+
+        _skillUIUpdateCoroutine = StartCoroutine(UpdateSkillUICor(coolTime, currentTime));
+    }
+
+    IEnumerator UpdateSkillUICor(float coolTime,float currentTime)
+    {
+        while(Time.time < currentTime)
+        {
+            yield return null;
+            _skillCooltimeImg.fillAmount = ((currentTime - Time.time) / coolTime);
+        }
+
+        _skillCooltimeImg.fillAmount = 0;
+
+        _skillUIUpdateCoroutine = null;
     }
 }
