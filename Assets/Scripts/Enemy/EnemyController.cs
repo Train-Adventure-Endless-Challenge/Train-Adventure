@@ -20,6 +20,7 @@ public abstract class EnemyController : Entity
     private EnemyType _enemyType;
 
     public bool _isDie;
+    public bool _isHit;
 
     public string Name { get { return _name; } }
     public override float Hp
@@ -122,7 +123,11 @@ public abstract class EnemyController : Entity
 
     public override void Hit(float damage, GameObject attacker)
     {
+
         if (_isDie) return;
+
+        // 기존 Hit State로 다시 돌아가기 위한 State 초기화
+        ChangeState<EnemyIdleState>();      
 
         _eventDamage = (int)damage;
 
