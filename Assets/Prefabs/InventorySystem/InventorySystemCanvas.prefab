@@ -1930,9 +1930,6 @@ GameObject:
   - component: {fileID: 8203396878571994970}
   - component: {fileID: 8203396878571994965}
   - component: {fileID: 308729672}
-  - component: {fileID: 999111067}
-  - component: {fileID: 6373131348690264481}
-  - component: {fileID: 6883338678933648897}
   - component: {fileID: 6929667515068007986}
   m_Layer: 5
   m_Name: InventorySystemCanvas
@@ -2064,51 +2061,6 @@ MonoBehaviour:
   _selectEventObject: {fileID: 245127524}
   _inventoryKeyCode: 9
   _isDrag: 0
---- !u!114 &999111067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8203396878571994964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f06599d8b2e23246b6d293ad89e29d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _descriptionImagePrefab: {fileID: 6232157513660209909, guid: 143b27fee975342449fd1bc1e67c25d5,
-    type: 3}
-  _isShow: 0
---- !u!114 &6373131348690264481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8203396878571994964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f06599d8b2e23246b6d293ad89e29d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _descriptionImagePrefab: {fileID: 6232157513660209909, guid: 143b27fee975342449fd1bc1e67c25d5,
-    type: 3}
-  _isShow: 0
---- !u!114 &6883338678933648897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8203396878571994964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f06599d8b2e23246b6d293ad89e29d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _descriptionImagePrefab: {fileID: 6232157513660209909, guid: 143b27fee975342449fd1bc1e67c25d5,
-    type: 3}
-  _isShow: 0
 --- !u!114 &6929667515068007986
 MonoBehaviour:
   m_ObjectHideFlags: 0

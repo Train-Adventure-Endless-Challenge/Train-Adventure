@@ -24850,6 +24850,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _enemyData: {fileID: 11400000, guid: eecb191809ea8b6448af17574a3b6f57, type: 2}
   _isDie: 0
+  _isHit: 0
   _agent: {fileID: 0}
   _target: {fileID: 756390653082854801}
   _enemyFieldOfView: {fileID: 0}
@@ -24893,6 +24894,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1005855466317125223}
     m_Modifications:
+    - target: {fileID: 1169264824152204923, guid: a02657a45703f35478cdafd493185fa7,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 1169264824152204923, guid: a02657a45703f35478cdafd493185fa7,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 1714763196175411332, guid: a02657a45703f35478cdafd493185fa7,
         type: 3}
       propertyPath: m_Layer
