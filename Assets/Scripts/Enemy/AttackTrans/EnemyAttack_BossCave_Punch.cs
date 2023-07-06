@@ -28,9 +28,12 @@ public class EnemyAttack_BossCave_Punch : MonoBehaviour
         //카메라 흔들림. 추후 흔들림 메니저 관리 호출로 변경
         PlayerManager.Instance.GetComponent<CinemachineImpulseSource>().GenerateImpulse();
 
-        EnemyController_Boss_Cave enemy = _owner.GetComponent<EnemyController_Boss_Cave>();
-        GameObject go = Instantiate(enemy._floorEffect, new Vector3(transform.position.x, other.transform.position.y + 1f, transform.position.z), Quaternion.identity);
-        Destroy(go, 1f);
+        if(other.gameObject.CompareTag("Train"))
+        {
+            EnemyController_Boss_Cave enemy = _owner.GetComponent<EnemyController_Boss_Cave>();
+            GameObject go = Instantiate(enemy._floorEffect, new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z), Quaternion.identity);
+            Destroy(go, 0.5f);
 
+        }
     }
 }
