@@ -41,6 +41,7 @@ public class GameOverManager : MonoBehaviour
     public void SetGameOverPanel()
     {
         _gameoverUIPanel.SetActive(true);
+        _gameoverUIPanel.GetComponent<GameOverUI>().ScoreInit(InGameManager.Instance.Score);
     }
 
    
