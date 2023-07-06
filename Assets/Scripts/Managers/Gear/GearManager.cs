@@ -19,6 +19,7 @@ public class GearManager : SceneSingleton<GearManager>
     {
         if (addCount < 0) return;
 
+        IngameUIController.Instance.PopupText($"기어{addCount}개 획득");
         _gearAmount += addCount;
         IngameUIController.Instance.UpdateGear(_gearAmount);
     }
