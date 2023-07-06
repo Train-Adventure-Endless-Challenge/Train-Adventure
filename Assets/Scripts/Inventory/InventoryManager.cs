@@ -178,7 +178,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
 
         SoundManager.Instance.PlayButtonClickSound(); // 버튼 소리 실행
-
+        IngameUIController.Instance.UpdateDurabilityUI(item._item.ItemData.MaxDurability, item._item.Durability);
         if (item == null) return;
         if (GearManager.Instance.GearAmount < 20)
         {
