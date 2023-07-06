@@ -35,7 +35,9 @@ public class StoreItemObject : InteractionObject
         }
 
         Object itemObj = ItemDataManager.Instance.ItemPrefab[_itemData.Id];
-        InventoryManager.Instance.AddItem(itemObj.GetComponent<Item>());
+        Item item = itemObj.GetComponent<Item>();
+        item.UpdateData();
+        InventoryManager.Instance.AddItem(item);
 
         GearManager.Instance.SubGear(_cost);
 
