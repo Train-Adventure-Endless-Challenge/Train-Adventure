@@ -8,7 +8,6 @@ public class ShakeMachineInteractionText : MonoBehaviour
     [SerializeField] TMP_Text _interactiontext;
     void Start()
     {
-        
     }
 
     void Update()
