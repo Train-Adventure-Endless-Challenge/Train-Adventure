@@ -17,7 +17,7 @@ public class DescriptionImage : MonoBehaviour
         _nameText.text = item.Name;
         _descriptionText.text = item.Description;
 
-        _durabilityText.text = $"{item.Durability} / {item.ItemData.MaxDurability}";
+        _durabilityText.text = $"내구도\n{item.Durability} / {item.ItemData.MaxDurability}";
 
         _durabilitySlider.maxValue = item.ItemData.MaxDurability;
         _durabilitySlider.value = item.Durability;
