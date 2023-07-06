@@ -5861,6 +5861,7 @@ GameObject:
   - component: {fileID: 1528040907}
   - component: {fileID: 1972852140}
   - component: {fileID: 1675141233}
+  - component: {fileID: 1675141221}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -5940,7 +5941,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff0646cb0cbd63c4e9945047227b49d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerData: {fileID: 11400000, guid: 86e5a67a9b97802419b83714147fb914, type: 2}
+  _playerData: {fileID: 11400000, guid: 86e5a67a9b97802419b83714147fb914, type: 2}
   playerState: 0
   _maxStamina: 0
 --- !u!114 &8482762653015566469
@@ -6235,6 +6236,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weaponTransform: {fileID: 0}
+--- !u!114 &1675141221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6401699005772241260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e82f4bbafeff2440ab34f1b84aa9d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _trainBackgroundSound: {fileID: 8300000, guid: 04cdac787f3a41a45a561b41f4c71342,
+    type: 3}
 --- !u!1 &6401699005788650566
 GameObject:
   m_ObjectHideFlags: 0
