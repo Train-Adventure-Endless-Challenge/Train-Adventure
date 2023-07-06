@@ -10,6 +10,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 {
     [SerializeField] Slider _hpSlider;
     [SerializeField] Slider _staminaSlider;
+    [SerializeField] Slider _durabilitySlider;
+
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
     [SerializeField] Image _shakeAmountBackground;
@@ -224,5 +226,16 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         _skillCooltimeImg.fillAmount = 0;
 
         _skillUIUpdateCoroutine = null;
+    }
+
+    public void OnDurabilityUI(bool toggle)
+    {
+        _durabilitySlider.gameObject.SetActive(toggle);
+    }
+
+    public void UpdateDurabilityUI(float maxDurability, float durability)
+    {
+        _durabilitySlider.maxValue = maxDurability;
+        _durabilitySlider.value = durability;
     }
 }

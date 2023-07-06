@@ -129,9 +129,6 @@ public abstract class EnemyController : Entity
 
         if (_isDie) return;
 
-        // 기존 Hit State로 다시 돌아가기 위한 State 초기화
-        ChangeState<EnemyIdleState>();      
-
         _eventDamage = (int)damage;
 
         if (attacker.GetComponent<Player>().playerState == PlayerState.Skill)
@@ -147,13 +144,21 @@ public abstract class EnemyController : Entity
             ChangeState<EnemyAttackState>();
 
         if (EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
+        {
+            ChangeState<EnemyIdleState>(); // 기존 Hit State로 다시 돌아가기 위한 State 초기화
             ChangeState<EnemyHitState>();
+        }
+        else if (EnemyType == EnemyType.Bomb) //폭탄은 맞았을때 공격한다
+        {
+            ChangeState<EnemyAttackState>();
+        }
         else  // 보스라면 HP 처리 따로
         {
+            if (Hp <= 0) return;
+
             Hp -= _eventDamage;
             _enemyUI.UpdateHpUI(Hp);
 
-            if (Hp <= 0) return;
         }
 
     }

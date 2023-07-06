@@ -24662,6 +24662,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8936291774acdf8459af7a3d94f423a7,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1082271958561512970, guid: 8936291774acdf8459af7a3d94f423a7,
         type: 3}
       propertyPath: m_Layer

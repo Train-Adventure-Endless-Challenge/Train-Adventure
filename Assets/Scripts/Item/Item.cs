@@ -224,11 +224,10 @@ public class Item : MonoBehaviour
     /// <param name="value"></param>
     public void SubDurability(int value)
     {
-        
         _durability -= value;
+        IngameUIController.Instance.UpdateDurabilityUI(itemData.MaxDurability, _durability);
         if (_durability <= 0)
             Destruction();
-
     }
 
     /// <summary>
@@ -248,7 +247,6 @@ public class Item : MonoBehaviour
     public void Destruction()
     {
         //2~5개
-
 
         int addedGear = UnityEngine.Random.Range(2, 6);
         GearManager.Instance.AddGear(addedGear);

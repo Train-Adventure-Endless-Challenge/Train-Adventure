@@ -26,10 +26,8 @@ public class PlayerEquip : MonoBehaviour
     /// <param name="item">장착할 아이템</param>
     public bool EquipItem(ref InventoryItem itemInventory)
     {
-
         Object itemPrefab = ItemDataManager.Instance.ItemPrefab[itemInventory._item.Id];
         GameObject itemObj = Instantiate(itemPrefab as GameObject, transform.position, Quaternion.identity);
-
 
         if (itemInventory._item.ItemType == Itemtype.weapon)
         {
@@ -48,6 +46,7 @@ public class PlayerEquip : MonoBehaviour
             // 스킬 쿨타임 재 설정
             weapon.currentCoolTime = Time.time + weapon.ItemData.SkillCooltime;
             IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
+            IngameUIController.Instance.OnDurabilityUI(true);
 
             return true;
         }
@@ -76,6 +75,9 @@ public class PlayerEquip : MonoBehaviour
         if (item.ItemType == Itemtype.weapon)
         {
             if (_currentWeapon == _fistObject) return false;
+
+            IngameUIController.Instance.OnDurabilityUI(false);
+
             Destroy(_currentWeapon.gameObject);
             FistActivate(true);
             return true;
