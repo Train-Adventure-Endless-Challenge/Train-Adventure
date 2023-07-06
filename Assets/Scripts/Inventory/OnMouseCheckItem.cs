@@ -20,7 +20,7 @@ public class OnMouseCheckItem : MonoBehaviour
         _graphicRaycaster = _inventoryCanvas.GetComponent<GraphicRaycaster>();
 
         _pointerEventData = new PointerEventData(null);
-        
+
     }
 
     void Update()
@@ -37,8 +37,9 @@ public class OnMouseCheckItem : MonoBehaviour
         if (results.Count > 0 && !_isShow)
         {
             if (results[0].gameObject.TryGetComponent<InventoryItem>(out InventoryItem item) &&
-                InventoryManager.Instance.SelectedSlot == item._slot) 
+                InventoryManager.Instance.SelectedSlot == item._slot)
             {
+                SoundManager.Instance.PlayButtonClickSound();
                 StartCoroutine(ShowDescriptionImageCoroutine(item));
             }
         }
@@ -67,7 +68,7 @@ public class OnMouseCheckItem : MonoBehaviour
             List<RaycastResult> results = new List<RaycastResult>();
             _graphicRaycaster.Raycast(_pointerEventData, results);
 
-            if (results.Count <= 0 || !results[0].gameObject.transform.GetComponent<InventoryItem>() )
+            if (results.Count <= 0 || !results[0].gameObject.transform.GetComponent<InventoryItem>())
             {
                 _isShow = false;
                 Destroy(descriptionObj);

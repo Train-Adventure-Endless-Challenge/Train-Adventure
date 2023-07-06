@@ -13,9 +13,10 @@ public class Gear : MonoBehaviour
     /// 기어 스피드
     /// </summary>
     [SerializeField] private float _speed;
+    [SerializeField] private AudioClip _gearGainSound;
     public int AcquisitionGear
     {
-        get { return _acquisitionsGear;}
+        get { return _acquisitionsGear; }
         set { _acquisitionsGear = value; }
     }
 
@@ -31,6 +32,7 @@ public class Gear : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             GearManager.Instance.AddGear(_acquisitionsGear);
+            SoundManager.Instance.SFXPlay(_gearGainSound);
             Destroy(gameObject);
         }
     }

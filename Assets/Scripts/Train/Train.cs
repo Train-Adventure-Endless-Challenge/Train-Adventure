@@ -5,8 +5,11 @@ using UnityEngine.AI;
 
 public class Train : MonoBehaviour
 {
+    [Header("Variable")]
     [SerializeField] private Animation _frontDoorAnimation;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip _doorOpenSound;
     public GameObject _floor;   // 바닥
     public Transform _playerSpawnPoint;
 
@@ -21,7 +24,7 @@ public class Train : MonoBehaviour
 
     public virtual void Init()
     {
-        
+
     }
 
     public void DestroyGameObejct()
@@ -32,6 +35,7 @@ public class Train : MonoBehaviour
     public void OpenDoor()
     {
         _frontDoorAnimation.Play();
+        SoundManager.Instance.SFXPlay(_doorOpenSound);
     }
 
     private void OnTriggerEnter(Collider other)

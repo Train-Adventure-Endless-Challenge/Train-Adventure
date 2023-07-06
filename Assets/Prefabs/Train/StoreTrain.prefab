@@ -200,6 +200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frontDoorAnimation: {fileID: 1998036600293978204}
+  _doorOpenSound: {fileID: 8300000, guid: 615b6e5b99d7bde44b19208e621c9aed, type: 3}
   _floor: {fileID: 2356430913699397134}
   _playerSpawnPoint: {fileID: 3535664542295642245}
   _storeItemTransform:
@@ -762,8 +763,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7837795167318934488, guid: ead4d99abcb36ec4db042f991d10217f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ead4d99abcb36ec4db042f991d10217f, type: 3}
+--- !u!1 &7518820812285650985 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7837795167318934439, guid: ead4d99abcb36ec4db042f991d10217f,
+    type: 3}
+  m_PrefabInstance: {fileID: 332499585946102670}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5083201803614542301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7518820812285650985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7d0bf9c59f43bb4c869ac0eabc6eafd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!4 &7518820812285651029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7837795167318934491, guid: ead4d99abcb36ec4db042f991d10217f,

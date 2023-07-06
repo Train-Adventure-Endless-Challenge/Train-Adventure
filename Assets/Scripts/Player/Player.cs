@@ -90,6 +90,8 @@ public class Player : Entity
     private AudioClip _weaponAttackSound; // 무기 공격 효과음
     private AudioClip _skillSound;        // 스킬 효과음
 
+    private AudioClip[] _hitSounds; // 피격 효과음
+
     #endregion
 
     #region Property
@@ -147,6 +149,8 @@ public class Player : Entity
     public AudioClip AttackSound { get { return _attackSound; } }
     public AudioClip WeaponAttackSound { get { return _weaponAttackSound; } }
     public AudioClip SkillSound { get { return _skillSound; } }
+
+    public AudioClip[] HitSounds { get { return _hitSounds; } }
 
     #endregion
 
@@ -228,6 +232,8 @@ public class Player : Entity
         _weaponAttackSound = _playerData.WeaponAttackSound; // 무기 공격 효과음
         _skillSound = _playerData.SkillSound;               // 스킬 효과음
 
+        _hitSounds = _playerData.HitSounds; // 피격 효과음
+
         #endregion
 
         _playerHit = GetComponent<PlayerHit>();
@@ -237,6 +243,8 @@ public class Player : Entity
     public override void Hit(float damage, GameObject attacker)
     {
         if (PlayerManager.Instance.IsGodMode) return;
+
+        SoundManager.Instance.SFXPlay(_hitSounds[Random.Range(0, HitSounds.Length)]);
 
         _playerHit.Hit(damage);
         IngameUIController.Instance.UpdateHp(_hp, MaxHp);

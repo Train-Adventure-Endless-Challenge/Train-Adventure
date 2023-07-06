@@ -18,6 +18,7 @@ public abstract class EnemyController : Entity
     private float _attackSpeed;
     private float _attackRange;
     private EnemyType _enemyType;
+    private AudioClip _enemyDieSound;
 
     public bool _isDie;
     public bool _isHit;
@@ -70,7 +71,7 @@ public abstract class EnemyController : Entity
         Init();
         base.Start();
         _enemyUI.Init();
-        if(EnemyType != EnemyType.Boss)
+        if (EnemyType != EnemyType.Boss)
         {
             _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
             _stateMachine.AddState(new EnemyDieState());
@@ -95,6 +96,7 @@ public abstract class EnemyController : Entity
         _attackSpeed = _enemyData._attackSpeed;
         _attackRange = _enemyData._attackRange;
         _enemyType = _enemyData._enemyType;
+        _enemyDieSound = _enemyData._enemyDieSound;
 
         _agent.stoppingDistance = AttackRange;
 
@@ -132,10 +134,19 @@ public abstract class EnemyController : Entity
 
         _eventDamage = (int)damage;
 
-        if(EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
+        if (attacker.GetComponent<Player>().playerState == PlayerState.Skill)
+        {
+            attacker.GetComponent<PlayerSound>().PlaySkillSound();
+        }
+        else
+        {
+            attacker.GetComponent<PlayerSound>().PlayWeaponAttackSound();
+        }
+
+        if (EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
             ChangeState<EnemyAttackState>();
-        
-        if(EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
+
+        if (EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
             ChangeState<EnemyHitState>();
         else  // 보스라면 HP 처리 따로
         {
@@ -157,6 +168,7 @@ public abstract class EnemyController : Entity
 
     public override void Die()
     {
+        SoundManager.Instance.SFXPlay(_enemyDieSound);
         _dieEvent.Invoke();
         Destroy(gameObject);
     }

@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShakeMachine : InteractionObject
 {
     Animator _anim;
+
+    [Header("Sound")]
+    [SerializeField] private AudioClip _shakeMachineOpenSound;  // 열리는 효과음
+    [SerializeField] private AudioClip _shakeMachineCloseSound; // 닫히는 효과음
 
     private void Start()
     {
@@ -25,6 +27,7 @@ public class ShakeMachine : InteractionObject
         if (other.CompareTag("Player"))
         {
             _anim.SetBool("Open", true);
+            SoundManager.Instance.SFXPlay(_shakeMachineOpenSound);
         }
     }
 
@@ -33,6 +36,7 @@ public class ShakeMachine : InteractionObject
         if (other.CompareTag("Player"))
         {
             _anim.SetBool("Open", false);
+            SoundManager.Instance.SFXPlay(_shakeMachineCloseSound);
         }
     }
 }
