@@ -13,11 +13,11 @@ public class GamePauseUI : MonoBehaviour
     {
         if (Input.GetKeyDown(_pauseKeyCode)) 
         {
-            PausePanelOn();
+            OnPausePanel();
         }
     }
 
-    public void PausePanelOn()
+    public void OnPausePanel()
     {
         if (_pausePanel.activeSelf == false)
         {
