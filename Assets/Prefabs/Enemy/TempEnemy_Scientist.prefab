@@ -95,6 +95,75 @@ Transform:
   m_Father: {fileID: 6068755016963775308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &3507102677637550353
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5334400783551578991}
+    m_Modifications:
+    - target: {fileID: 4808376113102933204, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_Name
+      value: EliteEffect
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4808376113102933207, guid: 5634a7b9d7b2eec42be396def72b17d4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5634a7b9d7b2eec42be396def72b17d4, type: 3}
 --- !u!1001 &4679156869887724099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -403,6 +472,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8417361359673230750, guid: 8fd5474fcd8f60d41bfbf87f1d443d60,
         type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8417361359673230750, guid: 8fd5474fcd8f60d41bfbf87f1d443d60,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 3ca903efc111ba440bf244be84e0a4b1, type: 2}
@@ -431,6 +505,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[5]
       value: 
       objectReference: {fileID: 2100000, guid: eb71b790303e40a49ba9c7c0a907a53a, type: 2}
+    - target: {fileID: 8417361359673230750, guid: 8fd5474fcd8f60d41bfbf87f1d443d60,
+        type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 249ee48a789c77a418fae2fa7e99e232, type: 2}
     - target: {fileID: 8817898888258712963, guid: 8fd5474fcd8f60d41bfbf87f1d443d60,
         type: 3}
       propertyPath: m_Layer
@@ -514,6 +593,7 @@ MonoBehaviour:
   _anim: {fileID: 0}
   _enemyData: {fileID: 11400000, guid: e187a09e1fb040a409ced12dc211d36a, type: 2}
   _isDie: 0
+  _isHit: 0
   _agent: {fileID: 0}
   _target: {fileID: 4406083188978202749}
   _enemyFieldOfView: {fileID: 0}
