@@ -16,8 +16,9 @@ public class SoundManager : GlobalSingleton<SoundManager>
     [Header("Variable")]
     [SerializeField] private float _maxBackgroundSoundVolume = 0.5f;
 
-    private void Start()
+    protected override void Awake()
     {
+        base.Awake();
         _bgSoundSource = GetComponent<AudioSource>();
     }
 
