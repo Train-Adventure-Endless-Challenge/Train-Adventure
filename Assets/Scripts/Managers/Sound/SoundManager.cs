@@ -11,6 +11,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
     [SerializeField] private AudioMixerGroup sfxMixerGroup;     // sfx의 mixerGroup을 받아옴
 
     [Header("Sound")]
+    [SerializeField] private AudioClip _titleBackgroundSound;
     [SerializeField] private AudioClip _onClickSound;
 
     [Header("Variable")]
@@ -20,6 +21,11 @@ public class SoundManager : GlobalSingleton<SoundManager>
     {
         base.Awake();
         _bgSoundSource = GetComponent<AudioSource>();
+    }
+
+    private void Start()
+    {
+        BgSoundPlay(_titleBackgroundSound);
     }
 
     /// <summary>
