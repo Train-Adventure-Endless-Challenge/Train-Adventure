@@ -301,6 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionUI: {fileID: 0}
+  _shakeMachineOpenSound: {fileID: 8300000, guid: b4f5112bd8f235249acc8efb4250ce3c,
+    type: 3}
+  _shakeMachineCloseSound: {fileID: 8300000, guid: 8f40c39221e884a4096b0f8a56958a08,
+    type: 3}
 --- !u!114 &9493925201612584
 MonoBehaviour:
   m_ObjectHideFlags: 0

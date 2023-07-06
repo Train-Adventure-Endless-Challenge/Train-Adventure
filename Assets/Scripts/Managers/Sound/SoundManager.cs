@@ -10,7 +10,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
     [Header("AudioMixer")]
     [SerializeField] private AudioMixerGroup sfxMixerGroup;     // sfx의 mixerGroup을 받아옴
 
-    [Header("SFXClip")]
+    [Header("Sound")]
     [SerializeField] private AudioClip _onClickSound;
 
     [Header("Variable")]
@@ -26,14 +26,13 @@ public class SoundManager : GlobalSingleton<SoundManager>
     /// </summary>
     /// <param name="sfxName">효과음 이름</param>
     /// <param name="clip">효과음 clip</param>
-    public void SFXPlay(string sfxName, AudioClip clip)
+    public void SFXPlay(AudioClip clip)
     {
-        GameObject go = new GameObject(sfxName + "Sound");
+        GameObject go = new GameObject(clip.name);
         AudioSource audiosource = go.AddComponent<AudioSource>();
         audiosource.outputAudioMixerGroup = sfxMixerGroup;
         audiosource.clip = clip;
         audiosource.Play();
-
 
         Destroy(go, clip.length);
     }
@@ -55,6 +54,6 @@ public class SoundManager : GlobalSingleton<SoundManager>
     /// </summary>
     public void PlayButtonClickSound()
     {
-        SFXPlay(_onClickSound.name, _onClickSound);
+        SFXPlay(_onClickSound);
     }
 }

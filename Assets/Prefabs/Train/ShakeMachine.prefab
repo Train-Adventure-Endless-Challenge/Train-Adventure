@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 1761520232417057008}
   - component: {fileID: 1761520232417057010}
   - component: {fileID: 1761520232417057011}
-  - component: {fileID: 7481553990138299916}
+  - component: {fileID: 4210054676982523693}
   m_Layer: 7
   m_Name: ShakeMachine
   m_TagString: Interaction Object
@@ -286,21 +286,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionUI: {fileID: 0}
---- !u!114 &7481553990138299916
+  _shakeMachineOpenSound: {fileID: 8300000, guid: b4f5112bd8f235249acc8efb4250ce3c,
+    type: 3}
+  _shakeMachineCloseSound: {fileID: 8300000, guid: 8f40c39221e884a4096b0f8a56958a08,
+    type: 3}
+--- !u!114 &4210054676982523693
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130948772985090956}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d7d0bf9c59f43bb4c869ac0eabc6eafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 3
+  outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

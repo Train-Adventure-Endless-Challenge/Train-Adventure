@@ -174,6 +174,9 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     public void RepairItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+
+        SoundManager.Instance.PlayButtonClickSound(); // 버튼 소리 실행
+
         if (item == null) return;
         if (GearManager.Instance.GearAmount < 20)
         {
@@ -187,6 +190,8 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     public void DisassembleItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+
+        SoundManager.Instance.PlayButtonClickSound(); // 버튼 소리 실행
         if (item == null) return;
 
         item._slot.TakeItem(ref item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
@@ -198,6 +203,9 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     public void DropItem()
     {
         InventoryItem item = _selectedSlot?.GetComponentInChildren<InventoryItem>();
+
+        SoundManager.Instance.PlayButtonClickSound(); // 버튼 소리 실행
+
         if (item == null) return;
 
         item._slot.TakeItem(ref item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행

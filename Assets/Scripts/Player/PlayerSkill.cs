@@ -51,7 +51,6 @@ public class PlayerSkill : MonoBehaviour
             _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 공격 상태로 변경
-            _playerSound.PlaySkillSound();
             if (_skillCor == null)
                 _skillCor = StartCoroutine(SkillCor());
         }

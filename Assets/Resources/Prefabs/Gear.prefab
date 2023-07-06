@@ -108,6 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5
+  _gearGainSound: {fileID: 8300000, guid: f2eb5bbf2a205c64385230911c2bb292, type: 3}
 --- !u!135 &6869724633788510596
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -146,12 +147,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6869724633788510599}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Script: {fileID: 11500000, guid: d7d0bf9c59f43bb4c869ac0eabc6eafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   outlineMode: 0
-  outlineColor: {r: 0.49803925, g: 0.53333336, b: 0.5803922, a: 1}
-  outlineWidth: 1
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []

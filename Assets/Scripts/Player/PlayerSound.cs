@@ -65,24 +65,27 @@ public class PlayerSound : MonoBehaviour
     }
 
     /// <summary>
-    /// 일반 공격 효과음을 실행하는 함수
+    /// 공격 효과음을 실행하는 함수
     /// </summary>
     public void PlayAttackSound()
     {
-        SoundManager.Instance.SFXPlay(_attackSound.name, _attackSound); // 공격 효과음 실행
-    }
-
-    public void PlayWeaponAttackSound()
-    {
-        SoundManager.Instance.SFXPlay(_weaponAttackSound.name, _weaponAttackSound);
+        SoundManager.Instance.SFXPlay(_attackSound); // 공격 효과음 실행
     }
 
     /// <summary>
-    /// 스킬 효과음을 실행하는 함수
+    /// 타격 효과음을 실행하는 함수
+    /// </summary>
+    public void PlayWeaponAttackSound()
+    {
+        SoundManager.Instance.SFXPlay(_weaponAttackSound); // 타격 효과음을 실행하는 함수
+    }
+
+    /// <summary>
+    /// 스킬 타격 효과음을 실행하는 함수
     /// </summary>
     public void PlaySkillSound()
     {
-        SoundManager.Instance.SFXPlay(_skillSound.name, _skillSound); // 스킬 효과음 실행
+        SoundManager.Instance.SFXPlay(_skillSound); // 스킬 타격 효과음 실행
     }
 
     #endregion

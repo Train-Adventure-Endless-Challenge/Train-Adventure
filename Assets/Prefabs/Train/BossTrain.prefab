@@ -81,6 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frontDoorAnimation: {fileID: 6967169913400495689}
+  _doorOpenSound: {fileID: 8300000, guid: 615b6e5b99d7bde44b19208e621c9aed, type: 3}
   _floor: {fileID: 6609479690493870107}
   _playerSpawnPoint: {fileID: 6058704390148427816}
   _bossSpawnPoint: {fileID: 7971911326820414058}

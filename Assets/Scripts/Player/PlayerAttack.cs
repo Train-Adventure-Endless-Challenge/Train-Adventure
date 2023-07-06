@@ -122,14 +122,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (curWeapon == null) { StopCoroutine(_attackCor); _attackCor = null; }
 
-        if (PlayerManager.Instance.EquipItem.IsFist)
-        {
-            _playerSound.PlayAttackSound();
-        }
-        else
-        {
-            _playerSound.PlayWeaponAttackSound();
-        }
+        _playerSound.PlayAttackSound();
 
         _animator.SetBool("IsAttack", true);          // 애니메이션 실행
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경

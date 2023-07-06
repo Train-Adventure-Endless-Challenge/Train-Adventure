@@ -20,9 +20,10 @@ public class EnemyData : ScriptableObject
 {
     public string _name;
     public float _hp;
-    public float _damage;          
-    public float _moveSpeed;       
+    public float _damage;
+    public float _moveSpeed;
     public float _attackSpeed;
     public float _attackRange;
     public EnemyType _enemyType;
+    public AudioClip _enemyDieSound;
 }

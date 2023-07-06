@@ -1137,6 +1137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frontDoorAnimation: {fileID: 4498495999735520733}
+  _doorOpenSound: {fileID: 8300000, guid: 615b6e5b99d7bde44b19208e621c9aed, type: 3}
   _floor: {fileID: 388458123742745487}
   _playerSpawnPoint: {fileID: 2015322300844882619}
   _tutorialObjectInTrainPrefab: {fileID: 7548510990658076237, guid: 7ca77111e6be1444f9e2728bf029e320,
@@ -7906,6 +7907,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionUI: {fileID: 0}
+  _shakeMachineOpenSound: {fileID: 8300000, guid: b4f5112bd8f235249acc8efb4250ce3c,
+    type: 3}
+  _shakeMachineCloseSound: {fileID: 8300000, guid: 8f40c39221e884a4096b0f8a56958a08,
+    type: 3}
 --- !u!114 &4009742080548668629
 MonoBehaviour:
   m_ObjectHideFlags: 0

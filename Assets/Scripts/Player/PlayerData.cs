@@ -73,6 +73,8 @@ public class PlayerData : ScriptableObject
     [SerializeField] private AudioClip _attackWeaponSound; // 무기 공격 효과음
     [SerializeField] private AudioClip _skillSound;        // 스킬 효과음
 
+    [SerializeField] private AudioClip[] _hitSounds;  // 피격 효과음
+
     #endregion
 
     #region Property
@@ -131,6 +133,8 @@ public class PlayerData : ScriptableObject
     public AudioClip AttackSound { get { return _attackSound; } }
     public AudioClip WeaponAttackSound { get { return _attackWeaponSound; } }
     public AudioClip SkillSound { get { return _skillSound; } }
+
+    public AudioClip[] HitSounds { get { return _hitSounds; } }
 
     #endregion
 
