@@ -8,7 +8,7 @@ public class GreatSword : Weapon
 
     private string _targetLayer = "Enemy";
     [SerializeField] private float _skillRadius;
-    
+
     private List<GameObject> _detectionLists = new List<GameObject>();
 
     [SerializeField] private GameObject _skillEffectPrefab;
@@ -25,7 +25,7 @@ public class GreatSword : Weapon
         StartCoroutine(AttackCor());
     }
 
-    
+
     private IEnumerator AttackCor()
     {
 
@@ -48,7 +48,7 @@ public class GreatSword : Weapon
 
         foreach (Collider col in colliders)
         {
-            col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, gameObject);
+            col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, PlayerManager.Instance.gameObject);
         }
 
     }
@@ -62,7 +62,7 @@ public class GreatSword : Weapon
     {
         if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
         {
-            if(_detectionLists.Count == 0)
+            if (_detectionLists.Count == 0)
                 SubDurability(itemData.AttackConsumeDurability); // 첫 타격 상대라면 내구도 감소 -> 여러명을 때릴 때 여러 번 감소를 막기위함.
 
             _detectionLists.Add(collision.gameObject);

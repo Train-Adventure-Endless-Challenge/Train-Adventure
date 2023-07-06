@@ -126,10 +126,7 @@ public abstract class EnemyController : Entity
 
     public override void Hit(float damage, GameObject attacker)
     {
-
         if (_isDie) return;
-
-        _eventDamage = (int)damage;
 
         if (attacker.GetComponent<Player>().playerState == PlayerState.Skill)
         {
@@ -139,6 +136,8 @@ public abstract class EnemyController : Entity
         {
             attacker.GetComponent<PlayerSound>().PlayWeaponAttackSound();
         }
+
+        _eventDamage = (int)damage;
 
         if (EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
             ChangeState<EnemyAttackState>();

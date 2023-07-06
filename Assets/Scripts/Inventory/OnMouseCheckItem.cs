@@ -39,7 +39,6 @@ public class OnMouseCheckItem : MonoBehaviour
             if (results[0].gameObject.TryGetComponent<InventoryItem>(out InventoryItem item) &&
                 InventoryManager.Instance.SelectedSlot == item._slot)
             {
-                SoundManager.Instance.PlayButtonClickSound();
                 StartCoroutine(ShowDescriptionImageCoroutine(item));
             }
         }

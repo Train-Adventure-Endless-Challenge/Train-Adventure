@@ -376,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _frontDoorAnimation: {fileID: 8532445030754867294}
+  _doorOpenSound: {fileID: 8300000, guid: 615b6e5b99d7bde44b19208e621c9aed, type: 3}
   _floor: {fileID: 5575631511605843468}
   _playerSpawnPoint: {fileID: 6049274653081911096}
   _objectsInTrainPrefab:
@@ -552,6 +553,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ShakeMachine
       objectReference: {fileID: 0}
+    - target: {fileID: 9187420524497785303, guid: 4088c4c1c62945049b0b9ec70b14a7dd,
+        type: 3}
+      propertyPath: _shakeMachineOpenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: b4f5112bd8f235249acc8efb4250ce3c, type: 3}
+    - target: {fileID: 9187420524497785303, guid: 4088c4c1c62945049b0b9ec70b14a7dd,
+        type: 3}
+      propertyPath: _shakeMachineCloseSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8f40c39221e884a4096b0f8a56958a08, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4088c4c1c62945049b0b9ec70b14a7dd, type: 3}
 --- !u!4 &1057039018719964780 stripped

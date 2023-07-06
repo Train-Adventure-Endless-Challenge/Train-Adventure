@@ -34,7 +34,7 @@ public class Dagger : Weapon
             Instantiate(_skillEffectPrefab, _skillImpactPosition.position, Quaternion.identity);
 
             Entity entity = col.gameObject.GetComponentInParent<Entity>();
-            entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), gameObject);
+            entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
             break;
         }
 
