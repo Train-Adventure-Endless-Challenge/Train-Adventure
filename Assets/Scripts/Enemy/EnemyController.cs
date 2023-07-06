@@ -139,10 +139,11 @@ public abstract class EnemyController : Entity
             ChangeState<EnemyHitState>();
         else  // 보스라면 HP 처리 따로
         {
+            if (Hp <= 0) return;
+
             Hp -= _eventDamage;
             _enemyUI.UpdateHpUI(Hp);
 
-            if (Hp <= 0) return;
         }
 
     }
