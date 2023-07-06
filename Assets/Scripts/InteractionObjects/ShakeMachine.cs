@@ -18,6 +18,10 @@ public class ShakeMachine : InteractionObject
             ShakeManager.Instance.ClearShake();
             GearManager.Instance.SubGear(necessaryGear);
         }
+        else
+        {
+            IngameUIController.Instance.PopupText("기어가 부족합니다.");
+        }
     }
 
     private void OnTriggerEnter(Collider other)

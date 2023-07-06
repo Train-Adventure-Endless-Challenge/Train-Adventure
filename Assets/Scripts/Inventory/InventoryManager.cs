@@ -106,6 +106,8 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     public bool AddItem(Item item)
     {
+        IngameUIController.Instance.PopupText($"{item.Name} 획득");
+
         for (int i = 0; i < _inventorySlots.Length; i++)
         {
             InventorySlot slot = _inventorySlots[i];
@@ -177,7 +179,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         if (item == null) return;
         if (GearManager.Instance.GearAmount < 20)
         {
-            Debug.Log("기어 부족");
+            IngameUIController.Instance.PopupText("기어가 부족합니다.");
             return;
         }
 
@@ -192,7 +194,11 @@ public class InventoryManager : SceneSingleton<InventoryManager>
         item._slot.TakeItem(ref item); // 장착되어있는 아이템일 경우를 대비해 슬롯에서 item을 뺄 떄 event함수 실행
 
         item._item.Decomposition();
+        
+
         Destroy(item.gameObject);
+
+
     }
 
     public void DropItem()

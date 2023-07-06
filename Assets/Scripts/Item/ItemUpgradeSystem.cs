@@ -59,12 +59,13 @@ public class ItemUpgradeSystem : MonoBehaviour
     {
         if (GearManager.Instance.GearAmount < _upgradeCost)
         {
-            Debug.Log("기어 부족");
+            IngameUIController.Instance.PopupText("기어가 부족합니다.");
             return;
         }
         else if (EquipedItem._item.IsUpgrade)
         {
-            Debug.Log("이미 업그레이드된 아이템 입니다.");
+            IngameUIController.Instance.PopupText("이미 업그레이드된 아이템 입니다.");
+
             return;
         }
 

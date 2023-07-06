@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
+using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 
 public enum Armortype
@@ -240,6 +241,8 @@ public class Item : MonoBehaviour
         //3~7개
         int addedGear = UnityEngine.Random.Range(3, 8);
         GearManager.Instance.AddGear(addedGear);
+
+
         //TODO: 아이템 포인터 null로 만들기
     }
 
@@ -249,6 +252,7 @@ public class Item : MonoBehaviour
     public void Destruction()
     {
         //2~5개
+        IngameUIController.Instance.PopupText($"{Name} 파괴됨");
 
         int addedGear = UnityEngine.Random.Range(2, 6);
         GearManager.Instance.AddGear(addedGear);
