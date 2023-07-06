@@ -19,6 +19,7 @@ public class EnemyController_Boss_Cave : EnemyController
 
         _stateMachine.AddState(new BossEnemyAttackState());
         _stateMachine.AddState(new BossEnemyAttackWalkState());
+        _stateMachine.AddState(new BossEnemyMoveState());
 
         _enemyAttackObj.SetActive(false);
 
