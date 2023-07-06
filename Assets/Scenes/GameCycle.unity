@@ -2160,20 +2160,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416801137}
     m_Modifications:
-    - target: {fileID: 8222586070901813401, guid: ab4ccee5a51a1c94289d28c36b7c19d4,
+    - target: {fileID: 201291101, guid: ab4ccee5a51a1c94289d28c36b7c19d4, type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4385737788782543534, guid: ab4ccee5a51a1c94289d28c36b7c19d4,
         type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
+      propertyPath: m_fontStyle
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8222586070901813402, guid: ab4ccee5a51a1c94289d28c36b7c19d4,
         type: 3}
       propertyPath: m_Name
       value: GameOverUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 8222586070901813402, guid: ab4ccee5a51a1c94289d28c36b7c19d4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8222586070901813406, guid: ab4ccee5a51a1c94289d28c36b7c19d4,
         type: 3}
