@@ -30,7 +30,7 @@ public class BossEnemyIdleState : State<EnemyController>
 
     public override void Update(float deltaTime)
     {
-        if(!_enemyController._enemyFieldOfView._isVisiblePlayer)
+        if(_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
             _enemyController.ChangeState<BossEnemyAttackWalkState>();
         }
