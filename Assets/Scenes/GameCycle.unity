@@ -985,18 +985,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416801137}
     m_Modifications:
-    - target: {fileID: 263448437, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1305131107, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1305131107, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 141111341, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5de80220172c18d4d8d05240e61640d3,
+        type: 3}
     - target: {fileID: 7467809884867156779, guid: c8aba734f70d6f84e97e959b358410ed,
         type: 3}
       propertyPath: m_AnchorMax.x
