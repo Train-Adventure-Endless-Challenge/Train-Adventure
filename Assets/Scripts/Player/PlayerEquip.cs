@@ -46,6 +46,7 @@ public class PlayerEquip : MonoBehaviour
             // 스킬 쿨타임 재 설정
             weapon.currentCoolTime = Time.time + weapon.ItemData.SkillCooltime;
             IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
+            IngameUIController.Instance.UpdateDurabilityUI(weapon.ItemData.MaxDurability, weapon.Durability);
             IngameUIController.Instance.OnDurabilityUI(true);
 
             return true;
