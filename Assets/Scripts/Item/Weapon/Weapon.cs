@@ -94,6 +94,8 @@ public class Weapon : Item
     {
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + _skillCoolTime;
+        IngameUIController.Instance.UpdateSkillUI(ItemData.SkillCooltime, currentCoolTime);
+
     }
 
     public virtual void SkillEventFunc()

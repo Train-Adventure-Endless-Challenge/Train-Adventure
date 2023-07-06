@@ -47,8 +47,8 @@ public class Item : MonoBehaviour
     // ------------------------------------------------ 이외 변수 ----------------------------------------------------------
 
     protected int _level = 0;                                                       // 아이템 레벨 (0 ~ 4)
-    protected bool isUpgrade = false;
-    public bool IsUpgrade { get { return isUpgrade; } }
+    protected bool _isUpgrade = false;
+    public bool IsUpgrade { get { return _isUpgrade; } }
 
     [SerializeField] protected Itemtype _itemType;
     public int Id { get { return itemData.Id; } }
@@ -108,8 +108,7 @@ public class Item : MonoBehaviour
     /// <returns>전환된 string을 반환한다.</returns>
     public override string ToString()
     {
-        return "Level: " + _level + "   name: " + _name + " hp: " + _additionalHp + "   stemina: " + _additionalStemina + "     str: " + _additionalStrength
-            + "     def: " + _additionalDefense + "   AK: " + _additionalAttackSpeed + "      speed: " + _additionalSpeed; 
+        return "Level: " + _level + "   name: " + _name + " Upgrade: " + IsUpgrade; 
     }
 
     protected virtual void Awake()
@@ -133,13 +132,14 @@ public class Item : MonoBehaviour
         _durability = itemData.MaxDurability;
     }
 
-
     /// <summary>
     /// item을 drop이 아닌 처음 먹었을 때 사용하는 데이터 초기화 함수
     /// </summary>
     public virtual void UpdateData()
     {
         Init();
+        _level = 0;
+        _isUpgrade = false;
     }
 
     /// <summary>
@@ -150,9 +150,9 @@ public class Item : MonoBehaviour
     {
         _level = item.Level;
         _durability = item.Durability;
-        isUpgrade = item.isUpgrade;
+        _isUpgrade = item._isUpgrade;
 
-        if (isUpgrade)
+        if (_isUpgrade)
             UpgradeItem();
     }
 
@@ -202,14 +202,12 @@ public class Item : MonoBehaviour
         _additionalDefense += itemData.UpgradeValueDefense;
         _additionalAttackSpeed += itemData.UpgradeValueAttackSpeed;
         _additionalSpeed += itemData.UpgradeValueSpeed;
-        isUpgrade = true;
+        _isUpgrade = true;
         // TODO: 현재 value가 조정되고 플레이어에게 적용되지않음 -> 적용시키는 로직 필요(원래 수치를 참조해 계산하는 방법이라면 필요 X)
     }
 
     public virtual void UpgradeItem()
     {
-        if (isUpgrade == true) return;
-        isUpgrade = true;
     }
     /// <summary>
     /// 내구도를 최대로 회복하는 함수

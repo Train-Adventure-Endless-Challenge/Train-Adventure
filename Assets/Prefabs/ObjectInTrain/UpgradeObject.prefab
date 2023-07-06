@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1731a64f5083ebc4b99af456029b969e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _upgradeCost: 10
+  _upgradeCost: 100
   _upgradeSlot: {fileID: 5950015489348200231}
   _upgradePanel: {fileID: 5950015489185756992}
   _slots:
@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d5b5ea9fc02b14bb6735ca14286e67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _interactionUI: {fileID: 0}
   _UICanvas: {fileID: 5950015489185756992}
   _interactEvent:
     m_PersistentCalls:
