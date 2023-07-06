@@ -426,6 +426,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TrainObjectModel
       objectReference: {fileID: 0}
+    - target: {fileID: 945195624698997968, guid: 3bb682a02b98b9f4895748de0b523810,
+        type: 3}
+      propertyPath: m_TagString
+      value: Train
+      objectReference: {fileID: 0}
     - target: {fileID: 6482628480165812188, guid: 3bb682a02b98b9f4895748de0b523810,
         type: 3}
       propertyPath: m_RootOrder
