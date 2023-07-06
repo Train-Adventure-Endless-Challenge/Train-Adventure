@@ -566,7 +566,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c51c9a2c866faf45b1253c88d3bb188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionUI: {fileID: 9118902972452589576}
+  _interactionUI: {fileID: 0}
+  _shakeMachineOpenSound: {fileID: 0}
+  _shakeMachineCloseSound: {fileID: 0}
 --- !u!114 &9493925201612584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -700,7 +702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8944459524568019835
 RectTransform:
   m_ObjectHideFlags: 0
