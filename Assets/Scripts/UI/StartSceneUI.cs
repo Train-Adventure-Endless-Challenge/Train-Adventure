@@ -24,5 +24,10 @@ public class StartSceneUI : MonoBehaviour
         LoadSceneController.LoadScene(_gameSceneCount); // 게임 씬 로딩
     }
 
+    public void OnQuitButton()
+    {
+        Application.Quit(); 
+    }
+
     #endregion
 }

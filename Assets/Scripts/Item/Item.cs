@@ -4,7 +4,6 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Rendering.Universal;
-using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 
 public enum Armortype
