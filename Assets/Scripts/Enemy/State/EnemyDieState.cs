@@ -20,7 +20,7 @@ public class EnemyDieState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-        _enemyController._enemyUI.DeactivationUI();   // HP UI 삭제
+        _enemyController._enemyUI.DeactivateUI();   // HP UI 삭제
 
         // enemy trail 비활성화
         if(_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    

@@ -65,7 +65,7 @@ public class EnemyUI : MonoBehaviour
         _hpUpdateCoroutine = null;
     }
 
-    public void DeactivationUI()
+    public void DeactivateUI()
     {
         StopAllCoroutines();
         Destroy(_hpBarSlider.gameObject);
