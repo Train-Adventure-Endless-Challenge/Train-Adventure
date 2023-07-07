@@ -53,9 +53,6 @@ public class ItemUpgradeSystem : MonoBehaviour
     {
         _upgradeAnim = GetComponentInChildren<Animator>();
     }
-    private void Update()
-    {
-    }
 
     public void LevelUpItem()
     {
@@ -100,7 +97,7 @@ public class ItemUpgradeSystem : MonoBehaviour
 
         Instantiate(_effectPrefab, _effectPos); // 이펙트 소환
 
-        SoundManager.Instance.SFXPlay(_upgradeSound);
+        SoundManager.Instance.SFXPlay(_upgradeSound); // 업그레이드 효과음 재생
 
         yield return new WaitForSeconds(1);
 

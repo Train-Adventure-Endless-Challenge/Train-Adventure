@@ -25,7 +25,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
     private void Init()
     {
         _bgSoundSource = GetComponent<AudioSource>();
-        TitleBgSoundPlay();
+        TitleBgSoundPlay(); // 타이틀 배경음악 실행
     }
     /// <summary>
     /// 효과음을 재생 시키는 함수
@@ -54,13 +54,19 @@ public class SoundManager : GlobalSingleton<SoundManager>
         _bgSoundSource.volume = _maxBackgroundSoundVolume;
         _bgSoundSource.Play();
     }
+    
+    /// <summary>
+    /// 타이틀 배경음악을 재생하는 함수
+    /// </summary>
+    public void TitleBgSoundPlay() => BgSoundPlay(_titleBackgroundSound); // 타이틀 배경음악 재생
 
-    public void TitleBgSoundPlay() => BgSoundPlay(_titleBackgroundSound);
-
-    public void TrainBgSoundPlay() => BgSoundPlay(_trainBackgroundSound); // 배경음악 실행
+    /// <summary>
+    /// 기차의 배경음악을 재생하는 함수
+    /// </summary>
+    public void TrainBgSoundPlay() => BgSoundPlay(_trainBackgroundSound); // 기차 배경음악 재생
 
     /// <summary>
     /// 버튼 클릭 효과음을 재생하는 함수
     /// </summary>
-    public void PlayButtonClickSound() => SFXPlay(_onClickSound);
+    public void PlayButtonClickSound() => SFXPlay(_onClickSound); // 클릭 효과음 재생
 }

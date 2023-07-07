@@ -14,7 +14,7 @@ public class BossTrain : Train
     public override void Init()
     {
         SpawnBoss();
-        SoundManager.Instance.BgSoundPlay(_bossBgSound);
+        SoundManager.Instance.BgSoundPlay(_bossBgSound); // 보스 배경음악 재생
     }
 
     private void SpawnBoss()

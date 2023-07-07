@@ -18,7 +18,7 @@ public class BossEnemyDieState : State<EnemyController>
 
         // 보스가 죽었을 때 생겨나는 효과 추가
 
-        SoundManager.Instance.TrainBgSoundPlay();
+        SoundManager.Instance.TrainBgSoundPlay(); // 기차 배경음악 재생
     }
 
     public override void Update(float deltaTime)

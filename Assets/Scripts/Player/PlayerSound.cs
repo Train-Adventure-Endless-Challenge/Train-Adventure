@@ -43,7 +43,7 @@ public class PlayerSound : MonoBehaviour
     private void Init()
     {
         _player = GetComponent<Player>();
-        SoundManager.Instance.TrainBgSoundPlay();
+        SoundManager.Instance.TrainBgSoundPlay(); // 기차 배경음악 실행
     }
 
     /// <summary>
