@@ -21,6 +21,7 @@ public class EnemyHitState : State<EnemyController>
         _agent.isStopped = true;
 
         _enemyController._isHit = true;
+        _enemyController.GetComponent<EnemyController_Melee>()._attackTrail.gameObject.SetActive(false);
 
         if (_enemyController.EnemyType == EnemyType.Bomb)
         {
