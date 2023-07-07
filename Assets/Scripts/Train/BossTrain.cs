@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossTrain : Train
@@ -9,10 +7,14 @@ public class BossTrain : Train
     [Header("Boss")]
     [SerializeField] private GameObject[] _boss;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip _bossBgSound; // 보스 배경음악 클립
+
 
     public override void Init()
     {
         SpawnBoss();
+        SoundManager.Instance.BgSoundPlay(_bossBgSound);
     }
 
     private void SpawnBoss()

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,6 +9,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
     [SerializeField] private AudioMixerGroup sfxMixerGroup;     // sfx의 mixerGroup을 받아옴
 
     [Header("Sound")]
+    [SerializeField] private AudioClip _trainBackgroundSound;
     [SerializeField] private AudioClip _titleBackgroundSound;
     [SerializeField] private AudioClip _onClickSound;
 
@@ -20,14 +19,14 @@ public class SoundManager : GlobalSingleton<SoundManager>
     protected override void Awake()
     {
         base.Awake();
-        _bgSoundSource = GetComponent<AudioSource>();
+        Init();
     }
 
-    private void Start()
+    private void Init()
     {
-        BgSoundPlay(_titleBackgroundSound);
+        _bgSoundSource = GetComponent<AudioSource>();
+        TitleBgSoundPlay();
     }
-
     /// <summary>
     /// 효과음을 재생 시키는 함수
     /// </summary>
@@ -56,11 +55,12 @@ public class SoundManager : GlobalSingleton<SoundManager>
         _bgSoundSource.Play();
     }
 
+    public void TitleBgSoundPlay() => BgSoundPlay(_titleBackgroundSound);
+
+    public void TrainBgSoundPlay() => BgSoundPlay(_trainBackgroundSound); // 배경음악 실행
+
     /// <summary>
     /// 버튼 클릭 효과음을 재생하는 함수
     /// </summary>
-    public void PlayButtonClickSound()
-    {
-        SFXPlay(_onClickSound);
-    }
+    public void PlayButtonClickSound() => SFXPlay(_onClickSound);
 }
