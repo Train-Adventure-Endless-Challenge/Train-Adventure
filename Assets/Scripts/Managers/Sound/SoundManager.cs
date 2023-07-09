@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -11,6 +9,7 @@ public class SoundManager : GlobalSingleton<SoundManager>
     [SerializeField] private AudioMixerGroup sfxMixerGroup;     // sfx의 mixerGroup을 받아옴
 
     [Header("Sound")]
+    [SerializeField] private AudioClip _trainBackgroundSound;
     [SerializeField] private AudioClip _titleBackgroundSound;
     [SerializeField] private AudioClip _onClickSound;
 
@@ -20,14 +19,14 @@ public class SoundManager : GlobalSingleton<SoundManager>
     protected override void Awake()
     {
         base.Awake();
-        _bgSoundSource = GetComponent<AudioSource>();
+        Init();
     }
 
-    private void Start()
+    private void Init()
     {
-        BgSoundPlay(_titleBackgroundSound);
+        _bgSoundSource = GetComponent<AudioSource>();
+        TitleBgSoundPlay(); // 타이틀 배경음악 실행
     }
-
     /// <summary>
     /// 효과음을 재생 시키는 함수
     /// </summary>
@@ -55,12 +54,19 @@ public class SoundManager : GlobalSingleton<SoundManager>
         _bgSoundSource.volume = _maxBackgroundSoundVolume;
         _bgSoundSource.Play();
     }
+    
+    /// <summary>
+    /// 타이틀 배경음악을 재생하는 함수
+    /// </summary>
+    public void TitleBgSoundPlay() => BgSoundPlay(_titleBackgroundSound); // 타이틀 배경음악 재생
+
+    /// <summary>
+    /// 기차의 배경음악을 재생하는 함수
+    /// </summary>
+    public void TrainBgSoundPlay() => BgSoundPlay(_trainBackgroundSound); // 기차 배경음악 재생
 
     /// <summary>
     /// 버튼 클릭 효과음을 재생하는 함수
     /// </summary>
-    public void PlayButtonClickSound()
-    {
-        SFXPlay(_onClickSound);
-    }
+    public void PlayButtonClickSound() => SFXPlay(_onClickSound); // 클릭 효과음 재생
 }

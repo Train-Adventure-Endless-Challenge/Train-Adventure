@@ -4842,6 +4842,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sfxMixerGroup: {fileID: 0}
+  _trainBackgroundSound: {fileID: 8300000, guid: f062b0d58c7ea7949b304eac0b5b9534,
+    type: 3}
   _titleBackgroundSound: {fileID: 8300000, guid: cff82de8820034536bc3dc4395b2ce00,
     type: 3}
   _onClickSound: {fileID: 8300000, guid: aa317ed0f0e549a4094561d5603b969d, type: 3}

@@ -32,8 +32,7 @@ public class PlayerSound : MonoBehaviour
 
     private void Start()
     {
-        InitData();                 // 데이터 초기화 진행
-        PlayTrainBackgroundSound(); // 배경음악 실행
+        InitData(); // 데이터 초기화 진행
     }
 
     #endregion
@@ -44,6 +43,7 @@ public class PlayerSound : MonoBehaviour
     private void Init()
     {
         _player = GetComponent<Player>();
+        SoundManager.Instance.TrainBgSoundPlay(); // 기차 배경음악 실행
     }
 
     /// <summary>
@@ -54,14 +54,6 @@ public class PlayerSound : MonoBehaviour
         _attackSound = _player.AttackSound;
         _weaponAttackSound = _player.WeaponAttackSound;
         _skillSound = _player.SkillSound;
-    }
-
-    /// <summary>
-    /// 배경음악을 실행하는 함수
-    /// </summary>
-    public void PlayTrainBackgroundSound()
-    {
-        SoundManager.Instance.BgSoundPlay(_trainBackgroundSound); // 배경음악 실행
     }
 
     /// <summary>

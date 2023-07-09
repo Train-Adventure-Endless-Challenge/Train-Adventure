@@ -693,6 +693,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeObject
       objectReference: {fileID: 0}
+    - target: {fileID: 7837795167318934490, guid: ead4d99abcb36ec4db042f991d10217f,
+        type: 3}
+      propertyPath: _upgradeSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2cf2c3d4bb405f44fb42282d1664ea27, type: 3}
     - target: {fileID: 7837795167318934491, guid: ead4d99abcb36ec4db042f991d10217f,
         type: 3}
       propertyPath: m_RootOrder

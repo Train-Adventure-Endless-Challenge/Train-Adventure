@@ -27,6 +27,9 @@ public class ItemUpgradeSystem : MonoBehaviour
     [SerializeField] Transform _weaponOnObjectPos;
     [SerializeField] Transform _spawnWeaponPos;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip _upgradeSound;
+
     private bool isUpgrading;
     public InventoryItem EquipedItem
     {
@@ -49,9 +52,6 @@ public class ItemUpgradeSystem : MonoBehaviour
     private void Start()
     {
         _upgradeAnim = GetComponentInChildren<Animator>();
-    }
-    private void Update()
-    {
     }
 
     public void LevelUpItem()
@@ -97,6 +97,8 @@ public class ItemUpgradeSystem : MonoBehaviour
 
         Instantiate(_effectPrefab, _effectPos); // 이펙트 소환
 
+        SoundManager.Instance.SFXPlay(_upgradeSound); // 업그레이드 효과음 재생
+
         yield return new WaitForSeconds(1);
 
 
@@ -110,16 +112,16 @@ public class ItemUpgradeSystem : MonoBehaviour
 
         yield return new WaitForSeconds(1); // 연타하면 아이템이 사라지는 버그가 있어 1초 쉬어주기
         isUpgrading = false;
-        
+
     }
     public void OpenEvent()
     {
-        if(isUpgrading) return;
+        if (isUpgrading) return;
 
         _upgradePanel.SetActive(true);
         InventoryManager.Instance.CopyInventory(_slots);
 
-        
+
     }
     public void CloseEvent()
     {
