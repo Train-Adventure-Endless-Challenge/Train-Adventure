@@ -17,7 +17,7 @@ public class LoadSceneController : MonoBehaviour
 
     [SerializeField] private Slider _progressSlider; // 로딩 슬라이더 바
 
-    private static int _loadingScene = 2; // 로딩 씬 인덱스 번호
+    private static int _loadingScene = 1; // 로딩 씬 인덱스 번호
     static int _nextSceneNumber;          // 로딩 될 씬 인덱스 번호
 
     #endregion
