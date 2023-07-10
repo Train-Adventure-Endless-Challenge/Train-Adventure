@@ -16,6 +16,7 @@ public class Player : Entity
 
     #region Data
 
+    [Header("Data")]
     /// <summary>
     /// 스크립터블 오브젝트로 저장 되어 있는 플레이어 데이터 원본 값
     /// </summary>
@@ -25,13 +26,17 @@ public class Player : Entity
 
     #region Class
 
-    private PlayerHit _playerHit; // 플레이어 히트 담당 클래스
-    private PlayerDie _playerDie; // 플레이어 죽음 담당 클래스
-
+    [Header("State")]
     /// <summary>
     /// 플레이어의 상태를 저장하는 Enum 값
     /// </summary>
     public PlayerState playerState;
+
+    [Header("Volume")]
+    [SerializeField] private HitVolume _hitVolume; // 피격 볼륨
+
+    private PlayerHit _playerHit; // 플레이어 히트 담당 클래스
+    private PlayerDie _playerDie; // 플레이어 죽음 담당 클래스
 
     #endregion
 
@@ -40,7 +45,7 @@ public class Player : Entity
     private float _speed; // 속도
     private int _defense; // 방어력
     private int _stamina; // 스태미나
-    public int _maxStamina;
+    [HideInInspector] public int _maxStamina; // 최대 스태미나
 
     #endregion
 
@@ -166,7 +171,6 @@ public class Player : Entity
     {
         Init(); // 초기화 실행
         base.Start();
-
     }
 
     #endregion
@@ -248,12 +252,14 @@ public class Player : Entity
 
         _playerHit.Hit(damage);
         IngameUIController.Instance.UpdateHp(_hp, MaxHp);
+        _hitVolume.ChangeVolume(1 - _hp / MaxHp);
     }
 
     public void Heal(float healAmount)
     {
         _hp += healAmount;
         IngameUIController.Instance.UpdateHp(_hp, MaxHp);
+        _hitVolume.ChangeVolume(1 - _hp / MaxHp);
     }
 
     public override void Die()
