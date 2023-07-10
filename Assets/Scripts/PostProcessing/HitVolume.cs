@@ -25,6 +25,10 @@ public class HitVolume : MonoBehaviour
 
     #endregion
 
+    /// <summary>
+    /// 볼륨값을 변경하는 함수
+    /// </summary>
+    /// <param name="hp"></param>
     public void ChangeVolume(float hp)
     {
         _vignette.smoothness.value = hp; // 플레이어 체력량에 따라 굵어짐
