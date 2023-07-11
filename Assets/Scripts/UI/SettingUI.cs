@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingUI : MonoBehaviour
 {
@@ -9,18 +11,27 @@ public class SettingUI : MonoBehaviour
 
     [SerializeField] private AudioMixer mixer;    // AudioMixer
 
+    [SerializeField] private Slider sfxSlider;
+    [SerializeField] private Slider bgmSlider;
     #endregion
 
     #region Function
     public void BGSoundVolume(float val)
     {
-        mixer.SetFloat("BGSoundVolume", Mathf.Log10(val) * 20);
+        mixer.SetFloat("BGM", val);
     }
 
     public void SFXVolume(float val)
     {
-        mixer.SetFloat("SFXVolume", Mathf.Log10(val) * 20);
+        mixer.SetFloat("SFX", val);
     }
+
+    public void InitSoundVolume()
+    {
+        sfxSlider.value = 0;
+        bgmSlider.value = 0;
+    }
+
     #endregion
 
 }
