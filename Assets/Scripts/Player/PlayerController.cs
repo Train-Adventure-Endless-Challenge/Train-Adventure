@@ -184,6 +184,9 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(_smoothMoveCor); // 코루틴 종료
             _smoothMoveCor = null;         // 코루틴 초기화
         }
+        _animator.SetFloat("MoveSpeed",0); // 부동 소수점 오차 해결
+        _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+        _player.playerState = PlayerState.Idle;
     }
 
     /// <summary>
