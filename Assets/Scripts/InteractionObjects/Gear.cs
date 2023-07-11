@@ -14,6 +14,7 @@ public class Gear : MonoBehaviour
     /// </summary>
     [SerializeField] private float _speed;
     [SerializeField] private AudioClip _gearGainSound;
+
     public int AcquisitionGear
     {
         get { return _acquisitionsGear; }
@@ -24,8 +25,8 @@ public class Gear : MonoBehaviour
     {
         move = GetComponentInChildren<GearMove>();
         move.Speed = _speed;
-    }
 
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,5 +36,10 @@ public class Gear : MonoBehaviour
             SoundManager.Instance.SFXPlay(_gearGainSound);
             Destroy(gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        GearManager.Instance._gearTrasureBoxObjsList.Remove(gameObject);
     }
 }
