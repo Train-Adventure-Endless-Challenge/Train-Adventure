@@ -9,10 +9,6 @@ public class HitVolume : MonoBehaviour
 {
     #region Variable
 
-    [Header("Variable")]
-    [SerializeField] private Player _player;
-    [SerializeField] private PlayerData _playerData;
-
     private Volume _volume;
     private Vignette _vignette;
 
@@ -29,9 +25,13 @@ public class HitVolume : MonoBehaviour
 
     #endregion
 
-    private void OnEnable()
+    /// <summary>
+    /// 볼륨값을 변경하는 함수
+    /// </summary>
+    /// <param name="hp"></param>
+    public void ChangeVolume(float hp)
     {
-        _vignette.smoothness.value = 1 - _player.Hp / _playerData.Hp; // 플레이어 체력량에 따라 굵어짐
+        _vignette.smoothness.value = hp; // 플레이어 체력량에 따라 굵어짐
     }
 
     /// <summary>
@@ -41,8 +41,6 @@ public class HitVolume : MonoBehaviour
     {
         _volume = GetComponent<Volume>();
         _volume.profile.TryGet(out _vignette);
-
-        _player = PlayerManager.Instance.gameObject.GetComponent<Player>();
     }
 
     #endregion
