@@ -122,11 +122,13 @@ public class InGameManager : SceneSingleton<InGameManager>
             fadeImage.color = color;
 
             PlayerManager.Instance.StopMove();
+            PlayerManager.Instance.BlockInput(true);
             PlayerManager.Instance.gameObject.transform.position = _currentTrain._playerSpawnPoint.position;
 
             yield return null;
         }
 
+        PlayerManager.Instance.BlockInput(false);
         fadeImage.color = new Color(0, 0, 0, end);
     }
 

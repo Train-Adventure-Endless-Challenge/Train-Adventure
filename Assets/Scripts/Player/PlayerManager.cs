@@ -27,6 +27,8 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     public PlayerEquip EquipItem { get { return _playerEquip; } }
     public bool IsGodMode { get { return _playerRolling._isGodMode; } }
+
+    private bool _inputBlocking;
     #endregion
 
     #region Function
@@ -59,6 +61,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
         _playerStamina.Recover();
 
+        if(_inputBlocking) return;
 
         if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
@@ -109,6 +112,10 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     public void SkillEvent()
     {
         EquipItem.CurrentWeapon.SkillEventFunc();
+    }
+    public void BlockInput(bool value)
+    {
+        _inputBlocking = value;
     }
     #region Mobile
 
