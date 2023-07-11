@@ -47,6 +47,8 @@ public class InGameManager : SceneSingleton<InGameManager>
     /// </summary>
     public void NextStage()
     {
+        GearManager.Instance.DestroyGearObj();      // 지난 칸의 남은 기어 오브젝트 프리팹 삭제
+
         IngameUIController.Instance.UpdateScore(++_score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
 
