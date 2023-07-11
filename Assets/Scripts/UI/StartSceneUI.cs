@@ -2,6 +2,7 @@
 // 작성일 : 2023-07-03
 
 using UnityEngine;
+using UnityEngine.Audio;
 
 /// <summary>
 /// 시작 씬 Canvas UI를 담당하는 함수
