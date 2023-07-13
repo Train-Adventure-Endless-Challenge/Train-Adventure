@@ -71,6 +71,8 @@ public class Dagger : Weapon
             _detectionLists.Add(collision.gameObject);
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
+            Shake();
+
         }
     }
 
