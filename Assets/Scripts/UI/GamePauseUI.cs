@@ -11,10 +11,10 @@ public class GamePauseUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_pauseKeyCode)) 
+        /*if (Input.GetKeyDown(_pauseKeyCode)) 
         {
             OnPausePanel();
-        }
+        }*/
     }
 
     public void OnPausePanel()
