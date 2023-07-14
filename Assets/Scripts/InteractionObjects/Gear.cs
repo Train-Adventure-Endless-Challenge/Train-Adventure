@@ -15,8 +15,6 @@ public class Gear : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private AudioClip _gearGainSound;
 
-    float _timer = 0f;
-
     public int AcquisitionGear
     {
         get { return _acquisitionsGear; }
@@ -30,14 +28,9 @@ public class Gear : MonoBehaviour
 
     }
 
-    private void Update()
-    {
-        _timer += Time.deltaTime;
-    }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (_timer <= 0.5f) return; // 0.5초 뒤에 기어 흡수
 
         if (other.gameObject.CompareTag("Player"))
         {
