@@ -32,7 +32,6 @@ public class EnemyDieState : State<EnemyController>
         _enemyController._anim.SetBool("WalkToPlayer", false);
         _enemyController._anim.SetTrigger("DieTrigger");
         _enemyController._anim.SetBool("DieBool", true);
-
     }
 
     public override void Update(float deltaTime)
