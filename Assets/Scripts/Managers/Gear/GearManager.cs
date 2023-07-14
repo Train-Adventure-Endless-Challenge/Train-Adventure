@@ -47,7 +47,6 @@ public class GearManager : SceneSingleton<GearManager>
 
         foreach (GameObject gameObject in _gearTrasureBoxObjsList)
         {
-            _gearTrasureBoxObjsList.Remove(gameObject);
             Destroy(gameObject);
         }
     }
