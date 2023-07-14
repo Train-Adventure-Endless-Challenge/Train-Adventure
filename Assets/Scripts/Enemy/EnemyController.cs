@@ -110,7 +110,7 @@ public abstract class EnemyController : Entity
     {
         _stateMachine.Update(Time.deltaTime);
 
-        if(Hp < 0 && !_isDie)
+        if(Hp <= 0 && !_isDie)
         {
             _stateMachine.ChangeState<EnemyDieState>();
         }

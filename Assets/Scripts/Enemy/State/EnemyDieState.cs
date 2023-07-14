@@ -29,7 +29,8 @@ public class EnemyDieState : State<EnemyController>
         }
 
         _enemyController._isDie = true;
-        _enemyController._anim.SetTrigger("Die");
+        _enemyController._anim.SetBool("WalkToPlayer", false);
+        _enemyController._anim.SetBool("DieBool", true);
         
     }
 
