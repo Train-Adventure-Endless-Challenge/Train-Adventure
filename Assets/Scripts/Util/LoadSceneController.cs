@@ -63,6 +63,7 @@ public class LoadSceneController : MonoBehaviour
                 _progressSlider.value = Mathf.Lerp(0.9f, 1f, timer);
                 if (_progressSlider.value >= 1f) // 씬이 전부 불러졌을 때
                 {
+                    if (_nextSceneNumber == 0) SoundManager.Instance.TitleBgSoundPlay();
                     op.allowSceneActivation = true; // 씬 불러오기
                     yield break;                    // 코루틴 종료
                 }

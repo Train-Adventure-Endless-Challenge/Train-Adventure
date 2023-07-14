@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GamePauseUI : MonoBehaviour
 {
@@ -32,6 +29,6 @@ public class GamePauseUI : MonoBehaviour
 
     public void OnClickMenuButton()
     {
-        SceneManager.LoadScene("TitleScene"); 
+        LoadSceneController.LoadScene(0);
     }
 }
