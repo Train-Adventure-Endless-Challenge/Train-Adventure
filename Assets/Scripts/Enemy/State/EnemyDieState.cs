@@ -28,12 +28,15 @@ public class EnemyDieState : State<EnemyController>
             enemy._attackTrail.gameObject.SetActive(false);
         }
 
-        _enemyController._isDie = true;
         _enemyController._anim.SetTrigger("Die");
         
     }
 
     public override void Update(float deltaTime)
     {
+        if(_enemyController.Hp <= 0 && !_enemyController._isDie)
+        {
+            _enemyController.Die();
+        }
     }
 }

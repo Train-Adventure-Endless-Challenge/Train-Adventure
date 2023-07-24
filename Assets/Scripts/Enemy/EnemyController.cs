@@ -177,6 +177,7 @@ public abstract class EnemyController : Entity
 
     public override void Die()
     {
+        _isDie = true;
         SoundManager.Instance.SFXPlay(_enemyDieSound);
         _dieEvent.Invoke();
         Destroy(gameObject);
