@@ -46,9 +46,12 @@ public class GreatSword : Weapon
 
         Shake();
 
+        List<GameObject> attackList = new List<GameObject>();
         foreach (Collider col in colliders)
         {
+            if (attackList.Contains(col.gameObject)) continue;
             col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, PlayerManager.Instance.gameObject);
+            attackList.Add(col.gameObject);
         }
 
     }
