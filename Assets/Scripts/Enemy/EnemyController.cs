@@ -30,7 +30,7 @@ public abstract class EnemyController : Entity
         set
         {
             _hp = value;
-            if (_hp <= 0)
+            if (_hp <= 0 && !_isDie)
             {
                 if (EnemyType != EnemyType.Boss)
                     _stateMachine.ChangeState<EnemyDieState>();
@@ -109,11 +109,6 @@ public abstract class EnemyController : Entity
     protected virtual void Update()
     {
         _stateMachine.Update(Time.deltaTime);
-
-        if(Hp < 0 && !_isDie)
-        {
-            _stateMachine.ChangeState<EnemyDieState>();
-        }
     }
 
     public R ChangeState<R>() where R : State<EnemyController>
@@ -177,7 +172,6 @@ public abstract class EnemyController : Entity
 
     public override void Die()
     {
-        _isDie = true;
         SoundManager.Instance.SFXPlay(_enemyDieSound);
         _dieEvent.Invoke();
         Destroy(gameObject);

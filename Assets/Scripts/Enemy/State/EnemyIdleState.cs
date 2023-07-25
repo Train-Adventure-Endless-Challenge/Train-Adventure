@@ -26,6 +26,7 @@ public class EnemyIdleState : State<EnemyController>
     IEnumerator DelayToMoveCor()
     {
         _enemyController._agent.isStopped= true;
+
         yield return new WaitForSeconds(1f);        // 변수로도 설정 가능 추후 기획으로 정해질 시 변수 선언 
 
         _enemyController.ChangeState<EnemyMoveState>();

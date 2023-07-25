@@ -48,6 +48,10 @@ public class EnemyHitState : State<EnemyController>
     public override void Update(float deltaTime)
     {
         //enemyController 기반 State 필수 구현 함수
+        if(_enemyController.Hp <= 0)
+        {
+            _enemyController.ChangeState<EnemyDieState>();
+        }
     }
 
     public override void OnExit()

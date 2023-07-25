@@ -22,21 +22,24 @@ public class EnemyDieState : State<EnemyController>
 
         _enemyController._enemyUI.DeactivateUI();   // HP UI 삭제
 
+        _enemyController._isDie = true;
+        _enemyController._anim.SetTrigger("Die");
+
+
         // enemy trail 비활성화
-        if(_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    
+        if (_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    
         {
             enemy._attackTrail.gameObject.SetActive(false);
         }
 
-        _enemyController._anim.SetTrigger("Die");
-        
     }
 
     public override void Update(float deltaTime)
     {
-        if(_enemyController.Hp <= 0 && !_enemyController._isDie)
+        if (!_enemyController._anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
         {
-            _enemyController.Die();
+            _enemyController._anim.SetTrigger("Die");
         }
-    }
+    } 
+
 }
