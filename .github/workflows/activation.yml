@@ -1,5 +1,9 @@
 name: Acquire activation file
 on:
+  push:
+    branches: [ "Develop" ]
+    paths:
+      - ".github/workflows/activation.yml"  
   workflow_dispatch: {}
 jobs:
   activation:
