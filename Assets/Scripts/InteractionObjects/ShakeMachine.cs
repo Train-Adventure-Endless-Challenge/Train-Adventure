@@ -19,6 +19,9 @@ public class ShakeMachine : InteractionObject
     public override void Interact()
     {
         int necessaryGear = (int)ShakeManager.Instance.ShakeAmount * 5;
+
+        if (necessaryGear < 0) return;          // 기어가 0개 일땐 예외처리
+
         if (GearManager.Instance.GearAmount >= necessaryGear)
         {
             ShakeManager.Instance.ClearShake();
