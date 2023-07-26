@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ShakeMachine : InteractionObject
@@ -16,6 +17,7 @@ public class ShakeMachine : InteractionObject
     {
         _anim = GetComponent<Animator>();
     }
+
     public override void Interact()
     {
         int necessaryGear = (int)ShakeManager.Instance.ShakeAmount * 5;
@@ -44,7 +46,7 @@ public class ShakeMachine : InteractionObject
         }
         else if (other.CompareTag("Gear"))
         {
-            Destroy(other.gameObject,2f);
+            Destroy(other.gameObject,0.5f);
         }
     }
 
@@ -62,10 +64,16 @@ public class ShakeMachine : InteractionObject
     /// </summary>
     private void RepairAction()
     {
-        //닫히는 연출
-        _anim.SetBool("Open", false);
-        SoundManager.Instance.SFXPlay(_shakeMachineCloseSound);
+        StartCoroutine(SpawnGearObj());
+    }
 
-        Instantiate(_gearObj,_spawnGearTrans.transform.position, Quaternion.identity);
+    IEnumerator SpawnGearObj()
+    {
+
+        for (int i = 0; i < 5; i++)
+        {
+            Instantiate(_gearObj,_spawnGearTrans.transform.position, Quaternion.identity);
+            yield return new WaitForSeconds(0.2f);      // 임시 
+        }
     }
 }
