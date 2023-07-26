@@ -22,7 +22,7 @@ public class ShakeMachine : InteractionObject
     {
         int necessaryGear = (int)ShakeManager.Instance.ShakeAmount * 5;
 
-        if (necessaryGear < 0) return;          // 기어가 0개 일땐 예외처리
+        if (necessaryGear <= 0) return;          // 기어가 0개 일땐 예외처리
 
         if (GearManager.Instance.GearAmount >= necessaryGear)
         {
