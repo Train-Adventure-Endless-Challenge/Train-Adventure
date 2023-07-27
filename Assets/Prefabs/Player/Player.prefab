@@ -5943,6 +5943,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerData: {fileID: 11400000, guid: 86e5a67a9b97802419b83714147fb914, type: 2}
   playerState: 0
+  _hitVolume: {fileID: 0}
   _maxStamina: 0
 --- !u!114 &8482762653015566469
 MonoBehaviour:

@@ -8,7 +8,7 @@ public class InGameManager : SceneSingleton<InGameManager>
     [SerializeField] private Transform _backgroundGroup;
 
     [Header("Train")]
-    [SerializeField] private GameObject _tutorialTrain;
+    [SerializeField] private GameObject _startTrain;
     [SerializeField] private GameObject[] _nomalTrainObjects;
     [SerializeField] private GameObject _bossTrainObject;
     [SerializeField] private GameObject _storeTrainObject;
@@ -29,7 +29,7 @@ public class InGameManager : SceneSingleton<InGameManager>
 
     private void Start()
     {
-        _currentTrain = CreateTrain(_tutorialTrain, _startPosition);
+        _currentTrain = CreateTrain(_startTrain, _startPosition);
 
         _currentTrain.Init();
 
