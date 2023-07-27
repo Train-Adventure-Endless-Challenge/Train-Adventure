@@ -1775,7 +1775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _backgroundGroup: {fileID: 2120364709}
-  _tutorialTrain: {fileID: 1521113284438253575, guid: 8f490833d4e19734d919833e79c3f844,
+  _startTrain: {fileID: 1521113284438253575, guid: 3cc7686efdb62604ea7756328ddc73a5,
     type: 3}
   _nomalTrainObjects:
   - {fileID: 6708287233740334468, guid: 9e289ce87bd444e43a9a8144e24af7e5, type: 3}
@@ -1863,7 +1863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091245265}
-  m_LocalRotation: {x: 0.3743562, y: -0.34985992, z: 0.15506344, w: 0.8446365}
+  m_LocalRotation: {x: 0.37435618, y: -0.34985992, z: 0.15506345, w: 0.8446365}
   m_LocalPosition: {x: 6.41, y: 13, z: -6.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2157,7 +2157,7 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3743562
+      value: 0.37435618
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
@@ -2167,7 +2167,7 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15506344
+      value: 0.15506345
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
