@@ -20,9 +20,6 @@ public class Train : MonoBehaviour
 
         surfaces.RemoveData();
         surfaces.BuildNavMesh();
-
-        /*surfaces.enabled = false;
-        surfaces.enabled = true;*/
     }
 
     public virtual void Init()
