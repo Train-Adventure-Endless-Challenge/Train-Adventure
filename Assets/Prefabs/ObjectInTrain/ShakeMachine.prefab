@@ -517,6 +517,7 @@ Transform:
   - {fileID: 9187420524321264357}
   - {fileID: 8123455825595666198}
   - {fileID: 6492152740997296599}
+  - {fileID: 5873586928269960506}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -569,6 +570,9 @@ MonoBehaviour:
   _interactionUI: {fileID: 0}
   _shakeMachineOpenSound: {fileID: 0}
   _shakeMachineCloseSound: {fileID: 0}
+  _spawnGearTrans: {fileID: 5873586928269960506}
+  _gearObj: {fileID: 4079688380689943797, guid: 21d6442e4165c6745b5a3cd00714b35a,
+    type: 3}
 --- !u!114 &9493925201612584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -687,6 +691,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &9076268004083700341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5873586928269960506}
+  m_Layer: 7
+  m_Name: SpawnGearObjTrans
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5873586928269960506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9076268004083700341}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8154643613487718418}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9118902972452589576
 GameObject:
   m_ObjectHideFlags: 0
