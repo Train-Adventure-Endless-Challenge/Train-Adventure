@@ -12,6 +12,8 @@ public class NomalTrain : Train
     private int _enemyCount;
     private bool _isClear;
 
+    private Quaternion _treasureBoxRotation = Quaternion.Euler(new Vector3(0, 45, 0));
+
     public override void Start()
     {
         base.Start();
@@ -24,7 +26,7 @@ public class NomalTrain : Train
     {
         // 오브젝트들 모두 생성
         SpawnPointSystem system = Instantiate(_objectsInTrainPrefab[UnityEngine.Random.Range(0, _objectsInTrainPrefab.Length)], 
-            transform.position, Quaternion.identity).GetComponent<SpawnPointSystem>();
+            transform.position, _treasureBoxRotation).GetComponent<SpawnPointSystem>();
 
         // 초기화
         system.Init(KillEnemy);
@@ -40,7 +42,7 @@ public class NomalTrain : Train
 
         OpenDoor();
 
-        Instantiate(_treasureBox, _treasureBoxSpawnPoint.position, Quaternion.identity); // 상자 생성 
+        Instantiate(_treasureBox, _treasureBoxSpawnPoint.position, _treasureBoxRotation); // 상자 생성 
     }
 
     /// <summary>

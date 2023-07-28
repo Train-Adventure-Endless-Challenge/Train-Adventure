@@ -8,6 +8,8 @@ public class StartTrain : Train
     [SerializeField] private GameObject _treasureBox;
     [SerializeField] private Transform _treasureBoxSpawnPoint;
 
+    private Quaternion _treasureBoxRotation = Quaternion.Euler(new Vector3(0, 45, 0));
+
     private int _enemyCount;
     private bool _isClear;
 
@@ -23,7 +25,7 @@ public class StartTrain : Train
     {
         // 오브젝트들 모두 생성
         SpawnPointSystem system = Instantiate(_tutorialObjectInTrainPrefab,
-            transform.position, Quaternion.identity).GetComponent<SpawnPointSystem>();
+            transform.position, _treasureBoxRotation).GetComponent<SpawnPointSystem>();
 
         // 초기화
         system.Init(KillEnemy);
@@ -38,7 +40,7 @@ public class StartTrain : Train
 
         OpenDoor();
 
-        Instantiate(_treasureBox, _treasureBoxSpawnPoint.position, Quaternion.identity); // 상자 생성 
+        Instantiate(_treasureBox, _treasureBoxSpawnPoint.position, _treasureBoxRotation); // 상자 생성 
     }
 
     /// <summary>
