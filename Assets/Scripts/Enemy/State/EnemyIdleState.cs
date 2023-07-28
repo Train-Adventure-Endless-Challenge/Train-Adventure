@@ -17,7 +17,8 @@ public class EnemyIdleState : State<EnemyController>
         _enemyController._anim.SetBool("Walk",false);
         _enemyController._anim.SetBool("WalkToPlayer", false);
 
-        _enemyController._agent.isStopped = true;
+        if(_enemyController._agent.isOnNavMesh)
+            _enemyController._agent.isStopped = true;
 
 
         _enemyController.StartCoroutine(DelayToMoveCor());
@@ -25,7 +26,8 @@ public class EnemyIdleState : State<EnemyController>
 
     IEnumerator DelayToMoveCor()
     {
-        _enemyController._agent.isStopped= true;
+        if(_enemyController._agent.isOnNavMesh)
+            _enemyController._agent.isStopped = true;
 
         yield return new WaitForSeconds(1f);        // 변수로도 설정 가능 추후 기획으로 정해질 시 변수 선언 
 

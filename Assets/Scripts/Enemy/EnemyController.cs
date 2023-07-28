@@ -102,7 +102,10 @@ public abstract class EnemyController : Entity
 
         _dieEvent += GearDrop;
 
-        _agent.ResetPath(); // 동적으로 씬 생성 시 경로를 찾지 못하는 버그를 해결하기 위해 시작 시 경로를 초기화 시켜줌
+        if(_agent.isOnNavMesh)
+        {
+            _agent.ResetPath(); // 동적으로 씬 생성 시 경로를 찾지 못하는 버그를 해결하기 위해 시작 시 경로를 초기화 시켜줌
+        }
     }
 
 
