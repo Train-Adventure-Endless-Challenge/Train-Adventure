@@ -6,6 +6,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 #endregion
 
@@ -87,8 +88,8 @@ public class PlayerAttack : MonoBehaviour
         {
             _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina;         // 스태미나 감소
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
-
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
+            RotateMouseDirection();                   // 마우스 방향으로 회전하는 함수
             _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행 
         }
     }
@@ -109,6 +110,22 @@ public class PlayerAttack : MonoBehaviour
             return true;
         }
         return false;
+    }
+
+    /// <summary>
+    /// 플레이어 공격시 마우스 방향으로 회전하는 함수
+    /// <br/>
+    /// Ray를 사용하여 마우스 위치를 받아와 사용
+    /// </summary>
+    private void RotateMouseDirection()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitResult;
+        if (Physics.Raycast(ray, out hitResult))
+        {
+            Vector3 mouseDir = new Vector3(hitResult.point.x, transform.position.y, hitResult.point.z) - transform.position;
+            transform.forward = mouseDir;
+        }
     }
 
     /// <summary>
