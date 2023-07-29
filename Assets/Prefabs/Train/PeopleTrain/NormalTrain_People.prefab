@@ -305,7 +305,7 @@ MonoBehaviour:
   _floor: {fileID: 2272565376081423500}
   _playerSpawnPoint: {fileID: 1434415722}
   _objectsInTrainPrefab:
-  - {fileID: 7548510990658076237, guid: 7ca77111e6be1444f9e2728bf029e320, type: 3}
+  - {fileID: 3704773195144607118, guid: 91f8e63bd05e33c40b70e6b8af4e5c1d, type: 3}
   _treasureBox: {fileID: 2850039717540930842, guid: 70cc6215a59910446b02af94bdc92bdb,
     type: 3}
   _treasureBoxSpawnPoint: {fileID: 1025111838}
@@ -2204,6 +2204,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019999998, y: 0.02180669, z: 0.019999994}
   m_Center: {x: 0, y: 0.00044665305, z: 2.059946e-16}
+--- !u!114 &8262365720426387010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2272565376081423500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92016881c9dc5314d801444fb5f677e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: 0
+  m_CollectObjects: 2
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.26666668
+  m_BuildHeightMesh: 0
+  m_NavMeshData: {fileID: 23800000, guid: d5c69cc39e1c7f8499cbc17885efdf4e, type: 2}
 --- !u!1 &6012833647964093951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5148817236446094103, guid: f5b1fb43e32cb4345bbbfeb602306b57,
