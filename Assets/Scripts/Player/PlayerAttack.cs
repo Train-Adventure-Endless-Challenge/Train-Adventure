@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour
             IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina);
 
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
-            //_attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행 
+            _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행 
         }
     }
 
@@ -123,7 +123,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (curWeapon == null) { StopCoroutine(_attackCor); _attackCor = null; }
 
-        _playerSound.PlayAttackSound();
+        //_playerSound.PlayAttackSound();
 
         _animator.SetBool("IsAttack", true);          // 애니메이션 실행
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
