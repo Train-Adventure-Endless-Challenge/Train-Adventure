@@ -32,8 +32,9 @@ public class GearManager : SceneSingleton<GearManager>
     public void SubGear(int subCount)
     {
         if (_gearAmount < subCount || subCount < 0) return;
-        _gearAmount -= subCount;
 
+        IngameUIController.Instance.PopupText($"기어{subCount}개 소모");
+        _gearAmount -= subCount;
         IngameUIController.Instance.UpdateGear(_gearAmount);
     }
 
