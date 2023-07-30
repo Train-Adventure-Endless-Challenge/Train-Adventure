@@ -37,8 +37,6 @@ public class TreasureBox : InteractionObject
             Gear gear = (Instantiate(ItemDataManager.Instance.GearPrefab, transform.position, Quaternion.identity) as GameObject).GetComponent<Gear>();
             gear.AcquisitionGear = gearCount;
             _GearCount--;
-
-            GearManager.Instance._gearTrasureBoxObjsList.Add(gear.gameObject);
             
             //아이템 나오게하기
             gear.GetComponent<Rigidbody>().AddForce(Random.Range(-100f, 100f), Random.Range(300f, 400f), Random.Range(-100f, 100f));

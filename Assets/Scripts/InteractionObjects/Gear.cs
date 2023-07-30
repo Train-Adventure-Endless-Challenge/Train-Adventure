@@ -40,8 +40,4 @@ public class Gear : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        GearManager.Instance._gearTrasureBoxObjsList.Remove(gameObject);
-    }
 }
