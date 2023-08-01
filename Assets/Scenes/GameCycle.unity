@@ -1401,6 +1401,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0.9019608
       objectReference: {fileID: 0}
+    - target: {fileID: 1305131107, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1305131107, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7467809884867156779, guid: c8aba734f70d6f84e97e959b358410ed,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1530,6 +1538,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7467809885952191662, guid: c8aba734f70d6f84e97e959b358410ed,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8009937293004716514, guid: c8aba734f70d6f84e97e959b358410ed,
         type: 3}
@@ -1863,7 +1876,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091245265}
-  m_LocalRotation: {x: 0.47976515, y: -0.00000002135016, z: 0.000000011674377, w: 0.87739694}
+  m_LocalRotation: {x: 0.47976515, y: -0.000000021350136, z: 0.000000011674363, w: 0.87739694}
   m_LocalPosition: {x: 0, y: 13, z: -6.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2162,12 +2175,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000002135016
+      value: -0.000000021350136
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000011674377
+      value: 0.000000011674363
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
