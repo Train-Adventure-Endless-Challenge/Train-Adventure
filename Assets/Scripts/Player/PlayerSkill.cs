@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 
 public class PlayerSkill : MonoBehaviour
 {
-
     [Header("Transform")]
     [SerializeField] private Transform _weaponTransform; // 무기 위치
 
@@ -19,13 +17,10 @@ public class PlayerSkill : MonoBehaviour
 
     private Coroutine _skillCor; // 플레이어 공격 코루틴을 담을 변수
 
-
     private void Awake()
     {
         Init(); // 초기화 진행
     }
-
-
 
     /// <summary>
     /// 초기화를 담당하는 함수
@@ -39,7 +34,6 @@ public class PlayerSkill : MonoBehaviour
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
     }
-
 
     /// <summary>
     /// 공격을 담당하는 함수
@@ -86,9 +80,6 @@ public class PlayerSkill : MonoBehaviour
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
 
-
-
-
     IEnumerator SkillCor()
     {
         Weapon curWeapon = PlayerManager.Instance.EquipItem.CurrentWeapon; // 무기 변경
@@ -100,6 +91,7 @@ public class PlayerSkill : MonoBehaviour
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
 
+        CameraManager.Instance.Joom();
 
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
@@ -112,6 +104,4 @@ public class PlayerSkill : MonoBehaviour
 
         _skillCor = null;
     }
-
-
 }
