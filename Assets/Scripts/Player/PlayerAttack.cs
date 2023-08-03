@@ -152,8 +152,6 @@ public class PlayerAttack : MonoBehaviour
 
         _playerController.ChangeSlowSpeed(_slowSpeedScale, curWeapon.AttackSpeed); // 속도 감속
 
-        CameraManager.Instance.Joom(); // 카메라 줌 실행
-
         yield return new WaitForSeconds(curWeapon.AttackSpeed); // 애니메이션 시간 대기
 
         _playerController.ChangeSlowSpeed(_originSpeedScale, curWeapon.AttackSpeed); // 공격 멈춤

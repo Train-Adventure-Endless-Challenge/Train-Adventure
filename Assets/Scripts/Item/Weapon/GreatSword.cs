@@ -28,7 +28,6 @@ public class GreatSword : Weapon
 
     private IEnumerator AttackCor()
     {
-
         yield return new WaitForSeconds(_attackSpeed);
         _trailRenderer.enabled = false;
         _weaponCollider.enabled = false;
@@ -45,6 +44,8 @@ public class GreatSword : Weapon
         if (colliders.Length <= 0) return;
 
         Shake();
+
+        CameraManager.Instance.Joom(); // 카메라 줌 실행
 
         List<GameObject> attackList = new List<GameObject>();
         foreach (Collider col in colliders)
@@ -72,6 +73,7 @@ public class GreatSword : Weapon
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
             Shake();
+            CameraManager.Instance.Joom(); // 카메라 줌 실행
         }
     }
 
@@ -81,8 +83,6 @@ public class GreatSword : Weapon
         base.UpgradeItem();
         _skillRadius += 0.5f;
         _damage += 5;
-
-
     }
 
     public override void AttackColliderOnFunc()
@@ -95,7 +95,5 @@ public class GreatSword : Weapon
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(gameObject.transform.position, _skillRadius);
     }
-
-
 }
 

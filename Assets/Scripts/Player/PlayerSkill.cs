@@ -91,8 +91,6 @@ public class PlayerSkill : MonoBehaviour
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
 
-        CameraManager.Instance.Joom();
-
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
 
         _animator.SetBool("IsSkill", false);          // 애니메이션 실행

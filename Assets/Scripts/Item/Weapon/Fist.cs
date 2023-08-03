@@ -1,6 +1,6 @@
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class Fist : Weapon
 {
@@ -46,10 +46,7 @@ public class Fist : Weapon
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
             Shake();
+            CameraManager.Instance.Joom(); // 카메라 줌 실행
         }
     }
-
-
-
-
 }
