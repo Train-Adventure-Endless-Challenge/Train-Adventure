@@ -18,7 +18,6 @@ public class CameraController : MonoBehaviour
 
     [Header("Time")]
     [SerializeField] private float _lerpTime = 0.4f;   // 최종 러프 시간
-    [SerializeField] private float _waitOffset = 0.4f; // 대기 오프셋
 
     #endregion
 
