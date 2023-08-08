@@ -20,7 +20,7 @@ public class InGameManager : SceneSingleton<InGameManager>
     private Train _currentTrain;               // 현재 기차       
     private Train _nextTrain;                  // 다음 기차
 
-    private Vector3 _trainInterval = new Vector3(0, 0, 2.25f);   // 기차 간격
+    private Vector3 _trainInterval = new Vector3(2.25f, 0, 2.25f);   // 기차 간격
     private Vector3 _startPosition = Vector3.zero;
 
     private Quaternion _trainRotation = Quaternion.Euler(new Vector3(0, 45, 0));

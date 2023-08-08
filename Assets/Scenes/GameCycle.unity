@@ -1779,7 +1779,7 @@ MonoBehaviour:
     type: 3}
   _nomalTrainObjects:
   - {fileID: 1442741392660700183, guid: 4f41a782e01a89547a3cdbab7a784187, type: 3}
-  _bossTrainObject: {fileID: 2364587615945282256, guid: 3573735cb4f9d664986344b52b84140b,
+  _bossTrainObject: {fileID: 1442741392660700183, guid: 65dc54cce97823e4f8edd0c188a83b1f,
     type: 3}
   _storeTrainObject: {fileID: 1442741392660700183, guid: 6f83c135f8d2c274e9bcc4e1b4b9a520,
     type: 3}
@@ -1863,7 +1863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091245265}
-  m_LocalRotation: {x: 0.47976515, y: -0.000000021350138, z: 0.000000011674364, w: 0.87739694}
+  m_LocalRotation: {x: 0.47976515, y: 0.000000021350134, z: -0.000000011674363, w: 0.87739694}
   m_LocalPosition: {x: 0, y: 13, z: -6.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2162,12 +2162,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000021350138
+      value: 0.000000021350134
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000011674364
+      value: -0.000000011674363
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
