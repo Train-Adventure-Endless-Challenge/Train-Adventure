@@ -3137,7 +3137,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1750807392, guid: 9d99edfac7be96c4faf05d8672a8b16c, type: 3}
       propertyPath: m_PlayAutomatically
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3266056831438706794, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
@@ -3350,6 +3350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: train_people
+      objectReference: {fileID: 0}
+    - target: {fileID: 6383459688497237020, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7293059144023096718, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}
