@@ -532,7 +532,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2.3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9187420524497785302
 Animator:
@@ -568,8 +568,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactionUI: {fileID: 0}
-  _shakeMachineOpenSound: {fileID: 0}
-  _shakeMachineCloseSound: {fileID: 0}
+  _shakeMachineOpenSound: {fileID: 8300000, guid: b4f5112bd8f235249acc8efb4250ce3c,
+    type: 3}
+  _shakeMachineCloseSound: {fileID: 8300000, guid: 8f40c39221e884a4096b0f8a56958a08,
+    type: 3}
   _spawnGearTrans: {fileID: 5873586928269960506}
   _gearObj: {fileID: 4079688380689943797, guid: 21d6442e4165c6745b5a3cd00714b35a,
     type: 3}
