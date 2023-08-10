@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class GearManager : SceneSingleton<GearManager>
 {
-    public List<GameObject> _gearTrasureBoxObjsList;
-
     private int _gearAmount;
 
     /// <summary>
@@ -38,17 +36,4 @@ public class GearManager : SceneSingleton<GearManager>
         IngameUIController.Instance.UpdateGear(_gearAmount);
     }
 
-    /// <summary>
-    /// 다음 칸으로 넘어갈 시 전 칸의 기어 오브젝트 삭제
-    /// </summary>
-    public void DestroyGearObj()
-    {
-        if (_gearTrasureBoxObjsList.Count <= 0) return;
-
-        foreach (GameObject gameObject in _gearTrasureBoxObjsList)
-        {
-            _gearTrasureBoxObjsList.Remove(gameObject);
-            Destroy(gameObject);
-        }
-    }
 }
