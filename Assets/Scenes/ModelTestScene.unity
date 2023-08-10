@@ -762,7 +762,7 @@ GameObject:
   - component: {fileID: 563713816}
   - component: {fileID: 563713815}
   m_Layer: 0
-  m_Name: Hit Volume
+  m_Name: Normal Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,7 +796,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 6c937184ef8517848b7154f7bbbd4a4b, type: 2}
+  sharedProfile: {fileID: 11400000, guid: d5957e13f8867644abb5c6e590bcd8d1, type: 2}
 --- !u!4 &563713817
 Transform:
   m_ObjectHideFlags: 0
@@ -824,7 +824,7 @@ GameObject:
   - component: {fileID: 591232482}
   - component: {fileID: 591232481}
   m_Layer: 0
-  m_Name: Hit Volume (1)
+  m_Name: Hit Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
