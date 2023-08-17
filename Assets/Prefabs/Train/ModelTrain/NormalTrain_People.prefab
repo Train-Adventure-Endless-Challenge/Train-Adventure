@@ -2339,6 +2339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1442741392660700182}
     m_Modifications:
+    - target: {fileID: 1750807392, guid: 9d99edfac7be96c4faf05d8672a8b16c, type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3266056831438706794, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
       propertyPath: m_Name
@@ -3064,7 +3068,7 @@ PrefabInstance:
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.424
+      value: 2.36
       objectReference: {fileID: 0}
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
@@ -3127,7 +3131,7 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: 3e27eed01166ce44285bff59b7a77fdb, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!4 &6443759731918797174 stripped

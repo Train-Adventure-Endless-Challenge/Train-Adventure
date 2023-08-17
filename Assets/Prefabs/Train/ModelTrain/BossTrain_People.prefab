@@ -2369,6 +2369,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1442741392660700182}
     m_Modifications:
+    - target: {fileID: 1750807392, guid: 9d99edfac7be96c4faf05d8672a8b16c, type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3266056831438706794, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
       propertyPath: m_Name
@@ -2422,7 +2426,7 @@ PrefabInstance:
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 28.414804
       objectReference: {fileID: 0}
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
@@ -3081,6 +3085,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FrontDoor
       objectReference: {fileID: 0}
+    - target: {fileID: 3266056831438706794, guid: 9d99edfac7be96c4faf05d8672a8b16c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
       propertyPath: m_RootOrder
@@ -3129,7 +3138,7 @@ PrefabInstance:
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 131.55
+      value: 105.85269
       objectReference: {fileID: 0}
     - target: {fileID: 7167773174266529561, guid: 9d99edfac7be96c4faf05d8672a8b16c,
         type: 3}
@@ -3153,11 +3162,11 @@ Animation:
   m_GameObject: {fileID: 1677172557459170821}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 3e27eed01166ce44285bff59b7a77fdb, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 3e27eed01166ce44285bff59b7a77fdb, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!4 &6443759731918797174 stripped
@@ -3298,6 +3307,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: train_people
+      objectReference: {fileID: 0}
+    - target: {fileID: 6383459688497237020, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7293059144023096718, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}
