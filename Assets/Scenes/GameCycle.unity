@@ -1674,7 +1674,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c577d4404e17ce84c9f6369d87b3fd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gearTrasureBoxObjsList: []
 --- !u!1 &999111062 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8203396878571994964, guid: b77f212fd7c9855439d1e1d75a1132c0,
@@ -1840,7 +1839,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 50
-  orthographic: 1
+  orthographic: 0
   orthographic size: 2.95
   m_Depth: -1
   m_CullingMask:
@@ -1864,7 +1863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091245265}
-  m_LocalRotation: {x: 0.37627938, y: 0.000000027612039, z: -0.0000000112139995, w: 0.9265063}
+  m_LocalRotation: {x: 0.37627938, y: -3.0305094e-15, z: 1.7854476e-15, w: 0.9265063}
   m_LocalPosition: {x: 0, y: 7.63, z: -4.7599998}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2167,12 +2166,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000027612039
+      value: -3.0305094e-15
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.0000000112139995
+      value: 1.7854476e-15
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
