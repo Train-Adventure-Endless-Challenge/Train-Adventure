@@ -231,6 +231,8 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     public void EndAnmationEvent()
     {
+        ShakeManager.Instance.IncreaseShake(3f);        // 흔들림 증가
+
         _enemyAttackObj.SetActive(false);
 
         _agent.isStopped = false;
