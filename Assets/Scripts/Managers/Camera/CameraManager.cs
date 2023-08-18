@@ -28,9 +28,9 @@ public class CameraManager : SceneSingleton<CameraManager>
     /// <summary>
     /// 줌 실행을 연결하는 함수
     /// </summary>
-    public void Joom()
+    public void Joom(bool isSkill)
     {
-        _cameraController.Joom(); // 카메라 줌 실행
+        _cameraController.Joom(isSkill); // 카메라 줌 실행
     }
 
     #endregion

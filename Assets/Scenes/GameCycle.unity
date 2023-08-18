@@ -1863,7 +1863,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091245265}
-  m_LocalRotation: {x: 0.47976515, y: 0.000000021350132, z: -0.000000011674361, w: 0.87739694}
+  m_LocalRotation: {x: 0.47976515, y: -0.000000021350136, z: 0.000000011674363, w: 0.87739694}
   m_LocalPosition: {x: 0, y: 13, z: -6.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2162,12 +2162,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000021350132
+      value: -0.000000021350136
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011674361
+      value: 0.000000011674363
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
@@ -2230,10 +2230,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6147c284c57d914dbbdf8b271d1ff39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxFOV: 0
-  _minFOV: 40
-  _lerpTime: 0.4
-  _waitOffset: 0.4
+  _originFOV: 50
+  _attackZooomFOV: 47.5
+  _skillZoomFOV: 45
+  _lerpTime: 0.1
   _animationCurve:
     serializedVersion: 2
     m_Curve:

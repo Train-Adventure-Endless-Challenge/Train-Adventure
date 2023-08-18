@@ -9,15 +9,16 @@ public class CameraController : MonoBehaviour
     #region FOV
 
     [Header("FOV")]
-    [SerializeField] private float _maxFOV;       // FOV 최댓값
-    [SerializeField] private float _minFOV = 40f; // FOV 최솟값
+    [SerializeField] private float _originFOV;              // 기본 FOV
+    [SerializeField] private float _attackZooomFOV = 47.5f; // 공격 줌 FOV
+    [SerializeField] private float _skillZoomFOV = 45f;     // 스킬 줌 FOV
 
     #endregion
 
     #region Time
 
     [Header("Time")]
-    [SerializeField] private float _lerpTime = 0.4f;   // 최종 러프 시간
+    [SerializeField] private float _lerpTime = 0.1f; // 최종 러프 시간
 
     #endregion
 
@@ -57,17 +58,25 @@ public class CameraController : MonoBehaviour
     {
         _cinemachineVirtualCamera = GetComponent<CinemachineVirtualCamera>(); // 카메라 초기화
 
-        _maxFOV = _cinemachineVirtualCamera.m_Lens.FieldOfView; // 최댓값 초기화
+        _originFOV = _cinemachineVirtualCamera.m_Lens.FieldOfView; // 최댓값 초기화
     }
 
     /// <summary>
     /// 줌을 실행하는 함수
     /// </summary>
-    public void Joom()
+    public void Joom(bool isSkill)
     {
-        if (_joomInCor == null) // 실행중이 아니라면
+        if (_joomInCor != null) // 줌 실행 중이라면
         {
-            _joomInCor = StartCoroutine(JoomInCor()); // 줌인 실행
+            return;
+        }
+        if (isSkill == true)
+        {
+            _joomInCor = StartCoroutine(JoomInCor(_skillZoomFOV)); // 스킬 줌인 실행
+        }
+        else if (isSkill == false)
+        {
+            _joomInCor = StartCoroutine(JoomInCor(_attackZooomFOV)); // 공격 줌인 실행
         }
     }
 
@@ -75,7 +84,7 @@ public class CameraController : MonoBehaviour
     /// 줌 인을 담당하는 코루틴 함수
     /// </summary>
     /// <returns></returns>
-    private IEnumerator JoomInCor()
+    private IEnumerator JoomInCor(float zoomValue)
     {
         float currentTime = 0f;
         while (currentTime < _lerpTime)
@@ -87,7 +96,7 @@ public class CameraController : MonoBehaviour
             }
             float curveValue = _animationCurve.Evaluate(currentTime / _lerpTime);
 
-            _cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(_maxFOV, _minFOV, curveValue); // 시간에 따른 줌 인 실행
+            _cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(_originFOV, zoomValue, curveValue); // 시간에 따른 줌 인 실행
 
             yield return new WaitForEndOfFrame();
         }
@@ -102,6 +111,7 @@ public class CameraController : MonoBehaviour
     private IEnumerator JoomOutCor()
     {
         float currentTime = 0f;
+        float currentFOV = _cinemachineVirtualCamera.m_Lens.FieldOfView;
         while (currentTime < _lerpTime)
         {
             currentTime += Time.deltaTime;
@@ -111,7 +121,7 @@ public class CameraController : MonoBehaviour
             }
             float curveValue = _animationCurve.Evaluate(currentTime / _lerpTime);
 
-            _cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(_minFOV, _maxFOV, curveValue); // 시간에 따른 줌 아웃 실행
+            _cinemachineVirtualCamera.m_Lens.FieldOfView = Mathf.Lerp(currentFOV, _originFOV, curveValue); // 시간에 따른 줌 아웃 실행
 
             yield return new WaitForEndOfFrame();
         }
