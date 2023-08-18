@@ -13,6 +13,7 @@ public class EnemyController_Boss_Cave : EnemyController
     [SerializeField] GameObject _bombPrefab;
     public GameObject _floorEffect;
 
+    private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
     protected override void Start()
     {
         base.Start();
@@ -231,6 +232,8 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     public void EndAnmationEvent()
     {
+        ShakeManager.Instance.IncreaseShake(_shakeAmount);        // 흔들림 증가
+
         _enemyAttackObj.SetActive(false);
 
         _agent.isStopped = false;
