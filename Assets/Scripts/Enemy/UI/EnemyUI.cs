@@ -17,15 +17,10 @@ public class EnemyUI : MonoBehaviour
         _enemyController = GetComponent<EnemyController>();
     }
 
-    private void Update()
-    {
-    }
-
     public void Init()
     {
         _hpBarSlider.maxValue = _enemyController.MaxHp;
         _hpBarSlider.value = _enemyController.MaxHp;
-        Debug.Log(_enemyController.MaxHp);
 
         if(_enemyController.EnemyType != EnemyType.Boss)        // Boss는 HP UI 항상 표기
             _hpBarSlider.gameObject.SetActive(false);
