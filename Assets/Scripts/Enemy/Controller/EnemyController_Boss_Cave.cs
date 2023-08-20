@@ -26,8 +26,6 @@ public class EnemyController_Boss_Cave : EnemyController
 
     }
 
-    #region SpawnAttack
-
     public override void Attack()
     {
         CheckAttack();
@@ -59,6 +57,8 @@ public class EnemyController_Boss_Cave : EnemyController
                 break;
         }
     }
+
+    #region SpawnAttack
 
     /// <summary>
     /// 폭탄 생성 공격
@@ -176,6 +176,7 @@ public class EnemyController_Boss_Cave : EnemyController
     }
     #endregion
 
+
     #region PunchAttack
 
     private void PunchAttack()
@@ -225,6 +226,15 @@ public class EnemyController_Boss_Cave : EnemyController
         _enemyAttackObj.SetActive(true);
     }
 
+    public void PunchEffectEvent()
+    {
+        GameObject go = Instantiate(_floorEffect, transform.position, Quaternion.identity);
+        go.transform.localScale = new Vector3(5, 5, 1);
+        Destroy(go, 1f);
+
+        ShakeManager.Instance.IncreaseShake(_shakeAmount);        // 흔들림 증가
+    }
+
     #endregion
 
     /// <summary>
@@ -232,7 +242,6 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     public void EndAnmationEvent()
     {
-        ShakeManager.Instance.IncreaseShake(_shakeAmount);        // 흔들림 증가
 
         _enemyAttackObj.SetActive(false);
 
