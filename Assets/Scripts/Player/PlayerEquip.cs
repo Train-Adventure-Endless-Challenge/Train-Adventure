@@ -42,10 +42,10 @@ public class PlayerEquip : MonoBehaviour
 
             itemInventory._item = weapon;
             itemInventory._item.InventoryItem = itemInventory;
-            
+
             // 스킬 쿨타임 재 설정
             weapon.currentCoolTime = Time.time + weapon.ItemData.SkillCooltime;
-            IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
+            IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.Id, CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
             IngameUIController.Instance.UpdateDurabilityUI(weapon.ItemData.MaxDurability, weapon.Durability);
             IngameUIController.Instance.OnDurabilityUI(true);
 
@@ -101,6 +101,7 @@ public class PlayerEquip : MonoBehaviour
         if (on)
         {
             _currentWeapon = _fistObject;
+            IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.Id, CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
         }
         else
         {

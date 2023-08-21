@@ -1529,6 +1529,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 416801137}
     m_Modifications:
+    - target: {fileID: 141111341, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a43ce2f63eaa854c98daae97827b4c9,
+        type: 3}
+    - target: {fileID: 165853992, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: _skillImg
+      value: 
+      objectReference: {fileID: 834642701}
+    - target: {fileID: 165853992, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: _skillSprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 165853992, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: _skillListImgs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 165853992, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: _skillSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9a43ce2f63eaa854c98daae97827b4c9,
+        type: 3}
+    - target: {fileID: 165853992, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: _skillSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 6a7ac9e8c26b12440bf2b1da2ca97794,
+        type: 3}
+    - target: {fileID: 165853992, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: _skillSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8272ea7c59da847458432e7c88bf7766,
+        type: 3}
+    - target: {fileID: 372345030, guid: c8aba734f70d6f84e97e959b358410ed, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7467809884867156779, guid: c8aba734f70d6f84e97e959b358410ed,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -1672,6 +1708,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 834642699}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &834642701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 141111341, guid: c8aba734f70d6f84e97e959b358410ed,
+    type: 3}
+  m_PrefabInstance: {fileID: 834642699}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &986810276
 PrefabInstance:
   m_ObjectHideFlags: 0

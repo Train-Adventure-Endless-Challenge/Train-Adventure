@@ -22,11 +22,15 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] private GameObject _popupText;
 
     [Header("Skill")]
+    [SerializeField] private Image _skillImg;
     [SerializeField] private Image _skillCooltimeImg;
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
     Coroutine _gearUpdateCoroutine;
     Coroutine _skillUIUpdateCoroutine;
+
+    [Header("Sprites")]
+    [SerializeField] private Sprite[] _skillSprites;
 
     private int _maxPopupCount = 9;
 
@@ -187,7 +191,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
             _shakeAmountBackground.fillAmount = Mathf.Lerp(start, end, percent) / 360f;
 
-            _pointerImage.transform.eulerAngles = 
+            _pointerImage.transform.eulerAngles =
                 new Vector3(_pointerImage.transform.eulerAngles.x, _pointerImage.transform.eulerAngles.y, zRotation);
 
             yield return null;
@@ -206,18 +210,19 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         Instantiate(_popupText, _popupPanel.transform).GetComponent<PopupText>().Init(text);
     }
 
-    public void UpdateSkillUI(float coolTime,float currentTime)
+    public void UpdateSkillUI(int weaponIndex, float coolTime, float currentTime)
     {
-
         if (_skillUIUpdateCoroutine != null)
             StopCoroutine(_skillUIUpdateCoroutine);
 
-        _skillUIUpdateCoroutine = StartCoroutine(UpdateSkillUICor(coolTime, currentTime));
+        _skillUIUpdateCoroutine = StartCoroutine(UpdateSkillUICor(weaponIndex, coolTime, currentTime));
     }
 
-    IEnumerator UpdateSkillUICor(float coolTime,float currentTime)
+    IEnumerator UpdateSkillUICor(int weaponIndex, float coolTime, float currentTime)
     {
-        while(Time.time < currentTime)
+        _skillImg.sprite = _skillSprites[weaponIndex];
+
+        while (Time.time < currentTime)
         {
             yield return null;
             _skillCooltimeImg.fillAmount = ((currentTime - Time.time) / coolTime);
