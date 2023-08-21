@@ -14,9 +14,10 @@ public class InGameManager : SceneSingleton<InGameManager>
     [SerializeField] private GameObject _storeTrainObject;
 
     [Header("UI")]
-    [SerializeField] private Image fadeImage;  // 페이드 이미지
+    [SerializeField] private Image _fadeImage;             // 페이드 이미지
     [SerializeField] private GameObject _stageStartCanvas; // 스테이지 시작 캔버스
 
+    [Header("Manager")]
     [SerializeField] GameOverManager _gameOverManager;
 
     private Train _currentTrain;               // 현재 기차       
@@ -48,7 +49,6 @@ public class InGameManager : SceneSingleton<InGameManager>
     /// </summary>
     public void NextStage()
     {
-
         IngameUIController.Instance.UpdateScore(++_score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
 
@@ -112,14 +112,16 @@ public class InGameManager : SceneSingleton<InGameManager>
         float current = 0;
         float percent = 0;
 
+        _fadeImage.color = new Color(0, 0, 0, start);
 
         while (percent < 1)
         {
             current += Time.deltaTime;
             percent = current / time;
 
+            Color color = _fadeImage.color;
             color.a = Mathf.Lerp(start, end, percent);
-            fadeImage.color = color;
+            _fadeImage.color = color;
 
             PlayerManager.Instance.StopMove();
             PlayerManager.Instance.BlockInput(true);
@@ -129,6 +131,7 @@ public class InGameManager : SceneSingleton<InGameManager>
         }
 
         PlayerManager.Instance.BlockInput(false);
+        _fadeImage.color = new Color(0, 0, 0, end);
     }
 
     /// <summary>
