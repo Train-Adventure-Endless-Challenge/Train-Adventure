@@ -11,7 +11,6 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     private GameObject _player;
 
-
     public override void OnEnter()
     {
         base.OnEnter();

@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyHitState : State<EnemyController>
 {
-
     private EnemyController _enemyController;
     private GameObject _player;         // 추후 싱글톤으로 찾기 가능
 

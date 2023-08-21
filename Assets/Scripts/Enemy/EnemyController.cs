@@ -112,6 +112,7 @@ public abstract class EnemyController : Entity
     protected virtual void Update()
     {
         _stateMachine.Update(Time.deltaTime);
+        Debug.Log(_stateMachine.CurrentState);
     }
 
     public R ChangeState<R>() where R : State<EnemyController>

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyIdleState : State<EnemyController>
 {
     EnemyController _enemyController;
+    private UnityEngine.AI.NavMeshAgent _agent;
 
 
     public override void OnEnter()
@@ -16,12 +17,17 @@ public class EnemyIdleState : State<EnemyController>
         _enemyController._anim.SetBool("Walk",false);
         _enemyController._anim.SetBool("WalkToPlayer", false);
 
-        if(_enemyController._agent.isOnNavMesh)
+        if (_enemyController._agent.isOnNavMesh)
             _enemyController._agent.isStopped = true;
 
         _enemyController._enemyUI.ExclamationMarkToggle(false);
 
         _enemyController.StartCoroutine(DelayToMoveCor());
+
+        if (_enemyController._enemyFieldOfView._isVisiblePlayer)
+        {
+            _enemyController.ChangeState<EnemyAttackWalkState>();
+        }
     }
 
     IEnumerator DelayToMoveCor()
@@ -37,7 +43,7 @@ public class EnemyIdleState : State<EnemyController>
     {
         if (_enemyController._enemyFieldOfView._isVisiblePlayer)
         {
-            _enemyController.ChangeState<EnemyAttackWalkState>();
+            _enemyController.ChangeState<EnemyDiscoveryState>();
         }
     }
 
