@@ -21,8 +21,7 @@ public class EnemyController_Range : EnemyController
         _stateMachine.AddState(new EnemyAttackState());
         _stateMachine.AddState(new EnemyAttackWalkState());
         _stateMachine.AddState(new EnemyHitState());
-
-
+        _stateMachine.AddState(new EnemyDiscoveryState());
     }
 
     protected override void Update()

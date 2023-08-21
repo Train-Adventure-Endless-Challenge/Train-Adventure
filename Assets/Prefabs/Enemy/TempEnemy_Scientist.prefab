@@ -646,6 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e355cca52db9b45a191329c4a6b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exclamationMark: {fileID: 3779084652224842095}
   _hpBarSlider: {fileID: 2434019953570062987}
 --- !u!195 &5588158182885500033
 NavMeshAgent:
@@ -739,30 +740,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5334400783551578991}
     m_Modifications:
-    - target: {fileID: 369315497044462237, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 640512812712972672, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1215374988072603045, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: 1858731425439367895, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
       propertyPath: m_Name
       value: HPCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1858731425439367895, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2961900434344434759, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
@@ -773,16 +754,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5913668293333193549, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6856555325472763116, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
@@ -828,21 +799,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.y
       value: 415
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.03333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.03333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.03333333
       objectReference: {fileID: 0}
     - target: {fileID: 8713200477733145705, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
@@ -918,3 +874,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3779084652224842095 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8790781509303872604, guid: 47cb719c64e1df5489147af36b3d5538,
+    type: 3}
+  m_PrefabInstance: {fileID: 5588158184635180339}
+  m_PrefabAsset: {fileID: 0}

@@ -441,6 +441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e355cca52db9b45a191329c4a6b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exclamationMark: {fileID: 4808296617814750672}
   _hpBarSlider: {fileID: 6273480728318631476}
 --- !u!4 &5115806144555981820 stripped
 Transform:
@@ -661,6 +662,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47cb719c64e1df5489147af36b3d5538, type: 3}
+--- !u!1 &4808296617814750672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8790781509303872604, guid: 47cb719c64e1df5489147af36b3d5538,
+    type: 3}
+  m_PrefabInstance: {fileID: 4270997364567595404}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6273480728318631476 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7803119683906734008, guid: 47cb719c64e1df5489147af36b3d5538,
