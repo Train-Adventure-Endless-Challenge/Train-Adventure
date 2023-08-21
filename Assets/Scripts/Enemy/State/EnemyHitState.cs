@@ -43,7 +43,7 @@ public class EnemyHitState : State<EnemyController>
 
         _enemyController._anim.SetTrigger("Hit");                       // anim
 
-        _enemyController._enemyUI.ExclamationMarkToggle(true);
+        _enemyController._enemyUI.ToggleExclamationMark(true);
     }
 
     public override void Update(float deltaTime)

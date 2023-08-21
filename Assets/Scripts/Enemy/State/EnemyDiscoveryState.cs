@@ -8,13 +8,13 @@ public class EnemyDiscoveryState : State<EnemyController>
     EnemyController _enemyController;
     private NavMeshAgent _agent;
 
-    private float timer = 0f;
+    private float _timer = 0f;
 
     public override void OnEnter()
     {
         base.OnEnter();
 
-        timer = 0;
+        _timer = 0;
 
         _enemyController = _context.GetComponent<EnemyController>();
         _agent = _enemyController._agent;
@@ -22,14 +22,14 @@ public class EnemyDiscoveryState : State<EnemyController>
 
         _enemyController._anim.SetTrigger("Discovery");
 
-        _enemyController._enemyUI.ExclamationMarkToggle(true);
+        _enemyController._enemyUI.ToggleExclamationMark(true);
     }
 
     public override void Update(float deltaTime)
     {                       
-        timer += deltaTime;
+        _timer += deltaTime;
 
-        if (timer > 1f)
+        if (_timer > 1f)
         {
             if (_enemyController._enemyFieldOfView._isVisiblePlayer)
             {

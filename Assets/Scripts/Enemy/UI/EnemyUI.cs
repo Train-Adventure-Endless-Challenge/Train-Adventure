@@ -63,7 +63,7 @@ public class EnemyUI : MonoBehaviour
         _hpUpdateCoroutine = null;
     }
 
-    public void ExclamationMarkToggle(bool toggle)
+    public void ToggleExclamationMark(bool toggle)
     {
         _exclamationMark.SetActive(toggle);
     }

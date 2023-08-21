@@ -26,7 +26,7 @@ public class EnemyAttackWalkState : State<EnemyController>
 
         _enemyController._isCurrentAttackCor = false;
 
-        _enemyController._enemyUI.ExclamationMarkToggle(true);
+        _enemyController._enemyUI.ToggleExclamationMark(true);
     }
 
     public override void Update(float deltaTime)

@@ -27,7 +27,6 @@ public class EnemyController_Scientist : EnemyController
         _stateMachine.AddState(new EnemyAttackWalkState());
         _stateMachine.AddState(new EnemyHitState());
         _stateMachine.AddState(new EnemyDiscoveryState());
-
     }
 
 

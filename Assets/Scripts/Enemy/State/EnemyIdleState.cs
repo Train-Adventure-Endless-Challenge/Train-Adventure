@@ -7,7 +7,6 @@ public class EnemyIdleState : State<EnemyController>
     EnemyController _enemyController;
     private UnityEngine.AI.NavMeshAgent _agent;
 
-
     public override void OnEnter()
     {
         base.OnEnter();
@@ -20,7 +19,7 @@ public class EnemyIdleState : State<EnemyController>
         if (_enemyController._agent.isOnNavMesh)
             _enemyController._agent.isStopped = true;
 
-        _enemyController._enemyUI.ExclamationMarkToggle(false);
+        _enemyController._enemyUI.ToggleExclamationMark(false);
 
         _enemyController.StartCoroutine(DelayToMoveCor());
 
