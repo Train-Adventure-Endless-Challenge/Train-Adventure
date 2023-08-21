@@ -188,7 +188,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mutant Jump Attack
-  m_Speed: 2
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 6183763628791261548}
@@ -379,7 +379,7 @@ AnimatorStateMachine:
     m_Position: {x: 310, y: 130, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4662347342702778538}
-    m_Position: {x: 610, y: 110, z: 0}
+    m_Position: {x: 600, y: 140, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -6037966245051784922}
     m_Position: {x: 590, y: 220, z: 0}
@@ -514,7 +514,7 @@ AnimatorStateMachine:
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: -287118078893437832}
-    m_Position: {x: 430, y: 10, z: 0}
+    m_Position: {x: 440, y: 10, z: 0}
   m_AnyStateTransitions:
   - {fileID: -9037273360678444318}
   - {fileID: -5460836248184601081}
