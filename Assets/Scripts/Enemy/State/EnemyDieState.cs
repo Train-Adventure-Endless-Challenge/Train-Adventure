@@ -32,6 +32,7 @@ public class EnemyDieState : State<EnemyController>
             enemy._attackTrail.gameObject.SetActive(false);
         }
 
+        _enemyController._enemyUI.ExclamationMarkToggle(false);
     }
 
     public override void Update(float deltaTime)

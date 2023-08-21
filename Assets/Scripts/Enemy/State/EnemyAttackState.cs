@@ -12,7 +12,6 @@ public class EnemyAttackState : State<EnemyController>
     
     private NavMeshAgent _agent;
 
-
     public override void OnEnter()
     {
         base.OnEnter();
@@ -38,7 +37,6 @@ public class EnemyAttackState : State<EnemyController>
 
     public override void Update(float deltaTime)    
     {
-
         if (_enemyController._isDie) return;
 
         if (_enemyController.EnemyType == EnemyType.Bomb) return;       // 폭탄이 공격하는 상황은 취소 될 수 없다

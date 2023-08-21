@@ -11,7 +11,6 @@ public class EnemyIdleState : State<EnemyController>
     {
         base.OnEnter();
 
-
         _enemyController = _context.GetComponent<EnemyController>();
 
         _enemyController._anim.SetBool("Walk",false);
@@ -20,6 +19,7 @@ public class EnemyIdleState : State<EnemyController>
         if(_enemyController._agent.isOnNavMesh)
             _enemyController._agent.isStopped = true;
 
+        _enemyController._enemyUI.ExclamationMarkToggle(false);
 
         _enemyController.StartCoroutine(DelayToMoveCor());
     }

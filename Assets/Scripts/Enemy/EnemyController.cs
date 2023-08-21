@@ -17,6 +17,7 @@ public abstract class EnemyController : Entity
     private float _moveSpeed;
     private float _attackSpeed;
     private float _attackRange;
+
     private EnemyType _enemyType;
     private AudioClip _enemyDieSound;
 
@@ -75,7 +76,6 @@ public abstract class EnemyController : Entity
         {
             _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
             _stateMachine.AddState(new EnemyDieState());
-
         }
         else
         {
@@ -160,9 +160,7 @@ public abstract class EnemyController : Entity
 
             Hp -= _eventDamage;
             _enemyUI.UpdateHpUI(Hp);
-
         }
-
     }
 
     /// <summary>

@@ -378,6 +378,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 47cb719c64e1df5489147af36b3d5538, type: 3}
+--- !u!1 &5611454269131092231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8790781509303872604, guid: 47cb719c64e1df5489147af36b3d5538,
+    type: 3}
+  m_PrefabInstance: {fileID: 3756216323685309787}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6371048499371825891 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7803119683906734008, guid: 47cb719c64e1df5489147af36b3d5538,
@@ -803,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9e355cca52db9b45a191329c4a6b4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _exclamationMark: {fileID: 5611454269131092231}
   _hpBarSlider: {fileID: 6371048499371825891}
 --- !u!195 &8117928622505348626
 NavMeshAgent:
