@@ -121,7 +121,8 @@ public class PlayerAttack : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitResult;
-        if (Physics.Raycast(ray, out hitResult))
+        int layerMask = (-1) - (1 << LayerMask.NameToLayer("RightWall"));
+        if (Physics.Raycast(ray, out hitResult, 100, layerMask))
         {
             Vector3 mouseDir = new Vector3(hitResult.point.x, transform.position.y, hitResult.point.z) - transform.position;
             transform.forward = mouseDir;
