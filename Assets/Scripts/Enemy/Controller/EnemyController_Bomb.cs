@@ -16,6 +16,7 @@ public class EnemyController_Bomb : EnemyController
         _stateMachine.AddState(new EnemyMoveState());
         _stateMachine.AddState(new EnemyAttackState());
         _stateMachine.AddState(new EnemyAttackWalkState());
+        _stateMachine.AddState(new EnemyDiscoveryState());
         _stateMachine.AddState(new EnemyHitState());
     }
 
