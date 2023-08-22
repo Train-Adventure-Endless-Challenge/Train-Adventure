@@ -33,6 +33,8 @@ public class PlayerAttack : MonoBehaviour
 
     private Coroutine _attackCor; // 플레이어 공격 코루틴을 담을 변수
 
+    private int layerMask = (-1) - (1 << LayerMask.NameToLayer("RightWall"));
+
     #endregion
 
     #endregion
@@ -121,7 +123,9 @@ public class PlayerAttack : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hitResult;
-        int layerMask = (-1) - (1 << LayerMask.NameToLayer("RightWall"));
+
+        // 특정 layer만 raycast제외하기 (RightWall)
+
         if (Physics.Raycast(ray, out hitResult, 100, layerMask))
         {
             Vector3 mouseDir = new Vector3(hitResult.point.x, transform.position.y, hitResult.point.z) - transform.position;
