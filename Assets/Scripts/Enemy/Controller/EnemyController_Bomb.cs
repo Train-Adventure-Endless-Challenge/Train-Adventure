@@ -9,6 +9,8 @@ public class EnemyController_Bomb : EnemyController
 
     [SerializeField] GameObject _bombEffect;        //폭탄이 터질때 effect 파티클
 
+    bool _isAttack = false;
+
     protected override void Start()
     {
         base.Start();
@@ -22,6 +24,12 @@ public class EnemyController_Bomb : EnemyController
 
     public override void Attack()
     {
+        if (_isAttack == true)
+        {
+            return;
+        }
+
+        _isAttack = true;
         _anim.SetTrigger("Attack");
     }
 
@@ -33,7 +41,7 @@ public class EnemyController_Bomb : EnemyController
     {
         _isCurrentAttackCor = true;
 
-        if (Vector2.Distance(transform.position, _player.transform.position) > 5)
+        if (Vector2.Distance(transform.position, _player.transform.position) < 5)
             _player.GetComponent<Player>().Hit(Damage, gameObject);
 
         // 파티클 추가
@@ -48,4 +56,13 @@ public class EnemyController_Bomb : EnemyController
     {
         ChangeState<EnemyDieState>();
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Attack();
+        }
+    }
+
 }
