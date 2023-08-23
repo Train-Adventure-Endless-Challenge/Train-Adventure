@@ -710,7 +710,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1587d8f19340df40835dc5b0cbf5efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _radius: 8
+  _radius: 5
   _angle: 360
   _viewCheckDelay: 0.2
   _playerRef: {fileID: 0}
