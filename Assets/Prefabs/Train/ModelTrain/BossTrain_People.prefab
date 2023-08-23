@@ -3416,6 +3416,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: -8153468022190502949, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: -3821253740895256905, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: -3195828791156449804, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -3487,6 +3497,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 2ed3a00e906cb5943802e91313b483df, type: 2}
+    - target: {fileID: 8485173162082002552, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 8668148047473393707, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}
       propertyPath: m_IsActive
@@ -3517,8 +3532,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.019999998, y: 0.019999998, z: 0.019999996}
-  m_Center: {x: -2.3283064e-10, y: -9.313226e-10, z: 0}
+  m_Size: {x: 0.06, y: 0.019999998, z: 0.019999996}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5824369475903998267
 PrefabInstance:
   m_ObjectHideFlags: 0
