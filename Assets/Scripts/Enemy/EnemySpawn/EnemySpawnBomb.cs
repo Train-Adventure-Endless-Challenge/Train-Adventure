@@ -10,6 +10,7 @@ public class EnemySpawnBomb : MonoBehaviour
     public GameObject Owner { get; set; }
 
     [SerializeField] GameObject _effectPrefab;      // 폭탄이 터지는 effect
+    [SerializeField] SpriteRenderer _circleColor;   // 아래 원 서클 
     void Start()
     {
         StartCoroutine(AttackCor());
@@ -17,7 +18,12 @@ public class EnemySpawnBomb : MonoBehaviour
 
     IEnumerator AttackCor()
     {
-        yield return new WaitForSeconds(_attackDelayTime);      // 10초 후에
+        yield return new WaitForSeconds(_attackDelayTime - 2); // 터지기 2초 전에
+
+        // 터지기 전 효과
+        _circleColor.color = Color.white;
+
+        yield return new WaitForSeconds(2);      // 10초 후에
 
         // 폭탄 터짐 
         Collider[] collider = Physics.OverlapSphere(transform.position, 2f);

@@ -485,7 +485,6 @@ Transform:
   - {fileID: 1952385266827423899}
   - {fileID: 816361853298457729}
   - {fileID: 1150269704037401361}
-  - {fileID: 4605108105947333459}
   m_Father: {fileID: 1442741392660700182}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3473,6 +3472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: train_people
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394693769120690257, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Name
+      value: Plane.010
       objectReference: {fileID: 0}
     - target: {fileID: 7293059144023096718, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}

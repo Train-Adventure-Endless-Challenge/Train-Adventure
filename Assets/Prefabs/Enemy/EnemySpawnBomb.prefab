@@ -66,6 +66,7 @@ MonoBehaviour:
   _damage: 0
   _effectPrefab: {fileID: 8592499858754565221, guid: e450b5eb9f9ce8c4c98c07918ad5ac11,
     type: 3}
+  _circleColor: {fileID: 8665035654384326096}
 --- !u!1001 &2161948302273153807
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -257,6 +258,12 @@ PrefabInstance:
 --- !u!4 &8166478455618293474 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8051273015709266070, guid: df9e006d8756e4b4e8929423373b083c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2228990192873356916}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8665035654384326096 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7399012599731825572, guid: df9e006d8756e4b4e8929423373b083c,
     type: 3}
   m_PrefabInstance: {fileID: 2228990192873356916}
   m_PrefabAsset: {fileID: 0}
