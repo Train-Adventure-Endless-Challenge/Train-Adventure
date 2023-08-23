@@ -20,10 +20,6 @@ public class EnemySpawnBomb : MonoBehaviour
         StartCoroutine(AttackCor());
 
     }
-    
-    private void Update()
-    {
-    }
 
     IEnumerator AttackCor()
     {
