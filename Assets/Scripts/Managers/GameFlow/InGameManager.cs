@@ -19,6 +19,7 @@ public class InGameManager : SceneSingleton<InGameManager>
 
     private Train _currentTrain;               // 현재 기차       
     private Train _nextTrain;                  // 다음 기차
+    private Train _prevTrain;                  // 이전 기차
 
     private Vector3 _trainInterval = new Vector3(21.5f, 0, 21.5f);   // 기차 간격
     private Vector3 _startPosition = Vector3.zero;
@@ -46,7 +47,6 @@ public class InGameManager : SceneSingleton<InGameManager>
     /// </summary>
     public void NextStage()
     {
-
         IngameUIController.Instance.UpdateScore(++_score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
 
@@ -72,7 +72,12 @@ public class InGameManager : SceneSingleton<InGameManager>
     /// <param name="train">생성할 기차</param>
     public void StartNextTrain(GameObject train)
     {
-        _currentTrain.DestroyGameObejct();
+        if (_prevTrain != null)
+        {
+            _prevTrain.DestroyGameObejct();
+        }
+
+        _prevTrain = _currentTrain;
         _currentTrain = _nextTrain;
         _currentTrain.Init();
 
