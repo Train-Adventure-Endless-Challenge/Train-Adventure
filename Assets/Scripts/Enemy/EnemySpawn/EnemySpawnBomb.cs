@@ -7,6 +7,7 @@ public class EnemySpawnBomb : MonoBehaviour
     [Header("Enemy")]
     float _attackDelayTime = 10f;
     float _increaseAmount = 1f;
+    float _smooth = 0.1f;
  
     public float _damage;
 
@@ -15,18 +16,29 @@ public class EnemySpawnBomb : MonoBehaviour
     
     [SerializeField] GameObject _effectPrefab;      // 폭탄이 터지는 effect
     [SerializeField] SpriteRenderer _circleColor;   // 아래 원 서클 
-    [SerializeField] 
 
     void Start()
     {
         StartCoroutine(AttackCor());
+        StartCoroutine(LerpColor());
         _circleColor.color = Color.white;
 
     }
     
     private void Update()
     {
-        _circleColor.color = Color.Lerp(_circleColor.color, Color.red, 3f);
+    }
+
+    IEnumerator LerpColor()
+    {
+        float progress = 0; 
+        float increment = _smooth / _attackDelayTime; // 적용될 변경사항 값
+        while (progress < 1)
+        {
+            _circleColor.color = Color.Lerp(Color.white, Color.red, progress);
+            progress += increment;
+            yield return new WaitForSeconds(_smooth);
+        }
     }
 
     IEnumerator AttackCor()
