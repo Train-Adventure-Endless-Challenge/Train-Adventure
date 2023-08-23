@@ -30,6 +30,7 @@ public class EnemySpawnBomb : MonoBehaviour
         }
 
         // 흔들림 증가
+        ShakeManager.Instance.IncreaseShake(1f);
 
         // 폭파되는 파티클 생성
         GameObject effect = Instantiate(_effectPrefab,transform.position,Quaternion.identity);
