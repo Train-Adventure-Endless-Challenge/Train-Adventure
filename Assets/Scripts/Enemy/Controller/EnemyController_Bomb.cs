@@ -46,7 +46,6 @@ public class EnemyController_Bomb : EnemyController
     /// </summary>
     public void EndAnimationEvent()
     {
-
         ChangeState<EnemyDieState>();
     }
 }
