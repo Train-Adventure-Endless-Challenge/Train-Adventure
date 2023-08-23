@@ -7,8 +7,6 @@ public class EnemySpawnBomb : MonoBehaviour
     [Header("Enemy")]
     float _attackDelayTime = 10f;
     float _increaseAmount = 1f;
-    float _smooth = 0.1f;
- 
     public float _damage;
 
     public GameObject Owner { get; set; }
@@ -20,25 +18,11 @@ public class EnemySpawnBomb : MonoBehaviour
     void Start()
     {
         StartCoroutine(AttackCor());
-        StartCoroutine(LerpColor());
-        _circleColor.color = Color.white;
 
     }
     
     private void Update()
     {
-    }
-
-    IEnumerator LerpColor()
-    {
-        float progress = 0; 
-        float increment = _smooth / _attackDelayTime; // 적용될 변경사항 값
-        while (progress < 1)
-        {
-            _circleColor.color = Color.Lerp(Color.white, Color.red, progress);
-            progress += increment;
-            yield return new WaitForSeconds(_smooth);
-        }
     }
 
     IEnumerator AttackCor()
