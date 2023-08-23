@@ -12,10 +12,17 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [SerializeField] Slider _staminaSlider;
     [SerializeField] Slider _durabilitySlider;
 
+    [Header("UI")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
     [SerializeField] Image _shakeAmountBackground;
+
     [SerializeField] private GameObject _pointerImage;
+
+    [SerializeField] private TMP_Text _curretnHpText;
+    [SerializeField] private TMP_Text _maxHpText;
+    [SerializeField] private TMP_Text _currentStaminaText;
+    [SerializeField] private TMP_Text _maxStaminaText;
 
     [Header("Popup")]
     [SerializeField] private GameObject _popupPanel;
@@ -24,6 +31,9 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [Header("Skill")]
     [SerializeField] private Image _skillImg;
     [SerializeField] private Image _skillCooltimeImg;
+
+    [SerializeField] private AnimationCurve _sliderAnimationCurve;
+
     Coroutine _hpUpdateCoroutine;
     Coroutine _staminaUpdateCoroutine;
     Coroutine _gearUpdateCoroutine;
@@ -34,6 +44,10 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
     private int _maxPopupCount = 9;
 
+    private const float _hpSliderLerpTime = 1f;
+    private const float _staminaRecoverySliderLerpTime = 0.1f;
+    private const float _staminaHitSliderLerpTime = 0.5f;
+
     /// <summary>
     /// HP가 변화했을 때 UI를 업데이트 시켜주는 함수
     /// </summary>
@@ -43,7 +57,9 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     {
         if (_hpSlider.maxValue != maxHp)
         {
+            float hpSliderMaxValue = _hpSlider.maxValue;
             _hpSlider.maxValue = maxHp;
+            _hpSlider.value *= (maxHp / hpSliderMaxValue);
         }
         if (_hpUpdateCoroutine != null)
             StopCoroutine(_hpUpdateCoroutine);
@@ -55,20 +71,32 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     /// Hp UI를 Lerp하게 바꾸는 함수
     /// </summary>
     /// <param name="hp">목표 수치</param>
+    /// <param name="isHpMax">최대 체력인지</param>
     /// <returns></returns>
     IEnumerator UpdateHpCor(float hp)
     {
+        float startHp = _hpSlider.value;
+
+        float currentTime = 0f;
+
         while (true)
         {
-            yield return null;
+            currentTime += Time.deltaTime;
 
-            _hpSlider.value = Mathf.Lerp(_hpSlider.value, hp, 10 * Time.deltaTime);
-
-            if (Mathf.Abs(_hpSlider.value - hp) <= 0.1f)
+            if (currentTime > _hpSliderLerpTime)
             {
-                _hpUpdateCoroutine = null;
-                break;
+                currentTime = _hpSliderLerpTime;
             }
+
+            float curveValue = _sliderAnimationCurve.Evaluate(currentTime / _hpSliderLerpTime);
+
+            float lerpValue = Mathf.Lerp(startHp, hp, curveValue);
+
+            _hpSlider.value = lerpValue;
+
+            _curretnHpText.text = Mathf.Round(lerpValue).ToString();
+
+            yield return new WaitForEndOfFrame();
         }
     }
 
@@ -79,15 +107,14 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     /// <param name="maxStamina">혹시 모를 최대 stamina 변경 시 사용할 변수</param>
     public void UpdateStamina(float stamina, float maxStamina)
     {
-
         if (_staminaSlider.maxValue != maxStamina)
         {
+            float staminaSliderMaxValue = _staminaSlider.maxValue;
             _staminaSlider.maxValue = maxStamina;
+            _staminaSlider.value *= (maxStamina / staminaSliderMaxValue);
         }
-        if (_staminaUpdateCoroutine != null)
-            StopCoroutine(_staminaUpdateCoroutine);
 
-        _staminaUpdateCoroutine = StartCoroutine(UpdateSteminaCor(stamina));
+        _staminaUpdateCoroutine = StartCoroutine(UpdateStaminaCor(stamina));
     }
 
     /// <summary>
@@ -95,19 +122,33 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     /// </summary>
     /// <param name="stamina">목표 stamina</param>
     /// <returns></returns>
-    IEnumerator UpdateSteminaCor(float stamina)
+    IEnumerator UpdateStaminaCor(float stamina)
     {
+        float startStamina = _staminaSlider.value;
+        float currentTime = 0f;
+        float staminaSliderLerpTime = 0;
+
+        if (stamina > startStamina) staminaSliderLerpTime = _staminaRecoverySliderLerpTime;
+        else staminaSliderLerpTime = _staminaHitSliderLerpTime;
+
         while (true)
         {
-            yield return null;
+            currentTime += Time.deltaTime;
 
-            _staminaSlider.value = Mathf.Lerp(_staminaSlider.value, stamina, 10 * Time.deltaTime);
-
-            if (Mathf.Abs(_staminaSlider.value - stamina) <= 0.1f)
+            if (currentTime > staminaSliderLerpTime)
             {
-                _staminaUpdateCoroutine = null;
-                break;
+                currentTime = staminaSliderLerpTime;
             }
+
+            float curveValue = _sliderAnimationCurve.Evaluate(currentTime / staminaSliderLerpTime);
+
+            float lerpValue = Mathf.Lerp(startStamina, stamina, curveValue);
+
+            _staminaSlider.value = lerpValue;
+
+            _currentStaminaText.text = Mathf.Round(lerpValue).ToString();
+
+            yield return new WaitForEndOfFrame();
         }
     }
 
