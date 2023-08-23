@@ -32,7 +32,7 @@ public class PlayerAttack : MonoBehaviour
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
 
     private Coroutine _attackCor; // 플레이어 공격 코루틴을 담을 변수
-
+    
     private int _layerMask;
 
     #endregion
@@ -46,8 +46,6 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         Init(); // 초기화 진행
-
-        _layerMask = (-1) - (1 << LayerMask.NameToLayer("RightWall"));
     }
 
     private void Start()
