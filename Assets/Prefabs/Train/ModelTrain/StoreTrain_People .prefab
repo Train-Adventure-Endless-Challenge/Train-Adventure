@@ -2339,6 +2339,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: train_shop
       objectReference: {fileID: 0}
+    - target: {fileID: 5394693769120690257, guid: ee16de5adb8b434488d3e9aef055f2f6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619302609615435187, guid: ee16de5adb8b434488d3e9aef055f2f6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6383459688497237020, guid: ee16de5adb8b434488d3e9aef055f2f6,
         type: 3}
       propertyPath: m_IsActive
@@ -2368,8 +2378,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.026290484, y: 0.019999998, z: 0.019999994}
-  m_Center: {x: -0.0018649519, y: -6.3642336e-10, z: -5.082197e-22}
+  m_Size: {x: 0.06, y: 0.019999998, z: 0.019999994}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1604999987934352263
 MonoBehaviour:
   m_ObjectHideFlags: 0
