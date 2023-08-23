@@ -20,7 +20,7 @@ public class EnemySpawnBomb : MonoBehaviour
         yield return new WaitForSeconds(_attackDelayTime);      // 10초 후에
 
         // 폭탄 터짐 
-        Collider[] collider = Physics.OverlapSphere(transform.position, 5f);
+        Collider[] collider = Physics.OverlapSphere(transform.position, 2f);
         foreach (var item in collider)
         {
             if (item.gameObject.CompareTag("Player"))
