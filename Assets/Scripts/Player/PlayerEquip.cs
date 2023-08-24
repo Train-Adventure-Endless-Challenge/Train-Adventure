@@ -46,8 +46,8 @@ public class PlayerEquip : MonoBehaviour
             // 스킬 쿨타임 재 설정
             weapon.currentCoolTime = Time.time + weapon.ItemData.SkillCooltime;
             IngameUIController.Instance.UpdateSkillUI(CurrentWeapon.Id, CurrentWeapon.ItemData.SkillCooltime, CurrentWeapon.currentCoolTime);
-            IngameUIController.Instance.UpdateDurabilityUI(weapon.ItemData.MaxDurability, weapon.Durability);
-            IngameUIController.Instance.OnDurabilityUI(true);
+            IngameUIController.Instance.UpdateDurability(weapon.ItemData.MaxDurability, weapon.Durability);
+            IngameUIController.Instance.OnDurability(true);
 
             return true;
         }
@@ -77,7 +77,7 @@ public class PlayerEquip : MonoBehaviour
         {
             if (_currentWeapon == _fistObject) return false;
 
-            IngameUIController.Instance.OnDurabilityUI(false);
+            IngameUIController.Instance.OnDurability(false);
 
             Destroy(_currentWeapon.gameObject);
             FistActivate(true);

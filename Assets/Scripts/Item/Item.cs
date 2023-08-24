@@ -227,7 +227,7 @@ public class Item : MonoBehaviour
     public void SubDurability(int value)
     {
         _durability -= value;
-        IngameUIController.Instance.UpdateDurabilityUI(itemData.MaxDurability, _durability);
+        IngameUIController.Instance.UpdateDurability(itemData.MaxDurability, _durability);
         if (_durability <= 0)
             Destruction();
     }

@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using TMPro;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using UnityEditor.Rendering;
 
 public class IngameUIController : SceneSingleton<IngameUIController>
 {
@@ -19,10 +17,17 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
     [SerializeField] private GameObject _pointerImage;
 
+    [Header("Hp")]
     [SerializeField] private TMP_Text _curretnHpText;
     [SerializeField] private TMP_Text _maxHpText;
+
+    [Header("Stamina")]
     [SerializeField] private TMP_Text _currentStaminaText;
     [SerializeField] private TMP_Text _maxStaminaText;
+
+    [Header("Durability")]
+    [SerializeField] private TMP_Text _currentDurabilityText;
+    [SerializeField] private TMP_Text _maxDurabilityText;
 
     [Header("Popup")]
     [SerializeField] private GameObject _popupPanel;
@@ -38,6 +43,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     Coroutine _staminaUpdateCoroutine;
     Coroutine _gearUpdateCoroutine;
     Coroutine _skillUIUpdateCoroutine;
+    Coroutine _durabilityUpdateCoroutine;
 
     [Header("Sprites")]
     [SerializeField] private Sprite[] _skillSprites;
@@ -47,6 +53,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     private const float _hpSliderLerpTime = 1f;
     private const float _staminaRecoverySliderLerpTime = 0.1f;
     private const float _staminaHitSliderLerpTime = 0.5f;
+    private const float _durabilitySliderLerpTime = 1f;
 
     /// <summary>
     /// HP가 변화했을 때 UI를 업데이트 시켜주는 함수
@@ -274,14 +281,46 @@ public class IngameUIController : SceneSingleton<IngameUIController>
         _skillUIUpdateCoroutine = null;
     }
 
-    public void OnDurabilityUI(bool toggle)
+    public void OnDurability(bool toggle)
     {
         _durabilitySlider.gameObject.SetActive(toggle);
     }
 
-    public void UpdateDurabilityUI(float maxDurability, float durability)
+    public void UpdateDurability(float maxDurability, float durability)
     {
-        _durabilitySlider.maxValue = maxDurability;
-        _durabilitySlider.value = durability;
+        if (_durabilitySlider.maxValue != maxDurability)
+        {
+            float durabilitySliderMaxValue = _durabilitySlider.maxValue;
+            _durabilitySlider.maxValue = maxDurability;
+            _durabilitySlider.value *= (maxDurability / durabilitySliderMaxValue);
+        }
+
+        _durabilityUpdateCoroutine = StartCoroutine(UpdateDurabilityCor(durability));
+    }
+
+    private IEnumerator UpdateDurabilityCor(float durability)
+    {
+        float startDurability = _durabilitySlider.value;
+        float currentTime = 0f;
+
+        while (true)
+        {
+            currentTime += Time.deltaTime;
+
+            if (currentTime > _durabilitySliderLerpTime)
+            {
+                currentTime = _durabilitySliderLerpTime;
+            }
+
+            float curveValue = _sliderAnimationCurve.Evaluate(currentTime / _durabilitySliderLerpTime);
+
+            float lerpValue = Mathf.Lerp(startDurability, durability, curveValue);
+
+            _durabilitySlider.value = lerpValue;
+
+            _currentDurabilityText.text = Mathf.Round(lerpValue).ToString();
+
+            yield return new WaitForEndOfFrame();
+        }
     }
 }
