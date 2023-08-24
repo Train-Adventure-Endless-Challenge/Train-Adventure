@@ -69,7 +69,7 @@ public class PlayerStamina : MonoBehaviour
     /// </summary>
     public void Recover()
     {
-        if (_recoverCor == null && _player.Stamina != _player._maxStamina)
+        if (_recoverCor == null && _player.Stamina != _player._maxStamina) // 진행중이 아니거나 스태미나가 최대 값이 아닐 때
         {
             _recoverCor = StartCoroutine(RecoverCor());
         }
@@ -95,21 +95,21 @@ public class PlayerStamina : MonoBehaviour
     private IEnumerator RecoverCor()
     {
         yield return new WaitForSeconds(_waitTime); // 변화 대기
-        while (true)
+
+        while (_player.Stamina != _player._maxStamina)
         {
             _player.Stamina += _recoveryValue;
 
             if (_player.Stamina > _player._maxStamina)
             {
                 _player.Stamina = _player._maxStamina;
-                _recoverCor = null;
-                yield break;
             }
 
-            IngameUIController.Instance.UpdateStamina(_player.Stamina, _player._maxStamina); // UI 변경
+            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina); // UI 변경
 
             yield return new WaitForSeconds(_recoveryTime);
         }
+        _recoverCor = null;
     }
 
     #endregion

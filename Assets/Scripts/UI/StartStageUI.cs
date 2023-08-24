@@ -21,13 +21,13 @@ public class StartStageUI : MonoBehaviour
     private void OnEnable()
     {
         _stageValueText.text = InGameManager.Instance.Score.ToString(); // 스테이지 값 받아오기
-        StartCoroutine(DisableCoroutine());                             // 시간 대기 후 비활성화 코루틴
+        StartCoroutine(DisableCoroutine());                             // 시간 대기 후 비활성화 시작
     }
 
     #endregion
 
     /// <summary>
-    /// 대기 후 비할성화 코루틴
+    /// 시간 대기 후 비할성화 코루틴
     /// </summary>
     /// <returns></returns>
     private IEnumerator DisableCoroutine()

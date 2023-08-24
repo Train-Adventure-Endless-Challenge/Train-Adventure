@@ -187,7 +187,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
         item._item.SetDurabilityMax();
         GearManager.Instance.SubGear(20);
-        IngameUIController.Instance.UpdateDurability(item._item.ItemData.MaxDurability, item._item.Durability);
+        IngameUIController.Instance.UpdateDurabilityUI(item._item.ItemData.MaxDurability, item._item.Durability);
     }
     public void DisassembleItem()
     {
