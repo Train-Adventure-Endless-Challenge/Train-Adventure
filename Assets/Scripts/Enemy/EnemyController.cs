@@ -172,7 +172,7 @@ public abstract class EnemyController : Entity
     {
         SoundManager.Instance.SFXPlay(_enemyDieSound);
         _dieEvent.Invoke();
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     /// <summary>
