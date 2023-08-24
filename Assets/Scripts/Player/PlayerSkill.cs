@@ -48,13 +48,13 @@ public class PlayerSkill : MonoBehaviour
     {
         if (CanSkill()) // 공격이 가능한 상태라면 
         {
-            _playerSound.PlayAttackSound();
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 스킬 상태로 변경
+
+            _playerSound.PlayAttackSound();
             _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.SkillConsumeStamina;         // 스태미나 감소
             IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina);
             if (_skillCor == null)
                 _skillCor = StartCoroutine(SkillCor());
-
         }
     }
 
@@ -67,8 +67,8 @@ public class PlayerSkill : MonoBehaviour
     private bool CanSkill()
     {
         if (_skillCor == null && Input.GetMouseButtonDown(1)
-            && _player.Stamina - _staminaValue >= 0 &&
-            PlayerManager.Instance.EquipItem.CurrentWeapon != null
+            && _player.Stamina - _staminaValue >= 0 
+            && PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject()
             && PlayerManager.Instance.EquipItem.CurrentWeapon.CanSkill
             && PlayerManager.Instance.EquipItem.CurrentWeapon.isSkillExist)
@@ -87,21 +87,18 @@ public class PlayerSkill : MonoBehaviour
     }
 
 
-
-
     IEnumerator SkillCor()
     {
         Weapon curWeapon = PlayerManager.Instance.EquipItem.CurrentWeapon; // 무기 변경
 
         if (curWeapon == null) { StopCoroutine(_skillCor); _skillCor = null; }
 
-        PlayerManager.Instance.StopMove();
         _animator.SetBool("IsSkill", true);          // 애니메이션 실행
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
 
-
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+
 
         _animator.SetBool("IsSkill", false);          // 애니메이션 실행
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경

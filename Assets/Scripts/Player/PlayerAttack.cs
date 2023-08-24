@@ -86,7 +86,7 @@ public class PlayerAttack : MonoBehaviour
     /// <summary>
     /// 공격을 담당하는 함수
     /// </summary>
-    public void Attack()
+    public void AttackCheck()
     {
         if (CanAttack()) // 공격이 가능한 상태라면 
         {

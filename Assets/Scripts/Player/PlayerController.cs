@@ -114,6 +114,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Move()
     {
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         if (x != 0 || z != 0) // 움직이고 있다면
@@ -136,7 +137,9 @@ public class PlayerController : MonoBehaviour
                 transform.forward = _moveDirection;                                                             // 움직이는 방향으로 플레이어 시점 초기화
             }
 
-            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack)       // 상태를 초기화 해아할 때
+
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack 
+                && _player.playerState != PlayerState.Skill)                                                // 상태를 초기화 해아할 때
             {
                 _animator.SetTrigger("OnState");                                                            // 상태 변경 트리거
                 _player.playerState = PlayerState.Move;                                                     // 상태 초기화
@@ -144,8 +147,12 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+
             _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, 0f));                                               // 멈춤 코루틴 실행
-            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle && _player.playerState != PlayerState.Attack) // 상태를 초기화 해야할 때
+
+
+            if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle &&
+                _player.playerState != PlayerState.Attack && _player.playerState != PlayerState.Skill)                         // 상태를 초기화 해야할 때
             {
                 _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
                 _player.playerState = PlayerState.Idle;                                                                        // 상태 변경
