@@ -35,7 +35,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     public void ClearShake()
     {
         _shake._impulseDefinition.m_AmplitudeGain = 0;
-        IngameUIController.Instance.UpdateShakeAmount(ShakeAmount); // UI 업데이트
+        IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
     }
 
     public void DecreaseShake(float value)
@@ -50,7 +50,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         if(_shake._impulseDefinition.m_AmplitudeGain > _maxValue)
             _shake._impulseDefinition.m_AmplitudeGain = _maxValue;
 
-        IngameUIController.Instance.UpdateShakeAmount(ShakeAmount); // UI 업데이트
+        IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
     }
     #endregion
 

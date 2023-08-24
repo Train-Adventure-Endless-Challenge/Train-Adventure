@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using TMPro;
 
 public class InGameManager : SceneSingleton<InGameManager>
 {
@@ -17,8 +18,10 @@ public class InGameManager : SceneSingleton<InGameManager>
     public int BossIndex { get { return _bossIndex; } }
 
     [Header("UI")]
-    [SerializeField] private Image fadeImage;  // 페이드 이미지
+    [SerializeField] private Image _fadeImage;             // 페이드 이미지
+    [SerializeField] private GameObject _stageStartCanvas; // 스테이지 시작 캔버스
 
+    [Header("Manager")]
     [SerializeField] GameOverManager _gameOverManager;
 
     private Train _currentTrain;               // 현재 기차       
@@ -54,6 +57,8 @@ public class InGameManager : SceneSingleton<InGameManager>
     {
         IngameUIController.Instance.UpdateScore(++_score);
         ShakeManager.Instance.IncreaseShake(1f);            // 흔들림 증가 
+
+        _stageStartCanvas.SetActive(true); // 스테이지 시작 캔버스 활성화
 
         GameObject nextTrain = _nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)];
 
@@ -118,16 +123,16 @@ public class InGameManager : SceneSingleton<InGameManager>
         float current = 0;
         float percent = 0;
 
-        fadeImage.color = new Color(0, 0, 0, start);
+        _fadeImage.color = new Color(0, 0, 0, start);
 
         while (percent < 1)
         {
             current += Time.deltaTime;
             percent = current / time;
 
-            Color color = fadeImage.color;
+            Color color = _fadeImage.color;
             color.a = Mathf.Lerp(start, end, percent);
-            fadeImage.color = color;
+            _fadeImage.color = color;
 
             PlayerManager.Instance.StopMove();
             PlayerManager.Instance.BlockInput(true);
@@ -137,7 +142,7 @@ public class InGameManager : SceneSingleton<InGameManager>
         }
 
         PlayerManager.Instance.BlockInput(false);
-        fadeImage.color = new Color(0, 0, 0, end);
+        _fadeImage.color = new Color(0, 0, 0, end);
     }
 
     /// <summary>

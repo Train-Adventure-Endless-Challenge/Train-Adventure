@@ -59,23 +59,28 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
         #endregion
 
-        _playerStamina.Recover();
+        if (_inputBlocking) return;
 
-        if(_inputBlocking) return;
+        if (_player.playerState == PlayerState.Rolling || _player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill)
+        {
+            _playerStamina.RecoverStop();
+        }
+        else
+        {
+            _playerStamina.Recover();
+        }
 
         if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
             _playerRolling.Roll();
         }
+
         if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
             _playerAttack.Attack();
             _playerController.Move();
         }
-        if (_player.playerState == PlayerState.Rolling || _player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill)
-        {
-            _playerStamina.RecoverStop();
-        }
+
         if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Attack && _player.playerState != PlayerState.Hit)
         {
             _playerSkill.Skill();

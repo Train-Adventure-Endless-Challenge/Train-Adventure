@@ -16,7 +16,7 @@ public class Weapon : Item
     protected float _attackSpeed;
     protected float _defalutAttackSpeed;
     protected float _skillCoolTime;
-    
+
     protected Transform _playerTransform;
     protected attackType _attackType;
     [SerializeField] protected CapsuleCollider _weaponCollider;
@@ -94,7 +94,7 @@ public class Weapon : Item
     {
         SubDurability(itemData.SkillConsumeDurability);
         currentCoolTime = Time.time + _skillCoolTime;
-        IngameUIController.Instance.UpdateSkillUI(ItemData.SkillCooltime, currentCoolTime);
+        IngameUIController.Instance.UpdateSkillUI(Id, ItemData.SkillCooltime, currentCoolTime);
 
     }
 

@@ -51,9 +51,9 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _waitTime: 0.5
-  _recoveryTime: 1
+  _recoveryTime: 0.1
   _maxValue: 100
-  _recoveryValue: 20
+  _recoveryValue: 2
   _attackSound: {fileID: 8300000, guid: fcef21c212d4e8f49886d71db9c1f551, type: 3}
   _attackWeaponSound: {fileID: 8300000, guid: a8df70bd46fc9014caaf1612263c83f5, type: 3}
   _skillSound: {fileID: 8300000, guid: 878522c1097aecb4dbe84fc1e8ca4976, type: 3}

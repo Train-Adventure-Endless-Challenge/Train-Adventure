@@ -251,14 +251,14 @@ public class Player : Entity
         SoundManager.Instance.SFXPlay(_hitSounds[Random.Range(0, HitSounds.Length)]);
 
         _playerHit.Hit(damage);
-        IngameUIController.Instance.UpdateHp(_hp, MaxHp);
+        IngameUIController.Instance.UpdateHpUI(_hp, MaxHp);
         _hitVolume.ChangeVolume(1 - _hp / MaxHp);
     }
 
     public void Heal(float healAmount)
     {
         _hp += healAmount;
-        IngameUIController.Instance.UpdateHp(_hp, MaxHp);
+        IngameUIController.Instance.UpdateHpUI(_hp, MaxHp);
         _hitVolume.ChangeVolume(1 - _hp / MaxHp);
     }
 
