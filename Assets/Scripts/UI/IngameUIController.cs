@@ -13,6 +13,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     [Header("UI")]
     [SerializeField] TMP_Text _scoreText;
     [SerializeField] TMP_Text _gearText;
+    [SerializeField] TMP_Text _shakeAmountText;
+
     [SerializeField] Image _shakeAmountBackground;
 
     [SerializeField] private GameObject _pointerImage;
@@ -216,6 +218,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
     public void UpdateShakeAmount(float endShakeAmount)
     {
         StartCoroutine(UpdateShakeAmountCor(_pointerImage.transform.eulerAngles.z, endShakeAmount * 36f));
+
+        _shakeAmountText.text = (Mathf.Round(endShakeAmount * 10) / 10).ToString();
     }
 
     /// <summary>
