@@ -67,8 +67,8 @@ public class PlayerSkill : MonoBehaviour
     private bool CanSkill()
     {
         if (_skillCor == null && Input.GetMouseButtonDown(1)
-            && _player.Stamina - _staminaValue >= 0 &&
-            PlayerManager.Instance.EquipItem.CurrentWeapon != null
+            && _player.Stamina - _staminaValue >= 0 
+            && PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject()
             && PlayerManager.Instance.EquipItem.CurrentWeapon.CanSkill
             && PlayerManager.Instance.EquipItem.CurrentWeapon.isSkillExist)
@@ -95,13 +95,15 @@ public class PlayerSkill : MonoBehaviour
 
         if (curWeapon == null) { StopCoroutine(_skillCor); _skillCor = null; }
 
+        PlayerManager.Instance.BlockInput(true);
         PlayerManager.Instance.StopMove();
         _animator.SetBool("IsSkill", true);          // 애니메이션 실행
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
 
-
         yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length);
+
+        PlayerManager.Instance.BlockInput(false);
 
         _animator.SetBool("IsSkill", false);          // 애니메이션 실행
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
