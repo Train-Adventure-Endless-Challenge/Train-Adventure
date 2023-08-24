@@ -13,11 +13,9 @@ public class DemoScript : MonoBehaviour
         bool isResult = _inventoryManager.AddItem(new Item(_items[id]));
         if (isResult == true)
         {
-            Debug.Log("ITEM ADDED");
         }
         else
         {
-            Debug.Log("ITEM NOT ADDED");
         }
     }
 }
