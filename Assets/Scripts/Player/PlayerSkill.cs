@@ -48,9 +48,7 @@ public class PlayerSkill : MonoBehaviour
     {
         if (CanSkill()) // 공격이 가능한 상태라면 
         {
-            Debug.Log(_player.playerState);
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 스킬 상태로 변경
-            Debug.Log(_player.playerState);
 
             _playerSound.PlayAttackSound();
             _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.SkillConsumeStamina;         // 스태미나 감소
@@ -95,7 +93,6 @@ public class PlayerSkill : MonoBehaviour
 
         if (curWeapon == null) { StopCoroutine(_skillCor); _skillCor = null; }
 
-        //PlayerManager.Instance.StopMove();
         _animator.SetBool("IsSkill", true);          // 애니메이션 실행
         _animator.SetInteger("Weapon", curWeapon.Id); // 무기 종류에 따라 변경
         _animator.SetTrigger("OnState");              // 애니메이션 상태 변경
