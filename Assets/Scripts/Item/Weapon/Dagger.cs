@@ -8,12 +8,12 @@ public class Dagger : Weapon
 
     private string _targetLayer = "Enemy";
 
-
     private List<GameObject> _detectionLists = new List<GameObject>();
 
     [SerializeField] private GameObject _skillEffectPrefab;
     [SerializeField] private float _skillRadius;
     [SerializeField] private Transform _skillImpactPosition;
+
     protected override void Init()
     {
         base.Init();

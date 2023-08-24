@@ -63,13 +63,14 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
         if(_inputBlocking) return;
 
+
         if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
             _playerRolling.Roll();
         }
         if (_player.playerState != PlayerState.Rolling && _player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
         {
-            _playerAttack.Attack();
+            _playerAttack.AttackCheck();
             _playerController.Move();
         }
         if (_player.playerState == PlayerState.Rolling || _player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill)
