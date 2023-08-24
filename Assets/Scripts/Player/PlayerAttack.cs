@@ -66,6 +66,8 @@ public class PlayerAttack : MonoBehaviour
         _playerSound = GetComponent<PlayerSound>();
         _animator = GetComponent<Animator>();
         _playerController = GetComponent<PlayerController>();
+
+        _layerMask = (-1) - (1 << LayerMask.NameToLayer("RightWall"));
     }
 
     /// <summary>
