@@ -12,6 +12,10 @@ public class InGameManager : SceneSingleton<InGameManager>
     [SerializeField] private GameObject _bossTrainObject;
     [SerializeField] private GameObject _storeTrainObject;
 
+    [SerializeField] int _storeIndex = 5;          // 상점 칸의 인덱스
+    [SerializeField] int _bossIndex = 10;          // 보스 칸의 인덱스
+    public int BossIndex { get { return _bossIndex; } }
+
     [Header("UI")]
     [SerializeField] private Image fadeImage;  // 페이드 이미지
 
@@ -20,6 +24,7 @@ public class InGameManager : SceneSingleton<InGameManager>
     private Train _currentTrain;               // 현재 기차       
     private Train _nextTrain;                  // 다음 기차
     private Train _prevTrain;                  // 이전 기차
+
 
     private Vector3 _trainInterval = new Vector3(21.2132f, 0, 21.2132f);   // 기차 간격
     private Vector3 _startPosition = Vector3.zero;
@@ -52,11 +57,11 @@ public class InGameManager : SceneSingleton<InGameManager>
 
         GameObject nextTrain = _nomalTrainObjects[Random.Range(0, _nomalTrainObjects.Length)];
 
-        if ((_score % 10) == 4)
+        if ((_score % 10) == _storeIndex - 1)
         {
             nextTrain = _storeTrainObject;
         }
-        else if ((_score % 10) == 9)
+        else if ((_score % 10) == _bossIndex - 1)
         {
             nextTrain = _bossTrainObject;
         }
