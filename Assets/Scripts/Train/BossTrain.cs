@@ -19,7 +19,7 @@ public class BossTrain : Train
 
     private void SpawnBoss()
     {
-        int bossIndex = (InGameManager.Instance.Score / InGameManager.Instance._bossIndex) - 1;
+        int bossIndex = (InGameManager.Instance.Score / InGameManager.Instance.BossIndex) - 1;
 
         Instantiate(_boss[bossIndex], _bossSpawnPoint.position, Quaternion.identity).
             GetComponentInChildren<EnemyController>()._dieEvent += KillBoss;
