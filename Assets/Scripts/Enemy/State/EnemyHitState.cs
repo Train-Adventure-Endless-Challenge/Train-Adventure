@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyHitState : State<EnemyController>
 {
-
     private EnemyController _enemyController;
     private GameObject _player;         // 추후 싱글톤으로 찾기 가능
 
@@ -43,6 +42,8 @@ public class EnemyHitState : State<EnemyController>
         if (_enemyController.Hp <= 0) return;
 
         _enemyController._anim.SetTrigger("Hit");                       // anim
+
+        _enemyController._enemyUI.ToggleExclamationMark(true);
     }
 
     public override void Update(float deltaTime)

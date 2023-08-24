@@ -67,7 +67,6 @@ public class PlayerController : MonoBehaviour
         Init(); // 초기화 진행
     }
 
-    // Update is called once per frame
     void Update()
     {
         UseGravity(); // 중력

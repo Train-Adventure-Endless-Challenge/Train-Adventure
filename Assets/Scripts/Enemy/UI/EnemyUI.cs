@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyUI : MonoBehaviour
 {
-    private EnemyController _enemyController;
+    [SerializeField] private GameObject _exclamationMark;
     public Slider _hpBarSlider;
 
+    private EnemyController _enemyController;
     private Coroutine _hpUpdateCoroutine;
-
     private bool _isHpUpdateCor;
+
     private void Awake()
     {
         _enemyController = GetComponent<EnemyController>();
@@ -58,6 +60,11 @@ public class EnemyUI : MonoBehaviour
 
         _isHpUpdateCor = false;
         _hpUpdateCoroutine = null;
+    }
+
+    public void ToggleExclamationMark(bool toggle)
+    {
+        _exclamationMark.SetActive(toggle);
     }
 
     public void DeactivateUI()

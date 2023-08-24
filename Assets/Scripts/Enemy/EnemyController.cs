@@ -17,6 +17,7 @@ public abstract class EnemyController : Entity
     private float _moveSpeed;
     private float _attackSpeed;
     private float _attackRange;
+
     private EnemyType _enemyType;
     private AudioClip _enemyDieSound;
 
@@ -75,7 +76,6 @@ public abstract class EnemyController : Entity
         {
             _stateMachine = new StateMachine<EnemyController>(this, new EnemyIdleState());
             _stateMachine.AddState(new EnemyDieState());
-
         }
         else
         {
@@ -142,9 +142,6 @@ public abstract class EnemyController : Entity
 
         _eventDamage = (int)damage;
 
-        if (EnemyType == EnemyType.Bomb)         //폭탄은 맞았을때 공격한다
-            ChangeState<EnemyAttackState>();
-
         if (EnemyType != EnemyType.Boss)     // 보스는 hit 경직이 되지 않는다
         {
             ChangeState<EnemyIdleState>(); // 기존 Hit State로 다시 돌아가기 위한 State 초기화
@@ -160,9 +157,7 @@ public abstract class EnemyController : Entity
 
             Hp -= _eventDamage;
             _enemyUI.UpdateHpUI(Hp);
-
         }
-
     }
 
     /// <summary>
@@ -177,7 +172,7 @@ public abstract class EnemyController : Entity
     {
         SoundManager.Instance.SFXPlay(_enemyDieSound);
         _dieEvent.Invoke();
-        Destroy(gameObject);
+        Destroy(gameObject.transform.parent.gameObject);
     }
 
     /// <summary>

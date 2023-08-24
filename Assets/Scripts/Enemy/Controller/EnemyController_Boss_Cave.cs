@@ -13,6 +13,7 @@ public class EnemyController_Boss_Cave : EnemyController
     [SerializeField] GameObject _bombPrefab;
     public GameObject _floorEffect;
 
+    private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
     protected override void Start()
     {
         base.Start();
@@ -24,8 +25,6 @@ public class EnemyController_Boss_Cave : EnemyController
         _enemyAttackObj.SetActive(false);
 
     }
-
-    #region SpawnAttack
 
     public override void Attack()
     {
@@ -58,6 +57,8 @@ public class EnemyController_Boss_Cave : EnemyController
                 break;
         }
     }
+
+    #region SpawnAttack
 
     /// <summary>
     /// 폭탄 생성 공격
@@ -175,6 +176,7 @@ public class EnemyController_Boss_Cave : EnemyController
     }
     #endregion
 
+
     #region PunchAttack
 
     private void PunchAttack()
@@ -224,6 +226,15 @@ public class EnemyController_Boss_Cave : EnemyController
         _enemyAttackObj.SetActive(true);
     }
 
+    public void PunchEffectEvent()
+    {
+        GameObject go = Instantiate(_floorEffect, transform.position, Quaternion.identity);
+        go.transform.localScale = new Vector3(5, 5, 1);
+        Destroy(go, 1f);
+
+        ShakeManager.Instance.IncreaseShake(_shakeAmount);        // 흔들림 증가
+    }
+
     #endregion
 
     /// <summary>
@@ -231,6 +242,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     public void EndAnmationEvent()
     {
+
         _enemyAttackObj.SetActive(false);
 
         _agent.isStopped = false;

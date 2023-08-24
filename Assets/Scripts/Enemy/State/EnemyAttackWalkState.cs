@@ -11,12 +11,9 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     private GameObject _player;
 
-
     public override void OnEnter()
     {
         base.OnEnter();
-
-
 
         _player = PlayerManager.Instance.gameObject;
 
@@ -27,9 +24,9 @@ public class EnemyAttackWalkState : State<EnemyController>
         _fov = _enemyController._enemyFieldOfView;
         _enemyController._anim.SetBool("WalkToPlayer", true);
 
-
         _enemyController._isCurrentAttackCor = false;
 
+        _enemyController._enemyUI.ToggleExclamationMark(true);
     }
 
     public override void Update(float deltaTime)
@@ -63,7 +60,6 @@ public class EnemyAttackWalkState : State<EnemyController>
     {
         _enemyController._anim.SetBool("WalkToPlayer", false);
         base.OnExit();
-
     }
 
 }

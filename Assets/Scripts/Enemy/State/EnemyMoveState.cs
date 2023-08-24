@@ -38,7 +38,7 @@ public class EnemyMoveState : State<EnemyController>
 
         if (_fov._isVisiblePlayer)      // 시야에 플레이어가 보인다면
         {
-            _enemyController.ChangeState<EnemyAttackWalkState>();
+            _enemyController.ChangeState<EnemyDiscoveryState>();
         }
         else
         {
