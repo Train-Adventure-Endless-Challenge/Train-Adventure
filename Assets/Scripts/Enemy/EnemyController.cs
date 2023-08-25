@@ -124,7 +124,8 @@ public abstract class EnemyController : Entity
     /// </summary>
     public void EndAnimEvent()
     {
-        ChangeState<EnemyIdleState>();
+        if(Hp > 0)
+            ChangeState<EnemyIdleState>();
     }
 
     public override void Hit(float damage, GameObject attacker)

@@ -18,10 +18,13 @@ public class EnemyDieState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-        _enemyController._enemyUI.DeactivateUI();   // HP UI 삭제
+        // 만약 이미 죽고 있다면 (죽는 애니메이션 실행 중이라면) return
+        if (_enemyController._anim.GetCurrentAnimatorStateInfo(0).IsName("Die")) return;
 
         _enemyController._isDie = true;
-        _enemyController._anim.SetTrigger("Die");
+
+        _enemyController._anim.SetBool("DieTrue",true);
+        _enemyController._anim.SetTrigger("Hit");
 
         // enemy trail 비활성화
         if (_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    
@@ -29,15 +32,8 @@ public class EnemyDieState : State<EnemyController>
             enemy._attackTrail.gameObject.SetActive(false);
         }
          
+         _enemyController._enemyUI.DeactivateUI();   // HP UI 삭제
         _enemyController._enemyUI.ToggleExclamationMark(false);
     }
-
-    public override void Update(float deltaTime)
-    {
-        if (!_enemyController._anim.GetCurrentAnimatorStateInfo(0).IsName("Die"))
-        {
-            _enemyController._anim.SetTrigger("Die");
-        }
-    } 
 
 }
