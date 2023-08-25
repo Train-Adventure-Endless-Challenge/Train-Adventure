@@ -36,8 +36,4 @@ public class EnemyDieState : State<EnemyController>
         _enemyController._enemyUI.ToggleExclamationMark(false);
     }
 
-    // 추상 함수로 인한 구현
-    public override void Update(float deltaTime)
-    {
-    }
 }

@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class State<T>
 {
     protected StateMachine<T> _stateMacine;
-    protected T _context;           // ÀÛ¾÷µÇ´Â controller
+    protected T _context;           // ì‘ì—…ë˜ëŠ” controller
 
     /// <summary>
-    /// »óÅÂ set
+    /// ìƒíƒœ set
     /// </summary>
     public void SetMachineAndContext(StateMachine<T> stateMachine, T context)
     {
@@ -17,21 +17,24 @@ public abstract class State<T>
     }
 
     /// <summary>
-    /// ÃÊ±âÈ­ ÇÒ ¶§ 
+    /// ì´ˆê¸°í™” í•  ë•Œ 
     /// </summary>
     public virtual void OnInitialzed()
     { }
 
     /// <summary>
-    /// »óÅÂ°¡ ½ÃÀÛÇßÀ» ¶§ 
+    /// ìƒíƒœê°€ ì‹œì‘í–ˆì„ ë•Œ 
     /// </summary>
     public virtual void OnEnter()
     { }
 
-    public abstract void Update(float deltaTime);
+    public virtual void Update(float deltaTime)
+    {
+
+    }
 
     /// <summary>
-    /// »óÅÂ¸¦ Á¾·áÇßÀ» ¶§
+    /// ìƒíƒœë¥¼ ì¢…ë£Œí–ˆì„ ë•Œ
     /// </summary>
     public virtual void OnExit()
     { }
