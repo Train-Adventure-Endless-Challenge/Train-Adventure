@@ -11,7 +11,6 @@ public class UpgradeObject : InteractionObject
     [SerializeField] private UnityEvent _interactEvent;
     public override void Interact()
     {
-        Debug.Log("ON");
         _interactEvent.Invoke();
     }
 

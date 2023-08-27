@@ -72,8 +72,7 @@ public class ItemUpgradeSystem : MonoBehaviour
 
         GearManager.Instance.SubGear(_upgradeCost);
 
-
-        Debug.Log("강화 성공");
+        // 강화 성공
 
         StartCoroutine(UpgradeCor());
     }

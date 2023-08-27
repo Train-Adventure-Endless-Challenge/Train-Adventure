@@ -65,8 +65,6 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void SpawnBombAttack()
     {
-        Debug.Log("폭탄 생성");
-
         _anim.SetInteger("AttackInt", 0);
         StartCoroutine(SpawnBombAttackCor());
     }
@@ -117,10 +115,11 @@ public class EnemyController_Boss_Cave : EnemyController
 
     #region JumpAttack
 
+    /// <summary>
+    /// 점프 공격
+    /// </summary>
     private void JumpAttack()
     {
-        Debug.Log("점프 공격");
-
         _anim.SetInteger("AttackInt", 1);
         StartCoroutine(JumpAttackCor());
     }
@@ -179,10 +178,11 @@ public class EnemyController_Boss_Cave : EnemyController
 
     #region PunchAttack
 
+    /// <summary>
+    /// 펀치 공격
+    /// </summary>
     private void PunchAttack()
     {
-        Debug.Log("펀치 공격");
-
         _anim.SetInteger("AttackInt", 2);
         StartCoroutine(PunchAttackCor());
     }
