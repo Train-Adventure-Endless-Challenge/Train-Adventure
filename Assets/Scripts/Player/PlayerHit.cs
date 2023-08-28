@@ -21,13 +21,14 @@ public class PlayerHit : MonoBehaviour
 
     [Header("Event")]
     [SerializeField] private UnityEvent _OnHit;
-    [SerializeField] private UnityEvent _OnStopHit;
 
     #region Class
 
     private Player _player;
     private Animator _animator;
     private PlayerDie _playerDie;
+
+    private Coroutine _hitCor;
 
     #endregion
 
@@ -62,16 +63,19 @@ public class PlayerHit : MonoBehaviour
     /// <param name="damage">데미지 량</param>
     public void Hit(float damage)
     {
-        _player.Hp -= damage - ((damage / 2) * (_player.Defense / 100)); // 데미지 공식 데미지 - ((데미지x(1/2))x(방어력/100)
-        if (_player.Hp <= 0)
+        if (_hitCor == null)
         {
-            _playerDie.Die();
-            InGameManager.Instance.GameOver();
+            _player.Hp -= damage - ((damage / 2) * (_player.Defense / 100)); // 데미지 공식 데미지 - ((데미지x(1/2))x(방어력/100)
+            if (_player.Hp <= 0)
+            {
+                _playerDie.Die();
+                InGameManager.Instance.GameOver();
 
-            return;
+                return;
+            }
+            _player.playerState = PlayerState.Hit; // 플레이어의 상태 변경
+            _hitCor = StartCoroutine(HitCor());    // 플레이어 충돌 코루틴 실행
         }
-        _player.playerState = PlayerState.Hit; // 플레이어의 상태 변경
-        StartCoroutine(HitCor());              // 플레이어 충돌 코루틴 실행
     }
 
     /// <summary>
@@ -87,9 +91,9 @@ public class PlayerHit : MonoBehaviour
         yield return new WaitForSeconds(_animTime); // 애니메이션 시간 대기
 
         // 충돌 종료
-        _OnStopHit.Invoke();
         _player.playerState = PlayerState.Idle;
         _animator.SetBool("IsHit", false);
+        _hitCor = null;
     }
 
     #endregion
