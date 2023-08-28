@@ -107,7 +107,7 @@ public class PlayerAttack : MonoBehaviour
     private bool CanAttack()
     {
         if (_attackCor == null && Input.GetMouseButtonDown(0)
-            && _player.Stamina - _staminaValue >= 0 &&
+            && _player.Stamina - PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina >= 0 &&
             PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject())
         {

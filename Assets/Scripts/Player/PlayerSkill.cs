@@ -67,7 +67,7 @@ public class PlayerSkill : MonoBehaviour
     private bool CanSkill()
     {
         if (_skillCor == null && Input.GetMouseButtonDown(1)
-            && _player.Stamina - _staminaValue >= 0 
+            && _player.Stamina - PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.SkillConsumeStamina >= 0 
             && PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject()
             && PlayerManager.Instance.EquipItem.CurrentWeapon.CanSkill
