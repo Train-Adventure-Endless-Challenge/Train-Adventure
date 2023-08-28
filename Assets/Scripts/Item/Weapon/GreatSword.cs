@@ -28,7 +28,6 @@ public class GreatSword : Weapon
 
     private IEnumerator AttackCor()
     {
-
         yield return new WaitForSeconds(_attackSpeed);
         _trailRenderer.enabled = false;
         _weaponCollider.enabled = false;
@@ -39,6 +38,7 @@ public class GreatSword : Weapon
         base.UseActiveSkill();
         GameObject obj = Instantiate(_skillEffectPrefab, PlayerManager.Instance.gameObject.transform.position + Vector3.up * .5f, Quaternion.identity);
         obj.transform.localScale = Vector3.one * _skillRadius;
+        Destroy(obj, 1.5f);
 
         Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
 
