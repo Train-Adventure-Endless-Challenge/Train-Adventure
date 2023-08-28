@@ -9,8 +9,7 @@ public class PlayerSkill : MonoBehaviour
     [Header("Transform")]
     [SerializeField] private Transform _weaponTransform; // 무기 위치
 
-    [Header("UI")]
-    private int _staminaValue = 7;   // 임시 스태미너 사용값 ※추후 Weapon의 각 사용량을 가져와 처리※
+    private int _staminaValue => PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.SkillConsumeStamina;   // Weapon의 각 스태미나 사용량
 
     private Player _player;                     // 플레이어 데이터 담당 클래스
     private PlayerSound _playerSound;           // 플레이어 소리 담당 클래스
@@ -51,7 +50,7 @@ public class PlayerSkill : MonoBehaviour
             _player.playerState = PlayerState.Skill; // 플레이어 상태를 스킬 상태로 변경
 
             _playerSound.PlayAttackSound();
-            _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.SkillConsumeStamina;         // 스태미나 감소
+            _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina);
             if (_skillCor == null)
                 _skillCor = StartCoroutine(SkillCor());

@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
 
     private float _slowSpeedScale;   // 공격시 움직임 감속 배율
     private float _originSpeedScale; // 원래 속도 배율
-    private int _staminaValue = 7;   // 임시 스태미너 사용값 ※추후 Weapon의 각 사용량을 가져와 처리※
+    private int _staminaValue => PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina;   // Weapon의 각 스태미나 사용량
 
     #region Class
 
@@ -90,7 +90,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (CanAttack()) // 공격이 가능한 상태라면 
         {
-            _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina;         // 스태미나 감소
+            _player.Stamina -= _staminaValue;         // 스태미나 감소
             IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina);
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
             RotateMouseDirection();                   // 마우스 방향으로 회전하는 함수
