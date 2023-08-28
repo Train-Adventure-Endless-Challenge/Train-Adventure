@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -27,8 +28,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     public PlayerEquip EquipItem { get { return _playerEquip; } }
     public bool IsGodMode { get { return _playerRolling._isGodMode; } }
+    public bool CanRoll { set { _canRoll = value; } }
 
     private bool _inputBlocking;
+    private bool _canRoll = true;
+
     #endregion
 
     #region Function
@@ -71,7 +75,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         }
 
 
-        if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
+        if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill && _canRoll)
         {
             _playerRolling.Roll();
         }

@@ -1,4 +1,3 @@
-using Cinemachine;
 using UnityEngine;
 
 /// <summary>
@@ -12,10 +11,12 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     [SerializeField] private float _waitTime = 3.0f;  // 대기 시간
     [SerializeField] private float _maxValue = 10.0f; // 흔들림 최대값
 
+    [SerializeField] private float _rollLimit = 5.0f; // 구르기 제한 값
+
     private Shake _shake;
 
     public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
-    
+
     #endregion
 
     #region Function
@@ -36,22 +37,32 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     {
         _shake._impulseDefinition.m_AmplitudeGain = 0;
         IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
+        UpdateShake();
     }
 
     public void DecreaseShake(float value)
     {
         _shake._impulseDefinition.m_AmplitudeGain -= value;
+        UpdateShake();
     }
 
     public void IncreaseShake(float value)
     {
         _shake._impulseDefinition.m_AmplitudeGain += value; ; // 증가
 
-        if(_shake._impulseDefinition.m_AmplitudeGain > _maxValue)
+        if (_shake._impulseDefinition.m_AmplitudeGain > _maxValue)
             _shake._impulseDefinition.m_AmplitudeGain = _maxValue;
 
         IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
+        UpdateShake();
     }
+
+    private void UpdateShake()
+    {
+        PlayerManager.Instance.CanRoll = (_rollLimit > _shake._impulseDefinition.m_AmplitudeGain);
+        
+    }
+
     #endregion
 
     #endregion
