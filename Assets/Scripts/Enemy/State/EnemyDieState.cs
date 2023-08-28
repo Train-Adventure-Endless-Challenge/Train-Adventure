@@ -21,6 +21,13 @@ public class EnemyDieState : State<EnemyController>
         // 만약 이미 죽고 있다면 (죽는 애니메이션 실행 중이라면) return
         if (_enemyController._anim.GetCurrentAnimatorStateInfo(0).IsName("Die")) return;
 
+        Collider[] cols =  _enemyController.GetComponentsInChildren<Collider>();   
+        
+        foreach (Collider collider in cols)
+        {
+            collider.enabled = false;
+        }
+
         _enemyController._isDie = true;
 
         _enemyController._anim.SetBool("DieTrue",true);
