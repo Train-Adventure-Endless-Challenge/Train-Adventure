@@ -129,6 +129,8 @@ public class PlayerAttack : MonoBehaviour
         // 특정 layer만 raycast제외하기 (RightWall)
         if (Physics.Raycast(ray, out hitResult, 100, _layerMask))
         {
+            Debug.Log(hitResult.transform.gameObject.name);
+            Debug.Log(hitResult.transform.gameObject.name);
             Vector3 mouseDir = new Vector3(hitResult.point.x, transform.position.y, hitResult.point.z) - transform.position;
             transform.forward = mouseDir;
         }
