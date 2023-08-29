@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Dagger : Weapon
 {
@@ -31,13 +32,15 @@ public class Dagger : Weapon
         {
             Instantiate(_skillEffectPrefab, _skillImpactPosition.position, Quaternion.identity);
 
-            GameObject parent = col.gameObject.transform.parent.gameObject;
 
-            if(parent.TryGetComponent<Entity>(out Entity entity))
+            if (col.gameObject.CompareTag("Player")) continue;
+
+            if (col.gameObject.TryGetComponent<Entity>(out Entity entity))
             {
-                 if (entity.gameObject.CompareTag("Player")) continue;
-                entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
-                break;
+
+                    Debug.Log(col.gameObject);
+                    entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
+                    break;
 
             }
         }
@@ -53,7 +56,7 @@ public class Dagger : Weapon
     public override void Attack()
     {
         base.Attack();
-       
+
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
     }
@@ -67,7 +70,7 @@ public class Dagger : Weapon
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.TryGetComponent(out Entity entity) && _detectionLists.Contains(collision.gameObject) == false)
+        if (collision.gameObject.TryGetComponent(out Entity entity) && _detectionLists.Contains(collision.gameObject) == false)
         {
             if (collision.gameObject.CompareTag("Player")) return;
 
