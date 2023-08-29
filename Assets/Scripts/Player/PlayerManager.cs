@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 
 /// <summary>
@@ -17,6 +16,10 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     [SerializeField] private Transform _interactionTransform;
 
+    [Header("ShakeDebuff")]
+    [SerializeField] private float _rollLimit = 5.0f;        // 구르기 제한 값
+    [SerializeField] private int _maxStaminaReduceRatio = 5; // 스태미나 감소 비율
+
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
@@ -32,6 +35,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     private bool _inputBlocking;
     private bool _canRoll = true;
+
 
     #endregion
 
@@ -127,6 +131,13 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     {
         _inputBlocking = value;
     }
+
+    public void UseShakeDebuff(int shakeAmount)
+    {
+        _canRoll = _rollLimit > shakeAmount;
+        _playerStamina.UpdateMaxStamina(shakeAmount * _maxStaminaReduceRatio);
+    }
+
     #region Mobile
 
     ///// <summary>

@@ -91,7 +91,7 @@ public class PlayerAttack : MonoBehaviour
         if (CanAttack()) // 공격이 가능한 상태라면 
         {
             _player.Stamina -= PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina;         // 스태미나 감소
-            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina);
+            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina);
             _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
             RotateMouseDirection();                   // 마우스 방향으로 회전하는 함수
             _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행 

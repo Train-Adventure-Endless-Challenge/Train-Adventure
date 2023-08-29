@@ -11,8 +11,6 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     [SerializeField] private float _waitTime = 3.0f;  // 대기 시간
     [SerializeField] private float _maxValue = 10.0f; // 흔들림 최대값
 
-    [SerializeField] private float _rollLimit = 5.0f; // 구르기 제한 값
-
     private Shake _shake;
 
     public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
@@ -59,8 +57,7 @@ public class ShakeManager : SceneSingleton<ShakeManager>
 
     private void UpdateShake()
     {
-        PlayerManager.Instance.CanRoll = (_rollLimit > _shake._impulseDefinition.m_AmplitudeGain);
-        
+        PlayerManager.Instance.UseShakeDebuff((int)ShakeAmount);
     }
 
     #endregion

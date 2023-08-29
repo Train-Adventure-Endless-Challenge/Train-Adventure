@@ -45,7 +45,9 @@ public class Player : Entity
     private float _speed; // 속도
     private int _defense; // 방어력
     private int _stamina; // 스태미나
-    [HideInInspector] public int _maxStamina; // 최대 스태미나
+    private int _maxStamina; // 최대 스태미나
+
+    public int MaxStamina { get { return _maxStamina; } set { _maxStamina = value; } }
 
     #endregion
 
