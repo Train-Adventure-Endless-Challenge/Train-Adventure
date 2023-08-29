@@ -37,10 +37,8 @@ public class Dagger : Weapon
 
             if (col.gameObject.TryGetComponent<Entity>(out Entity entity))
             {
-
-                    Debug.Log(col.gameObject);
-                    entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
-                    break;
+                entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
+                break;
 
             }
         }
