@@ -13,17 +13,18 @@ public class EnemyAttack_Melee : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!(_enemyController._stateMachine.CurrentState is EnemyAttackState)) return;
 
-        if (!_enemyController._isAttackCheck || _enemyController._isDie ||  _enemyController._isHit) return;
 
-        if(other.gameObject.CompareTag("Player"))
+        if(other.gameObject.TryGetComponent<Chair>(out Chair chair))
+        {
+            chair.Hit(_enemyController.Damage, _enemyController.gameObject);
+            return;
+        }
+        else if(other.gameObject.CompareTag("Player"))
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.Hit(_enemyController.Damage, _enemyController.gameObject);
-        }
-        else if(other.gameObject.TryGetComponent<Chair>(out Chair chair))
-        {
-            chair.Hit(_enemyController.Damage, _enemyController.gameObject);
         }
        
     }
