@@ -52,6 +52,9 @@ public class PlayerDie : MonoBehaviour
         if (_isDie == false)
         {
             _isDie = true;
+
+            GetComponent<Collider>().enabled = false;
+
             _animator.SetBool("IsDie", true);
             _OnDie.Invoke();
         }
