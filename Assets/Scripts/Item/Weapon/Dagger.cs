@@ -6,8 +6,6 @@ public class Dagger : Weapon
 {
     [SerializeField] private TrailRenderer _trailRenderer;
 
-    private string _targetLayer = "Enemy";
-
     private List<GameObject> _detectionLists = new List<GameObject>();
 
     [SerializeField] private GameObject _skillEffectPrefab;
@@ -23,7 +21,7 @@ public class Dagger : Weapon
     public override void UseActiveSkill()
     {
         base.UseActiveSkill();
-        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
+        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius);
 
         if (colliders.Length <= 0) return;
 
@@ -33,9 +31,15 @@ public class Dagger : Weapon
         {
             Instantiate(_skillEffectPrefab, _skillImpactPosition.position, Quaternion.identity);
 
-            Entity entity = col.gameObject.GetComponentInParent<Entity>();
-            entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
-            break;
+            GameObject parent = col.gameObject.transform.parent.gameObject;
+
+            if(parent.TryGetComponent<Entity>(out Entity entity))
+            {
+                 if (entity.gameObject.CompareTag("Player")) continue;
+                entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
+                break;
+
+            }
         }
 
     }

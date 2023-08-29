@@ -6,7 +6,6 @@ public class GreatSword : Weapon
 {
     [SerializeField] private TrailRenderer _trailRenderer;
 
-    private string _targetLayer = "Enemy";
     [SerializeField] private float _skillRadius;
 
     private List<GameObject> _detectionLists = new List<GameObject>();
@@ -40,7 +39,7 @@ public class GreatSword : Weapon
         obj.transform.localScale = Vector3.one * _skillRadius;
         Destroy(obj, 1.5f);
 
-        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
+        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius);
 
         if (colliders.Length <= 0) return;
 
@@ -50,8 +49,15 @@ public class GreatSword : Weapon
         foreach (Collider col in colliders)
         {
             if (attackList.Contains(col.gameObject)) continue;
-            col.gameObject.GetComponentInParent<Entity>().Hit(_damage * 1.5f, PlayerManager.Instance.gameObject);
-            attackList.Add(col.gameObject);
+
+            if(col.gameObject.TryGetComponent<Entity>(out Entity entity))
+            {
+                if (entity.gameObject.CompareTag("Player")) continue;
+
+                entity.Hit(_damage * 1.5f, PlayerManager.Instance.gameObject);
+                attackList.Add(col.gameObject);
+
+            }
         }
 
     }
@@ -63,8 +69,9 @@ public class GreatSword : Weapon
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
+        if (collision.gameObject.TryGetComponent(out Entity entity) && _detectionLists.Contains(collision.gameObject) == false)
         {
+            if (collision.gameObject.CompareTag("Player")) return;
             if (_detectionLists.Count == 0)
                 SubDurability(itemData.AttackConsumeDurability); // 첫 타격 상대라면 내구도 감소 -> 여러명을 때릴 때 여러 번 감소를 막기위함.
 
