@@ -8,7 +8,7 @@ public class Chair : Entity
     [SerializeField] List<GameObject> _models= new List<GameObject>(); // 완전한 의차, 반파된 의자, 파괴된 의자.
     [SerializeField] List<Collider> _colliders = new List<Collider>();
     [SerializeField] NavMeshObstacle _navMeshObstacle;
-    int brokenIdx = 0;
+    int _brokenIdx = 0;
     protected override void Start()
     {
         _maxhp = 2;
@@ -19,13 +19,13 @@ public class Chair : Entity
     {
         Hp -= 1;
 
-        _models[brokenIdx].SetActive(false);
-        _colliders[brokenIdx].enabled = false;
+        _models[_brokenIdx].SetActive(false);
+        _colliders[_brokenIdx].enabled = false;
 
-        brokenIdx++;
+        _brokenIdx++;
 
-        _models[brokenIdx].SetActive(true);
-        if (_colliders.Count > brokenIdx) _colliders[brokenIdx].enabled = true;
+        _models[_brokenIdx].SetActive(true);
+        if (_colliders.Count > _brokenIdx) _colliders[_brokenIdx].enabled = true;
 
         if (_hp <= 0) Die();
     }
