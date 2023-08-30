@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8023814640277953382}
   - component: {fileID: 5158228845548418436}
   - component: {fileID: 1786241913147700717}
+  - component: {fileID: 9019454774384153029}
   m_Layer: 0
   m_Name: SpawnChair
   m_TagString: Untagged
@@ -50,13 +51,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d87418d087e1aa48bb02b2e7214ca91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  models:
+  _models:
   - {fileID: 8354473901859647522}
   - {fileID: 3247102049390094145}
   - {fileID: 606638042040119041}
-  colliders:
+  _colliders:
   - {fileID: 8023814640277953382}
   - {fileID: 5158228845548418436}
+  _navMeshObstacle: {fileID: 9019454774384153029}
 --- !u!65 &8023814640277953382
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -99,6 +101,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!208 &9019454774384153029
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742530838681318986}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8354473901859647522
 GameObject:
   m_ObjectHideFlags: 0
