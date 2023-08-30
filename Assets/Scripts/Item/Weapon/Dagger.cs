@@ -1,12 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class Dagger : Weapon
 {
     [SerializeField] private TrailRenderer _trailRenderer;
-
-    private string _targetLayer = "Enemy";
 
     private List<GameObject> _detectionLists = new List<GameObject>();
 
@@ -23,7 +22,7 @@ public class Dagger : Weapon
     public override void UseActiveSkill()
     {
         base.UseActiveSkill();
-        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius, LayerMask.GetMask(_targetLayer));
+        Collider[] colliders = Physics.OverlapSphere(PlayerManager.Instance.gameObject.transform.position, _skillRadius);
 
         if (colliders.Length <= 0) return;
 
@@ -33,9 +32,15 @@ public class Dagger : Weapon
         {
             Instantiate(_skillEffectPrefab, _skillImpactPosition.position, Quaternion.identity);
 
-            Entity entity = col.gameObject.GetComponentInParent<Entity>();
-            entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
-            break;
+
+            if (col.gameObject.CompareTag("Player")) continue;
+
+            if (col.gameObject.TryGetComponent<Entity>(out Entity entity))
+            {
+                entity.Hit(_damage + ((entity.MaxHp - entity.Hp) / 10 * 7), PlayerManager.Instance.gameObject);
+                break;
+
+            }
         }
 
     }
@@ -49,7 +54,7 @@ public class Dagger : Weapon
     public override void Attack()
     {
         base.Attack();
-       
+
         _detectionLists.Clear();
         StartCoroutine(AttackCor());
     }
@@ -63,14 +68,16 @@ public class Dagger : Weapon
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
+        if (collision.gameObject.TryGetComponent(out Entity entity) && _detectionLists.Contains(collision.gameObject) == false)
         {
+            if (collision.gameObject.CompareTag("Player")) return;
+
             if (_detectionLists.Count == 0)
                 SubDurability(itemData.AttackConsumeDurability); // 첫 타격 상대라면 내구도 감소 -> 여러명을 때릴 때 여러 번 감소를 막기위함.
 
             _detectionLists.Add(collision.gameObject);
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
-            collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
+            entity.Hit(_damage, _playerTransform.gameObject);
             Shake();
 
         }

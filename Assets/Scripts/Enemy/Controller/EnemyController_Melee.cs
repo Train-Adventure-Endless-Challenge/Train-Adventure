@@ -19,7 +19,7 @@ public class EnemyController_Melee : EnemyController
         _stateMachine.AddState(new EnemyAttackWalkState());
         _stateMachine.AddState(new EnemyHitState());
         _stateMachine.AddState(new EnemyDiscoveryState());
-        _stateMachine.AddState(new EnemyDiscoveryState());
+        _stateMachine.AddState(new EnemyAttackCancelState());
         _attackTrail = GetComponentInChildren<TrailRenderer>();
     }
 

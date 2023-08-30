@@ -37,7 +37,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: -203655887218126122
       firstFrame: 0
-      lastFrame: 79
+      lastFrame: 50
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -64,15 +64,15 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 1
-        functionName: EndAnmationEvent
+      - time: 0.86976326
+        functionName: CheckHitEndEffect
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.48087433
-        functionName: CheckHitEndEffect
+      - time: 1
+        functionName: EndAnmationEvent
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

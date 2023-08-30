@@ -7,7 +7,7 @@ using UnityEngine.Events;
 
 public abstract class EnemyController : Entity
 {
-    protected StateMachine<EnemyController> _stateMachine;
+    public StateMachine<EnemyController> _stateMachine;
     public Animator _anim;
 
     [Header("EnemyData")]

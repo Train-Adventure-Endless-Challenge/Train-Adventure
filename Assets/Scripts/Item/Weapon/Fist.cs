@@ -6,8 +6,6 @@ public class Fist : Weapon
 {
     [SerializeField] private TrailRenderer _trailRenderer;
 
-    private string _targetLayer = "Enemy";
-
     private List<GameObject> _detectionLists = new List<GameObject>();
 
 
@@ -40,8 +38,10 @@ public class Fist : Weapon
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == LayerMask.NameToLayer(_targetLayer) && _detectionLists.Contains(collision.gameObject) == false)
+        if (collision.gameObject.TryGetComponent(out Entity entity) && _detectionLists.Contains(collision.gameObject) == false)
         {
+            if (collision.gameObject.CompareTag("Player")) return;
+
             _detectionLists.Add(collision.gameObject);
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);

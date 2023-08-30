@@ -34,6 +34,10 @@ public class EnemySpawnBomb : MonoBehaviour
             {
                 item.GetComponent<Player>().Hit(_damage,Owner); break;
             }
+            else if (item.gameObject.TryGetComponent<Chair>(out Chair chair))
+            {
+                chair.Hit(_damage, Owner);
+            }
         }
 
         // 흔들림 증가

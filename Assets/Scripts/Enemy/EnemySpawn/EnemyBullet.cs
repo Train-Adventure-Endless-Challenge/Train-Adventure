@@ -28,8 +28,10 @@ public class EnemyBullet : MonoBehaviour
         {
             Player player = other.gameObject.GetComponent<Player>();
             player.Hit(_damage, Owner);
-
-            Destroy(gameObject);
+        }
+        else if (other.gameObject.TryGetComponent<Chair>(out Chair chair))
+        {
+            chair.Hit(_damage, Owner);
         }
         Destroy(gameObject);    
     }
