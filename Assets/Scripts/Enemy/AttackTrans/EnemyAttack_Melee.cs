@@ -15,10 +15,10 @@ public class EnemyAttack_Melee : MonoBehaviour
     {
         if (!(_enemyController._stateMachine.CurrentState is EnemyAttackState)) return;
 
-
         if(other.gameObject.TryGetComponent<Chair>(out Chair chair))
         {
             chair.Hit(_enemyController.Damage, _enemyController.gameObject);
+            _enemyController.ChangeState<EnemyAttackCancelState>();
             return;
         }
         else if(other.gameObject.CompareTag("Player"))
