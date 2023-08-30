@@ -950,26 +950,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HPCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 1999740372238565979, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 0.9411765
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007539615952026511, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007539615952026511, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2007539615952026511, guid: 47cb719c64e1df5489147af36b3d5538,
-        type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2961900434344434759, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
       propertyPath: m_AnchorMax.x
