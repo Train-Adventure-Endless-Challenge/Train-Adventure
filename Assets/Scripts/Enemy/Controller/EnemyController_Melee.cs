@@ -10,6 +10,7 @@ public class EnemyController_Melee : EnemyController
     public bool _isAttackCheck = false;             // animation event clip으로 실행할 공격 체크 함수
 
     public TrailRenderer _attackTrail;
+    public Collider _attackCollider;
     protected override void Start()
     {
         base.Start();
@@ -69,12 +70,14 @@ public class EnemyController_Melee : EnemyController
     {
         _attackTrail.enabled = true;
         _isAttackCheck = true;
+        _attackCollider.enabled = true;
     }
 
     public void CheckHitEndEffect()
     {
         _attackTrail.enabled = false;
         _isAttackCheck = false;
+        _attackCollider.enabled = false;
     }
 
     /// <summary>
