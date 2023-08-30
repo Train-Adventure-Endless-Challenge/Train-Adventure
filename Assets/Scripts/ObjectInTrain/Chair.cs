@@ -4,32 +4,30 @@ using UnityEngine;
 
 public class Chair : Entity
 {
-
+    [SerializeField] List<GameObject> models= new List<GameObject>(); // 완전한 의차, 반파된 의자, 파괴된 의자.
+    [SerializeField] List<Collider> colliders = new List<Collider>();
+    int brokenIdx = 0;
     protected override void Start()
     {
-        _maxhp = 10;
+        _maxhp = 2;
         base.Start();
     }
 
     public override void Hit(float damage, GameObject attacker)
     {
-        Hp -= damage;
+        Hp -= 1;
 
-        if(Hp <= MaxHp/2)           // 반피의 데미지를 입은 상태라면
-        {
-            // 모델 체크 
+        models[brokenIdx].SetActive(false);
+        colliders[brokenIdx].enabled = false;
 
-        }
+        brokenIdx++;
 
-        if(Hp <= 0 )
-        {
-            Die();
-            return;
-        }
+        models[brokenIdx].SetActive(true);
+        if (colliders.Count > brokenIdx) colliders[brokenIdx].enabled = true;
+
     }
 
     public override void Die()
     {
-        Destroy(gameObject);
     }
 }
