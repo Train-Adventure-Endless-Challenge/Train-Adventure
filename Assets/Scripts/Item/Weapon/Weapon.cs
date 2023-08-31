@@ -16,7 +16,7 @@ public class Weapon : Item
     protected float _attackSpeed;
     protected float _defalutAttackSpeed;
     protected float _skillCoolTime;
-    
+
     protected Transform _playerTransform;
     protected attackType _attackType;
     [SerializeField] protected CapsuleCollider _weaponCollider;
@@ -40,6 +40,8 @@ public class Weapon : Item
 
     [SerializeField] protected GameObject _upgradeEffectPrefab;
     [SerializeField] protected Transform _upgradeEffectTransform;
+
+    protected bool _isSkill;
 
     void Update()
     {

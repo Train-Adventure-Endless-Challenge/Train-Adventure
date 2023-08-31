@@ -29,7 +29,7 @@ public class Dagger : Weapon
 
         Shake();
 
-        CameraManager.Instance.Joom(true); // 카메라 줌 실행
+        CameraManager.Instance.Joom(isSkill : true); // 카메라 줌 실행
 
         foreach (Collider col in colliders)
         {
@@ -73,7 +73,7 @@ public class Dagger : Weapon
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
             Shake();
-            CameraManager.Instance.Joom(false); // 카메라 줌 실행
+            CameraManager.Instance.Joom(isSkill: false); // 카메라 줌 실행
         }
     }
 
