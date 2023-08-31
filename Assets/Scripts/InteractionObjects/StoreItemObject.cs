@@ -11,12 +11,12 @@ public class StoreItemObject : InteractionObject
 
     [Header("UI")]
     [SerializeField] private TMP_Text _costText; 
-    public void Init(ItemData itemData, int cost)
+    public void Init(ItemData itemData)
     {
         _itemData = itemData;
 
-        _cost = cost;
-        _costText.text = $"{cost} Gear";
+        _cost = itemData.StoreCost;
+        _costText.text = $"{_cost} Gear";
 
         GameObject itemObj =
            Instantiate(ItemDataManager.Instance.ItemPrefab[itemData.Id] as GameObject, transform.position, Quaternion.identity);

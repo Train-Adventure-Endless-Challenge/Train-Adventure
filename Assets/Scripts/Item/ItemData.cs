@@ -36,6 +36,8 @@ public class ItemData : ScriptableObject
 
     [SerializeField] private bool _isStackable = false;
 
+    [SerializeField] private int _storecCost;
+
     [SerializeField] private GameObject _hittingFeelingEffect;                          // 타격 효과 이펙트 프리팹
 
     public int Id { get { return _id; } }
@@ -71,5 +73,7 @@ public class ItemData : ScriptableObject
     public int SkillConsumeStamina { get { return _skillConsumeStamina; } }
     public float SkillCooltime { get { return _skillCooltime; } }
     public bool IsStackable { get { return _isStackable; } }
+
+    public int StoreCost { get { return _storecCost; } }
     public GameObject HittingFeelingEffect { get { return _hittingFeelingEffect; } }
 }

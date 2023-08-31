@@ -339,6 +339,10 @@ MonoBehaviour:
   - {fileID: 8873856446033711153}
   _storeItemObject: {fileID: 1455136202708117720, guid: 005c10788ee68714eb529d10b605920a,
     type: 3}
+  _storeItemData:
+  - {fileID: 11400000, guid: d3177aac62c8e4e4baea759501e296e2, type: 2}
+  - {fileID: 11400000, guid: 0263971dc5bf4454bb235f6c60d51594, type: 2}
+  - {fileID: 11400000, guid: 359eb2636c1290b48847156b93fb53d5, type: 2}
 --- !u!65 &5539420476958998221
 BoxCollider:
   m_ObjectHideFlags: 0
