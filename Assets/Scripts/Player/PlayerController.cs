@@ -42,7 +42,9 @@ public class PlayerController : MonoBehaviour
     private float _slowSpeedScale;   // 감속 비율 
 
     private bool isGrounded;
+
     [SerializeField] private LayerMask _groundMask;
+
     #endregion
 
     #region SmoothMove
@@ -66,6 +68,16 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine _feelDizzyCor;
     private Coroutine _moveDizzyCor;
+
+    private bool _isDizzy;
+
+    #endregion
+
+    #region Hash
+
+    private readonly int _onStateId = Animator.StringToHash("OnState");
+    private readonly int _moveSpeedId = Animator.StringToHash("MoveSpeed");
+    private readonly int _isDizzyId = Animator.StringToHash("IsDizzy");
 
     #endregion
 
@@ -153,7 +165,7 @@ public class PlayerController : MonoBehaviour
             if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack
                 && _player.playerState != PlayerState.Skill)                                                // 상태를 초기화 해아할 때
             {
-                _animator.SetTrigger("OnState");                                                            // 상태 변경 트리거
+                _animator.SetTrigger(_onStateId);                                                           // 상태 변경 트리거
                 _player.playerState = PlayerState.Move;                                                     // 상태 초기화
             }
         }
@@ -166,11 +178,11 @@ public class PlayerController : MonoBehaviour
             if (_moveSpeedScale <= 0f && _player.playerState != PlayerState.Idle &&
                 _player.playerState != PlayerState.Attack && _player.playerState != PlayerState.Skill)                         // 상태를 초기화 해야할 때
             {
-                _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+                _animator.SetTrigger(_onStateId);                                                                              // 상태 변경 트리거
                 _player.playerState = PlayerState.Idle;                                                                        // 상태 변경
             }
         }
-        _animator.SetFloat("MoveSpeed", Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
+        _animator.SetFloat(_moveSpeedId, Mathf.Round(_moveSpeedScale * 100) / 100); // 부동 소수점 오차 해결
     }
 
     /// <summary>
@@ -203,8 +215,8 @@ public class PlayerController : MonoBehaviour
             _smoothMoveCor = null;         // 코루틴 초기화
         }
         _moveSpeedScale = 0f;
-        _animator.SetFloat("MoveSpeed", _moveSpeedScale); // 부동 소수점 오차 해결
-        _animator.SetTrigger("OnState");    // 상태 변경 트리거
+        _animator.SetFloat(_moveSpeedId, _moveSpeedScale); // 부동 소수점 오차 해결
+        _animator.SetTrigger(_onStateId);                  // 상태 변경 트리거
         _player.playerState = PlayerState.Idle;
     }
 
@@ -333,8 +345,9 @@ public class PlayerController : MonoBehaviour
             }
             StopMove();
             currentTime = 0f;
-            _animator.SetTrigger("OnState");
-            _animator.SetBool("IsDizzy", true);
+            _isDizzy = true;
+            _animator.SetTrigger(_onStateId);
+            _animator.SetBool(_isDizzyId, _isDizzy);
             _player.playerState = PlayerState.Dizzy;
             while (currentTime < _dizzyCoolTime)
             {
@@ -349,7 +362,8 @@ public class PlayerController : MonoBehaviour
                 yield return new WaitForSeconds(_dizzyDuration);
             }
             _player.playerState = PlayerState.Idle;
-            _animator.SetBool("IsDizzy", false);
+            _isDizzy = false;
+            _animator.SetBool(_isDizzyId, _isDizzy);
         }
     }
 
