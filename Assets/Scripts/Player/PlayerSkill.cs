@@ -51,7 +51,7 @@ public class PlayerSkill : MonoBehaviour
 
             _playerSound.PlayAttackSound();
             _player.Stamina -= _staminaValue;         // 스태미나 감소
-            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina);
+            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina);
             if (_skillCor == null)
                 _skillCor = StartCoroutine(SkillCor());
         }
