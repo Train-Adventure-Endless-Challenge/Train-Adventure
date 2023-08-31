@@ -7,5 +7,5 @@ public enum PlayerState
     Rolling,
     Hit,
     Interaction,
-    Dizzy,
+    Dizziness,
 }

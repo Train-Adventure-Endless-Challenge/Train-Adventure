@@ -59,17 +59,17 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Dizzy
+    #region Dizziness
 
-    [Header("Dizzy")]
-    [SerializeField] private float _dizzyCoolTime = 3.0f;
-    [SerializeField] private float _dizzyDuration = 1.0f;
-    [SerializeField] private float _dizzyMoveSpeed = 0.3f;
+    [Header("Dizziness")]
+    [SerializeField] private float _dizzinessCoolTime = 3.0f;  // 어지러움 대기 시간
+    [SerializeField] private float _dizzinessDuration = 1.0f;  // 어지러움 지속 시간
+    [SerializeField] private float _dizzinessMoveSpeed = 0.3f; // 어지러움 움직임 속도
 
-    private Coroutine _feelDizzyCor;
-    private Coroutine _moveDizzyCor;
+    private Coroutine _feelDizzinessCor;
+    private Coroutine _moveDizzinessCor;
 
-    private bool _isDizzy;
+    private bool _isDizziness;
 
     #endregion
 
@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     private readonly int _onStateId = Animator.StringToHash("OnState");
     private readonly int _moveSpeedId = Animator.StringToHash("MoveSpeed");
-    private readonly int _isDizzyId = Animator.StringToHash("IsDizzy");
+    private readonly int _isDizzinessId = Animator.StringToHash("IsDizziness");
 
     #endregion
 
@@ -312,71 +312,93 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    #region Dizzy
+    #region Dizziness
 
-    public void StartDizzy()
+    /// <summary>
+    /// 어지러움을 실행하는 함수
+    /// </summary>
+    public void StartDizziness()
     {
-        if (_feelDizzyCor == null)
+        if (_feelDizzinessCor == null)
         {
-            _feelDizzyCor = StartCoroutine(FeelDizzyCor());
+            _feelDizzinessCor = StartCoroutine(FeelDizzinessCor());
         }
     }
 
-    public void StopDizzy()
+    /// <summary>
+    /// 어지러움을 멈추는 함수
+    /// </summary>
+    public void StopDizziness()
     {
-        if (_feelDizzyCor != null)
+        if (_feelDizzinessCor != null)
         {
-            StopCoroutine(_feelDizzyCor);
-            _feelDizzyCor = null;
+            StopCoroutine(_feelDizzinessCor);
+            _feelDizzinessCor = null;
         }
-        _moveDirection = Vector3.zero;
-        _player.playerState = PlayerState.Idle;
+        _moveDirection = Vector3.zero;          // 움직임 방향 초기화
+        _player.playerState = PlayerState.Idle; // 상태 변경
     }
 
-    private IEnumerator FeelDizzyCor()
+    /// <summary>
+    /// 어지러움 디버프에서 사용하는 변수들을 설정하는 함수
+    /// </summary>
+    /// <param name="changeState">변경될 플레이어 상태 변수</param>
+    /// <param name="isDizziness">어지러움 상태 변수</param>
+    private void SetDizziness(PlayerState changeState, bool isDizziness)
     {
-        float currentTime;
+        _player.playerState = changeState;               // 플레이어 상태 변경
+        _isDizziness = isDizziness;                      // 어지러움 상태 변경
+        _animator.SetBool(_isDizzinessId, _isDizziness); // 애니메이션 설정
+    }
+
+    /// <summary>
+    /// 어지러움을 느끼게 하는 코루틴 함수
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator FeelDizzinessCor()
+    {
+        float currentTime; // 현재 시간
         while (true)
         {
-            yield return new WaitForSeconds(_dizzyCoolTime);
-            while (_player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill)
+            yield return new WaitForSeconds(_dizzinessCoolTime); // 쿨타임 만큼 대기
+            while (_player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill) // 공격, 스킬 상태일 시 대기
             {
                 yield return new WaitForEndOfFrame();
             }
-            StopMove();
-            currentTime = 0f;
-            _isDizzy = true;
-            _animator.SetTrigger(_onStateId);
-            _animator.SetBool(_isDizzyId, _isDizzy);
-            _player.playerState = PlayerState.Dizzy;
-            while (currentTime < _dizzyCoolTime)
+            StopMove();                            // 움직임 멈춤
+            currentTime = 0f;                      // 시간 설정
+            _animator.SetTrigger(_onStateId);      // 애니메이션 상태 변경
+            SetDizziness(PlayerState.Dizziness, true); // 어지러움 변수 설정
+            while (currentTime < _dizzinessCoolTime) // 어지러움 지속 시간만큼 실행
             {
-                currentTime += _dizzyDuration;
-                _moveDirection = new Vector3(Random.Range(-_dizzyMoveSpeed, _dizzyMoveSpeed), 0, Random.Range(-_dizzyMoveSpeed, _dizzyMoveSpeed));
-                transform.forward = _moveDirection;
-                if (_moveDizzyCor != null)
+                currentTime += _dizzinessDuration; // 시간 초기화
+                if (_moveDizzinessCor != null)
                 {
-                    StopCoroutine(_moveDizzyCor);
+                    StopCoroutine(_moveDizzinessCor);
                 }
-                _moveDizzyCor = StartCoroutine(MoveDizzyCor());
-                yield return new WaitForSeconds(_dizzyDuration);
+                _moveDizzinessCor = StartCoroutine(MoveDizzinessCor()); // 어지러움 움직임 실행
+                yield return new WaitForSeconds(_dizzinessDuration);
             }
-            _player.playerState = PlayerState.Idle;
-            _isDizzy = false;
-            _animator.SetBool(_isDizzyId, _isDizzy);
+            SetDizziness(PlayerState.Idle, false); // 어지러움 변수 설정
         }
     }
 
-    private IEnumerator MoveDizzyCor()
+    /// <summary>
+    /// 어지러움 움직임을 실행하는 함수
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator MoveDizzinessCor()
     {
-        float currentTime = 0;
-        while (currentTime < _dizzyDuration)
+        float currentTime = 0; // 현재 시간
+        _moveDirection = new Vector3(Random.Range(-_dizzinessMoveSpeed, _dizzinessMoveSpeed), 0, Random.Range(-_dizzinessMoveSpeed, _dizzinessMoveSpeed)); // 랜덤으로 움직임 방향 설정
+        transform.forward = _moveDirection;                                                                                                                // 플레이어 방향 변경
+        while (currentTime < _dizzinessDuration) // 지속 시간만큼 대기
         {
             currentTime += Time.deltaTime;
             _controller.Move(Time.deltaTime * _moveDirection); // 움직이기
             yield return new WaitForEndOfFrame();
         }
-        _moveDizzyCor = null;
+        _moveDizzinessCor = null;
     }
 
     #endregion
