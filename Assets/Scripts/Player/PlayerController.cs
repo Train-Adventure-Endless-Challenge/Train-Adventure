@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 #endregion
 
@@ -53,6 +54,18 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine _smoothMoveCor;      // 부드러운 움직임 코루틴 변수      
     private Coroutine _changeSlowSpeedCor; // 속도 변화 코루틴 변수
+
+    #endregion
+
+    #region Dizzy
+
+    [Header("Dizzy")]
+    [SerializeField] private float _dizzyCoolTime = 3.0f;
+    [SerializeField] private float _dizzyDuration = 1.0f;
+    [SerializeField] private float _dizzyMoveSpeed = 0.3f;
+
+    private Coroutine _feelDizzyCor;
+    private Coroutine _moveDizzyCor;
 
     #endregion
 
@@ -114,7 +127,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Move()
     {
-
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         if (x != 0 || z != 0) // 움직이고 있다면
@@ -127,9 +139,9 @@ public class PlayerController : MonoBehaviour
             {
                 _smoothMoveCor = StartCoroutine(SmoothMoveCor(_moveSpeedScale, _walkSpeedScale)); // 걷기 코루틴 실행
             }
-           
-                _moveDirection = new Vector3(x, 0f, z).normalized; // 움직임 방향
-            
+
+            _moveDirection = new Vector3(x, 0f, z).normalized; // 움직임 방향
+
             _controller.Move(_speed * _slowSpeedScale * _moveSpeedScale * Time.deltaTime * _moveDirection); // 움직이기
 
             if (_player.playerState != PlayerState.Attack)
@@ -138,7 +150,7 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack 
+            if (_player.playerState != PlayerState.Move && _player.playerState != PlayerState.Attack
                 && _player.playerState != PlayerState.Skill)                                                // 상태를 초기화 해아할 때
             {
                 _animator.SetTrigger("OnState");                                                            // 상태 변경 트리거
@@ -190,8 +202,9 @@ public class PlayerController : MonoBehaviour
             StopCoroutine(_smoothMoveCor); // 코루틴 종료
             _smoothMoveCor = null;         // 코루틴 초기화
         }
-        _animator.SetFloat("MoveSpeed",0); // 부동 소수점 오차 해결
-        _animator.SetTrigger("OnState");                                                                               // 상태 변경 트리거
+        _moveSpeedScale = 0f;
+        _animator.SetFloat("MoveSpeed", _moveSpeedScale); // 부동 소수점 오차 해결
+        _animator.SetTrigger("OnState");    // 상태 변경 트리거
         _player.playerState = PlayerState.Idle;
     }
 
@@ -213,7 +226,7 @@ public class PlayerController : MonoBehaviour
     public void GroundedCheck()
     {
         RaycastHit hitinfo;
-        Physics.Raycast(transform.position - Vector3.down * 0.5f, Vector3.down, out hitinfo,0.65f);
+        Physics.Raycast(transform.position - Vector3.down * 0.5f, Vector3.down, out hitinfo, 0.65f);
         isGrounded = (hitinfo.collider != null);
     }
     #endregion
@@ -283,6 +296,69 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
         _changeSlowSpeedCor = null;                                              // 코루틴 초기화
+    }
+
+    #endregion
+
+    #region Dizzy
+
+    public void StartDizzy()
+    {
+        if (_feelDizzyCor == null)
+        {
+            _feelDizzyCor = StartCoroutine(FeelDizzyCor());
+        }
+    }
+
+    public void StopDizzy()
+    {
+        if (_feelDizzyCor != null)
+        {
+            StopCoroutine(_feelDizzyCor);
+            _feelDizzyCor = null;
+        }
+        _moveDirection = Vector3.zero;
+        _player.playerState = PlayerState.Idle;
+    }
+
+    private IEnumerator FeelDizzyCor()
+    {
+        float currentTime;
+        while (true)
+        {
+            StopMove();
+            currentTime = 0f;
+            _animator.SetTrigger("OnState");
+            _animator.SetBool("IsDizzy", true);
+            _player.playerState = PlayerState.Dizzy;
+            while (currentTime < _dizzyCoolTime)
+            {
+                currentTime += _dizzyDuration;
+                _moveDirection = new Vector3(Random.Range(-_dizzyMoveSpeed, _dizzyMoveSpeed), 0, Random.Range(-_dizzyMoveSpeed, _dizzyMoveSpeed));
+                transform.forward = _moveDirection;
+                if (_moveDizzyCor != null)
+                {
+                    StopCoroutine(_moveDizzyCor);
+                }
+                _moveDizzyCor = StartCoroutine(MoveDizzyCor());
+                yield return new WaitForSeconds(_dizzyDuration);
+            }
+            _player.playerState = PlayerState.Idle;
+            _animator.SetBool("IsDizzy", false);
+            yield return new WaitForSeconds(_dizzyCoolTime);
+        }
+    }
+
+    private IEnumerator MoveDizzyCor()
+    {
+        float currentTime = 0;
+        while (currentTime < _dizzyDuration)
+        {
+            currentTime += Time.deltaTime;
+            _controller.Move(Time.deltaTime * _moveDirection); // 움직이기
+            yield return new WaitForEndOfFrame();
+        }
+        _moveDizzyCor = null;
     }
 
     #endregion

@@ -19,6 +19,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     [Header("ShakeDebuff")]
     [SerializeField] private float _rollLimit = 5.0f;        // 구르기 제한 값
     [SerializeField] private int _maxStaminaReduceRatio = 5; // 스태미나 감소 비율
+    [SerializeField] private int _dizzyLimit = 8;            // 어지러움 제한 값
 
     private Player _player;
     private PlayerController _playerController;
@@ -76,6 +77,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         else
         {
             _playerStamina.Recover();
+        }
+
+        if (_player.playerState == PlayerState.Dizzy)
+        {
+            return;
         }
 
 
@@ -136,6 +142,10 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     {
         _canRoll = _rollLimit > shakeAmount;
         _playerStamina.UpdateMaxStamina(shakeAmount * _maxStaminaReduceRatio);
+        if (shakeAmount >= _dizzyLimit)
+        {
+            _playerController.StartDizzy();
+        }
     }
 
     #region Mobile
