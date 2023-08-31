@@ -56,7 +56,6 @@ public class GreatSword : Weapon
 
                 entity.Hit(_damage * 1.5f, PlayerManager.Instance.gameObject);
                 attackList.Add(col.gameObject);
-
             }
         }
 
