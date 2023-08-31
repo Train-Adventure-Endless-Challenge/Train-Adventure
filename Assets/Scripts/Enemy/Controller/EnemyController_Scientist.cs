@@ -17,6 +17,8 @@ public class EnemyController_Scientist : EnemyController
 
     Vector3 _dir;
 
+    private readonly int _attackInt = Animator.StringToHash("AttackInt");
+
     protected override void Start()
     {
         base.Start();
@@ -47,12 +49,12 @@ public class EnemyController_Scientist : EnemyController
         if (_timer >= _skillDelayTime)
         {
             StartCoroutine(AttackSkillCor());
-            _anim.SetInteger("AttackInt", 1);   
+            _anim.SetInteger(_attackInt, 1);   
         }
         else
         {
             StartCoroutine(AttackCor());
-            _anim.SetInteger("AttackInt", 0);
+            _anim.SetInteger(_attackInt, 0);
         }
     }
 
@@ -80,7 +82,7 @@ public class EnemyController_Scientist : EnemyController
 
         }
 
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
 
         yield return new WaitForSeconds(AttackSpeed);
 
@@ -132,7 +134,7 @@ public class EnemyController_Scientist : EnemyController
 
 
 
-        _anim.SetTrigger("Attack"); //총알 공격 모션
+        _anim.SetTrigger(_attackId); //총알 공격 모션
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;

@@ -30,7 +30,7 @@ public class EnemyController_Bomb : EnemyController
         }
 
         _isAttack = true;
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
     }
 
     /// <summary>

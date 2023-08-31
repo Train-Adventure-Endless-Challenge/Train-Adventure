@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class EnemyIdleState : State<EnemyController>
 {
     EnemyController _enemyController;
-    private UnityEngine.AI.NavMeshAgent _agent;
+    private NavMeshAgent _agent;
+
+    private readonly int _walkId = Animator.StringToHash("Walk");
+    private readonly int _walkToPlayer = Animator.StringToHash("WalkToPlayer");
 
     public override void OnEnter()
     {
@@ -13,8 +16,8 @@ public class EnemyIdleState : State<EnemyController>
 
         _enemyController = _context.GetComponent<EnemyController>();
 
-        _enemyController._anim.SetBool("Walk",false);
-        _enemyController._anim.SetBool("WalkToPlayer", false);
+        _enemyController._anim.SetBool(_walkId, false);
+        _enemyController._anim.SetBool(_walkToPlayer, false);
 
         if (_enemyController._agent.isOnNavMesh)
             _enemyController._agent.isStopped = true;

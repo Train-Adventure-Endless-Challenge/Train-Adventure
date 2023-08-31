@@ -54,7 +54,7 @@ public class EnemyController_Melee : EnemyController
 
         }
 
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
 
         yield return new WaitForSeconds(AttackSpeed);
 

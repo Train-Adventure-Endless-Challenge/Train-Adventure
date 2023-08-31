@@ -11,6 +11,8 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     private GameObject _player;
 
+    private readonly int _walkToPlayer = Animator.StringToHash("WalkToPlayer");
+
     public override void OnEnter()
     {
         base.OnEnter();
@@ -22,7 +24,7 @@ public class EnemyAttackWalkState : State<EnemyController>
         // 초기화
         _agent = _enemyController._agent;
         _fov = _enemyController._enemyFieldOfView;
-        _enemyController._anim.SetBool("WalkToPlayer", true);
+        _enemyController._anim.SetBool(_walkToPlayer, true);
 
         _enemyController._isCurrentAttackCor = false;
 
@@ -58,7 +60,7 @@ public class EnemyAttackWalkState : State<EnemyController>
 
     public override void OnExit()
     {
-        _enemyController._anim.SetBool("WalkToPlayer", false);
+        _enemyController._anim.SetBool(_walkToPlayer, false);
         base.OnExit();
     }
 

@@ -7,7 +7,7 @@ public class BossEnemyIdleState : State<EnemyController>
 
     EnemyController _enemyController;
 
-
+    private readonly int _walkId = Animator.StringToHash("Walk");
     public override void OnEnter()
     {
         base.OnEnter();
@@ -15,7 +15,7 @@ public class BossEnemyIdleState : State<EnemyController>
 
         _enemyController = _context.GetComponent<EnemyController>();
 
-        _enemyController._anim.SetBool("Walk", false);
+        _enemyController._anim.SetBool(_walkId, false);
 
         _enemyController._agent.isStopped = true;
 

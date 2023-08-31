@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyDiscoveryState : State<EnemyController>
@@ -9,6 +10,8 @@ public class EnemyDiscoveryState : State<EnemyController>
     private NavMeshAgent _agent;
 
     private float _timer = 0f;
+
+    private readonly int _discoveryId = Animator.StringToHash("Discovery");
 
     public override void OnEnter()
     {
@@ -20,7 +23,7 @@ public class EnemyDiscoveryState : State<EnemyController>
         _agent = _enemyController._agent;
         _agent.isStopped = true;
 
-        _enemyController._anim.SetTrigger("Discovery");
+        _enemyController._anim.SetTrigger(_discoveryId);
 
         _enemyController._enemyUI.ToggleExclamationMark(true);
     }

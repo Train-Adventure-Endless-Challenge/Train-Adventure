@@ -15,6 +15,8 @@ public class EnemyMoveState : State<EnemyController>
     private NavMeshAgent _agent;
     private EnemyFieldOfView _fov;
 
+    private readonly int _walkId = Animator.StringToHash("Walk");
+
     public override void OnEnter()
     {
         _enemyController = _context.GetComponent<EnemyController>();
@@ -27,7 +29,7 @@ public class EnemyMoveState : State<EnemyController>
             _targetPos.position = _point;
         }
 
-        _enemyController._anim.SetBool("Walk", true);
+        _enemyController._anim.SetBool(_walkId, true);
 
         _enemyController.StartCoroutine(ChangeStateCor());
     }
@@ -87,7 +89,7 @@ public class EnemyMoveState : State<EnemyController>
 
     public override void OnExit()
     {
-        _enemyController._anim.SetBool("Walk", false);
+        _enemyController._anim.SetBool(_walkId, false);
 
         base.OnExit();
     }

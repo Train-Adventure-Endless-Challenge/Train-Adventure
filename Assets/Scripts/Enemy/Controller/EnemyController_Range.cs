@@ -71,7 +71,7 @@ public class EnemyController_Range : EnemyController
 
 
 
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
 
         yield return new WaitForSeconds(AttackSpeed);
         _agent.isStopped = false;

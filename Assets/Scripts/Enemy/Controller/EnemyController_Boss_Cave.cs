@@ -14,6 +14,8 @@ public class EnemyController_Boss_Cave : EnemyController
     public GameObject _floorEffect;
 
     private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
+
+    private readonly int _attackInt = Animator.StringToHash("AttackInt");
     protected override void Start()
     {
         base.Start();
@@ -65,7 +67,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void SpawnBombAttack()
     {
-        _anim.SetInteger("AttackInt", 0);
+        _anim.SetInteger(_attackInt, 0);
         StartCoroutine(SpawnBombAttackCor());
     }
 
@@ -95,7 +97,7 @@ public class EnemyController_Boss_Cave : EnemyController
         }
 
         // animation 실행
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
 
         yield return new WaitForSeconds(AttackSpeed);
 
@@ -120,7 +122,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void JumpAttack()
     {
-        _anim.SetInteger("AttackInt", 1);
+        _anim.SetInteger(_attackInt, 1);
         StartCoroutine(JumpAttackCor());
     }
 
@@ -149,7 +151,7 @@ public class EnemyController_Boss_Cave : EnemyController
 
         }
 
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
 
         yield return new WaitForSeconds(AttackSpeed);
     }
@@ -183,7 +185,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void PunchAttack()
     {
-        _anim.SetInteger("AttackInt", 2);
+        _anim.SetInteger(_attackInt, 2);
         StartCoroutine(PunchAttackCor());
     }
 
@@ -212,7 +214,7 @@ public class EnemyController_Boss_Cave : EnemyController
 
         }
 
-        _anim.SetTrigger("Attack");
+        _anim.SetTrigger(_attackId);
 
         yield return new WaitForSeconds(AttackSpeed);
     }
