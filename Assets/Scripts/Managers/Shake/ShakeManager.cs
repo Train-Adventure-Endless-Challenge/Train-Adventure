@@ -36,11 +36,13 @@ public class ShakeManager : SceneSingleton<ShakeManager>
     {
         _shake._impulseDefinition.m_AmplitudeGain = 0;
         IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
+        UpdateShake();
     }
 
     public void DecreaseShake(float value)
     {
         _shake._impulseDefinition.m_AmplitudeGain -= value;
+        UpdateShake();
     }
 
     public void IncreaseShake(float value)
@@ -54,7 +56,14 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         }
 
         IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
+        UpdateShake();
     }
+
+    private void UpdateShake()
+    {
+        PlayerManager.Instance.UseShakeDebuff((int)ShakeAmount);
+    }
+
     #endregion
 
     #endregion
