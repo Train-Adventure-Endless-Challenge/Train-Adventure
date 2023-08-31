@@ -59,6 +59,8 @@ public abstract class EnemyController : Entity
 
     public Action _dieEvent;
 
+    protected readonly int _attackId = Animator.StringToHash("Attack");
+
     protected virtual void Awake()
     {
         _enemyFieldOfView = GetComponent<EnemyFieldOfView>();

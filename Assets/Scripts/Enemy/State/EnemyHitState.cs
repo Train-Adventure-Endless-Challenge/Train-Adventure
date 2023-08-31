@@ -9,6 +9,9 @@ public class EnemyHitState : State<EnemyController>
     private GameObject _player;         // 추후 싱글톤으로 찾기 가능
 
     private NavMeshAgent _agent;
+
+    private readonly int _hitId = Animator.StringToHash("Hit");
+
     public override void OnEnter()
     {
         base.OnEnter();
@@ -41,7 +44,7 @@ public class EnemyHitState : State<EnemyController>
         _enemyController._enemyUI.UpdateHpUI(_enemyController.Hp);
         if (_enemyController.Hp <= 0) return;
 
-        _enemyController._anim.SetTrigger("Hit");                       // anim
+        _enemyController._anim.SetTrigger(_hitId);                       // anim
 
         _enemyController._enemyUI.ToggleExclamationMark(true);
     }

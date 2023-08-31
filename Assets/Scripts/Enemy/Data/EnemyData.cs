@@ -11,8 +11,6 @@ public enum EnemyType
     Bomb,           // 폭탄
 
     Boss            // 보스
-
-
 }
 
 [CreateAssetMenu(fileName = "Enemy Data", menuName = "Scriptable Object/Enemy Data", order = int.MaxValue - 9)]

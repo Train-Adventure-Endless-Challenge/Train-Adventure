@@ -10,6 +10,9 @@ public class EnemyDieState : State<EnemyController>
     private EnemyController _enemyController;
     private NavMeshAgent _agent;
 
+    private readonly int _dieTrueId = Animator.StringToHash("DieTrue");
+    private readonly int _hitId = Animator.StringToHash("Hit");
+
     public override void OnEnter()
     {
         base.OnEnter();
@@ -30,8 +33,8 @@ public class EnemyDieState : State<EnemyController>
 
         _enemyController._isDie = true;
 
-        _enemyController._anim.SetBool("DieTrue",true);
-        _enemyController._anim.SetTrigger("Hit");
+        _enemyController._anim.SetBool(_dieTrueId, true);
+        _enemyController._anim.SetTrigger(_hitId);
 
         // enemy trail 비활성화
         if (_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    

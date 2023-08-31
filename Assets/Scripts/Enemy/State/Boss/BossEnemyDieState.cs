@@ -1,9 +1,12 @@
+using UnityEngine;
 using UnityEngine.AI;
 
 public class BossEnemyDieState : State<EnemyController>
 {
     private EnemyController _enemyController;
     private NavMeshAgent _agent;
+
+    private readonly int _dieId = Animator.StringToHash("Die");
 
     public override void OnEnter()
     {
@@ -14,7 +17,7 @@ public class BossEnemyDieState : State<EnemyController>
         _agent.isStopped = true;
 
         _enemyController._isDie = true;
-        _enemyController._anim.SetTrigger("Die");
+        _enemyController._anim.SetTrigger(_dieId);
 
         // 보스가 죽었을 때 생겨나는 효과 추가
 
