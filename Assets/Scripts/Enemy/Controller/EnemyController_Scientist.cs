@@ -17,7 +17,7 @@ public class EnemyController_Scientist : EnemyController
 
     Vector3 _dir;
 
-    private readonly int _attackInt = Animator.StringToHash("AttackInt");
+    private readonly int _attackIntId = Animator.StringToHash("AttackInt");
 
     protected override void Start()
     {
@@ -49,12 +49,12 @@ public class EnemyController_Scientist : EnemyController
         if (_timer >= _skillDelayTime)
         {
             StartCoroutine(AttackSkillCor());
-            _anim.SetInteger(_attackInt, 1);   
+            _anim.SetInteger(_attackIntId, 1);   
         }
         else
         {
             StartCoroutine(AttackCor());
-            _anim.SetInteger(_attackInt, 0);
+            _anim.SetInteger(_attackIntId, 0);
         }
     }
 

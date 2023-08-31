@@ -15,7 +15,7 @@ public class EnemyController_Boss_Cave : EnemyController
 
     private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
 
-    private readonly int _attackInt = Animator.StringToHash("AttackInt");
+    private readonly int _attackIntId = Animator.StringToHash("AttackInt");
     protected override void Start()
     {
         base.Start();
@@ -67,7 +67,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void SpawnBombAttack()
     {
-        _anim.SetInteger(_attackInt, 0);
+        _anim.SetInteger(_attackIntId, 0);
         StartCoroutine(SpawnBombAttackCor());
     }
 
@@ -122,7 +122,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void JumpAttack()
     {
-        _anim.SetInteger(_attackInt, 1);
+        _anim.SetInteger(_attackIntId, 1);
         StartCoroutine(JumpAttackCor());
     }
 
@@ -185,7 +185,7 @@ public class EnemyController_Boss_Cave : EnemyController
     /// </summary>
     private void PunchAttack()
     {
-        _anim.SetInteger(_attackInt, 2);
+        _anim.SetInteger(_attackIntId, 2);
         StartCoroutine(PunchAttackCor());
     }
 
