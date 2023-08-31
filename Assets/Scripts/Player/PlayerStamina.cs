@@ -18,7 +18,7 @@ public class PlayerStamina : MonoBehaviour
 
     [SerializeField] private float _waitTime;     // 변화 대기 시간
     [SerializeField] private float _recoveryTime; // 회복 시간
-    [SerializeField] private int _maxValue;        // 스테미너 최대값
+    [SerializeField] private int _maxStamina;        // 스테미너 최대값
     [SerializeField] private int _recoveryValue;    // 회복 시간당 회복량
 
     private Coroutine _recoverCor;
@@ -59,7 +59,7 @@ public class PlayerStamina : MonoBehaviour
     {
         _waitTime = _player.WaitTime;
         _recoveryTime = _player.RecoveryTime;
-        _maxValue = _player.MaxValue;
+        _maxStamina = _player.MaxValue;
         _recoveryValue = _player.RecoveryValue;
     }
 
@@ -69,7 +69,7 @@ public class PlayerStamina : MonoBehaviour
     /// </summary>
     public void Recover()
     {
-        if (_recoverCor == null && _player.Stamina != _player._maxStamina) // 진행중이 아니거나 스태미나가 최대 값이 아닐 때
+        if (_recoverCor == null && _player.Stamina != _player.MaxStamina) // 진행중이 아니거나 스태미나가 최대 값이 아닐 때
         {
             _recoverCor = StartCoroutine(RecoverCor());
         }
@@ -87,6 +87,16 @@ public class PlayerStamina : MonoBehaviour
         }
     }
 
+    public void UpdateMaxStamina(int reductionValue)
+    {
+        _player.MaxStamina = _maxStamina - reductionValue;
+        if (_player.Stamina > _player.MaxStamina)
+        {
+            _player.Stamina = _player.MaxStamina;
+        }
+        IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina); // UI 변경
+    }
+
     /// <summary>
     /// 스태미너 회복 코루틴 함수
     /// <br/> 최대 스태미나는 100으로 0.5초 동안 변화가 없다면 초 당 20의 양을 회복
@@ -96,16 +106,16 @@ public class PlayerStamina : MonoBehaviour
     {
         yield return new WaitForSeconds(_waitTime); // 변화 대기
 
-        while (_player.Stamina != _player._maxStamina)
+        while (_player.Stamina != _player.MaxStamina)
         {
             _player.Stamina += _recoveryValue;
 
-            if (_player.Stamina > _player._maxStamina)
+            if (_player.Stamina > _player.MaxStamina)
             {
-                _player.Stamina = _player._maxStamina;
+                _player.Stamina = _player.MaxStamina;
             }
 
-            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player._maxStamina); // UI 변경
+            IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina); // UI 변경
 
             yield return new WaitForSeconds(_recoveryTime);
         }

@@ -43,8 +43,8 @@ public class IngameUIController : SceneSingleton<IngameUIController>
 
     [Header("Sprites")]
     [SerializeField] private Sprite[] _skillSprites; // 스킬 이미지 Sprite
-    
-    Coroutine _hpUpdateLerpCoroutine;       
+
+    Coroutine _hpUpdateLerpCoroutine;
     Coroutine _staminaUpdateLerpCoroutine;
     Coroutine _gearUpdateCoroutine;
     Coroutine _skillUIUpdateCoroutine;
@@ -118,6 +118,7 @@ public class IngameUIController : SceneSingleton<IngameUIController>
             float staminaSliderMaxValue = _staminaSlider.maxValue;        // Stamina Slider의 최댓값 담기
             _staminaSlider.maxValue = maxStamina;                         // Stamina Slider의 최댓값을 최대 스태미나의 값으로 변경
             _staminaSlider.value *= (maxStamina / staminaSliderMaxValue); // 현재 Stamina Slider의 값을 Stamina Slider의 변경된 최댓값 비율로 변경
+            _maxStaminaText.text = maxStamina.ToString();
         }
 
         _staminaUpdateLerpCoroutine = StartCoroutine(UpdateStaminaUILerpCor(stamina)); // Stamina UI 러프 시작

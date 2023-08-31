@@ -16,6 +16,11 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     [SerializeField] private Transform _interactionTransform;
 
+    [Header("ShakeDebuff")]
+    [SerializeField] private float _rollLimit = 5.0f;        // 구르기 제한 값
+    [SerializeField] private int _maxStaminaReduceRatio = 5; // 스태미나 감소 비율
+    [SerializeField] private int _dizzinessLimit = 8;        // 어지러움 제한 값
+
     private Player _player;
     private PlayerController _playerController;
     private PlayerRolling _playerRolling;
@@ -27,8 +32,12 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     public PlayerEquip EquipItem { get { return _playerEquip; } }
     public bool IsGodMode { get { return _playerRolling._isGodMode; } }
+    public bool CanRoll { set { if (value == false) { IngameUIController.Instance.PopupText("흔들림으로 인해 구르기 불가!"); } _canRoll = value; } }
 
     private bool _inputBlocking;
+    private bool _canRoll = true;
+
+
     #endregion
 
     #region Function
@@ -70,8 +79,12 @@ public class PlayerManager : SceneSingleton<PlayerManager>
             _playerStamina.Recover();
         }
 
+        if (_player.playerState == PlayerState.Dizziness)
+        {
+            return;
+        }
 
-        if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill)
+        if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill && _canRoll)
         {
             _playerRolling.Roll();
         }
@@ -123,6 +136,17 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     {
         _inputBlocking = value;
     }
+
+    public void UseShakeDebuff(int shakeAmount)
+    {
+        CanRoll = _rollLimit > shakeAmount;
+        _playerStamina.UpdateMaxStamina(shakeAmount * _maxStaminaReduceRatio);
+        if (shakeAmount >= _dizzinessLimit)
+        {
+            _playerController.StartDizziness();
+        }
+    }
+
     #region Mobile
 
     ///// <summary>
