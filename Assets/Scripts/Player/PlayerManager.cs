@@ -32,7 +32,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     public PlayerEquip EquipItem { get { return _playerEquip; } }
     public bool IsGodMode { get { return _playerRolling._isGodMode; } }
-    public bool CanRoll { set { _canRoll = value; } }
+    public bool CanRoll { set { if (value == false) { IngameUIController.Instance.PopupText("흔들림으로 인해 구르기 불가!"); } _canRoll = value; } }
 
     private bool _inputBlocking;
     private bool _canRoll = true;
@@ -83,7 +83,6 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             return;
         }
-
 
         if (_player.playerState != PlayerState.Hit && _player.playerState != PlayerState.Skill && _canRoll)
         {
@@ -140,7 +139,7 @@ public class PlayerManager : SceneSingleton<PlayerManager>
 
     public void UseShakeDebuff(int shakeAmount)
     {
-        _canRoll = _rollLimit > shakeAmount;
+        CanRoll = _rollLimit > shakeAmount;
         _playerStamina.UpdateMaxStamina(shakeAmount * _maxStaminaReduceRatio);
         if (shakeAmount >= _DizzinessLimit)
         {

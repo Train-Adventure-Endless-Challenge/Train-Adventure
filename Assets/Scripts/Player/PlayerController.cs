@@ -368,6 +368,7 @@ public class PlayerController : MonoBehaviour
             StopMove();                            // 움직임 멈춤
             currentTime = 0f;                      // 시간 설정
             _animator.SetTrigger(_onStateId);      // 애니메이션 상태 변경
+            IngameUIController.Instance.PopupText("흔들림으로 인해 어지러움!");
             SetDizziness(PlayerState.Dizziness, true); // 어지러움 변수 설정
             while (currentTime < _dizzinessCoolTime) // 어지러움 지속 시간만큼 실행
             {
