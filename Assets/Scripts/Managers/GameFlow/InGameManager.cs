@@ -16,6 +16,7 @@ public class InGameManager : SceneSingleton<InGameManager>
     [SerializeField] int _storeIndex = 5;          // 상점 칸의 인덱스
     [SerializeField] int _bossIndex = 10;          // 보스 칸의 인덱스
     public int BossIndex { get { return _bossIndex; } }
+    public int StoreIndex { get { return _storeIndex; } }
 
     [Header("UI")]
     [SerializeField] private Image _fadeImage;             // 페이드 이미지
