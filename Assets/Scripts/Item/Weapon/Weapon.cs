@@ -41,6 +41,8 @@ public class Weapon : Item
     [SerializeField] protected GameObject _upgradeEffectPrefab;
     [SerializeField] protected Transform _upgradeEffectTransform;
 
+    protected bool _isSkill;
+
     void Update()
     {
 

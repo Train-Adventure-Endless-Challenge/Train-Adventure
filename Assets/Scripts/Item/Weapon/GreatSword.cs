@@ -45,6 +45,8 @@ public class GreatSword : Weapon
 
         Shake();
 
+        CameraManager.Instance.Joom(isSkill: true); // 카메라 줌 실행
+
         List<GameObject> attackList = new List<GameObject>();
         foreach (Collider col in colliders)
         {
@@ -78,6 +80,7 @@ public class GreatSword : Weapon
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             collision.gameObject.GetComponent<Entity>().Hit(_damage, _playerTransform.gameObject);
             Shake();
+            CameraManager.Instance.Joom(isSkill: false); // 카메라 줌 실행
         }
     }
 
@@ -87,8 +90,6 @@ public class GreatSword : Weapon
         base.UpgradeItem();
         _skillRadius += 0.5f;
         _damage += 5;
-
-
     }
 
     public override void AttackColliderOnFunc()
@@ -101,7 +102,5 @@ public class GreatSword : Weapon
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(gameObject.transform.position, _skillRadius);
     }
-
-
 }
 

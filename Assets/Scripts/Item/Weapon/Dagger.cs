@@ -28,6 +28,8 @@ public class Dagger : Weapon
 
         Shake();
 
+        CameraManager.Instance.Joom(isSkill : true); // 카메라 줌 실행
+
         foreach (Collider col in colliders)
         {
             Instantiate(_skillEffectPrefab, _skillImpactPosition.position, Quaternion.identity);
@@ -42,7 +44,6 @@ public class Dagger : Weapon
 
             }
         }
-
     }
 
     public override void SkillEventFunc()
@@ -79,7 +80,7 @@ public class Dagger : Weapon
             Destroy(Instantiate(_hittingFeelingEffect, collision.contacts[0].thisCollider.transform.position, collision.transform.rotation), 2);
             entity.Hit(_damage, _playerTransform.gameObject);
             Shake();
-
+            CameraManager.Instance.Joom(isSkill: false); // 카메라 줌 실행
         }
     }
 
