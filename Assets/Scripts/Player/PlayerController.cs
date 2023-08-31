@@ -326,6 +326,11 @@ public class PlayerController : MonoBehaviour
         float currentTime;
         while (true)
         {
+            yield return new WaitForSeconds(_dizzyCoolTime);
+            while (_player.playerState == PlayerState.Attack || _player.playerState == PlayerState.Skill)
+            {
+                yield return new WaitForEndOfFrame();
+            }
             StopMove();
             currentTime = 0f;
             _animator.SetTrigger("OnState");
@@ -345,7 +350,6 @@ public class PlayerController : MonoBehaviour
             }
             _player.playerState = PlayerState.Idle;
             _animator.SetBool("IsDizzy", false);
-            yield return new WaitForSeconds(_dizzyCoolTime);
         }
     }
 
