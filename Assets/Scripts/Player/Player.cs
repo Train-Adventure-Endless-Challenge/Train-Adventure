@@ -258,6 +258,8 @@ public class Player : Entity
     public void Heal(float healAmount)
     {
         _hp += healAmount;
+        if (_hp > MaxHp) _hp = MaxHp;
+
         IngameUIController.Instance.UpdateHpUI(_hp, MaxHp);
         _hitVolume.ChangeVolume(1 - _hp / MaxHp);
     }
