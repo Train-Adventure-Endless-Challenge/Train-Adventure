@@ -40,8 +40,8 @@ public class EnemyController_Bomb : EnemyController
     public void AttackEvent()
     {
         _isCurrentAttackCor = true;
-
-        if (Vector2.Distance(transform.position, _player.transform.position) < 5)
+        
+        if (Vector2.Distance(transform.position, _player.transform.position) < 1.6f)
             _player.GetComponent<Player>().Hit(Damage, gameObject);
 
         // 파티클 추가
