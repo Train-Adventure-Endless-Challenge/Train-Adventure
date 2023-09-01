@@ -105,14 +105,16 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private bool CanAttack()
     {
-        bool canAttackWithoutStamina = Input.GetMouseButtonDown(0) 
+        bool canAttackWithoutStamina = _attackCor == null
+            && Input.GetMouseButtonDown(0)
             && !EventSystem.current.IsPointerOverGameObject();
+
 
         if (_player.Stamina - _staminaValue >= 0 && canAttackWithoutStamina)
         {
             return true;
         }
-        if (canAttackWithoutStamina)
+        else if (canAttackWithoutStamina)
         {
             IngameUIController.Instance.PopupText("스태미나가 부족합니다.");
         }
