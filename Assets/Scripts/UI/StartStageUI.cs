@@ -10,7 +10,7 @@ public class StartStageUI : MonoBehaviour
     [SerializeField] private float _waitTime = 2f; // 애니메이션 대기 시간
 
     [Header("UI")]
-    [SerializeField] private TMP_Text _stageValueText; // 스테이지 시작 값 텍스트
+    [SerializeField] private TMP_Text _stageText; // 스테이지 시작 값 텍스트
 
     #endregion
 
@@ -20,7 +20,20 @@ public class StartStageUI : MonoBehaviour
 
     private void OnEnable()
     {
-        _stageValueText.text = InGameManager.Instance.Score.ToString(); // 스테이지 값 받아오기
+        InGameManager inGameManager = InGameManager.Instance;   
+
+        if (inGameManager.BossIndex == inGameManager.Score)
+        {
+            _stageText.text = "Boss Stage";
+        }
+        else if (inGameManager.StoreIndex == inGameManager.Score)
+        {
+            _stageText.text = "Store";
+        }
+        else
+        {
+            _stageText.text = "Stage " + inGameManager.Score.ToString(); // 스테이지 값 받아오기
+        }
         StartCoroutine(DisableCoroutine());                             // 시간 대기 후 비활성화 시작
     }
 
