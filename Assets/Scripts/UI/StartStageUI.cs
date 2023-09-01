@@ -20,17 +20,19 @@ public class StartStageUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if (InGameManager.Instance.BossIndex == InGameManager.Instance.Score)
+        InGameManager inGameManager = InGameManager.Instance;   
+
+        if (inGameManager.BossIndex == inGameManager.Score)
         {
             _stageText.text = "Boss Stage";
         }
-        else if (InGameManager.Instance.StoreIndex == InGameManager.Instance.Score)
+        else if (inGameManager.StoreIndex == inGameManager.Score)
         {
             _stageText.text = "Store";
         }
         else
         {
-            _stageText.text = "Stage " + InGameManager.Instance.Score.ToString(); // 스테이지 값 받아오기
+            _stageText.text = "Stage " + inGameManager.Score.ToString(); // 스테이지 값 받아오기
         }
         StartCoroutine(DisableCoroutine());                             // 시간 대기 후 비활성화 시작
     }
