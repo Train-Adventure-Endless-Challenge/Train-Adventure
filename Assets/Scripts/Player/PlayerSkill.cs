@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.EventSystems;
 
 public class PlayerSkill : MonoBehaviour
@@ -65,14 +64,20 @@ public class PlayerSkill : MonoBehaviour
     /// <returns></returns>
     private bool CanSkill()
     {
-        if (_skillCor == null && Input.GetMouseButtonDown(1)
-            && _player.Stamina - _staminaValue >= 0 
+        bool canSkillWithoutStamina = _skillCor == null
+            && Input.GetMouseButtonDown(1)
             && PlayerManager.Instance.EquipItem.CurrentWeapon != null
             && !EventSystem.current.IsPointerOverGameObject()
             && PlayerManager.Instance.EquipItem.CurrentWeapon.CanSkill
-            && PlayerManager.Instance.EquipItem.CurrentWeapon.isSkillExist)
+            && PlayerManager.Instance.EquipItem.CurrentWeapon.isSkillExist;
+
+        if (canSkillWithoutStamina && _player.Stamina - _staminaValue >= 0)
         {
             return true;
+        }
+        else if (canSkillWithoutStamina)
+        {
+            IngameUIController.Instance.PopupText("스태미나가 부족합니다.");
         }
         return false;
     }
