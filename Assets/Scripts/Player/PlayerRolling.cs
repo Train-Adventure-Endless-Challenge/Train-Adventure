@@ -82,7 +82,7 @@ public class PlayerRolling : MonoBehaviour
     {
         if (_rollCor == null)
         {
-            if (Input.GetKeyDown(_rollingKey) && CanRoll())
+            if (CanRoll())
             {
                 _player.Stamina -= _staminaValue;
                 IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina);
@@ -99,7 +99,18 @@ public class PlayerRolling : MonoBehaviour
     /// <returns></returns>
     private bool CanRoll()
     {
-        return _player.Stamina - _staminaUseValue >= 0 && _player.playerState != PlayerState.Attack; // 스태미나가 충분한지 체크
+        bool canRollWithoutStamina = Input.GetKeyDown(_rollingKey) 
+            && _player.playerState != PlayerState.Attack;
+
+        if (canRollWithoutStamina && _player.Stamina - _staminaUseValue >= 0) // 구르기 키를 눌렀는지, 스태미나가 충분한지 체크
+        {
+            return true;
+        }
+        else if (canRollWithoutStamina)
+        {
+            IngameUIController.Instance.PopupText("스태미나가 부족합니다.");
+        }
+        return false;
     }
 
     /// <summary>

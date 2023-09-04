@@ -6,7 +6,6 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.EventSystems;
-using Unity.VisualScripting;
 
 #endregion
 
@@ -106,12 +105,18 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private bool CanAttack()
     {
-        if (_attackCor == null && Input.GetMouseButtonDown(0)
-            && _player.Stamina - _staminaValue >= 0 &&
-            PlayerManager.Instance.EquipItem.CurrentWeapon != null
-            && !EventSystem.current.IsPointerOverGameObject())
+        bool canAttackWithoutStamina = _attackCor == null
+            && Input.GetMouseButtonDown(0)
+            && !EventSystem.current.IsPointerOverGameObject();
+
+
+        if (_player.Stamina - _staminaValue >= 0 && canAttackWithoutStamina)
         {
             return true;
+        }
+        else if (canAttackWithoutStamina)
+        {
+            IngameUIController.Instance.PopupText("스태미나가 부족합니다.");
         }
         return false;
     }
