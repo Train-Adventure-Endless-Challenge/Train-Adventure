@@ -15,6 +15,8 @@ public class CursorManager : GlobalSingleton<CursorManager>
     private string _gameCycleSceneName = "GameCycle";
     private string _tutorialSceneName = "TutorialScene";
 
+    private Scene _currentScene;
+
     protected override void Awake()
     {
         base.Awake();
@@ -24,6 +26,13 @@ public class CursorManager : GlobalSingleton<CursorManager>
     private void Start()
     {
         Cursor.visible = false;
+
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
+
+        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
+        {
+            _currentScene = SceneManager.GetActiveScene();
+        };
     }
 
     public static Texture2D ConvertSpriteToTexture(Sprite sprite)
@@ -64,7 +73,7 @@ public class CursorManager : GlobalSingleton<CursorManager>
         // 회전을 적용하기 전에 GUI 행렬을 백업합니다.
         Matrix4x4 matrixBackup = GUI.matrix;
 
-        if (LoadSceneController.Instance.CurrentScene.name == _gameCycleSceneName || LoadSceneController.Instance.CurrentScene.name == _tutorialSceneName)
+        if (_currentScene.name == _gameCycleSceneName || _currentScene.name == _tutorialSceneName)
         {
             if (InventoryManager.Instance.IsOnInventory == false)
             {
