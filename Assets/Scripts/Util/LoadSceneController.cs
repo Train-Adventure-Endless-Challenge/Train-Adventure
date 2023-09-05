@@ -10,7 +10,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 /// <summary>
 /// 씬 로드 조작을 담당하는 클래스
 /// </summary>
-public class LoadSceneController : GlobalSingleton<LoadSceneController>
+public class LoadSceneController : MonoBehaviour
 {
     #region Variable
 
@@ -20,9 +20,6 @@ public class LoadSceneController : GlobalSingleton<LoadSceneController>
 
     private static int _loadingScene = 1; // 로딩 씬 인덱스 번호
     static int _nextSceneNumber;          // 로딩 될 씬 인덱스 번호
-
-    private Scene _currentScene; 
-    public Scene CurrentScene { get { return _currentScene; } }
 
     #endregion
 
@@ -41,11 +38,6 @@ public class LoadSceneController : GlobalSingleton<LoadSceneController>
     private void Start()
     {
         StartCoroutine(LoadSceneProgressCor()); // 씬 로드 진행
-
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
-        {
-            _currentScene = SceneManager.GetActiveScene();  
-        };
     }
 
     /// <summary>
