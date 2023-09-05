@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028359, g: 0.22571385, b: 0.30692258, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -303,8 +303,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179635619}
-  m_LocalRotation: {x: 0.3759451, y: -0.35458958, z: 0.15844816, w: 0.8413238}
-  m_LocalPosition: {x: 1.9290886, y: 11.213634, z: -8.849565}
+  m_LocalRotation: {x: 0.3819791, y: 0.000000031803275, z: -0.000000013144956, w: 0.924171}
+  m_LocalPosition: {x: -2.15, y: 8.81745, z: -8.849565}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -413,7 +413,7 @@ Camera:
   far clip plane: 1000
   field of view: 50
   orthographic: 0
-  orthographic size: 5
+  orthographic size: 2.95
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -444,37 +444,37 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.2599998
+      value: -2.15
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.85
+      value: 9.48
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -11.28
+      value: -9.629999
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.8413238
+      value: 0.924171
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3759451
+      value: 0.3819791
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.35458958
+      value: 0.000000031803275
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.15844816
+      value: -0.000000013144956
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
@@ -1488,7 +1488,10 @@ MonoBehaviour:
     type: 3}
   _storeTrainObject: {fileID: 2364587615945282256, guid: bb57016e246c27443815fdcf30881471,
     type: 3}
-  fadeImage: {fileID: 0}
+  _storeIndex: 5
+  _bossIndex: 10
+  _fadeImage: {fileID: 0}
+  _stageStartCanvas: {fileID: 0}
   _gameOverManager: {fileID: 1771826403}
 --- !u!1 &1762762886
 GameObject:
@@ -1662,7 +1665,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c577d4404e17ce84c9f6369d87b3fd1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _gearTrasureBoxObjsList: []
 --- !u!1001 &1850015633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1800,6 +1802,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6401699004113738585, guid: a19a6135a5352bc4286384ebace07097,
+        type: 3}
+      propertyPath: _hitVolume
+      value: 
+      objectReference: {fileID: 1291472354}
     - target: {fileID: 6401699005772241260, guid: a19a6135a5352bc4286384ebace07097,
         type: 3}
       propertyPath: m_Name
