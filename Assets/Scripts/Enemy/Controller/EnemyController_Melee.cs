@@ -102,4 +102,10 @@ public class EnemyController_Melee : EnemyController
     {
         StartCoroutine(AttackMeleeCor());
     }
+
+    public override void Hit(float damage, GameObject attacker)
+    {
+        base.Hit(damage, attacker);
+        CheckHitEndEffect();
+    }
 }
