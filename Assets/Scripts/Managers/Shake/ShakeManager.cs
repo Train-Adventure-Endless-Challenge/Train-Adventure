@@ -52,7 +52,6 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         if (_shake._impulseDefinition.m_AmplitudeGain > _maxValue)
         {
             _shake._impulseDefinition.m_AmplitudeGain = _maxValue;
-            return;
         }
 
         IngameUIController.Instance.UpdateShakeUI(ShakeAmount); // UI 업데이트
