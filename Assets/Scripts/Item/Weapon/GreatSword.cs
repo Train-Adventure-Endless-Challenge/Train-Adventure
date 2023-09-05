@@ -11,6 +11,9 @@ public class GreatSword : Weapon
     private List<GameObject> _detectionLists = new List<GameObject>();
 
     [SerializeField] private GameObject _skillEffectPrefab;
+
+    private Coroutine _attackCor;
+
     protected override void Init()
     {
         base.Init();
@@ -21,7 +24,7 @@ public class GreatSword : Weapon
     {
         base.Attack();
         _detectionLists.Clear();
-        StartCoroutine(AttackCor());
+        _attackCor = StartCoroutine(AttackCor());
     }
 
 
@@ -30,6 +33,7 @@ public class GreatSword : Weapon
         yield return new WaitForSeconds(_attackSpeed);
         _trailRenderer.enabled = false;
         _weaponCollider.enabled = false;
+        _attackCor = null;
     }
 
     public override void UseActiveSkill()
@@ -52,7 +56,7 @@ public class GreatSword : Weapon
         {
             if (attackList.Contains(col.gameObject)) continue;
 
-            if(col.gameObject.TryGetComponent<Entity>(out Entity entity))
+            if (col.gameObject.TryGetComponent<Entity>(out Entity entity))
             {
                 if (entity.gameObject.CompareTag("Player")) continue;
 
@@ -95,7 +99,15 @@ public class GreatSword : Weapon
     public override void AttackColliderOnFunc()
     {
         base.AttackColliderOnFunc();
-        _trailRenderer.enabled = true;
+        if (_attackCor != null) // 현재 공격 상태라면 trail 활성화
+        {
+            _trailRenderer.enabled = true;
+        }
+        else // 현재 공격 상태가 아니라면 공격 trail, collider 비활성화
+        {
+            _trailRenderer.enabled = false; 
+            _weaponCollider.enabled = false;
+        }
     }
     private void OnDrawGizmos()
     {
