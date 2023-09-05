@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using static UnityEngine.EventSystems.EventTrigger;
 
 public class Dagger : Weapon
 {
@@ -12,6 +11,8 @@ public class Dagger : Weapon
     [SerializeField] private GameObject _skillEffectPrefab;
     [SerializeField] private float _skillRadius;
     [SerializeField] private Transform _skillImpactPosition;
+
+    private Coroutine _attackCor;
 
     protected override void Init()
     {
@@ -28,7 +29,7 @@ public class Dagger : Weapon
 
         Shake();
 
-        CameraManager.Instance.Joom(isSkill : true); // 카메라 줌 실행
+        CameraManager.Instance.Joom(isSkill: true); // 카메라 줌 실행
 
         foreach (Collider col in colliders)
         {
@@ -57,7 +58,7 @@ public class Dagger : Weapon
         base.Attack();
 
         _detectionLists.Clear();
-        StartCoroutine(AttackCor());
+        _attackCor = StartCoroutine(AttackCor());
     }
 
     private IEnumerator AttackCor()
@@ -65,6 +66,7 @@ public class Dagger : Weapon
         yield return new WaitForSeconds(_attackSpeed);
         _trailRenderer.enabled = false;
         _weaponCollider.enabled = false;
+        _attackCor = null;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -95,7 +97,15 @@ public class Dagger : Weapon
     public override void AttackColliderOnFunc()
     {
         base.AttackColliderOnFunc();
-        _trailRenderer.enabled = true;
+        if (_attackCor != null) // 현재 공격 상태라면 trail 활성화
+        {
+            _trailRenderer.enabled = true;
+        }
+        else // 현재 공격 상태가 아니라면 공격 trail, collider 비활성화
+        {
+            _trailRenderer.enabled = false;
+            _weaponCollider.enabled = false;
+        }
     }
     private void OnDrawGizmos()
     {
