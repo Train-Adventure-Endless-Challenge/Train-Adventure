@@ -1450,7 +1450,7 @@ MonoBehaviour:
     type: 3}
   _storeTrainObject: {fileID: 1442741392660700183, guid: 6f83c135f8d2c274e9bcc4e1b4b9a520,
     type: 3}
-  _storeIndex: 3
+  _storeIndex: 5
   _bossIndex: 6
   _fadeImage: {fileID: 187055126}
   _stageStartCanvas: {fileID: 2112878063}
@@ -1823,12 +1823,12 @@ PrefabInstance:
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -1e-45
+      value: 3e-45
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 635215942287709944, guid: a2c350fdf1c82474d95e3a9d14b65590,
         type: 3}
