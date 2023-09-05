@@ -145,6 +145,10 @@ public class PlayerManager : SceneSingleton<PlayerManager>
         {
             _playerController.StartDizziness();
         }
+        else
+        {
+            _playerController.StopDizziness();
+        }
     }
 
     #region Mobile
