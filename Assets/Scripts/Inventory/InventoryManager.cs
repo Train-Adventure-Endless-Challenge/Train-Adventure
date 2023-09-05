@@ -25,7 +25,7 @@ public class InventoryManager : SceneSingleton<InventoryManager>
 
     public bool _isDrag;
 
-    public bool _isOnInventory => _mainInventoryGroup.activeSelf;
+    public bool IsOnInventory { get { return _mainInventoryGroup.activeSelf; } }
 
     private void Update()
     {

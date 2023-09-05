@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,10 +11,9 @@ public class CursorManager : GlobalSingleton<CursorManager>
 
     int _cursorSizeX = 64;  // Your cursor size x
     int _cursorSizeY = 64;  // Your cursor size y
-    private float _angle = 0.0f;
-    private Vector3 _screenCenter;
 
-    private Scene _scene;
+    private string _gameCycleSceneName = "GameCycle";
+    private string _tutorialSceneName = "TutorialScene";
 
     protected override void Awake()
     {
@@ -24,15 +24,6 @@ public class CursorManager : GlobalSingleton<CursorManager>
     private void Start()
     {
         Cursor.visible = false;
-        _screenCenter = new Vector3(Screen.width / 2, Screen.height / 2);
-
-        _scene = SceneManager.GetActiveScene(); //함수 안에 선언하여 사용한다.
-
-
-        SceneManager.sceneLoaded += (Scene scene, LoadSceneMode mode) =>
-        {
-            _scene = SceneManager.GetActiveScene(); //함수 안에 선언하여 사용한다.
-        };
     }
 
     public static Texture2D ConvertSpriteToTexture(Sprite sprite)
@@ -73,9 +64,9 @@ public class CursorManager : GlobalSingleton<CursorManager>
         // 회전을 적용하기 전에 GUI 행렬을 백업합니다.
         Matrix4x4 matrixBackup = GUI.matrix;
 
-        if (_scene.name == "GameCycle" || _scene.name == "TutorialScene")
+        if (LoadSceneController.Instance.CurrentScene.name == _gameCycleSceneName || LoadSceneController.Instance.CurrentScene.name == _tutorialSceneName)
         {
-            if (InventoryManager.Instance._isOnInventory == false)
+            if (InventoryManager.Instance.IsOnInventory == false)
             {
                 Vector3 mousePosition = Input.mousePosition;
                 Vector3 screenCenter = new Vector3(Screen.width / 2, Screen.height / 2);
