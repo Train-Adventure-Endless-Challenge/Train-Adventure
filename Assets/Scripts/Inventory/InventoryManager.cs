@@ -23,9 +23,9 @@ public class InventoryManager : SceneSingleton<InventoryManager>
     private InventorySlot _selectedSlot;
     public InventorySlot SelectedSlot { get { return _selectedSlot; } }
 
-
-
     public bool _isDrag;
+
+    public bool IsOnInventory { get { return _mainInventoryGroup.activeSelf; } }
 
     private void Update()
     {
