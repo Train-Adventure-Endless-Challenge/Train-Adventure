@@ -574,7 +574,7 @@ GameObject:
   - component: {fileID: 419165168427069097}
   - component: {fileID: 7839712971842270167}
   - component: {fileID: 5120693973511555300}
-  m_Layer: 14
+  m_Layer: 11
   m_Name: Plane.001 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -945,7 +945,7 @@ GameObject:
   - component: {fileID: 9214891044110234972}
   - component: {fileID: 1577488884949137342}
   - component: {fileID: 135488754627804088}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane.012 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1044,7 +1044,7 @@ GameObject:
   - component: {fileID: 5218809555876691543}
   - component: {fileID: 218525002948643273}
   - component: {fileID: 4068251622054811412}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane.012 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 8473564729378644216}
   - component: {fileID: 685675868641348011}
   - component: {fileID: 7057585717505690487}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plane.012 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4602,10 +4602,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: train_people
       objectReference: {fileID: 0}
+    - target: {fileID: 5148817236446094103, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 5394693769120690257, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}
       propertyPath: m_Name
       value: Plane.010
+      objectReference: {fileID: 0}
+    - target: {fileID: 5394693769120690257, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5619302609615435187, guid: 65addb80ec0e1264fb983050b118d917,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 7293059144023096718, guid: 65addb80ec0e1264fb983050b118d917,
         type: 3}
