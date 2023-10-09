@@ -101,6 +101,7 @@ public abstract class EnemyController : Entity
         _enemyDieSound = _enemyData._enemyDieSound;
 
         _agent.stoppingDistance = AttackRange;
+        _agent.speed = MoveSpeed;
 
         _dieEvent += GearDrop;
 
