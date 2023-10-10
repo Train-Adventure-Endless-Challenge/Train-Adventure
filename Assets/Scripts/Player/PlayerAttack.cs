@@ -19,6 +19,7 @@ public class PlayerAttack : MonoBehaviour
     [Header("Transform")]
     [SerializeField] private Transform _weaponTransform; // 무기 위치
 
+    private float _attackSpeed;      // 공격 속도
     private float _slowSpeedScale;   // 공격시 움직임 감속 배율
     private float _originSpeedScale; // 원래 속도 배율
     private int _staminaValue => PlayerManager.Instance.EquipItem.CurrentWeapon.ItemData.AttackConsumeStamina;   // Weapon의 각 스태미나 사용량
@@ -30,8 +31,9 @@ public class PlayerAttack : MonoBehaviour
     private Animator _animator;                 // 애니메이션
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
 
-    private Coroutine _attackCor; // 플레이어 공격 코루틴을 담을 변수
-    
+    private Coroutine _attackCor;   // 플레이어 공격 코루틴을 담을 변수
+    private Coroutine _attackWait; // 플레이어 공격 속도 대기 코루틴을 담을 변수
+
     private int _layerMask;
 
     #endregion
@@ -78,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void DataInit()
     {
+        _attackSpeed = _player.AttackSpeed;             // 공격 속도 초기화
         _slowSpeedScale = _player.AttackSlowSpeedScale; // 움직임 감속 배율 초기화
         _originSpeedScale = _player.OriginSpeedScale;   // 원래 속도 배율 초기화
     }
@@ -89,11 +92,12 @@ public class PlayerAttack : MonoBehaviour
     {
         if (CanAttack()) // 공격이 가능한 상태라면 
         {
-            _player.Stamina -= _staminaValue;         // 스태미나 감소
+            _player.Stamina -= _staminaValue;              // 스태미나 감소
             IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina);
-            _player.playerState = PlayerState.Attack; // 플레이어 상태를 공격 상태로 변경
-            RotateMouseDirection();                   // 마우스 방향으로 회전하는 함수
-            _attackCor = StartCoroutine(AttackCor()); // 공격 코루틴 실행 
+            _player.playerState = PlayerState.Attack;      // 플레이어 상태를 공격 상태로 변경
+            RotateMouseDirection();                        // 마우스 방향으로 회전하는 함수
+            _attackCor = StartCoroutine(AttackCor());      // 공격 코루틴 실행 
+            _attackWait = StartCoroutine(AttackWaitCor()); // 공격 대기 코루틴 실행
         }
     }
 
@@ -105,7 +109,9 @@ public class PlayerAttack : MonoBehaviour
     /// <returns></returns>
     private bool CanAttack()
     {
-        bool canAttackWithoutStamina = _attackCor == null
+        bool canAttackWithoutStamina =
+            _attackCor == null
+            && _attackWait == null
             && Input.GetMouseButtonDown(0)
             && !EventSystem.current.IsPointerOverGameObject();
 
@@ -174,6 +180,12 @@ public class PlayerAttack : MonoBehaviour
         if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
         _attackCor = null; // 코루틴 초기화
+    }
+
+    private IEnumerator AttackWaitCor()
+    {
+        yield return new WaitForSeconds(_attackSpeed);
+        _attackWait = null;
     }
 
     public void AttackCollsionOnEvent()
