@@ -53,7 +53,6 @@ public class Player : Entity
 
     #region Attack
 
-    private float _attackSpeed;          // 공격 속도
     private float _originSpeedScale;     // 원래 속도 배율
     private float _attackSlowSpeedScale; // 공격시 움직임 감속 배율
 
@@ -114,7 +113,6 @@ public class Player : Entity
 
     #region Attack
 
-    public float AttackSpeed { get { return _attackSpeed; } }
     public float OriginSpeedScale { get { return _originSpeedScale; } }
     public float AttackSlowSpeedScale { get { return _attackSlowSpeedScale; } }
 
@@ -196,7 +194,6 @@ public class Player : Entity
 
         #region Attack
 
-        _attackSpeed = _playerData.AttackSpeed;                   // 공격 속도
         _originSpeedScale = _playerData.OriginSpeedScale;         // 원래 속도 배율
         _attackSlowSpeedScale = _playerData.AttackSlowSpeedScale; // 공격시 움직임 감속 배율
 

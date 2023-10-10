@@ -32,7 +32,6 @@ public class PlayerAttack : MonoBehaviour
     private PlayerController _playerController; // 플레이어 움직임 담당 클래스
 
     private Coroutine _attackCor;   // 플레이어 공격 코루틴을 담을 변수
-    private Coroutine _attackWait; // 플레이어 공격 속도 대기 코루틴을 담을 변수
 
     private int _layerMask;
 
@@ -80,7 +79,6 @@ public class PlayerAttack : MonoBehaviour
     /// </summary>
     private void DataInit()
     {
-        _attackSpeed = _player.AttackSpeed;             // 공격 속도 초기화
         _slowSpeedScale = _player.AttackSlowSpeedScale; // 움직임 감속 배율 초기화
         _originSpeedScale = _player.OriginSpeedScale;   // 원래 속도 배율 초기화
     }
@@ -97,7 +95,6 @@ public class PlayerAttack : MonoBehaviour
             _player.playerState = PlayerState.Attack;      // 플레이어 상태를 공격 상태로 변경
             RotateMouseDirection();                        // 마우스 방향으로 회전하는 함수
             _attackCor = StartCoroutine(AttackCor());      // 공격 코루틴 실행 
-            _attackWait = StartCoroutine(AttackWaitCor()); // 공격 대기 코루틴 실행
         }
     }
 
@@ -111,7 +108,6 @@ public class PlayerAttack : MonoBehaviour
     {
         bool canAttackWithoutStamina =
             _attackCor == null
-            && _attackWait == null
             && Input.GetMouseButtonDown(0)
             && !EventSystem.current.IsPointerOverGameObject();
 
@@ -179,13 +175,10 @@ public class PlayerAttack : MonoBehaviour
         // 플레이어의 속도에 따라 상태를 Idle, Move로 바꿈
         if (_playerController._moveSpeedScale <= 0f) _player.playerState = PlayerState.Idle;
         else _player.playerState = PlayerState.Move;
-        _attackCor = null; // 코루틴 초기화
-    }
 
-    private IEnumerator AttackWaitCor()
-    {
-        yield return new WaitForSeconds(_attackSpeed);
-        _attackWait = null;
+        yield return new WaitForSeconds(curWeapon.AttackSpeed * 0.2f); // 애니메이션 시간 대기
+
+        _attackCor = null; // 코루틴 초기화
     }
 
     public void AttackCollsionOnEvent()

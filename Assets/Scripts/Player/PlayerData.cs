@@ -24,7 +24,6 @@ public class PlayerData : ScriptableObject
     #region Attack
 
     [Header("Attack")]
-    [SerializeField] private float _attackSpeed;          // 공격 속도
     [SerializeField] private float _originSpeedScale;     // 원래 속도 배율
     [SerializeField] private float _attackSlowSpeedScale; // 공격시 움직임 감속 배율
 
@@ -91,7 +90,6 @@ public class PlayerData : ScriptableObject
 
     #region Attack
 
-    public float AttackSpeed { get { return _attackSpeed; } }
     public float OriginSpeedScale { get { return _originSpeedScale; } }
     public float AttackSlowSpeedScale { get { return _attackSlowSpeedScale; } }
 
