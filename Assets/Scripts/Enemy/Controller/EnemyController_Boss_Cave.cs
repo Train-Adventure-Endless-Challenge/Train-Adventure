@@ -15,6 +15,8 @@ public class EnemyController_Boss_Cave : EnemyController
 
     private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
 
+    private int _attackIndex = -1;           // 공격 패턴 인덱스
+    [SerializeField] private int[] _attackPattern = new int[] { 0, 1, 1, 2 };       // 공격 패턴 (추후 기획에 따른 변경 가능)
     private readonly int _attackIntId = Animator.StringToHash("AttackInt");
     protected override void Start()
     {
@@ -35,24 +37,19 @@ public class EnemyController_Boss_Cave : EnemyController
 
     void CheckAttack()
     {
-        int num = Random.Range(0, 101);
-        switch (num / 10)           // 정해진 확률에 따른 공격 패턴 변경
+        _attackIndex++;
+        if(_attackIndex >= _attackPattern.Length )
+            _attackIndex= 0;
+
+        switch (_attackPattern[_attackIndex]) 
         {
             case 0:
-            case 1:
-            case 2:
-            case 3:
                 SpawnBombAttack();
                 break;
-            case 4:
-            case 5:
-            case 6:
-            case 7:
+            case 1:
                 JumpAttack();
                 break;
-            case 8:
-            case 9:
-            case 10:
+            case 2:
                 PunchAttack();
                 break;
             default:
