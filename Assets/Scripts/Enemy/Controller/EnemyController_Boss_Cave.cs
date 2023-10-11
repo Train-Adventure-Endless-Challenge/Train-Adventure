@@ -15,9 +15,20 @@ public class EnemyController_Boss_Cave : EnemyController
 
     private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
 
-    private int _attackIndex = -1;           // 공격 패턴 인덱스
-    [SerializeField] private int[] _attackPattern = new int[] { 0, 1, 1, 2 };       // 공격 패턴 (추후 기획에 따른 변경 가능)
+    [Header("Attack")]
     private readonly int _attackIntId = Animator.StringToHash("AttackInt");
+    private int _attackIndex = -1;           // 공격 패턴 인덱스
+    enum AttackTypeBossCave
+    {
+        Spawn,
+        Jump,
+        Punch
+    }
+    
+    [SerializeField] private AttackTypeBossCave[] _attackPattern = new AttackTypeBossCave[] 
+    { AttackTypeBossCave.Spawn, AttackTypeBossCave.Jump, AttackTypeBossCave.Jump, AttackTypeBossCave.Punch };       // 공격 패턴 (추후 기획에 따른 변경 가능)
+
+
     protected override void Start()
     {
         base.Start();
@@ -41,21 +52,23 @@ public class EnemyController_Boss_Cave : EnemyController
         if(_attackIndex >= _attackPattern.Length )
             _attackIndex= 0;
 
-        switch (_attackPattern[_attackIndex]) 
-        {
-            case 0:
+        switch (_attackPattern[_attackIndex])
+        { 
+        
+            case AttackTypeBossCave.Spawn:
                 SpawnBombAttack();
                 break;
-            case 1:
+            case AttackTypeBossCave.Jump:
                 JumpAttack();
                 break;
-            case 2:
+            case AttackTypeBossCave.Punch:
                 PunchAttack();
-                break;
+            break;
             default:
                 break;
         }
     }
+    
 
     #region SpawnAttack
 
@@ -173,7 +186,6 @@ public class EnemyController_Boss_Cave : EnemyController
         Destroy(go, 1f);
     }
     #endregion
-
 
     #region PunchAttack
 
