@@ -15,7 +15,20 @@ public class EnemyController_Boss_Cave : EnemyController
 
     private float _shakeAmount = 3f;       // 공격시 흔들림 증가량
 
+    [Header("Attack")]
     private readonly int _attackIntId = Animator.StringToHash("AttackInt");
+    private int _attackIndex = -1;           // 공격 패턴 인덱스
+    enum AttackTypeBossCave
+    {
+        Spawn,
+        Jump,
+        Punch
+    }
+    
+    [SerializeField] private AttackTypeBossCave[] _attackPattern = new AttackTypeBossCave[] 
+    { AttackTypeBossCave.Spawn, AttackTypeBossCave.Jump, AttackTypeBossCave.Jump, AttackTypeBossCave.Punch };       // 공격 패턴 (추후 기획에 따른 변경 가능)
+
+
     protected override void Start()
     {
         base.Start();
@@ -35,30 +48,27 @@ public class EnemyController_Boss_Cave : EnemyController
 
     void CheckAttack()
     {
-        int num = Random.Range(0, 101);
-        switch (num / 10)           // 정해진 확률에 따른 공격 패턴 변경
-        {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
+        _attackIndex++;
+        if(_attackIndex >= _attackPattern.Length )
+            _attackIndex= 0;
+
+        switch (_attackPattern[_attackIndex])
+        { 
+        
+            case AttackTypeBossCave.Spawn:
                 SpawnBombAttack();
                 break;
-            case 4:
-            case 5:
-            case 6:
-            case 7:
+            case AttackTypeBossCave.Jump:
                 JumpAttack();
                 break;
-            case 8:
-            case 9:
-            case 10:
+            case AttackTypeBossCave.Punch:
                 PunchAttack();
-                break;
+            break;
             default:
                 break;
         }
     }
+    
 
     #region SpawnAttack
 
@@ -176,7 +186,6 @@ public class EnemyController_Boss_Cave : EnemyController
         Destroy(go, 1f);
     }
     #endregion
-
 
     #region PunchAttack
 
