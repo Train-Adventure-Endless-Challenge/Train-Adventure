@@ -1,4 +1,3 @@
-using Cinemachine;
 using UnityEngine;
 
 /// <summary>
@@ -32,6 +31,8 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         _shake.StartShake();
     }
 
+    #endregion
+
     public void ClearShake()
     {
         _shake._impulseDefinition.m_AmplitudeGain = 0;
@@ -63,7 +64,13 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         PlayerManager.Instance.UseShakeDebuff((int)ShakeAmount);
     }
 
-    #endregion
+    /// <summary>
+    /// Crash 흔들림 변경 함수
+    /// </summary>
+    public void ChangeCrashShake()
+    {
+        _shake.ChangeCrashShake();
+    }
 
     #endregion
 }
