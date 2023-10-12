@@ -37,7 +37,6 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     private bool _inputBlocking;
     private bool _canRoll = true;
 
-
     #endregion
 
     #region Function
@@ -141,6 +140,10 @@ public class PlayerManager : SceneSingleton<PlayerManager>
     {
         CanRoll = _rollLimit > shakeAmount;
         _playerStamina.UpdateMaxStamina(shakeAmount * _maxStaminaReduceRatio);
+        if (_rollLimit == shakeAmount || shakeAmount == _dizzinessLimit) // 현재 디버프를 적용해야 한다면
+        {
+            ShakeManager.Instance.ChangeCrashShake();
+        }
         if (shakeAmount >= _dizzinessLimit)
         {
             _playerController.StartDizziness();

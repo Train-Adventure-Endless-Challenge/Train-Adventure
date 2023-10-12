@@ -1,4 +1,3 @@
-using Cinemachine;
 using UnityEngine;
 
 /// <summary>
@@ -14,8 +13,8 @@ public class ShakeManager : SceneSingleton<ShakeManager>
 
     private Shake _shake;
 
-    public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
-    
+    public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain * 2; } }
+
     #endregion
 
     #region Function
@@ -32,6 +31,8 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         _shake.StartShake();
     }
 
+    #endregion
+
     public void ClearShake()
     {
         _shake._impulseDefinition.m_AmplitudeGain = 0;
@@ -47,9 +48,9 @@ public class ShakeManager : SceneSingleton<ShakeManager>
 
     public void IncreaseShake(float value)
     {
-        _shake._impulseDefinition.m_AmplitudeGain += value; // 증가
+        _shake._impulseDefinition.m_AmplitudeGain += value / 2; // 증가
 
-        if (_shake._impulseDefinition.m_AmplitudeGain > _maxValue)
+        if (ShakeAmount > _maxValue)
         {
             _shake._impulseDefinition.m_AmplitudeGain = _maxValue;
         }
@@ -63,7 +64,13 @@ public class ShakeManager : SceneSingleton<ShakeManager>
         PlayerManager.Instance.UseShakeDebuff((int)ShakeAmount);
     }
 
-    #endregion
+    /// <summary>
+    /// Crash 흔들림 변경 함수
+    /// </summary>
+    public void ChangeCrashShake()
+    {
+        _shake.ChangeCrashShake();
+    }
 
     #endregion
 }
