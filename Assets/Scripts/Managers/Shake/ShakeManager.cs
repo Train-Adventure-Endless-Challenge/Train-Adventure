@@ -14,8 +14,8 @@ public class ShakeManager : SceneSingleton<ShakeManager>
 
     private Shake _shake;
 
-    public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain; } }
-    
+    public float ShakeAmount { get { return _shake._impulseDefinition.m_AmplitudeGain * 2; } }
+
     #endregion
 
     #region Function
@@ -47,9 +47,9 @@ public class ShakeManager : SceneSingleton<ShakeManager>
 
     public void IncreaseShake(float value)
     {
-        _shake._impulseDefinition.m_AmplitudeGain += value; // 증가
+        _shake._impulseDefinition.m_AmplitudeGain += value / 2; // 증가
 
-        if (_shake._impulseDefinition.m_AmplitudeGain > _maxValue)
+        if (ShakeAmount > _maxValue)
         {
             _shake._impulseDefinition.m_AmplitudeGain = _maxValue;
         }
