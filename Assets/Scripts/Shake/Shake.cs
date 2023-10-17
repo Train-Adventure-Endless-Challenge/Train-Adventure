@@ -17,6 +17,8 @@ public class Shake : MonoBehaviour
     [SerializeField] private NoiseSettings _baseNoise;
     [SerializeField] private NoiseSettings _crashNoise;
 
+    private Coroutine _changeCrashShake;
+
     private IEnumerator _shakeCor;
 
     private float _lastEventTime = 0;
@@ -78,7 +80,10 @@ public class Shake : MonoBehaviour
     /// </summary>
     public void ChangeCrashShake()
     {
-        StartCoroutine(ChangeCrashShakeCor());
+        if (_changeCrashShake == null)
+        {
+            _changeCrashShake = StartCoroutine(ChangeCrashShakeCor());
+        }
     }
 
     /// <summary>
@@ -106,6 +111,8 @@ public class Shake : MonoBehaviour
         _impulseDefinition.m_FrequencyGain = originFrequency;
 
         IngameUIController.Instance.UpdateShakeUI(ShakeManager.Instance.ShakeAmount); // UI 초기화
+
+        _changeCrashShake = null;
     }
 
     #endregion
