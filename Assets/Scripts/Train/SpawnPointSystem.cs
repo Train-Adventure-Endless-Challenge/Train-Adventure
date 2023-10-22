@@ -19,7 +19,7 @@ public class SpawnPointSystem : MonoBehaviour
 
         for (int i = 0; i < _enemySpawnPoints.Length; i++)
         {
-            Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position,
+            Instantiate(_enemySpawnPoints[i].enemy, _enemySpawnPoints[i].enemySpawmPointTr.position + new Vector3(0,10f,0),
                 Quaternion.identity).GetComponentInChildren<EnemyController>()._dieEvent += enemyDieAction;
         }
     }
