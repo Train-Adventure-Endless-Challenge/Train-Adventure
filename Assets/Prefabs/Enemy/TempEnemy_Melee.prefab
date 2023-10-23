@@ -766,6 +766,16 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 616f8a5aa8471bc4eac462151d80e0f3, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 8108ce0871a5bef40b50a4caa6a35149,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 8108ce0871a5bef40b50a4caa6a35149,
+        type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7363479242261063072, guid: 8108ce0871a5bef40b50a4caa6a35149,
         type: 3}
       propertyPath: m_Layer
