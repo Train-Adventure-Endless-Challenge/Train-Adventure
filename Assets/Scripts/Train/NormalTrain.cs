@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class NomalTrain : Train
+public class NormalTrain : Train
 {
     [SerializeField] private GameObject[] _objectsInTrainPrefab; // 기차 내 오브젝트 프리팹이 모두 있는 배열
     [SerializeField] private GameObject _treasureBox;
@@ -33,6 +34,8 @@ public class NomalTrain : Train
         system.transform.parent = transform;
         _enemyCount = system.EnemyCount;
     }
+
+    
 
     private void ClearStage()
     {
