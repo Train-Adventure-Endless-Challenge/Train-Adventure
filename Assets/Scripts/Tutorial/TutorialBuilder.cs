@@ -8,10 +8,11 @@ public class TutorialMission
 {
     [Multiline]
     public string Description;
+    public UnityEvent OnMissionStarted;
     public UnityEvent OnMissionCompleted;
 }
 
-public class TutorialBuilder : SceneSingleton<TutorialBuilder>
+public class TutorialBuilder : MonoBehaviour
 {
     public TutorialMission[] Missions;
 
@@ -22,6 +23,9 @@ public class TutorialBuilder : SceneSingleton<TutorialBuilder>
 
     private void Start()
     {
+        // 튜토리얼 진행을 위한 기어 지급
+        GearManager.Instance.AddGear(100);
+
         ActivateMission();
     }
 
@@ -35,6 +39,7 @@ public class TutorialBuilder : SceneSingleton<TutorialBuilder>
         if (Missions.Length > 0)
         {
             var currentMission = Missions[_currentMissionIndex];
+            currentMission.OnMissionStarted?.Invoke();
             currentMission.OnMissionCompleted.AddListener(OnMissionCompleted);
             _missionText.text = currentMission.Description;
         }

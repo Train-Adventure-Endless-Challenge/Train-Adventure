@@ -523,12 +523,36 @@ MonoBehaviour:
   Missions:
   - Description: "W, A, S, D\uB97C \uB20C\uB7EC \uC774\uB3D9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\uC67C\uCABD
       Shift\uB97C \uB204\uB974\uBA74 \uB2EC\uB9B4 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+    OnMissionStarted:
+      m_PersistentCalls:
+        m_Calls: []
     OnMissionCompleted:
       m_PersistentCalls:
         m_Calls: []
   - Description: "Space\uB97C \uB20C\uB7EC \uAD6C\uB974\uAE30\uB97C \uC2DC\uC804\uD560
       \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+    OnMissionStarted:
+      m_PersistentCalls:
+        m_Calls: []
     OnMissionCompleted:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: TutorialBarrier, Assembly-CSharp
+          m_MethodName: MoveBarrier
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 6
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Description: "E\uB97C \uB20C\uB7EC \uBB34\uAE30\uB97C \uD68D\uB4DD\uD55C \uB4A4,\nTab\uC744
+      \uB20C\uB7EC \uC778\uBCA4\uD1A0\uB9AC\uB97C \uC5F4\uACE0 \uBB34\uAE30\uB97C
+      \uC7A5\uCC29\uD558\uC138\uC694."
+    OnMissionStarted:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
@@ -543,15 +567,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-  - Description: "E\uB97C \uB20C\uB7EC \uBB34\uAE30\uB97C \uD68D\uB4DD\uD55C \uB4A4,\nTab\uC744
-      \uB20C\uB7EC \uC778\uBCA4\uD1A0\uB9AC\uB97C \uC5F4\uACE0 \uBB34\uAE30\uB97C
-      \uC7A5\uCC29\uD558\uC138\uC694."
     OnMissionCompleted:
       m_PersistentCalls:
         m_Calls: []
   - Description: "\uC88C\uD074\uB9AD\uC73C\uB85C \uAE30\uBCF8 \uACF5\uACA9,\n\uC6B0\uD074\uB9AD\uC73C\uB85C
       \uC2A4\uD0AC\uC744 \uC0AC\uC6A9\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+    OnMissionStarted:
+      m_PersistentCalls:
+        m_Calls: []
     OnMissionCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+  - Description: "\uD3ED\uD0C4\uC774 \uD130\uC9C0\uAC70\uB098 \uC5F4\uCC28 \uC5F0\uACB0\uBD80\uB97C
+      \uC9C0\uB098\uBA74 \uAE30\uCC28\uAC00 \uD754\uB4E4\uB9BD\uB2C8\uB2E4.\n\uD754\uB4E4\uB9BC
+      \uC218\uCE58\uAC00 \uB192\uC544\uC9C0\uBA74 \uC5B4\uC9C0\uB7EC\uC6C0 \uB4F1\uC758
+      \uB514\uBC84\uD504\uC5D0 \uAC78\uB9AC\uB2C8 \uC8FC\uC758\uD558\uC138\uC694."
+    OnMissionStarted:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
@@ -566,8 +597,38 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 1
           m_CallState: 2
-  - Description: "\uD50C\uB808\uC774\uC5B4\uB97C \uCEE8\uD2B8\uB864\uD558\uC5EC \uC801\uC744
-      \uC8FD\uC774\uC138\uC694."
+    OnMissionCompleted:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: TutorialBarrier, Assembly-CSharp
+          m_MethodName: MoveBarrier
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 10
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - Description: "\uD50C\uB808\uC774\uC5B4\uB97C \uCEE8\uD2B8\uB864\uD558\uC5EC \uC801\uB4E4\uC744
+      \uBB3C\uB9AC\uCE58\uC138\uC694."
+    OnMissionStarted:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 0}
+          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_MethodName: SetActive
+          m_Mode: 6
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 1
+          m_CallState: 2
     OnMissionCompleted:
       m_PersistentCalls:
         m_Calls: []
@@ -575,7 +636,15 @@ MonoBehaviour:
       \uBB34\uAE30 \uB0B4\uAD6C\uB3C4\uB97C \uC218\uB9AC\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.\n\uB610\uB294
       \uC0C1\uC810 \uCE78\uC5D0\uC11C \uC544\uC774\uD15C\uC744 \uAD6C\uB9E4\uD560
       \uC218 \uC788\uC2B5\uB2C8\uB2E4."
+    OnMissionStarted:
+      m_PersistentCalls:
+        m_Calls: []
     OnMissionCompleted:
+      m_PersistentCalls:
+        m_Calls: []
+  - Description: "\uD29C\uD1A0\uB9AC\uC5BC\uC774 \uB05D\uB0AC\uC2B5\uB2C8\uB2E4!\n\uB85C\uBE44\uB85C
+      \uB3CC\uC544\uAC00 \uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uC138\uC694."
+    OnMissionStarted:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 4830030164637894250}
@@ -590,8 +659,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - Description: "\uD29C\uD1A0\uB9AC\uC5BC\uC774 \uB05D\uB0AC\uC2B5\uB2C8\uB2E4!\n\uB85C\uBE44\uB85C
-      \uB3CC\uC544\uAC00 \uAC8C\uC784\uC744 \uD50C\uB808\uC774\uD558\uC138\uC694."
     OnMissionCompleted:
       m_PersistentCalls:
         m_Calls: []
