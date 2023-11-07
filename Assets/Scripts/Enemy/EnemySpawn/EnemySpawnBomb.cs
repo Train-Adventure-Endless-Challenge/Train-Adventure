@@ -9,6 +9,7 @@ public class EnemySpawnBomb : Entity
     float _increaseAmount = 1f;
     [SerializeField] float _setHp;
     public float _damage;
+    EnemyUI _enemyUI;
     public GameObject Owner { get; set; }
 
     
@@ -19,7 +20,9 @@ public class EnemySpawnBomb : Entity
     {
         StartCoroutine(AttackCor());
 
+        _enemyUI = GetComponent<EnemyUI>();
         _hp = _setHp;
+        _enemyUI.Init(_hp);
 
     }
 
@@ -55,6 +58,7 @@ public class EnemySpawnBomb : Entity
     public override void Hit(float damage, GameObject attacker)
     {
         Hp -= _setHp/2;
+        _enemyUI.UpdateHpUI(Hp);
         if (Hp <= 0)
             Die();
     }

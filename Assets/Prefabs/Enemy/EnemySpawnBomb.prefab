@@ -65,6 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50581e7d55f6d9d4f9ac74839b9ffffc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _setHp: 10
   _damage: 0
   _effectPrefab: {fileID: 8592499858754565221, guid: e450b5eb9f9ce8c4c98c07918ad5ac11,
     type: 3}
@@ -486,7 +487,7 @@ PrefabInstance:
     - target: {fileID: 1794471075098141453, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794471075098141453, guid: 47cb719c64e1df5489147af36b3d5538,
         type: 3}
