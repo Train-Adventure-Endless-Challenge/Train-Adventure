@@ -17,6 +17,6 @@ MonoBehaviour:
   _damage: 3
   _moveSpeed: 2
   _attackSpeed: 3
-  _attackRange: 0
+  _attackRange: 1.2
   _enemyType: 3
   _enemyDieSound: {fileID: 8300000, guid: 430bf35646021364caf06dbe9e122617, type: 3}
