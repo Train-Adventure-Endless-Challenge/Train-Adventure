@@ -28,6 +28,12 @@ public class EnemyUI : MonoBehaviour
             _hpBarSlider.gameObject.SetActive(false);
     }
 
+    public void Init(float MaxHp)
+    {
+        _hpBarSlider.maxValue = MaxHp;
+        _hpBarSlider.value = MaxHp;
+    }
+
     public void UpdateHpUI(float hp)
     {
         if (_hpUpdateCoroutine != null || !_isHpUpdateCor)
@@ -45,13 +51,15 @@ public class EnemyUI : MonoBehaviour
         float time = 0.7f;
         float current = 0;
         float percent = 0;
-
+        Debug.Log(_hpBarSlider.value);
         while (percent < 1)
         {
             current += Time.deltaTime;
             percent = current / time;
 
             _hpBarSlider.value = Mathf.Lerp(_hpBarSlider.value, hp, percent);
+
+            Debug.Log(_hpBarSlider.value);
 
             yield return null;
         }

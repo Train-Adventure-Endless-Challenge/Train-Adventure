@@ -2,22 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawnBomb : MonoBehaviour
+public class EnemySpawnBomb : Entity
 {
     [Header("Enemy")]
     float _attackDelayTime = 10f;
     float _increaseAmount = 1f;
+    [SerializeField] float _setHp;
     public float _damage;
-
+    EnemyUI _enemyUI;
     public GameObject Owner { get; set; }
 
     
     [SerializeField] GameObject _effectPrefab;      // 폭탄이 터지는 effect
     [SerializeField] SpriteRenderer _circleColor;   // 아래 원 서클 
 
-    void Start()
+    protected override void Start()
     {
         StartCoroutine(AttackCor());
+
+        _enemyUI = GetComponent<EnemyUI>();
+        _hp = _setHp;
+        _enemyUI.Init(_hp);
 
     }
 
@@ -48,5 +53,18 @@ public class EnemySpawnBomb : MonoBehaviour
         Destroy(effect,2f);
         Destroy(gameObject);
 
+    }
+
+    public override void Hit(float damage, GameObject attacker)
+    {
+        Hp -= _setHp/2;
+        _enemyUI.UpdateHpUI(Hp);
+        if (Hp <= 0)
+            Die();
+    }
+
+    public override void Die()
+    {
+        Destroy(gameObject);
     }
 }
