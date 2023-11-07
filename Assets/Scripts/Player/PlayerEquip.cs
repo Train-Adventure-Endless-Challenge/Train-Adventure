@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerEquip : MonoBehaviour
 {
+    private Animator _animator;
     private Weapon _currentWeapon;
     public Weapon CurrentWeapon { get { return _currentWeapon; } }      // 현재 무기
 
@@ -18,6 +19,7 @@ public class PlayerEquip : MonoBehaviour
     private void Start()
     {
         FistActivate(true);
+        _animator = GetComponent<Animator>();
     }
 
     /// <summary>
@@ -42,6 +44,7 @@ public class PlayerEquip : MonoBehaviour
 
             itemInventory._item = weapon;
             itemInventory._item.InventoryItem = itemInventory;
+            _animator.SetInteger("Weapon", weapon.Id); // 무기 종류에 따라 변경
 
             // 스킬 쿨타임 재 설정
             weapon.currentCoolTime = Time.time + weapon.ItemData.SkillCooltime;
@@ -72,10 +75,11 @@ public class PlayerEquip : MonoBehaviour
     /// <param name="item">해제할 아이템</param>
     public bool ReleaseItem(Item item)
     {
-
         if (item.ItemType == Itemtype.weapon)
         {
             if (_currentWeapon == _fistObject) return false;
+
+            _animator.SetInteger("Weapon", 0); // 무기 종류에 따라 변경
 
             IngameUIController.Instance.OnDurabilityUI(false);
 
