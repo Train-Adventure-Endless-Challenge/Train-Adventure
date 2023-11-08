@@ -17,7 +17,6 @@ public class GreatSword : Weapon
     protected override void Init()
     {
         base.Init();
-        _trailVFX.Stop();
         _weaponCollider = GetComponent<CapsuleCollider>();
     }
 
