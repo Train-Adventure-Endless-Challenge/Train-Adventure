@@ -1,17 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using TreeEditor;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
-    public Vector3 _dir;
+    public Vector3 _destPos;
     [SerializeField] int _speed;
     public float _damage;
     public GameObject Owner { get; set; }
 
     void Start()
     {
-        transform.LookAt(_dir);
+        transform.LookAt(_destPos);
 
         Destroy(gameObject, 3f);
     }

@@ -32,10 +32,8 @@ public class Bow : Weapon
     [ContextMenu("AA")]
     public override void AttackColliderOnFunc()
     {
-        Debug.Log("Spawn");
         Arrow arrow = Instantiate(_arrowPrefab, _arrowSpawnPos.position,Quaternion.identity).GetComponent<Arrow>();
-        Debug.Log(arrow.gameObject.name);
-        arrow._dir = (transform.localPosition + transform.forward) - (transform.localPosition);
+        arrow._destPos = _arrowSpawnPos.position + transform.forward;
         arrow._damage = _damage;
         arrow.Owner = gameObject;
     }
