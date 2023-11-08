@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Bow : Weapon
 {
-    
 
+    [SerializeField] GameObject _arrowPrefab;
+    [SerializeField] Transform _arrowSpawnPos;
     protected override void Awake()
     {
         base.Awake();
@@ -28,9 +29,15 @@ public class Bow : Weapon
         base.Attack();
     }
 
+    [ContextMenu("AA")]
     public override void AttackColliderOnFunc()
     {
-        base.AttackColliderOnFunc();
+        Debug.Log("Spawn");
+        Arrow arrow = Instantiate(_arrowPrefab, _arrowSpawnPos.position,Quaternion.identity).GetComponent<Arrow>();
+        Debug.Log(arrow.gameObject.name);
+        arrow._dir = (transform.localPosition + transform.forward) - (transform.localPosition);
+        arrow._damage = _damage;
+        arrow.Owner = gameObject;
     }
 
     public override void EarnItem()

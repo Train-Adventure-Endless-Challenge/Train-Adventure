@@ -3,7 +3,37 @@ guid: f4f6a86df1df9244d8ebb40cb1c99a6d
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Fe
+    second: {fileID: 2100000, guid: 7c854cba3614a8942b198bffc1a939d9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: gold
+    second: {fileID: 2100000, guid: 75e501a6bd91e12418e55ecf5756adab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: wood
+    second: {fileID: 2100000, guid: 6025cd38d958693459a30f65f7c4b135, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal003_1K_Color
+    second: {fileID: 2800000, guid: c832acac4ac9efb4faecd0e06535d0e9, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Metal007_1K_Color
+    second: {fileID: 2800000, guid: 21c21ccb684830a4ab5c7664e9a60587, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Wood020_1K_Color
+    second: {fileID: 2800000, guid: 48f7898b4a6d1ae44afa8ee3f8c42227, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
