@@ -39,7 +39,7 @@ public class EnemyDieState : State<EnemyController>
         // enemy trail 비활성화
         if (_enemyController.TryGetComponent<EnemyController_Melee>(out EnemyController_Melee enemy))    
         {
-            enemy._attackTrail.gameObject.SetActive(false);
+            enemy._attackVFX.Stop();
         }
          
          _enemyController._enemyUI.DeactivateUI();   // HP UI 삭제

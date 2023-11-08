@@ -9,7 +9,7 @@ public class EnemyController_Melee : EnemyController
 
     public bool _isAttackCheck = false;             // animation event clip으로 실행할 공격 체크 함수
 
-    public TrailRenderer _attackTrail;
+    public ParticleSystem _attackVFX;
     public Collider _attackCollider;
     protected override void Start()
     {
@@ -21,7 +21,6 @@ public class EnemyController_Melee : EnemyController
         _stateMachine.AddState(new EnemyHitState());
         _stateMachine.AddState(new EnemyDiscoveryState());
         _stateMachine.AddState(new EnemyAttackCancelState());
-        _attackTrail = GetComponentInChildren<TrailRenderer>();
     }
 
     /// <summary>
@@ -68,14 +67,14 @@ public class EnemyController_Melee : EnemyController
     /// </summary>
     public void CheckHitEvent()
     {
-        _attackTrail.enabled = true;
+        _attackVFX.Play();
         _isAttackCheck = true;
         _attackCollider.enabled = true;
     }
 
     public void CheckHitEndEffect()
     {
-        _attackTrail.enabled = false;
+        _attackVFX.Stop();
         _isAttackCheck = false;
         _attackCollider.enabled = false;
     }
