@@ -6,11 +6,14 @@ using TMPro;
 public class DialogueSystem : SceneSingleton<DialogueSystem>
 {
     [SerializeField] bool _isShowing;        // text 보여지고 있는 상황
-    string[] _dialogueText;
+    string[] _dialogueTexts;
 
     [SerializeField] TMP_Text _dialogueTextUI;
     [SerializeField] GameObject _dialoguePanelObj;
-    // Start is called before the first frame update
+
+    float _dialogueCharDelay = 0.05f;
+    float _dialogueStringDelay = 0.08f;
+
     void Start()
     {
         _dialoguePanelObj.gameObject.SetActive(false);
@@ -21,7 +24,7 @@ public class DialogueSystem : SceneSingleton<DialogueSystem>
     public void StartDialogueText(string[] dialogueText)
     {
         if (_isShowing) return;
-        this._dialogueText = dialogueText;
+        this._dialogueTexts = dialogueText;
 
         StopAllCoroutines();
         StartCoroutine(StartDialogueCor());
@@ -33,15 +36,15 @@ public class DialogueSystem : SceneSingleton<DialogueSystem>
         _isShowing = true;
         _dialoguePanelObj.gameObject.SetActive(true);
 
-        while (_textIndex < _dialogueText.Length)
+        while (_textIndex < _dialogueTexts.Length)
         {
 
-            for (int i = 0; i < _dialogueText[_textIndex].Length; i++)
+            for (int i = 0; i < _dialogueTexts[_textIndex].Length; i++)
             {
-                _dialogueTextUI.text += _dialogueText[_textIndex][i];
-                yield return new WaitForSeconds(0.05f);
+                _dialogueTextUI.text += _dialogueTexts[_textIndex][i];
+                yield return new WaitForSeconds(_dialogueCharDelay);
             }
-            yield return new WaitForSeconds(0.08f);
+            yield return new WaitForSeconds(_dialogueStringDelay);
 
             _textIndex++;
             _dialogueTextUI.text = "";      // Clear
