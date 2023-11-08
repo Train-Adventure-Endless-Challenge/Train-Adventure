@@ -16,12 +16,6 @@ public class DialogueSystem : SceneSingleton<DialogueSystem>
         _dialoguePanelObj.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     int _textIndex = 0;
 
     public void StartDialogueText(string[] dialogueText)

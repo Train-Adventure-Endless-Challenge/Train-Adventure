@@ -16,11 +16,6 @@ public class NPC : MonoBehaviour
         _anim = GetComponentInChildren<Animator>();
     }
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if(_canTalk && Input.GetKeyDown(KeyCode.E))     // 상호작용 키 
