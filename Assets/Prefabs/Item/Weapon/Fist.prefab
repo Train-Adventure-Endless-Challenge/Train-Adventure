@@ -77,13 +77,13 @@ TrailRenderer:
   m_Time: 1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 10
+    widthMultiplier: 0.5
     widthCurve:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.8302746
+        value: 0.30914116
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -92,7 +92,7 @@ TrailRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0
+        value: 0.23944092
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -196,6 +196,8 @@ MonoBehaviour:
   _weaponCollider: {fileID: 0}
   currentCoolTime: 0
   isSkillExist: 0
+  _upgradeEffectPrefab: {fileID: 0}
+  _upgradeEffectTransform: {fileID: 0}
   _trailRenderer: {fileID: 0}
 --- !u!136 &4585741470531333288
 CapsuleCollider:
