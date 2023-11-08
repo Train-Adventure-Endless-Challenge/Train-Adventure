@@ -8,6 +8,8 @@ public class EnemyController_Bomb : EnemyController
     [SerializeField] GameObject _bombEffect;        //폭탄이 터질때 effect 파티클
     [SerializeField] LayerMask targetLayer;
 
+    [SerializeField] float _detectionRange = 2.0f;
+
     bool _isAttack = false;
 
     protected override void Start()
@@ -64,16 +66,10 @@ public class EnemyController_Bomb : EnemyController
     /// <returns></returns>
     private IEnumerator OnCollisionPlayer()
     {
-        while (Physics.OverlapSphere(transform.position, AttackRange, targetLayer).Length == 0) // 플레이어를 감지할 때 까지 대기
+        while (Vector2.Distance(transform.position, _player.transform.position) > _detectionRange) // 플레이어를 감지할 때 까지 대기
         {
             yield return new WaitForEndOfFrame();
         }
         Attack(); // 공격 실행
     }
-
-    //private void OnDrawGizmos()
-    //{
-    //    Gizmos.color = Color.yellow;
-    //    Gizmos.DrawSphere(transform.position, AttackRange);
-    //}
 }
