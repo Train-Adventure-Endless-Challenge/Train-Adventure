@@ -1,0 +1,44 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e1cdae07ca55f43a447337ef16ca90, type: 3}
+  m_Name: BowData
+  m_EditorClassIdentifier: 
+  _id: 4
+  _name: "\uD65C"
+  _itemImage: {fileID: 21300000, guid: c706f86f6fd02084f9a14727d08b844d, type: 3}
+  _description: "\uC2A4\uD0AC \uC0AC\uC6A9 \uC2DC \uC783\uC740 \uCCB4\uB825 \uBE44\uB840
+    \uB370\uBBF8\uC9C0\uB97C \uC900\uB2E4."
+  _damage: 10
+  _range: 1
+  _attackSpeed: 0.9
+  _additionalHp: 0
+  _additionalStemina: 0
+  _additionalStrength: 0
+  _additionalDefense: 0
+  _additionalAttackSpeed: 0
+  _additionalSpeed: 0
+  _upgradeValueHp: 0
+  _upgradeValueStemina: 0
+  _upgradeValueStrength: 0
+  _upgradeValueDefense: 0
+  _upgradeValueAttackSpeed: 0
+  _upgradeValueSpeed: 0
+  _maxDurability: 100
+  _attackConsumeDurability: 2
+  _skillConsumeDurability: 2
+  _attackConsumeStamina: 7
+  _skillConsumeStamina: 40
+  _skillCooltime: 7
+  _isStackable: 0
+  _storeCost: 18
+  _hittingFeelingEffect: {fileID: 2646761093411473258, guid: 16c4ecacc12f26445a0322001cbc5b3b,
+    type: 3}
