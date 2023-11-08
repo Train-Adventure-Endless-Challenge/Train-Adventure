@@ -27,7 +27,6 @@ public class DialogueSystem : SceneSingleton<DialogueSystem>
     public void StartDialogueText(string[] dialogueText)
     {
         if (_isShowing) return;
-        Debug.Log("dddd");
         this._dialogueText = dialogueText;
 
         StopAllCoroutines();

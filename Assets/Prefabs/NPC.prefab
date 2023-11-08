@@ -50,6 +50,7 @@ MonoBehaviour:
   - "\uC548\uB155\uD558\uC138\uC694 \uC0C1\uC810\uC5D0 \uC624\uC2E0 \uAC78 \uD658\uC601\uD569\uB2C8\uB2E4"
   - "\uAE30\uC5B4\uB97C \uAC00\uC9C0\uACE0 \uC6D0\uD558\uB294 \uBB3C\uD488\uC744
     \uAD6C\uB9E4\uD558\uC138\uC694! "
+  _canTalk: 0
 --- !u!135 &8333980073375048049
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -145,6 +146,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC@Idle
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 5605f3ce3a8bd614b95f55f2c668f607,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 1256f0e506ebed94f9334fa870c1fddc, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5605f3ce3a8bd614b95f55f2c668f607, type: 3}
 --- !u!4 &2227582863462455621 stripped

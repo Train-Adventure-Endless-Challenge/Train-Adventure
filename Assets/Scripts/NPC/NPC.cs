@@ -9,12 +9,16 @@ public class NPC : MonoBehaviour
     [SerializeField] string[] _dialogueText;
     [SerializeField] bool _canTalk;
 
+    Animator _anim;
+
     private void Awake()
     {
+        _anim = GetComponentInChildren<Animator>();
     }
 
     void Start()
     {
+
     }
 
     void Update()
@@ -30,6 +34,8 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _canTalk = true;
+            _anim.SetBool("talking",true);
+
         }
     }
 
@@ -38,6 +44,7 @@ public class NPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _canTalk = false;
+            _anim.SetBool("talking", false);
         }
     }
 
