@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class GreatSword : Weapon
 {
-    [SerializeField] private TrailRenderer _trailRenderer;
+    [SerializeField] private ParticleSystem _trailVFX;
 
     [SerializeField] private float _skillRadius;
 
@@ -31,7 +31,7 @@ public class GreatSword : Weapon
     private IEnumerator AttackCor()
     {
         yield return new WaitForSeconds(_attackSpeed);
-        _trailRenderer.enabled = false;
+        _trailVFX.Stop();
         _weaponCollider.enabled = false;
         _attackCor = null;
     }
@@ -101,12 +101,7 @@ public class GreatSword : Weapon
         base.AttackColliderOnFunc();
         if (_attackCor != null) // 현재 공격 상태라면 trail 활성화
         {
-            _trailRenderer.enabled = true;
-        }
-        else // 현재 공격 상태가 아니라면 공격 trail, collider 비활성화
-        {
-            _trailRenderer.enabled = false; 
-            _weaponCollider.enabled = false;
+            _trailVFX.Play();
         }
     }
     private void OnDrawGizmos()
