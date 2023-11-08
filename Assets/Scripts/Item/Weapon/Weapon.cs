@@ -70,7 +70,9 @@ public class Weapon : Item
     /// </summary>
     public void AttackCollisionOn()
     {
-        _weaponCollider.enabled = true;
+        if(_weaponCollider != null)
+            _weaponCollider.enabled = true;
+
         AttackColliderOnFunc();
     }
 
