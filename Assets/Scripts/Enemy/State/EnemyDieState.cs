@@ -13,6 +13,7 @@ public class EnemyDieState : State<EnemyController>
     private readonly int _dieTrueId = Animator.StringToHash("DieTrue");
     private readonly int _hitId = Animator.StringToHash("Hit");
 
+    
     public override void OnEnter()
     {
         base.OnEnter();
