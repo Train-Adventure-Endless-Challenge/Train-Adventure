@@ -35,10 +35,11 @@ public class DialogueSystem : SceneSingleton<DialogueSystem>
 
         _isShowing = true;
         _dialoguePanelObj.gameObject.SetActive(true);
+        _dialogueTextUI.text = "";      // Clear
 
         while (_textIndex < _dialogueTexts.Length)
         {
-
+            _dialogueTextUI.text = "";      // Clear
             for (int i = 0; i < _dialogueTexts[_textIndex].Length; i++)
             {
                 _dialogueTextUI.text += _dialogueTexts[_textIndex][i];
@@ -47,7 +48,6 @@ public class DialogueSystem : SceneSingleton<DialogueSystem>
             yield return new WaitForSeconds(_dialogueStringDelay);
 
             _textIndex++;
-            _dialogueTextUI.text = "";      // Clear
 
             yield return new WaitForEndOfFrame();
         }

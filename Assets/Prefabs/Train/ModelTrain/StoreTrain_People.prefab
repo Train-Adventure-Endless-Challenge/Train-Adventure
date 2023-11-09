@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 8380490145539251107}
   - component: {fileID: 5539420476958998221}
   m_Layer: 0
-  m_Name: 'StoreTrain_People '
+  m_Name: StoreTrain_People
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3196,21 +3196,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656250177143748777, guid: d09d956326ede72449bc161a32b8713a,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656250177143748777, guid: d09d956326ede72449bc161a32b8713a,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656250177143748777, guid: d09d956326ede72449bc161a32b8713a,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1656250177143748777, guid: d09d956326ede72449bc161a32b8713a,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.07
       objectReference: {fileID: 0}
@@ -3264,20 +3249,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: NPC
       objectReference: {fileID: 0}
+    - target: {fileID: 4913494253633617719, guid: d09d956326ede72449bc161a32b8713a,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0.8235294
+      objectReference: {fileID: 0}
+    - target: {fileID: 4913494253633617719, guid: d09d956326ede72449bc161a32b8713a,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8648339172455095454, guid: d09d956326ede72449bc161a32b8713a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.24
+      value: -2.66
       objectReference: {fileID: 0}
     - target: {fileID: 8648339172455095454, guid: d09d956326ede72449bc161a32b8713a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.39
+      value: 0.338
       objectReference: {fileID: 0}
-    - target: {fileID: 8648339172455095454, guid: d09d956326ede72449bc161a32b8713a,
+    - target: {fileID: 9157855960856346086, guid: d09d956326ede72449bc161a32b8713a,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 1.97
+      propertyPath: _dialogueText.Array.data[1]
+      value: "\uAE30\uC5B4\uB85C \uC6D0\uD558\uB294 \uBB3C\uD488\uC744 \uAD6C\uB9E4\uD558\uC138\uC694! "
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d09d956326ede72449bc161a32b8713a, type: 3}
