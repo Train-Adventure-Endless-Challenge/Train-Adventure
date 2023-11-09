@@ -20,7 +20,6 @@ public class NPC : MonoBehaviour
     {
         if(_canTalk && Input.GetKeyDown(KeyCode.E))     // 상호작용 키 
         {
-            DialogueSystem.Instance.StartDialogueText(_dialogueText);
         }
     }
 
@@ -30,6 +29,7 @@ public class NPC : MonoBehaviour
         {
             _canTalk = true;
             _anim.SetBool("talking",true);
+            DialogueSystem.Instance.StartDialogueText(_dialogueText);
 
         }
     }
