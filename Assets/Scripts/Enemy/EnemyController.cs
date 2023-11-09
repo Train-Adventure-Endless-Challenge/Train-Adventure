@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.VFX;
 
 public abstract class EnemyController : Entity
 {
@@ -20,6 +21,9 @@ public abstract class EnemyController : Entity
 
     private EnemyType _enemyType;
     private AudioClip _enemyDieSound;
+
+    [Header("Die")]
+    public VisualEffect[] _dieEffects;
 
     public bool _isDie;
     public bool _isHit;
@@ -111,8 +115,21 @@ public abstract class EnemyController : Entity
         }
 
         _anim.SetTrigger("Jump");
+
+
+        InitDieEffect();
+
     }
 
+    void InitDieEffect()
+    {
+        if (_dieEffects.Length <= 0) return;
+
+        for (int i = 0; i < _dieEffects.Length; i++)            // Die Effect Init
+        {
+            _dieEffects[i].Stop();
+        }
+    }
 
     protected virtual void Update()
     {
