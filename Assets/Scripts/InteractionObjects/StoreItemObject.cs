@@ -23,6 +23,8 @@ public class StoreItemObject : InteractionObject
         itemObj.transform.parent = transform;
 
         itemObj.AddComponent<Outline>().enabled = false;
+
+        transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
     }
 
     public override void Interact()

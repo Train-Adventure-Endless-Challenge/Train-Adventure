@@ -209,6 +209,8 @@ MonoBehaviour:
   - {fileID: 758079599507852819}
   _storeItemObject: {fileID: 1455136202708117720, guid: 005c10788ee68714eb529d10b605920a,
     type: 3}
+  _storeItemData: []
+  _potionData: {fileID: 0}
 --- !u!65 &6402548357315896419
 BoxCollider:
   m_ObjectHideFlags: 0
