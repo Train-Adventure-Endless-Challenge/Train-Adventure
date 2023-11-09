@@ -116,12 +116,20 @@ public abstract class EnemyController : Entity
 
         _anim.SetTrigger("Jump");
 
-        for (int i = 0; i < _dieEffects.Length; i++)            // Effect Init
+
+        InitDieEffect();
+
+    }
+
+    void InitDieEffect()
+    {
+        if (_dieEffects.Length <= 0) return;
+
+        for (int i = 0; i < _dieEffects.Length; i++)            // Die Effect Init
         {
             _dieEffects[i].Stop();
         }
     }
-
 
     protected virtual void Update()
     {
