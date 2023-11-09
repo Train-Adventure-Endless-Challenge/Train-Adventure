@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 2423766606130926119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5339176090097304410}
@@ -98,7 +98,7 @@ VisualEffect:
       m_Array: []
     m_Vector3f:
       m_Array:
-      - m_Value: {x: 0, y: 0.051, z: 0.023}
+      - m_Value: {x: 0, y: 1.53, z: 0.69}
         m_Name: Target
         m_Overridden: 1
       - m_Value: {x: 0, y: 0, z: 5}
