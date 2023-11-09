@@ -4,11 +4,13 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 public class EnemyDieState : State<EnemyController>
 {
     private EnemyController _enemyController;
     private NavMeshAgent _agent;
+
 
     private readonly int _dieTrueId = Animator.StringToHash("DieTrue");
     private readonly int _hitId = Animator.StringToHash("Hit");
@@ -42,9 +44,22 @@ public class EnemyDieState : State<EnemyController>
         {
             enemy._attackVFX.Stop();
         }
-         
+
+        ShowDieEffect(_enemyController._dieEffects);
+
+
          _enemyController._enemyUI.DeactivateUI();   // HP UI 삭제
         _enemyController._enemyUI.ToggleExclamationMark(false);
+
+
+    }
+
+    private void ShowDieEffect(VisualEffect[] dieEffect)
+    {
+        for (int i = 0; i < dieEffect.Length; i++)
+        {
+            dieEffect[i].Play();
+        }
     }
 
 }
