@@ -407,6 +407,10 @@ MonoBehaviour:
   _eventDamage: 0
   _bombEffect: {fileID: 8592499858754565221, guid: e450b5eb9f9ce8c4c98c07918ad5ac11,
     type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _detectionRange: 2
 --- !u!195 &185151429469142990
 NavMeshAgent:
   m_ObjectHideFlags: 0
