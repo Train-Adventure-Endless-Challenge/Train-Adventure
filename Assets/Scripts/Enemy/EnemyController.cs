@@ -137,11 +137,11 @@ public abstract class EnemyController : Entity
     {
         if (_isDie) return;
 
-        if (attacker.GetComponent<Player>().playerState == PlayerState.Skill)
+        if (attacker.GetComponent<Player>()?.playerState == PlayerState.Skill)
         {
             attacker.GetComponent<PlayerSound>().PlaySkillSound();
         }
-        else
+        else if (attacker.GetComponent<Player>()?.playerState == PlayerState.Attack)
         {
             attacker.GetComponent<PlayerSound>().PlayWeaponAttackSound();
         }
