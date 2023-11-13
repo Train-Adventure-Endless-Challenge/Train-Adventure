@@ -32,8 +32,12 @@ public class Bow : Weapon
     [ContextMenu("AA")]
     public override void AttackColliderOnFunc()
     {
-        Arrow arrow = Instantiate(_arrowPrefab, _arrowSpawnPos.position,Quaternion.identity).GetComponent<Arrow>();
-        arrow._destPos = _arrowSpawnPos.position + transform.forward;
+        Vector3 spawnPos = _arrowSpawnPos.position;
+        Arrow arrow = Instantiate(_arrowPrefab, spawnPos, Quaternion.identity).GetComponent<Arrow>();
+        Vector3 dest = ItemModel.transform.position;
+        Vector3 forward = ItemModel.transform.forward;
+        dest += new Vector3(ItemModel.transform.forward.x, 0, ItemModel.transform.forward.z);
+        arrow._destPos = dest;
         arrow._damage = _damage;
         arrow.Owner = gameObject;
     }
