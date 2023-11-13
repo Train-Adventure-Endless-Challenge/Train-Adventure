@@ -59,8 +59,6 @@ public class EnemyUI : MonoBehaviour
 
             _hpBarSlider.value = Mathf.Lerp(_hpBarSlider.value, hp, percent);
 
-            Debug.Log(_hpBarSlider.value);
-
             yield return null;
         }
 

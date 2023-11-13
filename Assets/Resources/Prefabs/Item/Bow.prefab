@@ -91,7 +91,7 @@ MonoBehaviour:
   _upgradeEffectPrefab: {fileID: 6059418197066807275, guid: a507d0fd5cc10a34696d10c41ac8bb78,
     type: 3}
   _upgradeEffectTransform: {fileID: 5495129497732265144}
-  _arrowPrefab: {fileID: 4626687322519343650, guid: e5299d81394ffd946aa4b220ada7f895,
+  _arrowPrefab: {fileID: 3486608915915154620, guid: 4f381a70af6f25d498f33a49a57bd01b,
     type: 3}
   _arrowSpawnPos: {fileID: 333136785}
 --- !u!54 &5495129496702551063
@@ -239,22 +239,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.41540256
+      value: 0.49256033
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.053140566
+      value: 0.044930197
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.90342367
+      value: 0.86378115
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.09188321
+      value: 0.09616506
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}
@@ -264,7 +264,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 130
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b5fa4c2b6a225ed46b53dc592a3ba3fd,
         type: 3}

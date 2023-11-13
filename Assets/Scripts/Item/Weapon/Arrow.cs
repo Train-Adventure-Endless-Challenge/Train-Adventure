@@ -6,23 +6,25 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public Vector3 _destPos;
-    [SerializeField] int _speed;
+    [SerializeField] protected int _speed;
     public float _damage;
     public GameObject Owner { get; set; }
 
-    void Start()
+
+
+    protected virtual void Start()
     {
         transform.LookAt(_destPos);
 
         Destroy(gameObject, 3f);
     }
 
-    void Update()
+    protected virtual void Update()
     {
         transform.position += transform.forward * _speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -37,7 +39,7 @@ public class Arrow : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected  virtual void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
     }
