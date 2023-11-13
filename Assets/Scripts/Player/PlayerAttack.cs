@@ -184,5 +184,10 @@ public class PlayerAttack : MonoBehaviour
     {
         PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
     }
+
+    public void ProjectileAttackEvent()
+    {
+        PlayerManager.Instance.EquipItem.CurrentWeapon.AttackCollisionOn();
+    }
     #endregion
 }

@@ -24,8 +24,6 @@ public class Arrow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Arrow"))
-            return;
         if (other.gameObject.CompareTag("Enemy"))
         {
             EnemyController enemy = other.gameObject.GetComponent<EnemyController>();
@@ -37,16 +35,10 @@ public class Arrow : MonoBehaviour
         }
         Destroy(gameObject);
 
-        Debug.Log("TRIGGER: " + other.gameObject.name);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
-            return;
-
-        Debug.Log("collision: " + collision.gameObject.name);
-
         Destroy(gameObject);
     }
 }
