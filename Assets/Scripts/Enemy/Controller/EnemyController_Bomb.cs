@@ -66,7 +66,7 @@ public class EnemyController_Bomb : EnemyController
     /// <returns></returns>
     private IEnumerator OnCollisionPlayer()
     {
-        while (Vector2.Distance(transform.position, _player.transform.position) > _detectionRange) // 플레이어를 감지할 때 까지 대기
+        while (Vector2.Distance(transform.localPosition, _player.transform.position) > _detectionRange) // 플레이어를 감지할 때 까지 대기
         {
             yield return new WaitForEndOfFrame();
         }
