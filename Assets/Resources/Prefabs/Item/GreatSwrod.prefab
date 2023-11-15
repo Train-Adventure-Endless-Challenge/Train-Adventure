@@ -85,7 +85,7 @@ MonoBehaviour:
   _itemType: 0
   _itemDestroyEffect: {fileID: 823794951709449306, guid: 09493efb518a384428bb7500e8dcd0e9,
     type: 3}
-  _itemModel: {fileID: 0}
+  _itemModel: {fileID: 919132147706024984}
   _weaponCollider: {fileID: 5510357528307337339}
   currentCoolTime: 0
   isSkillExist: 1
@@ -266,6 +266,12 @@ PrefabInstance:
 --- !u!4 &543450651961101986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bfd0741139e2a7e41b7ebde372b2995b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1772480841}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &919132147706024984 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bfd0741139e2a7e41b7ebde372b2995b,
     type: 3}
   m_PrefabInstance: {fileID: 1772480841}
   m_PrefabAsset: {fileID: 0}
