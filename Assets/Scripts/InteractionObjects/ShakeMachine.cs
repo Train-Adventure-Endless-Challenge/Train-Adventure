@@ -12,6 +12,7 @@ public class ShakeMachine : InteractionObject
     [Header("Direction")]       // 연출을 위한 변수
     [SerializeField] Transform _spawnGearTrans;
     [SerializeField] GameObject _gearObj;       // 기어 모델 object
+    [SerializeField] GameObject _repairVFX;
 
     private void Start()
     {
@@ -69,6 +70,7 @@ public class ShakeMachine : InteractionObject
 
     IEnumerator SpawnGearObj()
     {
+        _repairVFX.SetActive(true);
 
         for (int i = 0; i < 5; i++)
         {
