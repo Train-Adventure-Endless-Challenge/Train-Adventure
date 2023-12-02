@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e1cdae07ca55f43a447337ef16ca90, type: 3}
+  m_Name: PotionData
+  m_EditorClassIdentifier: 
+  _id: 3
+  _name: Potion
+  _itemImage: {fileID: 21300000, guid: 56db046d8e5dc4e4f95419a90efcb002, type: 3}
+  _description: 
+  _damage: 0
+  _range: 0
+  _attackSpeed: 0
+  _additionalHp: 0
+  _additionalStemina: 0
+  _additionalStrength: 0
+  _additionalDefense: 0
+  _additionalAttackSpeed: 0
+  _additionalSpeed: 0
+  _upgradeValueHp: 0
+  _upgradeValueStemina: 0
+  _upgradeValueStrength: 0
+  _upgradeValueDefense: 0
+  _upgradeValueAttackSpeed: 0
+  _upgradeValueSpeed: 0
+  _maxDurability: 0
+  _attackConsumeDurability: 0
+  _skillConsumeDurability: 0
+  _attackConsumeStamina: 0
+  _skillConsumeStamina: 0
+  _skillCooltime: 0
+  _isStackable: 0
+  _storeCost: 30
+  _hittingFeelingEffect: {fileID: 0}

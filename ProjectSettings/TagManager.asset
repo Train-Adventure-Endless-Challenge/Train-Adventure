@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Interaction Object
+  - Enemy
+  - OutlineExcept
+  - Train
+  - Gear
   layers:
   - Default
   - TransparentFX
@@ -11,15 +16,15 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Ground
+  - Obstruct
+  - Player
+  - Enemy
+  - Gear
+  - Wall
+  - Bullet
+  - Weapon
+  - RightWall
   - 
   - 
   - 

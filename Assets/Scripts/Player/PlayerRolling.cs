@@ -1,0 +1,158 @@
+// 작성자 : 박재만
+// 작성일 : 2023-06-19
+
+#region
+
+using UnityEngine;
+using System.Collections;
+
+#endregion
+
+/// <summary>
+/// 플레이어의 구르기를 담당하는 클래스
+/// </summary>
+public class PlayerRolling : MonoBehaviour
+{
+    #region Variable
+
+    [Header("Key")]
+    [SerializeField] private KeyCode _rollingKey;
+
+    [Header("Attribute")]
+    [SerializeField] private float _rollingRange;
+    [SerializeField] private AnimationCurve _rollingCurve;
+    [SerializeField] private int _staminaValue = 20;       // 필요 스태미너 값
+
+    public bool _isGodMode;
+
+    private int _staminaUseValue;            // 필요 스태미너 값
+
+    private Player _player;
+    private Animator _animator;
+    private CharacterController _characterController;
+
+    private float _lerpTime = 1f;
+    private float _currentTime = 0f;
+
+    private Coroutine _rollCor;
+
+    private Vector3 _endPosition;
+    private Vector3 _moveDirection;
+
+    #endregion
+
+    #region Function
+
+    // Start is called before the first frame update
+    void Awake()
+    {
+        Init();
+    }
+
+    private void Start()
+    {
+        DataInit();
+    }
+
+    /// <summary>
+    /// 초기화 함수
+    /// </summary>
+    private void Init()
+    {
+        _player = GetComponent<Player>();
+        _animator = GetComponent<Animator>();
+        _characterController = GetComponent<CharacterController>();
+    }
+
+    private void DataInit()
+    {
+        _rollingRange = _player.RollingRange;
+        _staminaUseValue = _player.StaminaUseValue;
+        _rollingCurve = _player.RollingCurve;
+    }
+
+    /// <summary>
+    /// 구르기 함수
+    /// </summary>
+    #region Mobile
+    ///// <param name="isPC">플랫폼 테스트용 변수 ※추후 삭제※</param>
+    //public void Roll(bool isPC)
+    #endregion
+    public void Roll()
+    {
+        if (_rollCor == null)
+        {
+            if (CanRoll())
+            {
+                _player.Stamina -= _staminaValue;
+                IngameUIController.Instance.UpdateStaminaUI(_player.Stamina, _player.MaxStamina);
+
+                _player.playerState = PlayerState.Rolling;
+                _rollCor = StartCoroutine(RollCor(transform.position));
+            }
+        }
+    }
+
+    /// <summary>
+    /// 구르기가 가능한지 체크하는 함수
+    /// </summary>
+    /// <returns></returns>
+    private bool CanRoll()
+    {
+        bool canRollWithoutStamina = Input.GetKeyDown(_rollingKey) 
+            && _player.playerState != PlayerState.Attack;
+
+        if (canRollWithoutStamina && _player.Stamina - _staminaUseValue >= 0) // 구르기 키를 눌렀는지, 스태미나가 충분한지 체크
+        {
+            return true;
+        }
+        else if (canRollWithoutStamina)
+        {
+            IngameUIController.Instance.PopupText("스태미나가 부족합니다.");
+        }
+        return false;
+    }
+
+    /// <summary>
+    /// 구르기 코루틴 함수
+    /// </summary>
+    /// <param name="startPosition">초기 값</param>
+    /// <returns></returns>
+    public IEnumerator RollCor(Vector3 startPosition)
+    {
+        _currentTime = 0f;
+        float _isGodModeFalseTime = .5f;
+        _lerpTime = 0.65f;
+        _isGodMode = true;
+        _animator.SetBool("IsRoll", true);
+        _animator.SetTrigger("OnState");
+        _endPosition = transform.forward * _rollingRange;
+        while (_currentTime != _lerpTime)
+        {
+            _currentTime += Time.deltaTime;
+
+            if (_currentTime >= _lerpTime)
+            {
+                _currentTime = _lerpTime;
+            }
+
+            if (_isGodModeFalseTime < _currentTime) _isGodMode = false;
+            float _curveValue = _rollingCurve.Evaluate(_currentTime / _lerpTime);
+
+            _moveDirection = Vector3.Lerp(Vector3.zero, _endPosition, _curveValue);
+
+            _characterController.Move(Time.deltaTime * _moveDirection);
+
+            transform.forward = _moveDirection;
+
+            yield return new WaitForEndOfFrame();
+        }
+        _isGodMode = false;
+        _animator.SetBool("IsRoll", false);
+        _animator.SetTrigger("OnState");
+        _rollCor = null;
+        _player.playerState = PlayerState.Idle;
+    }
+
+    #endregion
+}

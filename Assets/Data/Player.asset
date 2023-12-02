@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b108ee452e613f643842bcaf15f08a17, type: 3}
+  m_Name: Player
+  m_EditorClassIdentifier: 
+  _hp: 100
+  _speed: 3
+  _defense: 5
+  _stamina: 100
+  _attackSpeed: 1.5
+  _originSpeedScale: 1
+  _attackSlowSpeedScale: 0.3
+  _walkSpeedScale: 0.5
+  _runSpeedScale: 1
+  _moveSlowSpeedScale: 1
+  _interactionAngle: 90
+  _interactionRange: 1
+  _interactionColor: {r: 0, g: 1, b: 0, a: 0}
+  _rollingRange: 4.5
+  _staminaUseValue: 20
+  _rollingCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: -0.2648541
+      outSlope: -0.2648541
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1.0051575
+      value: 0.7337799
+      inSlope: -0.2648541
+      outSlope: -0.2648541
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _waitTime: 0.5
+  _recoveryTime: 0.1
+  _maxValue: 100
+  _recoveryValue: 2
+  _attackSound: {fileID: 8300000, guid: fcef21c212d4e8f49886d71db9c1f551, type: 3}
+  _attackWeaponSound: {fileID: 8300000, guid: a8df70bd46fc9014caaf1612263c83f5, type: 3}
+  _skillSound: {fileID: 8300000, guid: 878522c1097aecb4dbe84fc1e8ca4976, type: 3}
+  _hitSounds:
+  - {fileID: 8300000, guid: 365a9af404d6b914294286970243326f, type: 3}
+  - {fileID: 8300000, guid: afce792d0e1e3a841ab2f4ae603db0a1, type: 3}
